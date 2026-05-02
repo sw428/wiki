@@ -1,4 +1,4 @@
-﻿# 02_ボックスとdisplay
+﻿# 01_ボックスとdisplay
 
 ## 目的
 
@@ -59,3 +59,4 @@
 1. そもそも表示対象か（`display: none` など）
 2. どのボックス種別か（`block`/`inline`/`inline-block`）
 3. サイズ計算の問題か（`box-sizing`, `padding`, `border`）
+

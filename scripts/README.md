@@ -3,7 +3,7 @@
 ## このフォルダの役割
 
 このフォルダは、この repo の運用補助スクリプトを置く場所。
-現在は週次同期と月末同期のスクリプトを管理する。
+現在は同期（週次/月次）と品質チェック（wiki lint）のスクリプトを管理する。
 
 ## 追加ルール（新規スクリプト）
 
@@ -64,6 +64,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 
 - 変更を `git add -A` でステージング
 - 変更があれば `YYYY-Www / summary` 形式でコミット
+- push 前に `scripts/wiki-lint.ps1 -FailOnIssue` を実行（lintゲート）
 - 本線へ通常 push（`--force` なし）
 - 実行結果を `.git/weekly-sync-state.json` に保存
 
@@ -73,6 +74,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 - `-Remote`: push 先 remote（既定: `origin`）
 - `-Branch`: 対象ブランチ（省略時は現在ブランチ）
 - `-Summary`: コミット要約を手動指定
+- `-SkipWikiLintGate`: lintゲートを一時的にスキップ（緊急時のみ）
 
 自動実行タスク（既定）:
 
@@ -96,6 +98,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 
 - 変更を `git add -A` でステージング
 - 変更があれば `YYYY-MM / summary` 形式でコミット
+- push 前に `scripts/wiki-lint.ps1 -FailOnIssue` を実行（lintゲート）
 - 本線へ通常 push（`--force` なし）
 - 実行結果を `.git/monthly-summary-sync-state.json` に保存
 
@@ -105,6 +108,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 - `-Remote`: push 先 remote（既定: `origin`）
 - `-Branch`: 対象ブランチ（省略時は現在ブランチ）
 - `-Summary`: コミット要約を手動指定
+- `-SkipWikiLintGate`: lintゲートを一時的にスキップ（緊急時のみ）
 
 自動実行タスク（既定）:
 
@@ -129,6 +133,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 
 - 変更を `git add -A` でステージング
 - 変更があれば `YYYY-MM / summary` 形式でコミット
+- force系 push 前に `scripts/wiki-lint.ps1 -FailOnIssue` を実行（lintゲート）
 - 本線更新前に `backup/<timestamp>` ブランチへ退避 push
 - 本線を `--force-with-lease` で更新
 - 実行結果を `.git/monthly-force-sync-state.json` に保存
@@ -140,11 +145,82 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 - `-Remote`: push 先 remote（既定: `origin`）
 - `-Branch`: 対象ブランチ（省略時は現在ブランチ）
 - `-Summary`: コミット要約を手動指定
+- `-SkipWikiLintGate`: lintゲートを一時的にスキップ（緊急時のみ）
 
 運用状態:
 
 - 自動タスク `WikiMonthlyForceSync` は現在 **Disabled**
 - 通常運用では `monthly-summary-sync.ps1` を使い、force は使わない
+
+### `wiki-lint.ps1`
+
+概要:
+
+- wiki の md を対象に、定期チェック用レポートを自動生成する
+- チェック対象は「ローカルリンク切れ / 孤立ページ / 古い主張候補（マーカー）/ 更新停滞候補」
+
+リスク評価:
+
+- `☆☆★★★ (2/5)`  
+  理由: 破壊的変更は行わず、レポート md を出力するのみ。
+
+主な処理:
+
+- `03_雑記/wiki-lint-report.md` を生成
+- ローカルリンク切れを抽出
+- 被リンク0の孤立ページを抽出（除外リストあり）
+- `要修正 / 未確認 / 要検証 / TODO / FIXME / 暫定 / 保留 / 矛盾` などのマーカーを抽出
+- 最終更新日がしきい値日数を超えたファイルを抽出
+
+主なオプション:
+
+- `-DocsRoot`: 検査対象ルート（既定: `.`）
+- `-ReportPath`: レポート出力先（既定: `03_雑記/wiki-lint-report.md`）
+- `-StaleDays`: 更新停滞の判定日数（既定: `120`）
+- `-StaleMarkerPattern`: 古い主張候補マーカーの正規表現
+- `-OrphanIgnore`: 孤立判定から除外するファイル
+- `-FailOnIssue`: 問題が1件でもあれば終了コードを失敗にする
+
+実行例:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\wiki-lint.ps1
+```
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\wiki-lint.ps1 -FailOnIssue
+```
+
+### `register-weekly-lint-task.ps1`
+
+概要:
+
+- `WikiWeeklyLint` タスクを作成/更新し、`wiki-lint.ps1 -FailOnIssue` を週次実行する
+- 既定は「毎週日曜 23:40」で、`WikiWeeklySync`（23:55）の前にチェックする
+
+リスク評価:
+
+- `☆☆☆★★ (3/5)`  
+  理由: OSタスクスケジューラ設定を変更するため。
+
+主な処理:
+
+- タスク名 `WikiWeeklyLint` を登録/更新
+- 実行コマンドを `powershell.exe -File scripts/wiki-lint.ps1 -FailOnIssue` に固定
+- 現在ユーザー（Interactive）で実行する設定を適用
+
+主なオプション:
+
+- `-TaskName`: タスク名（既定: `WikiWeeklyLint`）
+- `-DayOfWeek`: 実行曜日（既定: `Sunday`）
+- `-At`: 実行時刻（`HH:mm`、既定: `23:40`）
+- `-DryRun`: 登録せず内容だけ確認
+
+実行例:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\register-weekly-lint-task.ps1
+```
 
 ## 安全ガード
 

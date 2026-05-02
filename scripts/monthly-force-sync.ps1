@@ -4,7 +4,8 @@
     [string]$Summary = "",
     [string]$ExpectedRemotePattern = "(?i)(github\.com[:/]).*/wiki(\.git)?$",
     [switch]$DryRun,
-    [switch]$CatchUp
+    [switch]$CatchUp,
+    [switch]$SkipWikiLintGate
 )
 
 $ErrorActionPreference = "Stop"
@@ -129,6 +130,29 @@ function Write-State {
     Set-Content -LiteralPath $Path -Value $json -Encoding UTF8
 }
 
+function Invoke-WikiLintGate {
+    param(
+        [Parameter(Mandatory = $true)][string]$RepoRoot,
+        [switch]$SkipGate
+    )
+
+    if ($SkipGate) {
+        Write-Host "[monthly-sync] wiki lint gate skipped by option"
+        return
+    }
+
+    $lintScript = Join-Path -Path $RepoRoot -ChildPath "scripts/wiki-lint.ps1"
+    if (-not (Test-Path -LiteralPath $lintScript)) {
+        throw "wiki lint script not found: $lintScript"
+    }
+
+    Write-Host "[monthly-sync] running wiki lint gate"
+    & powershell -NoProfile -ExecutionPolicy Bypass -File $lintScript -FailOnIssue
+    if ($LASTEXITCODE -ne 0) {
+        throw "wiki lint gate failed with exit code $LASTEXITCODE"
+    }
+}
+
 # Validate repository context.
 $inside = Get-GitText -Args @("rev-parse", "--is-inside-work-tree")
 if ($inside -ne "true") {
@@ -176,6 +200,8 @@ if ($DryRun) {
     Write-Host "[monthly-sync] dry-run mode; no commit/push executed"
     return
 }
+
+Invoke-WikiLintGate -RepoRoot $repoRoot -SkipGate:$SkipWikiLintGate
 
 & git add -A
 if ($LASTEXITCODE -ne 0) {

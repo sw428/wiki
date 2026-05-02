@@ -9,14 +9,14 @@
 
 - 受け取り元: GPT対話の長文メモ（初期認識を含む）
 - 反映先:
-  - [02_ボックスとdisplay](./02_ボックスとdisplay.md)
-  - [03_インラインと行の仕組み](./03_インラインと行の仕組み.md)
-  - [04_画像と背景](./04_画像と背景.md)
-  - [05_レイアウト](./05_レイアウト.md)
-  - [06_ブラウザ挙動とズレ](./06_ブラウザ挙動とズレ.md)
-  - [07_HTMLの意味と構造](./07_HTMLの意味と構造.md)
-  - [08_メディア設計（img・video・object-fit・aspect-ratio）](./08_メディア設計（img・video・object-fit・aspect-ratio）.md)
-  - [09_表示制御（sp-only／pc-only／revert設計）](./09_表示制御（sp-only／pc-only／revert設計）.md)
+  - [01_ボックスとdisplay](./01_ボックスとdisplay.md)
+  - [02_インラインと行の仕組み](./02_インラインと行の仕組み.md)
+  - [03_画像と背景](./03_画像と背景.md)
+  - [04_レイアウト](./04_レイアウト.md)
+  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
+  - [06_HTMLの意味と構造](./06_HTMLの意味と構造.md)
+  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
 
 ## メモ
 
@@ -30,22 +30,22 @@
 
 ### 追記先
 
-- [01_CSS設計方針（BEM × レイアウト分離）](./01_CSS設計方針（BEM × レイアウト分離）.md)
+- [01_CSS設計方針（BEM × レイアウト分離）](../../02_案件・制作/ポートフォリオサイト/01_CSS設計方針（BEM × レイアウト分離）.md)
   - コンポーネント核とページ側上書きの境界
   - 上書き可否の判断
   - サイズ差分をModifierで扱う方針
-- [03_インラインと行の仕組み](./03_インラインと行の仕組み.md)
+- [02_インラインと行の仕組み](./02_インラインと行の仕組み.md)
   - font box / line box / border box の区別
   - 視覚中心と数学中心のズレ
   - `inline-block` と `inline-flex` の基準差
-- [05_レイアウト](./05_レイアウト.md)
+- [04_レイアウト](./04_レイアウト.md)
   - Margin Collapse
   - Formatting Context
   - Containing Block
   - `min-width: 0` と `minmax(0, 1fr)` の役割差
-- [06_ブラウザ挙動とズレ](./06_ブラウザ挙動とズレ.md)
+- [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
   - 画像ロードがJS補正後に再レイアウトを発生させる時系列
-- [08_メディア設計（img・video・object-fit・aspect-ratio）](./08_メディア設計（img・video・object-fit・aspect-ratio）.md)
+- [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
   - `width`/`height` と `aspect-ratio` の予約タイミング比較
   - 崩れやすい `img { width: 100%; height: 100%; }` パターン
 
@@ -58,17 +58,17 @@
 
 - 受け取り元: CSS追加ログ（scrollズレ、画像予約、`min-width: 0` 文脈の深掘り）
 - 反映:
-  - [06_ブラウザ挙動とズレ](./06_ブラウザ挙動とズレ.md)
+  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
     - 横幅変更が改行経由で高さに波及する説明
     - `scroll-margin-top` / `content-visibility` の補助対策
-  - [08_メディア設計（img・video・object-fit・aspect-ratio）](./08_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
     - 画像対策の優先適用順（枚数・波及度ベース）
 
 ## 追記ログ（2026-05-02-3）
 
 - 受け取り元: 表示制御ログ（sp-only / pc-only / display / revert）
 - 反映:
-  - [09_表示制御（sp-only／pc-only／revert設計）](./09_表示制御（sp-only／pc-only／revert設計）.md)
+  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
     - 「表示」ではなく「存在条件」で設計する軸
     - `only` 命名と `revert` の使い分け
     - 認知アプローチ（判断手順）
@@ -79,24 +79,73 @@
 - 反映:
   - [00_HTML・CSS整理マップ](./00_HTML・CSS整理マップ.md)
     - ベース原理セット（役割/外内/構造と余白/親優先/全体→例外）
-  - [05_レイアウト](./05_レイアウト.md)
+  - [04_レイアウト](./04_レイアウト.md)
     - Grid判断軸、親責任優先、認知アプローチ追記
-  - [08_メディア設計（img・video・object-fit・aspect-ratio）](./08_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
     - 2択判断、外/箱/中身分解、border-radiusとoverflowの責務
-  - [09_表示制御（sp-only／pc-only／revert設計）](./09_表示制御（sp-only／pc-only／revert設計）.md)
+  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
     - 認知負荷削減の理由、表示制御とレイアウト制御の境界
 
 ## 追記ログ（2026-05-02-5）
 
 - 受け取り元: Grid/DevTools/A11y整理の長文ログ
 - 反映:
-  - [05_レイアウト](./05_レイアウト.md)
+  - [04_レイアウト](./04_レイアウト.md)
     - 通常フローとGridの見方
     - `1fr` / `min-width: 0` / `minmax(0, 1fr)` の差分整理
-  - [06_ブラウザ挙動とズレ](./06_ブラウザ挙動とズレ.md)
+  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
     - DevTools Computed値の見方
     - Grid overlay / Flex space-between の計測方針
-  - [07_HTMLの意味と構造](./07_HTMLの意味と構造.md)
+  - [06_HTMLの意味と構造](./06_HTMLの意味と構造.md)
     - A11y / セマンティックHTML / セクショニング / ランドマーク
     - `hidden` と `aria-expanded` の対象差分
     - `article` への `aria-labelledby` の優先度判断
+
+## 追記ログ（2026-05-02-6）
+
+- 要望: `01_CSS設計方針（BEM × レイアウト分離）` をポートフォリオ側へ移管し、HTML・CSS番号を1つ繰り上げ
+- 反映:
+  - `01_学習本線/HTML・CSS`
+    - `02〜09` を `01〜08` へリネーム
+    - 本線内リンクを新番号へ更新
+  - `02_案件・制作/ポートフォリオサイト`
+    - `01_CSS設計方針（BEM × レイアウト分離）.md` を配置
+    - 実務側参照リンクを同フォルダ内リンクへ更新
+
+## 追記ログ（2026-05-03）
+
+- 受け取り元: Blogカード制作ログの長文（BEM / 画像 / レンダリング途中挙動）
+- 要望: 正解パターンだけでなく、条件に対する出力をまとめて認知できる形にする
+- 反映:
+  - [01_ケース_Blogカード画像_レンダリング挙動](../ケース検証/01_ケース_Blogカード画像_レンダリング挙動.md)
+    - 箱モデル、`max-width`、`height:auto`、`object-fit`、`inline-flex`、BEM責務を条件→出力で整理
+  - [00_HTML・CSS整理マップ](./00_HTML・CSS整理マップ.md)
+    - 09ファイルへの導線追加
+
+## 追記ログ（2026-05-03-2）
+
+- 要望: 今回ケースを固定し、今後は「1状況1ファイル」で分けたい
+- 反映:
+  - [00_HTML・CSS整理マップ](./00_HTML・CSS整理マップ.md)
+    - `01〜08`（概念本線）と `ケース検証`（個別検証）の運用モード分離を明記
+    - ケース検証運用ファイルへの導線追加
+  - [00_ケース検証運用（共通）](../ケース検証/00_ケース検証運用（共通）.md)
+    - 命名ルール、置き場、記録テンプレを追加
+
+## 追記ログ（2026-05-03-3）
+
+- 要望: `ケース検証` フォルダ内を番号運用に統一（`00`=運用、`01`=今回ケース）
+- 反映:
+  - `01_学習本線/ケース検証/00_ケース検証運用（共通）.md`
+    - ケース分析 -> 知識側（01〜08）へ戻す手順を明記
+  - `01_学習本線/ケース検証/01_ケース_Blogカード画像_レンダリング挙動.md`
+    - 今回ケースを個別ファイルとして固定
+
+## 追記ログ（2026-05-03-4）
+
+- 要望: JSとHTML/CSSが5:5で混在するUIケースの置き場を明確化したい
+- 反映:
+  - [00_ケース検証運用（共通）](../ケース検証/00_ケース検証運用（共通）.md)
+    - `01_学習本線/ケース検証` への一括管理運用を追加
+
+

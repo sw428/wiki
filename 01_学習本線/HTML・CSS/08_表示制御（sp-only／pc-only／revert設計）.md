@@ -1,4 +1,4 @@
-﻿# 09_表示制御（sp-only／pc-only／revert設計）
+﻿# 08_表示制御（sp-only／pc-only／revert設計）
 
 ## 目的
 
@@ -118,3 +118,4 @@
 - `only` 命名で条件を明示
 - SP初期 + PC上書きで運用
 - `revert` で要素ごとのdisplay差を吸収
+
