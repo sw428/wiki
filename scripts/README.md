@@ -3,7 +3,7 @@
 ## このフォルダの役割
 
 このフォルダは、この repo の運用補助スクリプトを置く場所。
-現在は同期（週次/月次）と品質チェック（wiki lint）のスクリプトを管理する。
+現在は同期（日次/週次/月次）と品質チェック（wiki lint）のスクリプトを管理する。
 
 ## 追加ルール（新規スクリプト）
 
@@ -12,41 +12,6 @@
 - 各スクリプトに「リスク評価（☆1〜5）」を明記する
 
 ## スクリプト一覧
-
-### `stage-portfolio-review.ps1`
-
-概要:
-
-- 外部フォルダで作ったポートフォリオを、案件フォルダへ一時コピーしてレビュー準備を作る
-- コピーと同時に `review.md`（3点比較レビュー用テンプレ）を自動生成する
-
-リスク評価:
-
-- `☆☆☆★★ (3/5)`  
-  理由: 大きいフォルダのコピーで容量を使う可能性があるため。元フォルダは変更しない。
-
-主な処理:
-
-- `02_案件・制作/<PortfolioName>/review-staging/<timestamp>/source` へコピー
-- `review.md` を同じフォルダに生成
-- `import-metadata.json` を生成（個人情報保護のため元パス全文は保存しない）
-- コピー時に `.git` / `node_modules` / `.next` / `dist` / `coverage` は除外
-
-主なオプション:
-
-- `-SourcePath`: コピー元フォルダ（必須）
-- `-PortfolioName`: 受け取り先の案件フォルダ名（必須）
-- `-CasesRoot`: 案件ルート（省略時は `02_*` フォルダを自動検出）
-- `-StagingFolderName`: 一時受け取りフォルダ名（既定: `review-staging`）
-- `-DryRun`: 実コピーせず、実行内容だけ確認
-
-実行例:
-
-```powershell
-powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-review.ps1 `
-  -SourcePath "D:\work\portfolio-a" `
-  -PortfolioName "ポートフォリオサイト"
-```
 
 ### `weekly-sync.ps1`
 
@@ -82,41 +47,51 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 - 実行: 毎週日曜 23:55
 - 方式: 確認なしの自動実行
 
-### `monthly-summary-sync.ps1`
+### `daily-commit.ps1`
 
 概要:
 
-- 月1で変更をコミットし、本線へ通常 push する月次まとめスクリプト
-- force push は使わず、差分競合時は失敗で止まる安全寄り運用
+- 日次で変更をローカルコミットする自動化スクリプト
+- push は行わず、ローカル履歴のみ更新する
 
 リスク評価:
 
-- `☆☆☆★★ (3/5)`  
-  理由: 自動 commit / push を行うため。force は使わないが履歴更新は発生する。
+- `☆☆★★★ (2/5)`  
+  理由: ローカルコミットのみで remote 更新を行わないため。
 
 主な処理:
 
 - 変更を `git add -A` でステージング
-- 変更があれば `YYYY-MM / summary` 形式でコミット
-- push 前に `scripts/wiki-lint.ps1 -FailOnIssue` を実行（lintゲート）
-- 本線へ通常 push（`--force` なし）
-- 実行結果を `.git/monthly-summary-sync-state.json` に保存
+- 変更があれば `YYYY-MM-DD / summary` 形式でコミット
+- 実行結果を `.git/daily-commit-state.json` に保存
 
 主なオプション:
 
-- `-DryRun`: 実際の commit / push は行わず、内容だけ確認
-- `-Remote`: push 先 remote（既定: `origin`）
-- `-Branch`: 対象ブランチ（省略時は現在ブランチ）
+- `-DryRun`: 実際の commit は行わず、内容だけ確認
 - `-Summary`: コミット要約を手動指定
-- `-SkipWikiLintGate`: lintゲートを一時的にスキップ（緊急時のみ）
 
-自動実行タスク（既定）:
+### `register-daily-commit-task.ps1`
 
-- タスク名: `WikiMonthlySummarySync`
-- 実行: 毎月1日 00:05
-- 対象ブランチ: `main`（`-Branch main`）
-- 方式: 確認なしの自動実行
+概要:
 
+- `WikiDailyCommit` タスクを作成/更新し、`daily-commit.ps1` を日次実行する
+
+リスク評価:
+
+- `☆☆☆★★ (3/5)`  
+  理由: OSタスクスケジューラ設定を変更するため。
+
+主なオプション:
+
+- `-TaskName`: タスク名（既定: `WikiDailyCommit`）
+- `-At`: 実行時刻（`HH:mm`、既定: `23:50`）
+- `-DryRun`: 登録せず内容だけ確認
+
+実行例:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\register-daily-commit-task.ps1
+```
 ### `monthly-force-sync.ps1`
 
 概要:
@@ -150,7 +125,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\stage-portfolio-re
 運用状態:
 
 - 自動タスク `WikiMonthlyForceSync` は現在 **Disabled**
-- 通常運用では `monthly-summary-sync.ps1` を使い、force は使わない
+- 通常運用では `daily-commit.ps1`（日次）と `weekly-sync.ps1`（週次push）を使い、force は使わない
 
 ### `wiki-lint.ps1`
 
@@ -247,3 +222,5 @@ powershell -NoProfile -ExecutionPolicy Bypass -File .\scripts\register-weekly-li
 - 不安を感じる場合は `scripts` フォルダを削除して使用してよい。
 - `scripts` をすべて削除しても、wiki 本体（md運用）の基本機能は失われない。
 - Codex の運用性能は主に md ファイルの自然言語構造に依存し、`scripts` は補助扱い。
+
+

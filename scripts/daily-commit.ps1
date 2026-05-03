@@ -1,10 +1,19 @@
+<#
+概要:
+- その日の変更を自動でコミットする（日次）
+- push は行わず、ローカル履歴のみを更新する
+
+実行対象:
+- このプロジェクトの Git 作業ツリー
+
+リスク評価:
+- ☆☆★★★ (2/5)
+  理由: ローカルコミットは作成するが、remote へ push しないため影響は限定的。
+#>
+
 param(
-    [string]$Remote = "origin",
-    [string]$Branch = "",
     [string]$Summary = "",
-    [string]$ExpectedRemotePattern = "(?i)(github\.com[:/]).*/wiki(\.git)?$",
-    [switch]$DryRun,
-    [switch]$SkipWikiLintGate
+    [switch]$DryRun
 )
 
 $ErrorActionPreference = "Stop"
@@ -34,23 +43,8 @@ function Normalize-PathString {
     return $full
 }
 
-function Get-TargetBranch {
-    param([string]$RequestedBranch)
-
-    if (-not [string]::IsNullOrWhiteSpace($RequestedBranch)) {
-        return $RequestedBranch.Trim()
-    }
-
-    $current = Get-GitText -Args @("branch", "--show-current")
-    if ([string]::IsNullOrWhiteSpace($current)) {
-        throw "Cannot detect current branch. Pass -Branch explicitly."
-    }
-
-    return $current
-}
-
 function Get-AutoSummary {
-    param([string]$Fallback = "monthly summary")
+    param([string]$Fallback = "daily update")
 
     $statusLines = & git -c core.quotepath=false status --porcelain
     if ($LASTEXITCODE -ne 0) {
@@ -58,7 +52,7 @@ function Get-AutoSummary {
     }
 
     if (-not $statusLines) {
-        return "monthly heartbeat"
+        return "daily heartbeat"
     }
 
     $top = @{}
@@ -106,29 +100,6 @@ function Write-State {
     Set-Content -LiteralPath $Path -Value $json -Encoding UTF8
 }
 
-function Invoke-WikiLintGate {
-    param(
-        [Parameter(Mandatory = $true)][string]$RepoRoot,
-        [switch]$SkipGate
-    )
-
-    if ($SkipGate) {
-        Write-Host "[monthly-summary] wiki lint gate skipped by option"
-        return
-    }
-
-    $lintScript = Join-Path -Path $RepoRoot -ChildPath "scripts/wiki-lint.ps1"
-    if (-not (Test-Path -LiteralPath $lintScript)) {
-        throw "wiki lint script not found: $lintScript"
-    }
-
-    Write-Host "[monthly-summary] running wiki lint gate"
-    & powershell -NoProfile -ExecutionPolicy Bypass -File $lintScript -FailOnIssue
-    if ($LASTEXITCODE -ne 0) {
-        throw "wiki lint gate failed with exit code $LASTEXITCODE"
-    }
-}
-
 # Validate repository context.
 $inside = Get-GitText -Args @("rev-parse", "--is-inside-work-tree")
 if ($inside -ne "true") {
@@ -141,32 +112,22 @@ if ($repoRoot -ine $scriptRoot) {
     throw "Repository root mismatch. Refusing to run outside the expected project root."
 }
 
-$remoteUrl = Get-GitText -Args @("remote", "get-url", $Remote)
-if ($remoteUrl -notmatch $ExpectedRemotePattern) {
-    throw "Remote '$Remote' URL '$remoteUrl' does not match expected project pattern '$ExpectedRemotePattern'."
-}
-
 $gitDir = Get-GitText -Args @("rev-parse", "--git-dir")
 if (-not [System.IO.Path]::IsPathRooted($gitDir)) {
     $gitDir = Join-Path -Path $repoRoot -ChildPath $gitDir
 }
-$stateFile = Join-Path -Path $gitDir -ChildPath "monthly-summary-sync-state.json"
+$stateFile = Join-Path -Path $gitDir -ChildPath "daily-commit-state.json"
 
-$targetBranch = Get-TargetBranch -RequestedBranch $Branch
-$monthKey = (Get-Date).ToString("yyyy-MM")
+$dateKey = (Get-Date).ToString("yyyy-MM-dd")
 $summaryText = if ([string]::IsNullOrWhiteSpace($Summary)) { Get-AutoSummary } else { $Summary.Trim() }
-$commitMessage = "$monthKey / $summaryText"
+$commitMessage = "$dateKey / $summaryText"
 
-Write-Host "[monthly-summary] branch: $targetBranch"
-Write-Host "[monthly-summary] remote: $remoteUrl"
-Write-Host "[monthly-summary] commit: $commitMessage"
+Write-Host "[daily-commit] commit: $commitMessage"
 
 if ($DryRun) {
-    Write-Host "[monthly-summary] dry-run mode; no commit/push executed"
+    Write-Host "[daily-commit] dry-run mode; no commit executed"
     return
 }
-
-Invoke-WikiLintGate -RepoRoot $repoRoot -SkipGate:$SkipWikiLintGate
 
 & git add -A
 if ($LASTEXITCODE -ne 0) {
@@ -186,23 +147,14 @@ if ($hasChanges) {
     }
 }
 else {
-    Write-Host "[monthly-summary] no file changes; skip commit"
-}
-
-# Push without force. If remote has diverged, this fails safely.
-& git push $Remote "HEAD:refs/heads/$targetBranch"
-if ($LASTEXITCODE -ne 0) {
-    throw "git push failed with exit code $LASTEXITCODE"
+    Write-Host "[daily-commit] no file changes; skip commit"
 }
 
 $head = Get-GitText -Args @("rev-parse", "HEAD")
 Write-State -Path $stateFile -Data @{
-    last_synced_month = $monthKey
+    last_daily_commit_date = $dateKey
     last_success_local = (Get-Date).ToString("yyyy-MM-dd HH:mm:ss")
-    branch = $targetBranch
-    remote = $Remote
-    remote_url = $remoteUrl
     head = $head
 }
 
-Write-Host "[monthly-summary] done"
+Write-Host "[daily-commit] done"

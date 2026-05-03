@@ -77,6 +77,8 @@
 
 ## 自律調整ログ
 
+- 2026-05-04: scripts/monthly-summary-sync.ps1 を削除（運用終了）
+- 2026-05-04: scripts/daily-commit.ps1 と scripts/register-daily-commit-task.ps1 を追加（日次コミット運用）
 - 2026-05-02: 「一般化より前提固定（対象層 / 観測視点）を優先」の運用へ更新
 - 2026-05-02: 一般回ログの記録基準を固定（個別素材より運用判断基準を優先）
 - 2026-05-02: 「多少遠回りでもわかりやすさ・認知負荷低減を優先」の説明方針を固定
@@ -109,5 +111,3 @@
 - 2026-05-01: 月次タスク `WikiMonthlySummarySync` を登録（毎月1日 00:05、確認なし実行）
 - 2026-05-01: 月次 force タスク `WikiMonthlyForceSync` を Disabled 化（緊急時手動のみ）
 - 2026-05-01: 月次タスク `WikiMonthlySummarySync` を `-Branch main` 固定に更新
-- 2026-05-01: `02_案件・制作/ポートフォリオサイト/3点比較レビュー運用.md` を追加（学習本線 / 実制作物 / Web情報の比較レビュー運用）
-- 2026-05-01: `scripts/stage-portfolio-review.ps1` を追加（外部制作物の一時コピー + レビュー雛形自動生成）
