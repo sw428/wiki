@@ -1,4 +1,4 @@
-﻿# 08_表示制御（sp-only／pc-only／revert設計）
+# 08_表示制御（sp-only／pc-only／revert設計）
 
 ## 目的
 

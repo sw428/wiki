@@ -1,4 +1,4 @@
-﻿# 07_メディア設計（img・video・object-fit・aspect-ratio）
+# 07_メディア設計（img・video・object-fit・aspect-ratio）
 
 ## 目的
 

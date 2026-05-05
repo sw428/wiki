@@ -1,4 +1,4 @@
-﻿# scripts
+# scripts
 
 ## このフォルダの役割
 
