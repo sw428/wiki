@@ -76,6 +76,28 @@
 - `object-fit: contain`: 全体を収める（余白あり）
 - `aspect-ratio`: 枠比率を先に固定してズレを減らす
 
+## ケース補足（2026-05-05）
+
+- 親に `aspect-ratio` だけ置き、子画像が `height: auto` のままだと、枠を埋めきれず下側に空きが見えることがある。
+- 枠を充填したい場合は、次をセットで固定する。
+
+```css
+.media-link {
+  display: block;
+  aspect-ratio: 329 / 224;
+  overflow: hidden;
+}
+
+.media-link > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+```
+
+- 画像1枚リンクでは `inline-flex` より `block` の方が、baseline由来の下隙間を避けやすい。
+
 ## PC/SP で比率が違う画像の既定運用（2026-05-02）
 
 まず次の2択で決める。
@@ -150,4 +172,3 @@ img {
 2. 先に比率を予約できるか
 3. トリミング許容か（`cover`）/ 余白許容か（`contain`）
 4. これは「外」「箱」「中身」のどれを調整しているか
-
