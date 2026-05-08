@@ -128,6 +128,35 @@
 - 2倍書き出しは画質対策には有効
 - ただし、構図の切れ問題は解決しない（`cover` なら切れる可能性は残る）
 
+## 地図画像 + ピン重ねの扱い
+
+地図を1枚画像で見せつつ、ピンを別要素で重ねる場合は「地図表示範囲」と「ピン座標」を分けて管理する。
+
+```css
+.access-map {
+  position: relative;
+  overflow: hidden;
+}
+
+.access-map__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.access-map__pin {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+```
+
+注意:
+- `position: absolute;` だけでは左上固定にならない。固定したい場合は `top: 0; left: 0;` を明示する。
+- ピンは「地図座標」ではなく「親枠座標」に置かれる。
+- SP/PCで `object-position` が変わると地図の見える範囲が変わるため、ピン座標も別調整が必要になる。
+
 ## 2倍書き出し画像の扱い
 
 - 2倍書き出し画像は、設計時に「表示寸法」を基準に考える。

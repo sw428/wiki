@@ -92,6 +92,33 @@
 - カンプ差分で日付が違う場合は、実装コメントを残して正規データへ統一する。
 - どうしても別日付を出し分ける仕様なら `time` 要素自体を分けるが、同一記事での運用は原則避ける。
 
+## `div / section / address / ul` の最小判断
+
+連絡先カードで迷いやすい組み合わせを、次の順で判定する。
+
+1. その箱はページの「章」か  
+   章なら `section`、ただの配置箱なら `div`。
+2. 中身は連絡先情報か  
+   連絡先なら `address` を優先。
+3. 同じ種類の項目が反復しているか  
+   反復しているなら `ul > li` を優先。
+
+実務で多い形:
+
+```html
+<div class="contact-info">
+  <address class="contact-info__body">
+    <ul class="contact-info__list">
+      <li class="contact-info__item">...</li>
+    </ul>
+  </address>
+</div>
+```
+
+補足:
+- `section` を使うなら、基本は見出しをセットで持たせる。
+- `address` はブラウザ初期で斜体になることがあるため、`font-style: normal;` で戻す。
+
 ## 初期認識メモ（確度）
 
 - 確度: 高
