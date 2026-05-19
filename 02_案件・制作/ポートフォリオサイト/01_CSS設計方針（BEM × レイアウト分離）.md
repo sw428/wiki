@@ -55,6 +55,15 @@
 - Modifierは「状態・バリエーション」のみ
 - レイアウト調整目的の指定をBlockに直接持たせない
 
+### 同一役割の繰り返し要素
+
+- カード一覧などで同じ役割を繰り返す要素は、同じ element class を使う。
+  - 例: `related-projects__img` を各カードで共通使用する。
+- 作品名ベースで element 名を分けない。
+  - 例: `...__sofa-img` / `...__keyboard-img` のような分割は避ける。
+- 見え方差分が必要な場合のみ modifier を追加する。
+  - 例: `related-projects__img--sofa`
+
 ## 独立ブロックと親ブロックの扱い（Blog例）
 
 `blog-articles` の中に `newsletter` を置く場合でも、`newsletter` は独立ブロックとして開始する。
