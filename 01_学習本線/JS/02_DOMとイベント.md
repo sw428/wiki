@@ -54,6 +54,26 @@ p.textContent = "hello";
 つまりDOM操作の本質は、
 画面操作ではなくオブジェクト操作。
 
+## 要素ノードとテキストノード
+
+DOMでは「要素」と「文字」は別ノードとして扱う。
+
+- 要素ノード: `p`, `div`, `span`, `a` など
+- テキストノード: タグ内の文字そのもの
+
+例:
+
+```html
+<p id="text">こんにちは<span>世界</span></p>
+```
+
+- `p` の子ノードにはテキストノード「こんにちは」が含まれる
+- ただしテキストノードは「子要素」ではない
+
+言い分け:
+- 正: `テキストノードはp要素の子ノード`
+- 誤: `テキストノードはp要素の子要素`
+
 ## 要素を取る
 
 ### querySelector()
@@ -79,6 +99,20 @@ const items = document.querySelectorAll(".item");
 
 戻り値は `NodeList`。
 配列そのものではないが、複数要素の集合として扱える。
+
+### children と childNodes
+
+- `children`: 子要素だけを返す
+- `childNodes`: テキストノードやコメントノードも含めて返す
+
+```js
+const p = document.querySelector("#text");
+
+console.log(p.children);   // [span]
+console.log(p.childNodes); // [text("こんにちは"), span]
+```
+
+DOM操作で対象ズレを防ぐため、要素のみ扱うのか、ノード全体を扱うのかを先に決める。
 
 ### getElementById()
 
@@ -321,6 +355,82 @@ button.addEventListener("click", function (event) {
 - `keydown` = キー入力
 - `DOMContentLoaded` = HTML読み込み後
 - `resize` = 画面サイズ変更
+
+## `DOMContentLoaded` と実行タイミング
+
+`DOMContentLoaded` は、
+HTMLのDOMツリーを読み終えたタイミングで発火するイベント。
+
+ここで重要なのは次。
+
+- 画像やCSSの読み込み完了を待つイベントではない
+- JSから要素取得できる状態になった合図
+
+### なぜ必要になるか
+
+スクリプトが要素より先に実行されると、要素取得が `null` になることがある。
+
+```html
+<head>
+  <script src="main.js"></script>
+</head>
+<body>
+  <button class="js-menu">Menu</button>
+</body>
+```
+
+この配置で `main.js` が次なら、
+
+```js
+const menuButton = document.querySelector(".js-menu");
+menuButton.addEventListener("click", () => {});
+```
+
+`menuButton` が `null` のまま実行される可能性がある。
+
+### `DOMContentLoaded` を使う形
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  const menuButton = document.querySelector(".js-menu");
+  const nav = document.querySelector(".nav");
+
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("is-open");
+  });
+});
+```
+
+### `defer` がある場合
+
+```html
+<head>
+  <script src="main.js" defer></script>
+</head>
+```
+
+`defer` があると、DOM構築後にスクリプトが実行されるため、
+処理によっては `DOMContentLoaded` ラッパーを省略できる。
+
+### jQuery の ready との対応
+
+jQueryの次の書き方は、
+
+```js
+$(function () {
+  // ...
+});
+```
+
+概念的には次と同じ目的。
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  // ...
+});
+```
+
+どちらも「DOMが使える状態になってから実行する」ための登録処理。
 
 ## イベント時に押さえる読み方
 

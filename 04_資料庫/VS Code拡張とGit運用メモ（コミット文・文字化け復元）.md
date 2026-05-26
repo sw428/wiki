@@ -37,6 +37,52 @@
 - まず `codex --version` で利用可否を確認する。
 - CLIが使えない場合でも、クラッシュしない設計（graceful fallback）かを確認する。
 
+## HTML整形運用（Prettier と VS Code標準の分担）
+
+- `bracketSpacing` は JS / JSON / JSX の `{}` 内スペース設定であり、HTML空要素の `/>` には影響しない。
+- HTMLで `/>` を使わない方針を優先するなら、HTMLは VS Code標準フォーマッターに分担する。
+- CSS / SCSS / JS は引き続き Prettier を使う分担で問題ない。
+
+```json
+{
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features",
+    "editor.formatOnSave": true
+  },
+  "html.format.wrapLineLength": 120,
+  "html.format.wrapAttributes": "auto",
+  "html.format.endWithNewline": true
+}
+```
+
+- `head` と `body` を保存時フォーマットで分離することはできない。
+- `body` だけ整形したい場合は `Format Selection` を使う。
+- 属性を常に縦並びにしたい時だけ `html.format.wrapAttributes: "force-expand-multiline"` を使う。
+
+## `/>` 一括置換の安全ルール
+
+- 全ファイル対象の ` />` -> `>` 一斉置換は行わない。
+- 置換対象は `*.html` のみに限定する。
+- HTML内にインラインSVGがある場合は、置換前に `<svg>...</svg>` ブロックを目視確認する。
+- `.svg` ファイルは置換対象に含めない。
+
+## GitHub Pages の確認順（公開運用）
+
+1. `Settings -> Pages` で公開元ブランチを確認する
+2. `Actions` でデプロイ成否（緑チェック）を確認する
+3. 公開URLで反映確認し、必要なら `Ctrl + F5` でキャッシュを外す
+
+補足:
+- `dev_sub` に push しても、Pages の公開元が `main` のままなら公開反映されない。
+- `dev_sub` を公開元にしたい場合は、`Settings -> Pages` 側で Source branch を切り替える。
+
+## VS Codeの問題巡回ショートカット
+
+- 問題（エラー/警告）の巡回は `F8`（次）/ `Shift + F8`（前）を基本に統一する。
+- `F4` は文脈やキーバインドで役割が変わりやすいため、問題巡回の主軸にはしない。
+- 連打自体は問題ないが、修正後に `Problems` 件数が更新されたかを確認する。
+- 行番号へ直接飛ぶ必要がある時は `Ctrl + G` を併用する。
+
 ## コミットメッセージ運用（最小）
 
 - 変更意図が伝わる短文を優先する。
