@@ -92,7 +92,8 @@ Codex は整理・反映・修正の実作業担当です。
 
 ## Codex 自律調整モード
 
-- Codex は運用の摩擦を減らすために、`AGENTS.md` / `CURRENT.md` / `README.md` を事前確認なしで更新してよい
+- Codex は内容ファイル（各カテゴリ配下の md）を事前確認なしで更新してよい
+- システムファイル（`AGENTS.md` / `CURRENT.md` / `README.md`）の変更時のみ、事前確認を行う
 - 変更判断の優先順位は `AGENTS.md` > `CURRENT.md` > `README.md`
 - 次の条件を満たすときは、都度調整を入れる
   - 同じ確認や説明が会話で繰り返される
