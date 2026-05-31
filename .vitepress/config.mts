@@ -26,7 +26,6 @@ export default defineConfig({
       { text: '資料', link: '/materials/' }
     ],
     sidebar: [
-      { text: 'はじめに', link: '/intro/' },
       {
         text: '基礎',
         items: [
@@ -55,9 +54,6 @@ export default defineConfig({
         items: [{ text: '資料庫', link: '/materials/library/' }]
       }
     ],
-    outline: {
-      level: [2, 3],
-      label: 'このページ'
-    }
+    outline: false
   }
 })
