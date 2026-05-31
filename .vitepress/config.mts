@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+﻿import { defineConfig } from 'vitepress'
 
 const owner = process.env.GITHUB_REPOSITORY_OWNER ?? ''
 const repo = process.env.GITHUB_REPOSITORY?.split('/')[1] ?? ''
@@ -20,100 +20,41 @@ export default defineConfig({
     },
     nav: [
       { text: 'Top', link: '/' },
-      { text: '基本', link: '/01_学習本線/JS/00_JS整理マップ' },
-      { text: '実務', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
-      { text: '知識', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
-      { text: '資料', link: '/04_資料庫/00_実行環境とツール' },
-      { text: 'システム', link: '/00_システム文書/README' }
+      { text: '基礎', link: '/basic/' },
+      { text: '実務', link: '/practical/' },
+      { text: '知識', link: '/knowledge/' },
+      { text: '資料', link: '/materials/' }
     ],
-    sidebar: {
-      '/': [
-        {
-          text: '区分別入口',
-          items: [
-            { text: '01_基本', link: '/01_学習本線/JS/00_JS整理マップ' },
-            { text: '02_実務', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
-            { text: '03_知識', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
-            { text: '04_資料', link: '/04_資料庫/00_実行環境とツール' },
-            { text: '00_システム文書', link: '/00_システム文書/README' }
-          ]
-        },
-        {
-          text: 'システム文書',
-          items: [
-            { text: 'README', link: '/README' },
-            { text: 'CURRENT', link: '/CURRENT' },
-            { text: 'AGENTS', link: '/AGENTS' },
-            { text: 'CHANGELOG', link: '/CHANGELOG' }
-          ]
-        },
-        {
-          text: '主要リンク',
-          items: [
-            { text: 'Top', link: '/' },
-            { text: 'HTML・CSS 整理マップ', link: '/01_学習本線/HTML・CSS/00_HTML・CSS整理マップ' },
-            { text: 'JS 整理マップ', link: '/01_学習本線/JS/00_JS整理マップ' },
-            { text: '案件ケース運用（共通）', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
-            { text: '知識辞書インデックス', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
-            { text: '実行環境とツール', link: '/04_資料庫/00_実行環境とツール' }
-          ]
-        }
-      ],
-      '/01_学習本線/': [
-        {
-          text: '整理マップ',
-          items: [
-            { text: 'HTML・CSS', link: '/01_学習本線/HTML・CSS/00_HTML・CSS整理マップ' },
-            { text: 'JS', link: '/01_学習本線/JS/00_JS整理マップ' },
-            { text: 'React', link: '/01_学習本線/React/00_React整理マップ' },
-            { text: 'TypeScript', link: '/01_学習本線/TypeScript/00_TypeScript整理マップ' }
-          ]
-        },
-        {
-          text: 'ケース検証',
-          items: [{ text: '運用（共通）', link: '/01_学習本線/ケース検証/00_ケース検証運用（共通）' }]
-        }
-      ],
-      '/02_案件・制作/': [
-        {
-          text: '案件導線',
-          items: [
-            { text: 'BEM運用', link: '/02_案件・制作/BEM運用/00_BEM運用と命名判断' },
-            { text: 'SCSS導入', link: '/02_案件・制作/SCSS導入/00_SCSS導入と分割管理' },
-            { text: 'ケース検証（共通）', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
-            { text: 'CSS設計方針', link: '/02_案件・制作/ポートフォリオサイト/CSS設計方針' }
-          ]
-        }
-      ],
-      '/03_雑記/': [
-        {
-          text: '雑記',
-          items: [{ text: '知識辞書インデックス', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' }]
-        }
-      ],
-      '/04_資料庫/': [
-        {
-          text: '資料',
-          items: [
-            { text: '実行環境とツール', link: '/04_資料庫/00_実行環境とツール' },
-            { text: 'LLMとGPT活用', link: '/04_資料庫/01_LLMとGPT活用（事実に近づく対話手順）' },
-            { text: 'VS Code拡張とGit運用メモ', link: '/04_資料庫/02_VS Code拡張とGit運用メモ（コミット文・文字化け復元）' }
-          ]
-        }
-      ],
-      '/00_システム文書/': [
-        {
-          text: 'システム文書',
-          items: [
-            { text: 'フォルダ入口', link: '/00_システム文書/README' },
-            { text: 'README', link: '/README' },
-            { text: 'CURRENT', link: '/CURRENT' },
-            { text: 'AGENTS', link: '/AGENTS' },
-            { text: 'CHANGELOG', link: '/CHANGELOG' }
-          ]
-        }
-      ]
-    },
+    sidebar: [
+      { text: 'はじめに', link: '/intro/' },
+      {
+        text: '基礎',
+        items: [
+          { text: 'HTML・CSS', link: '/basic/html/' },
+          { text: 'JS', link: '/basic/js/' },
+          { text: 'React', link: '/basic/react/' },
+          { text: 'TypeScript', link: '/basic/typescript/' },
+          { text: 'ケース検証', link: '/basic/cases/' }
+        ]
+      },
+      {
+        text: '実務',
+        items: [
+          { text: 'BEM運用', link: '/practical/bem/' },
+          { text: 'SCSS導入', link: '/practical/scss/' },
+          { text: 'ケース検証', link: '/practical/cases/' },
+          { text: 'ポートフォリオサイト', link: '/practical/portfolio/' }
+        ]
+      },
+      {
+        text: '知識',
+        items: [{ text: '知識(造語含む)', link: '/knowledge/' }]
+      },
+      {
+        text: '資料',
+        items: [{ text: '資料庫', link: '/materials/library/' }]
+      }
+    ],
     outline: {
       level: [2, 3],
       label: 'このページ'

@@ -1,26 +1,26 @@
-# Wiki Top
+﻿# Wiki Top
 
-公開サイトの入口です。  
-まずは区分別入口から入り、必要に応じて主要リンクへ進んでください。
+## 基礎
+- [HTML・CSS](/basic/html/)
+- [JS](/basic/js/)
+- [React](/basic/react/)
+- [TypeScript](/basic/typescript/)
+- [ケース検証](/basic/cases/)
 
-## 区分別入口
+---
 
-- [01_基本](./01_学習本線/JS/00_JS整理マップ.md)
-- [02_実務](./02_案件・制作/ケース検証/00_案件ケース運用（共通）.md)
-- [03_知識](./03_雑記/知識辞書（試運用）/00_知識辞書インデックス.md)
-- [04_資料](./04_資料庫/00_実行環境とツール.md)
-- [00_システム文書](./00_システム文書/README.md)
+## 実務
+- [BEM運用](/practical/bem/)
+- [SCSS導入](/practical/scss/)
+- [ケース検証](/practical/cases/)
+- [ポートフォリオサイト](/practical/portfolio/)
 
-## 基本の主要リンク
+---
 
-- [HTML・CSS 整理マップ](./01_学習本線/HTML・CSS/00_HTML・CSS整理マップ.md)
-- [JS 整理マップ](./01_学習本線/JS/00_JS整理マップ.md)
-- [React 整理マップ](./01_学習本線/React/00_React整理マップ.md)
-- [TypeScript 整理マップ](./01_学習本線/TypeScript/00_TypeScript整理マップ.md)
+## 知識
+- [知識(造語含む)](/knowledge/)
 
-## 実務の主要リンク
+---
 
-- [BEM運用と命名判断](./02_案件・制作/BEM運用/00_BEM運用と命名判断.md)
-- [SCSS導入と分割管理](./02_案件・制作/SCSS導入/00_SCSS導入と分割管理.md)
-- [案件ケース運用（共通）](./02_案件・制作/ケース検証/00_案件ケース運用（共通）.md)
-- [CSS設計方針](./02_案件・制作/ポートフォリオサイト/CSS設計方針.md)
+## 資料
+- [資料庫](/materials/library/)
