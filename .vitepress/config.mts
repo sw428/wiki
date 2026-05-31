@@ -26,6 +26,7 @@ export default defineConfig({
       { text: '資料', link: '/materials/' }
     ],
     sidebar: [
+      { text: 'はじめに', link: '/intro/' },
       {
         text: '基礎',
         items: [
