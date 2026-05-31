@@ -54,6 +54,9 @@ export default defineConfig({
         items: [{ text: '資料庫', link: '/materials/library/' }]
       }
     ],
-    outline: false
+    outline: {
+      level: [2, 3],
+      label: 'このページ'
+    }
   }
 })
