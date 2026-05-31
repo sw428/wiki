@@ -1,5 +1,7 @@
 ﻿# wiki
 
+https://sw428.github.io/wiki
+
 このリポジトリは、GPTとのリアルタイム対話で生まれたメモ・案件知識・学習内容・説明方針を、Codex が最終的に整理して統合するための wiki です。
 
 > [!IMPORTANT]
