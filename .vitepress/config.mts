@@ -20,13 +20,26 @@ export default defineConfig({
     },
     nav: [
       { text: 'Top', link: '/' },
-      { text: '学習本線', link: '/01_学習本線/JS/00_JS整理マップ' },
-      { text: '案件・制作', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' }
+      { text: '基本', link: '/01_学習本線/JS/00_JS整理マップ' },
+      { text: '実務', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
+      { text: '知識', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
+      { text: '資料', link: '/04_資料庫/00_実行環境とツール' },
+      { text: 'システム', link: '/00_システム文書/README' }
     ],
     sidebar: {
       '/': [
         {
-          text: 'System',
+          text: '区分別入口',
+          items: [
+            { text: '01_基本', link: '/01_学習本線/JS/00_JS整理マップ' },
+            { text: '02_実務', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
+            { text: '03_知識', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
+            { text: '04_資料', link: '/04_資料庫/00_実行環境とツール' },
+            { text: '00_システム文書', link: '/00_システム文書/README' }
+          ]
+        },
+        {
+          text: 'システム文書',
           items: [
             { text: 'README', link: '/README' },
             { text: 'CURRENT', link: '/CURRENT' },
@@ -35,13 +48,14 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Entry',
+          text: '主要リンク',
           items: [
             { text: 'Top', link: '/' },
-            { text: '01_学習本線', link: '/01_学習本線/JS/00_JS整理マップ' },
-            { text: '02_案件・制作', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
-            { text: '03_雑記', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
-            { text: '04_資料庫', link: '/04_資料庫/00_実行環境とツール' }
+            { text: 'HTML・CSS 整理マップ', link: '/01_学習本線/HTML・CSS/00_HTML・CSS整理マップ' },
+            { text: 'JS 整理マップ', link: '/01_学習本線/JS/00_JS整理マップ' },
+            { text: '案件ケース運用（共通）', link: '/02_案件・制作/ケース検証/00_案件ケース運用（共通）' },
+            { text: '知識辞書インデックス', link: '/03_雑記/知識辞書（試運用）/00_知識辞書インデックス' },
+            { text: '実行環境とツール', link: '/04_資料庫/00_実行環境とツール' }
           ]
         }
       ],
@@ -79,11 +93,23 @@ export default defineConfig({
       ],
       '/04_資料庫/': [
         {
-          text: '資料庫',
+          text: '資料',
           items: [
             { text: '実行環境とツール', link: '/04_資料庫/00_実行環境とツール' },
             { text: 'LLMとGPT活用', link: '/04_資料庫/01_LLMとGPT活用（事実に近づく対話手順）' },
             { text: 'VS Code拡張とGit運用メモ', link: '/04_資料庫/02_VS Code拡張とGit運用メモ（コミット文・文字化け復元）' }
+          ]
+        }
+      ],
+      '/00_システム文書/': [
+        {
+          text: 'システム文書',
+          items: [
+            { text: 'フォルダ入口', link: '/00_システム文書/README' },
+            { text: 'README', link: '/README' },
+            { text: 'CURRENT', link: '/CURRENT' },
+            { text: 'AGENTS', link: '/AGENTS' },
+            { text: 'CHANGELOG', link: '/CHANGELOG' }
           ]
         }
       ]
