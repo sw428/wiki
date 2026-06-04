@@ -355,3 +355,8 @@ p {
   - カード反復間隔は親一覧の `gap`
   - 一覧と次ブロックの距離は一覧側 `margin-bottom`
   - 区切り線と本文距離は `padding-top`
+- カード配置の順番指定:
+  - 直下にカードだけが並ぶ前提なら、上位2枚の配置差分は `.blog-articles__list > .c-blog-card:nth-child(-n + 2)` で扱ってよい
+  - この指定は「`.blog-articles__list` 直下の子要素全体の1〜2番目で、かつ `.c-blog-card`」という意味で読む
+  - `.c-blog-card:nth-of-type(-n + 2)` は、クラス順ではなく同じタグ種類の順番を見るため、カード一覧の配置指定では基本採用しない
+  - 広告、見出し、空状態、バナーなどが一覧内に混ざる可能性がある場合は、`.c-blog-card--large` のような modifier で明示する

@@ -3,3 +3,7 @@ node_modules/
 .vitepress/dist/
 .vitepress/.temp/
 .vitepress-dev*.log
+
+# Local Codex/wiki operation files
+AGENTS.md
+CURRENT.md
