@@ -36,6 +36,13 @@
 - コンポーネントやレイアウトの設計とは切り分ける
 - ここでは「条件で存在を切る」ことに集中する
 
+## 設計分類ではUtility / Helperとして扱う
+
+- `.u-sp-only` / `.u-pc-only` は、部品の形や構造を作るObject・Componentではない。
+- 要素へ表示条件だけを追加する補助クラスなので、実装体系ではUtility / Helperとして分ける。
+- `u-` 接頭辞を使うかはプロジェクト規約に従う。既存案件へ途中から別の命名体系を混ぜない。
+- 表示制御クラスへサイズ・余白・並び方まで持たせず、レイアウト責務と分離する。
+
 ## 実装（基本形）
 
 ```css
@@ -112,6 +119,33 @@
 - レイアウト制御: `flex` / `grid` / `gap` / `align-*`
 
 表示制御で詰まったときに、レイアウト調整へ逃げないことを優先する。
+
+## SP専用部品は「存在」と「位置」を分ける
+
+SPでだけ出すヘッダー行やメニューボタンは、まず存在条件を表示制御クラスで分ける。
+そのうえで、どこに置くかは通常フロー・Flex・Grid・`position` の問題として別に判断する。
+
+```html
+<div class="site-header__menu u-sp-only">
+  <button class="hamburger-button" type="button">...</button>
+</div>
+```
+
+```css
+.site-header__menu {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+```
+
+- SPでだけ存在させたい: `u-sp-only` / `visible-sp`
+- PCでだけ存在させたい: `u-pc-only` / `visible-pc`
+- 写真やヒーローの上に重ねたい: `position` を検討する
+- 上下の順番どおりに置きたい: 通常フローを優先する
+
+「SPに出すから `position` が必要」ではない。
+重ねる必要がないなら、HTML上の順番と通常フローで置いた方が、後から読んだ時に位置関係を追いやすい。
 
 ## まとめ
 

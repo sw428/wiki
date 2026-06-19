@@ -47,6 +47,8 @@
 - CSS: 見た目の可変制御（レスポンシブ）
 
 補足:
+- エディタ補完やショートカットで `width` / `height` を入力した場合も、実画像の寸法または縦横比と一致しているか確認する。
+- HTML属性は画像本来の比率を伝える役割、CSSは表示幅・表示枠・切り抜きを調整する役割として分ける。
 - `height: auto` で比率維持表示する場合、`object-fit` の効果は目立ちにくい。
 - 「枠に入れてトリミング」したい時は、下の `まず2択で決める` の B パターン（親に `aspect-ratio`、子に `height: 100% + object-fit`）を使う。
 
@@ -93,6 +95,26 @@
 - `object-fit: cover`: 枠を埋める（切り取りあり）
 - `object-fit: contain`: 全体を収める（余白あり）
 - `aspect-ratio`: 枠比率を先に固定してズレを減らす
+
+### 文字入り画像・ロゴ画像は自然縮小を先に見る
+
+電話ボタン、予約ボタン、ロゴのように文字や形が切れると困る画像は、写真カードと同じように比率枠へ押し込まない方が自然なことが多い。
+
+```css
+.action-image {
+  display: block;
+  width: 167px;
+  height: auto;
+}
+```
+
+- 比率を保って縮小したい: `width` + `height: auto`
+- 枠いっぱいに埋めたい: `object-fit: cover`
+- 全体を切らずに枠内へ収めたい: `object-fit: contain`
+- 見える位置だけ変えたい: `object-position`
+
+`aspect-ratio` は「比率の箱」を作る指定であり、画像を小さく見せる指定ではない。
+文字入り画像で迷ったら、先に「切ってよい写真か」「全部見せる素材か」を分ける。
 
 ### `object-position` の表現と責務
 
@@ -181,6 +203,44 @@
 - `position: absolute;` だけでは左上固定にならない。固定したい場合は `top: 0; left: 0;` を明示する。
 - ピンは「地図座標」ではなく「親枠座標」に置かれる。
 - SP/PCで `object-position` が変わると地図の見える範囲が変わるため、ピン座標も別調整が必要になる。
+
+## 画像の上に文字を重ねる基本形
+
+画像の上にラベルや仮テキストを重ねる時は、画像、重ねる箱、文字中央寄せを分ける。
+
+```html
+<div class="banner">
+  <img src="banner.png" alt="" width="258" height="94">
+  <span class="banner__text">関連サイトのバナー予定</span>
+</div>
+```
+
+```css
+.banner {
+  position: relative;
+}
+
+.banner img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.banner__text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+```
+
+- 親: `position: relative` で絶対配置の基準箱になる
+- 画像: 通常フローに残り、親の高さを作る
+- テキスト箱: `position: absolute; inset: 0;` で親枠いっぱいに重なる
+- 文字中央寄せ: テキスト箱の中で `grid` / `place-items` に任せる
+
+絶対配置のテキストは親の高さを作らない。
+そのため、親の高さを作る画像や比率枠と、上に重ねる要素の責務を混ぜない。
 
 ## 2倍書き出し画像の扱い
 
