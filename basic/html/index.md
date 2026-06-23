@@ -8,3 +8,5 @@
 - [HTMLの意味と構造](<../../01_学習本線/HTML・CSS/06_HTMLの意味と構造.md>)
 - [メディア設計（img・video・object-fit・aspect-ratio）](<../../01_学習本線/HTML・CSS/07_メディア設計（img・video・object-fit・aspect-ratio）.md>)
 - [表示制御（sp-only／pc-only／revert設計）](<../../01_学習本線/HTML・CSS/08_表示制御（sp-only／pc-only／revert設計）.md>)
+- [セレクタと構造依存](<../../01_学習本線/HTML・CSS/09_セレクタと構造依存.md>)
+- [デザインパターンとCSS固定判断](<../../01_学習本線/HTML・CSS/10_デザインパターンとCSS固定判断.md>)

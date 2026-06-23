@@ -109,6 +109,16 @@ Codex自身がどこまで文脈を把握できるか、どの範囲まで自律
 公式用語・一般的な専門用語・実務上の標準表現とは分けて確認し、
 最終的には個人の責任で使用してください。
 
+参考にしている資料には、主に次のようなものがあります。
+
+・ChatGPT
+・CodeJump
+・MDN Web Docs
+・web.dev
+・YouTube、Udemy、Qiiita
+・You Don’t Know JS / You Don’t Know JS Yet（Kyle Simpson）
+・HTML / CSS / JavaScript 関連の書籍・学習サイト等
+
 ## ナビゲーション
 
 - [現在地（CURRENT）](./CURRENT.html)
