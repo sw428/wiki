@@ -1,4 +1,4 @@
-# 05_置換要素（img・input・video）
+﻿# 05_置換要素（img・input・video）
 
 ## 目的
 
@@ -31,6 +31,6 @@ img.thumb {
 
 ## 関連ページ
 
-- [01_ボックスとdisplay](../../../01_学習本線/HTML・CSS/01_ボックスとdisplay.md)
-- [03_画像と背景](../../../01_学習本線/HTML・CSS/03_画像と背景.md)
-- [07_メディア設計（img・video・object-fit・aspect-ratio）](../../../01_学習本線/HTML・CSS/07_メディア設計（img・video・object-fit・aspect-ratio）.md)
+- [03_ボックスとdisplay](../../../01_学習本線(基礎概念)/HTML・CSS/03_ボックスとdisplay.md)
+- [05_画像と背景](../../../01_学習本線(基礎概念)/HTML・CSS/05_画像と背景.md)
+- [09_メディア設計（img・video・object-fit・aspect-ratio）](../../../01_学習本線(基礎概念)/HTML・CSS/09_メディア設計（img・video・object-fit・aspect-ratio）.md)

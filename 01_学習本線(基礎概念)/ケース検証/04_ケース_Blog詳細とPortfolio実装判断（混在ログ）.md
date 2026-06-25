@@ -1,4 +1,4 @@
-# 04_ケース_Blog詳細とPortfolio実装判断（混在ログ）
+﻿# 04_ケース_Blog詳細とPortfolio実装判断（混在ログ）
 
 ## 記録日
 
@@ -245,10 +245,10 @@
 
 ## 本線への反映先
 
-- `01_学習本線/HTML・CSS/05_ブラウザ挙動とズレ.md`
+- `01_学習本線(基礎概念)/HTML・CSS/07_ブラウザ挙動とズレ.md`
   - `@media` ブロック漏れ時の確認順（親要素選択 / Computedソース確認）
-- `01_学習本線/HTML・CSS/07_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `01_学習本線(基礎概念)/HTML・CSS/09_メディア設計（img・video・object-fit・aspect-ratio）.md`
   - `aspect-ratio` とサイズ上限の責務分離
   - 2倍書き出し画像の扱い（表示寸法基準）
-- `01_学習本線/HTML・CSS/06_HTMLの意味と構造.md`
+- `01_学習本線(基礎概念)/HTML・CSS/08_HTMLの意味と構造.md`
   - `time` の意味整合優先（同一記事で日付データを分岐させない）

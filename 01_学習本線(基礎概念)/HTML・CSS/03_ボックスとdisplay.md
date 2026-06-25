@@ -1,8 +1,10 @@
-# 01\_ボックスとdisplay
+﻿# 03_ボックスとdisplay
 
 ## 目的
 
 - 「背景色がどこに付くか」「なぜその大きさになるか」を、`display` とボックス生成の観点で説明できる状態にする。
+- タグ・要素・テキストノード・DOM化の前提は、先に [01_HTMLの土台](./01_HTMLの土台.md) で扱う。
+- HTML文書の最低限の骨格は、先に [02_HTML文書の骨格](./02_HTML文書の骨格.md) で扱う。
 
 ## ルール
 
@@ -16,8 +18,19 @@
 
 | 分類           | 何を決めるか                                 | 主な関連プロパティ                          |
 | -------------- | -------------------------------------------- | ------------------------------------------- |
-| 表示ボックス   | レイアウト上に生成され、最終的に描画される箱 | `display`, `line-height`, `width`, `height` |
-| ボックスモデル | `width`/`height` の解釈範囲                  | `box-sizing`, `padding`, `border`, `margin` |
+| 表示ボックス / 生成ボックス | 要素からどんなレイアウト上の箱が作られるか | `display`, `position`, `float`, `line-height`, `font-size` |
+| ボックスモデル | 生成された箱を `content / padding / border / margin` でどう構成して読むか | `width`, `height`, `padding`, `border`, `margin` |
+| サイズ計算ルール | `width` / `height` が content 基準か border 基準か | `box-sizing` |
+
+MDN寄せで言うと、ブラウザはレイアウト時に要素を長方形のボックスとして扱う。
+そのボックスは `content edge / padding edge / border edge / margin edge` によって領域分けされる。
+また、Visual Formatting Model では、要素から生成されるボックスの種類は `display` の値に依存する。
+
+つまり、次のように分けて読む。
+
+- `display`: どんな表示ボックスを作るか、周囲や子要素とどう振る舞うか
+- ボックスモデル: 作られた箱を `content / padding / border / margin` で読む地図
+- `box-sizing`: `width` / `height` の指定値を content box 基準にするか border box 基準にするか
 
 ### CSSOM・表示ボックス・Paint の関係
 
@@ -62,12 +75,22 @@ DOM + CSSOM
 ## ボックスモデルと描画ボックスの関係
 
 同じ「ボックス」という言葉でも、見ている階層が違う。
+ただし、完全に無関係な別物ではなく、同じ箱を別の観測視点から見ている。
+
+大きくは次の関係で考える。
+
+```txt
+要素
+-> display やレイアウト文脈に応じて表示ボックスが生成される
+-> その箱を content / padding / border / margin で説明するのがボックスモデル
+-> box-sizing が width / height の計算基準を調整する
+```
 
 ### ボックスモデル
 
-- `content / padding / border / margin` の調整対象
+- `content / padding / border / margin` で箱を分解して読む考え方
 - `width`, `height`, `padding`, `border`, `margin`, `box-sizing` で直接触れる
-- つまり「CSSでサイズ・余白・枠線を調整するための箱」
+- つまり「CSSでサイズ・余白・枠線を調整するときの地図」
 
 ### 描画ボックス（レイアウト上の箱）
 
@@ -78,8 +101,9 @@ DOM + CSSOM
 
 補足:
 
-- 両者は別物だが無関係ではない。
+- ボックスモデルと描画ボックスは、別階層だが同じ描画結果につながっている。
 - `display`, `position`, `line-height`, `font-size` などの指定で、内部で作られる描画ボックスの振る舞いは間接的に変わる。
+- `padding`, `border`, `margin`, `box-sizing` などの指定で、生成された箱のサイズ計算や周囲との距離が変わる。
 
 ```txt
 CSSプロパティを指定する
@@ -92,6 +116,8 @@ CSSプロパティを指定する
 - ボックスモデル: CSSで直接調整する箱
 - 描画ボックス: ブラウザが画面を作るために内部で生成する箱
 - ボックスモデルは暗記対象ではなく、描画の流れを追うための地図として使う。
+
+より正確には、ボックスモデルは「別の箱」ではなく、生成された表示ボックスを `content / padding / border / margin` の層で読むためのモデル。
 
 ### `block` の基本認識
 
@@ -170,7 +196,7 @@ DevToolsでは、次の順で確認する。
 4. `line-height`
 5. 自分で指定した余白
 
-縦方向の行ボックスは [02_インラインと行の仕組み](./02_インラインと行の仕組み.md) で扱う。
+縦方向の行ボックスは [04_インラインと行の仕組み](./04_インラインと行の仕組み.md) で扱う。
 
 ## リセットCSSは「何を消したか」で読む
 

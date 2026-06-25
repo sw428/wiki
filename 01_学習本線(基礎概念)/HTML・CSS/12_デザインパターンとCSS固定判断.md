@@ -1,4 +1,4 @@
-# 10_デザインパターンとCSS固定判断
+﻿# 12_デザインパターンとCSS固定判断
 
 ## 目的
 
@@ -473,10 +473,10 @@
 
 ## 関連ノート
 
-- [03_画像と背景](./03_画像と背景.md): 画像をHTMLで置くか背景で置くか
-- [04_レイアウト](./04_レイアウト.md): 親で並びと余白を管理する判断
-- [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
-- [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
+- [05_画像と背景](./05_画像と背景.md): 画像をHTMLで置くか背景で置くか
+- [06_レイアウト](./06_レイアウト.md): 親で並びと余白を管理する判断
+- [09_メディア設計（img・video・object-fit・aspect-ratio）](./09_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
+- [10_表示制御（sp-only／pc-only／revert設計）](./10_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
 
 ## 仕様として見るキーワード
 

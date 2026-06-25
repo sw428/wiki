@@ -1,4 +1,4 @@
-# CSSOM
+﻿# CSSOM
 
 ## 読み方
 
@@ -56,4 +56,4 @@ CSS
 - [状態変化](./状態変化.md)
 - [CSS適用境界](./CSS適用境界.md)
 - [01_状態変化（DOM→CSSOM→Layout→Paint）](../01_レンダリング前提/01_状態変化（DOM→CSSOM→Layout→Paint）.md)
-- [01_ボックスとdisplay](../../../01_学習本線/HTML・CSS/01_ボックスとdisplay.md)
+- [03_ボックスとdisplay](../../../01_学習本線(基礎概念)/HTML・CSS/03_ボックスとdisplay.md)

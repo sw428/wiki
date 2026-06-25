@@ -1,4 +1,4 @@
-# 03_ケース_混在ログ整理とBlog詳細実装判断
+﻿# 03_ケース_混在ログ整理とBlog詳細実装判断
 
 ## 記録日
 
@@ -203,14 +203,14 @@
 
 ## 本線への反映先
 
-- `01_学習本線/HTML・CSS/02_インラインと行の仕組み.md`
+- `01_学習本線(基礎概念)/HTML・CSS/04_インラインと行の仕組み.md`
   - `inline-flex` の外側inline性と baseline 由来ギャップの補足
-- `01_学習本線/HTML・CSS/06_HTMLの意味と構造.md`
+- `01_学習本線(基礎概念)/HTML・CSS/08_HTMLの意味と構造.md`
   - 関連記事一覧の `section` / `ul` / `article` の判断軸
   - `time` の `datetime` と表示値の整合ルール
-- `01_学習本線/HTML・CSS/07_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `01_学習本線(基礎概念)/HTML・CSS/09_メディア設計（img・video・object-fit・aspect-ratio）.md`
   - 親に `aspect-ratio` を置いた時の子画像100%充填セット
-- `01_学習本線/HTML・CSS/04_レイアウト.md`
+- `01_学習本線(基礎概念)/HTML・CSS/06_レイアウト.md`
   - `l-inner` と `l-narrow` の責務分離（本文幅とメディア幅）
-- `01_学習本線/HTML・CSS/08_表示制御（sp-only／pc-only／revert設計）.md`
+- `01_学習本線(基礎概念)/HTML・CSS/10_表示制御（sp-only／pc-only／revert設計）.md`
   - SP/PC出し分け時の「意味データを変えない」運用注意

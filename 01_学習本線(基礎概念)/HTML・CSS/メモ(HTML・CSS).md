@@ -1,4 +1,4 @@
-# メモ(HTML・CSS)
+﻿# メモ(HTML・CSS)
 
 ## 位置づけ
 
@@ -9,15 +9,18 @@
 
 - 受け取り元: GPT対話の長文メモ（初期認識を含む）
 - 反映先:
-  - [01_ボックスとdisplay](./01_ボックスとdisplay.md)
-  - [02_インラインと行の仕組み](./02_インラインと行の仕組み.md)
-  - [03_画像と背景](./03_画像と背景.md)
-  - [04_レイアウト](./04_レイアウト.md)
-  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
-  - [06_HTMLの意味と構造](./06_HTMLの意味と構造.md)
-  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
-  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
-  - [10_デザインパターンとCSS固定判断](./10_デザインパターンとCSS固定判断.md)
+  - [01_HTMLの土台](./01_HTMLの土台.md)
+  - [02_HTML文書の骨格](./02_HTML文書の骨格.md)
+  - [03_ボックスとdisplay](./03_ボックスとdisplay.md)
+  - [04_インラインと行の仕組み](./04_インラインと行の仕組み.md)
+  - [05_画像と背景](./05_画像と背景.md)
+  - [06_レイアウト](./06_レイアウト.md)
+  - [07_ブラウザ挙動とズレ](./07_ブラウザ挙動とズレ.md)
+  - [08_HTMLの意味と構造](./08_HTMLの意味と構造.md)
+  - [09_メディア設計（img・video・object-fit・aspect-ratio）](./09_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [10_表示制御（sp-only／pc-only／revert設計）](./10_表示制御（sp-only／pc-only／revert設計）.md)
+  - [11_セレクタと構造依存](./11_セレクタと構造依存.md)
+  - [12_デザインパターンとCSS固定判断](./12_デザインパターンとCSS固定判断.md)
 
 ## メモ
 
@@ -35,18 +38,18 @@
   - コンポーネント核とページ側上書きの境界
   - 上書き可否の判断
   - サイズ差分をModifierで扱う方針
-- [02_インラインと行の仕組み](./02_インラインと行の仕組み.md)
+- [04_インラインと行の仕組み](./04_インラインと行の仕組み.md)
   - font box / line box / border box の区別
   - 視覚中心と数学中心のズレ
   - `inline-block` と `inline-flex` の基準差
-- [04_レイアウト](./04_レイアウト.md)
+- [06_レイアウト](./06_レイアウト.md)
   - Margin Collapse
   - Formatting Context
   - Containing Block
   - `min-width: 0` と `minmax(0, 1fr)` の役割差
-- [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
+- [07_ブラウザ挙動とズレ](./07_ブラウザ挙動とズレ.md)
   - 画像ロードがJS補正後に再レイアウトを発生させる時系列
-- [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
+- [09_メディア設計（img・video・object-fit・aspect-ratio）](./09_メディア設計（img・video・object-fit・aspect-ratio）.md)
   - `width`/`height` と `aspect-ratio` の予約タイミング比較
   - 崩れやすい `img { width: 100%; height: 100%; }` パターン
 
@@ -59,17 +62,17 @@
 
 - 受け取り元: CSS追加ログ（scrollズレ、画像予約、`min-width: 0` 文脈の深掘り）
 - 反映:
-  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
+  - [07_ブラウザ挙動とズレ](./07_ブラウザ挙動とズレ.md)
     - 横幅変更が改行経由で高さに波及する説明
     - `scroll-margin-top` / `content-visibility` の補助対策
-  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [09_メディア設計（img・video・object-fit・aspect-ratio）](./09_メディア設計（img・video・object-fit・aspect-ratio）.md)
     - 画像対策の優先適用順（枚数・波及度ベース）
 
 ## 追記ログ（2026-05-02-3）
 
 - 受け取り元: 表示制御ログ（sp-only / pc-only / display / revert）
 - 反映:
-  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
+  - [10_表示制御（sp-only／pc-only／revert設計）](./10_表示制御（sp-only／pc-only／revert設計）.md)
     - 「表示」ではなく「存在条件」で設計する軸
     - `only` 命名と `revert` の使い分け
     - 認知アプローチ（判断手順）
@@ -80,24 +83,24 @@
 - 反映:
   - [00_HTML・CSS整理マップ](./00_HTML・CSS整理マップ.md)
     - ベース原理セット（役割/外内/構造と余白/親優先/全体→例外）
-  - [04_レイアウト](./04_レイアウト.md)
+  - [06_レイアウト](./06_レイアウト.md)
     - Grid判断軸、親責任優先、認知アプローチ追記
-  - [07_メディア設計（img・video・object-fit・aspect-ratio）](./07_メディア設計（img・video・object-fit・aspect-ratio）.md)
+  - [09_メディア設計（img・video・object-fit・aspect-ratio）](./09_メディア設計（img・video・object-fit・aspect-ratio）.md)
     - 2択判断、外/箱/中身分解、border-radiusとoverflowの責務
-  - [08_表示制御（sp-only／pc-only／revert設計）](./08_表示制御（sp-only／pc-only／revert設計）.md)
+  - [10_表示制御（sp-only／pc-only／revert設計）](./10_表示制御（sp-only／pc-only／revert設計）.md)
     - 認知負荷削減の理由、表示制御とレイアウト制御の境界
 
 ## 追記ログ（2026-05-02-5）
 
 - 受け取り元: Grid/DevTools/A11y整理の長文ログ
 - 反映:
-  - [04_レイアウト](./04_レイアウト.md)
+  - [06_レイアウト](./06_レイアウト.md)
     - 通常フローとGridの見方
     - `1fr` / `min-width: 0` / `minmax(0, 1fr)` の差分整理
-  - [05_ブラウザ挙動とズレ](./05_ブラウザ挙動とズレ.md)
+  - [07_ブラウザ挙動とズレ](./07_ブラウザ挙動とズレ.md)
     - DevTools Computed値の見方
     - Grid overlay / Flex space-between の計測方針
-  - [06_HTMLの意味と構造](./06_HTMLの意味と構造.md)
+  - [08_HTMLの意味と構造](./08_HTMLの意味と構造.md)
     - A11y / セマンティックHTML / セクショニング / ランドマーク
     - `hidden` と `aria-expanded` の対象差分
     - `article` への `aria-labelledby` の優先度判断
@@ -106,7 +109,7 @@
 
 - 要望: `01_CSS設計方針（BEM × レイアウト分離）` をポートフォリオ側へ移管し、HTML・CSS番号を1つ繰り上げ
 - 反映:
-  - `01_学習本線/HTML・CSS`
+  - `01_学習本線(基礎概念)/HTML・CSS`
     - `02〜09` を `01〜08` へリネーム
     - 本線内リンクを新番号へ更新
   - `02_案件・制作/ポートフォリオサイト`
@@ -157,7 +160,7 @@
 - 反映:
   - [02_ケース_Blog一覧_SP基準設計と余白責務](../ケース検証/02_ケース_Blog一覧_SP基準設計と余白責務.md)
     - 認知アプローチ（分解手順）と結果を整理
-  - [04_レイアウト](./04_レイアウト.md)
+  - [06_レイアウト](./06_レイアウト.md)
     - SP基準の構造固定条件と `gap/margin/padding` 責務分離を追記
   - [01_CSS設計方針（BEM × レイアウト分離）](../../02_案件・制作/ポートフォリオサイト/01_CSS設計方針（BEM × レイアウト分離）.md)
     - `blog-articles` 命名統一と分離採用条件を追記
@@ -168,11 +171,11 @@
 - 反映:
   - [09_ケース_マリンプラクティス2カラムとCTA・Flex配置判断](../../02_案件・制作/ケース検証/09_ケース_マリンプラクティス2カラムとCTA・Flex配置判断.md)
     - 案件文脈の検証ログを複数ケースに分けて整理
-  - [02_インラインと行の仕組み](./02_インラインと行の仕組み.md)
+  - [04_インラインと行の仕組み](./04_インラインと行の仕組み.md)
     - CTAボタンでの `inline-block` / `inline-flex`、padding / min-size / `::after` の判断
-  - [04_レイアウト](./04_レイアウト.md)
+  - [06_レイアウト](./06_レイアウト.md)
     - 固定サイド + 可変メイン、縦Flexで最後の要素を下へ送る配置
-  - [06_HTMLの意味と構造](./06_HTMLの意味と構造.md)
+  - [08_HTMLの意味と構造](./08_HTMLの意味と構造.md)
     - 装飾アイコンを疑似要素か実要素で扱う判断
 
 ## 追記ログ（2026-06-22）
@@ -180,5 +183,5 @@
 - 受け取り元: デザイン設計 / CSS固定判断の整理依頼
 - 就職・給与・支援制度の話は対象外にし、デザインパターンからCSS責務へ落とす学習本線として整理
 - 反映:
-  - [10_デザインパターンとCSS固定判断](./10_デザインパターンとCSS固定判断.md)
+  - [12_デザインパターンとCSS固定判断](./12_デザインパターンとCSS固定判断.md)
     - バナー / カード / CTA / ヒーロー / ラベルで、比率・幅・余白・クリック範囲・切り抜き・重ね方をどこで固定するかを整理

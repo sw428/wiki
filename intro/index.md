@@ -11,6 +11,7 @@
 
 > [!TIP]
 > 運用中に AGENTS.md / CURRENT.md / README.md は Codex により継続的に微調整されます。
+> ただいま web.dev と CodeJump Pro に取り組み中です。
 
 ## 対話で育てる、自動整理型の外部脳Wiki
 このWikiは、最初から完成された知識辞書を作るための場所ではありません。  

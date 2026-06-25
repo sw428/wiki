@@ -1,4 +1,4 @@
-# 07_メディア設計（img・video・object-fit・aspect-ratio）
+﻿# 09_メディア設計（img・video・object-fit・aspect-ratio）
 
 ## 目的
 
@@ -10,7 +10,7 @@
   - `img` / `video` をレイアウト内で安定させる実装
   - `width` / `height` 属性、`aspect-ratio`、`object-fit`
   - CLS対策と崩れ防止パターン
-- [03_画像と背景](./03_画像と背景.md):
+- [05_画像と背景](./05_画像と背景.md):
   - `<img>` と `background-image` の意味差
   - 背景が見えない原因切り分け
   - `SVG` / `PNG` の装飾画像判断
