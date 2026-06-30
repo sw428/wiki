@@ -95,6 +95,48 @@
 
 この3つを混ぜないと、調整対象を誤りにくい。
 
+## `img`ではなく親に`aspect-ratio`を置く理由
+
+`aspect-ratio` を使う主目的は、画像そのものを変形することではなく、画像が入る「枠」の高さを先に確保すること。
+
+そのため、カード画像やサムネイルのように比率をそろえたい場合は、親を伸び縮みする枠として扱い、その中に画像を入れる方が安定しやすい。
+
+```css
+.card__image {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.card__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+```
+
+役割は次のように分ける。
+
+- 親: レイアウト上の枠。幅に応じて高さを決める
+- `img`: 枠の中身。`object-fit` で収め方を決める
+
+`img` 自体に `width` / `height` の固定値や `aspect-ratio` を持たせすぎると、画像本来の比率、表示したい枠の比率、切り抜きの責任が混ざりやすい。
+
+自然な比率でそのまま見せたい画像は、基本形のままにする。
+
+```css
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+```
+
+整理すると、次の2択で考える。
+
+- 画像の本来比率を守りたい: `img { max-width: 100%; height: auto; }`
+- 高さをそろえた枠に入れたい: 親に `aspect-ratio`、子に `object-fit`
+
 ## `object-fit` / `aspect-ratio`
 
 - `object-fit: cover`: 枠を埋める（切り取りあり）

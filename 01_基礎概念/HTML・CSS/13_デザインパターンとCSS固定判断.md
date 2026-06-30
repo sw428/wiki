@@ -1,4 +1,4 @@
-﻿# 13_デザインパターンとCSS固定判断
+﻿# 13\_デザインパターンとCSS固定判断
 
 ## 目的
 
@@ -15,18 +15,18 @@
 
 ## パターン早見表
 
-| デザインパターン | まず見ること | よく使う固定 | 基本形 |
-| --- | --- | --- | --- |
-| 記事 / テキスト一覧 | 同じ項目が縦に続くか | `gap` / `article + article` | 親で束ねられるなら `gap`、既存構造なら隣接兄弟 |
-| 写真バナー | 枠として扱うか、画像自然比率か | `aspect-ratio` / `height: auto` | 枠なら親に `aspect-ratio`、完成画像なら `height: auto` |
-| 文字入りバナー | 切れてよいか | `object-fit: contain` / `height: auto` | 文字やロゴが切れるなら `cover` を避ける |
-| 画像上テキスト | 親の高さを誰が作るか | `position` / `inset: 0` / `place-items` | 親を基準箱、画像を高さ役、文字を重ね役に分ける |
-| カード | 同じ型を繰り返すか | 親 `gap` / メディア `aspect-ratio` | 画像枠、本文、メタ情報の責務を分ける |
-| 人物写真 / サムネイル | 正方形枠か自然比率か | `width` / `aspect-ratio: 1 / 1` / `object-fit` | 外側の枠を固定し、画像を中へ収める |
-| CTAボタン | 押せる範囲が足りるか | `min-height` / `padding` / `inline-flex` | 固定幅より、先に余白と最小高さを見る |
-| ヒーロー / MV | 切り抜いてよいか | `min-height` / `object-fit` / `picture` | 見せたい範囲が変わるならSP用画像を検討 |
-| YouTube / iframe | 自然な高さがないか | 親 `aspect-ratio` / iframe `width:100%; height:100%` | iframeではなく外側の箱で比率を作る |
-| SPメニュー | 通常フローか重ねるか | `visible-sp` / Flex / `position` | 表示条件と位置指定を混ぜない |
+| デザインパターン      | まず見ること                   | よく使う固定                                         | 基本形                                                 |
+| --------------------- | ------------------------------ | ---------------------------------------------------- | ------------------------------------------------------ |
+| 記事 / テキスト一覧   | 同じ項目が縦に続くか           | `gap` / `article + article`                          | 親で束ねられるなら `gap`、既存構造なら隣接兄弟         |
+| 写真バナー            | 枠として扱うか、画像自然比率か | `aspect-ratio` / `height: auto`                      | 枠なら親に `aspect-ratio`、完成画像なら `height: auto` |
+| 文字入りバナー        | 切れてよいか                   | `object-fit: contain` / `height: auto`               | 文字やロゴが切れるなら `cover` を避ける                |
+| 画像上テキスト        | 親の高さを誰が作るか           | `position` / `inset: 0` / `place-items`              | 親を基準箱、画像を高さ役、文字を重ね役に分ける         |
+| カード                | 同じ型を繰り返すか             | 親 `gap` / メディア `aspect-ratio`                   | 画像枠、本文、メタ情報の責務を分ける                   |
+| 人物写真 / サムネイル | 正方形枠か自然比率か           | `width` / `aspect-ratio: 1 / 1` / `object-fit`       | 外側の枠を固定し、画像を中へ収める                     |
+| CTAボタン             | 押せる範囲が足りるか           | `min-height` / `padding` / `inline-flex`             | 固定幅より、先に余白と最小高さを見る                   |
+| ヒーロー / MV         | 切り抜いてよいか               | `min-height` / `object-fit` / `picture`              | 見せたい範囲が変わるならSP用画像を検討                 |
+| YouTube / iframe      | 自然な高さがないか             | 親 `aspect-ratio` / iframe `width:100%; height:100%` | iframeではなく外側の箱で比率を作る                     |
+| SPメニュー            | 通常フローか重ねるか           | `visible-sp` / Flex / `position`                     | 表示条件と位置指定を混ぜない                           |
 
 ## パターンを選ぶ時の一言判断
 
@@ -44,18 +44,18 @@
 レスポンシブの幅調整ができていても、画像制御は別で見る。
 画像は「どのデザインパターンか」を先に決めないと、場所ごとに `width` / `height` / `aspect-ratio` / `object-fit` をごにょごにょ足す状態になりやすい。
 
-| 画像の見た目 | 判断 | CSS制御パターン |
-| --- | --- | --- |
-| ロゴ / 電話画像 / 予約画像 / 文字入り画像 | 切れてはいけない | 画像またはリンクに `width: min(指定px, 100%)`、画像は `width: 100%; height: auto` |
-| MV / カード画像 / 地図画像 / 写真サムネイル | 枠いっぱいに見せる。切り抜き許容 | 親に `aspect-ratio` + `overflow: hidden`、子画像に `width: 100%; height: 100%; object-fit: cover` |
-| 商品画像 / 文字入りバナー / 全体を見せたい素材 | 切り抜き不可。余白は許容 | 親に比率枠を作るなら、子画像は `object-fit: contain`。枠不要なら `height: auto` |
-| 完成済みバナー画像 / 画像ボタン | 画像そのものを縮小表示したいだけか、固定枠に収めたいか | そのままなら `height: auto`。固定枠なら親 `aspect-ratio` + 子 `object-fit` |
-| YouTube / iframe | 自然な高さを前提にしにくい | 外側に `aspect-ratio`、中の `iframe` は `width: 100%; height: 100%; border: 0` |
+| 画像の見た目                                   | 判断                                                   | CSS制御パターン                                                                                   |
+| ---------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
+| ロゴ / 電話画像 / 予約画像 / 文字入り画像      | 切れてはいけない                                       | 画像またはリンクに `width: min(指定px, 100%)`、画像は `width: 100%; height: auto`                 |
+| MV / カード画像 / 地図画像 / 写真サムネイル    | 枠いっぱいに見せる。切り抜き許容                       | 親に `aspect-ratio` + `overflow: hidden`、子画像に `width: 100%; height: 100%; object-fit: cover` |
+| 商品画像 / 文字入りバナー / 全体を見せたい素材 | 切り抜き不可。余白は許容                               | 親に比率枠を作るなら、子画像は `object-fit: contain`。枠不要なら `height: auto`                   |
+| 完成済みバナー画像 / 画像ボタン                | 画像そのものを縮小表示したいだけか、固定枠に収めたいか | そのままなら `height: auto`。固定枠なら親 `aspect-ratio` + 子 `object-fit`                        |
+| YouTube / iframe                               | 自然な高さを前提にしにくい                             | 外側に `aspect-ratio`、中の `iframe` は `width: 100%; height: 100%; border: 0`                    |
 
 ### ごにょごにょ化しやすいサイン
 
 - `img` そのものに `width: 100%; height: 100%;` だけを当てていて、`object-fit` の方針がない。
-- `aspect-ratio` を親に付けたり、画像やリンクに付けたりしていて、どの箱が比率責務を持つのかが決まっていない。
+- `aspect-ratio` を親の更に上の親に付けたり、画像自身に付けたりしていて、どの箱が比率責務を持つのかが決まっていない。
 - `height: 94px` のように画像だけの高さを固定していて、比率維持か切り抜きかが曖昧。
 - `calc(100% - 132px)` のように、実際は「指定幅にしたいだけ」の調整が残っている。
 - PCでは画像自然比率、SPでは比率枠管理になっているが、その切り替え理由が書かれていない。
@@ -120,16 +120,16 @@
 
 ## 固定の種類
 
-| 固定したいもの | 主なCSS | 使う場面 |
-| --- | --- | --- |
-| 比率 | `aspect-ratio` | バナー、カード画像、動画枠 |
-| 実寸上限 | `width` / `max-width` | ロゴ、ボタン画像、本文幅 |
-| 最小操作範囲 | `min-height` / `padding` | ボタン、CTA、メニュー |
-| 要素間隔 | `gap` / `margin` / `padding` | 一覧、カード内、セクション間 |
-| 切り抜き | `object-fit` / `object-position` | 写真、MV、カード画像 |
-| 重ねる基準 | `position: relative` / `absolute` | 画像上テキスト、バッジ、ピン |
-| はみ出し制御 | `overflow: hidden` | 角丸画像、比率枠、複合メディア |
-| 下寄せ | `display: flex` / `margin-top: auto` | カードのボタン、日付、メタ情報 |
+| 固定したいもの | 主なCSS                              | 使う場面                       |
+| -------------- | ------------------------------------ | ------------------------------ |
+| 比率           | `aspect-ratio`                       | バナー、カード画像、動画枠     |
+| 実寸上限       | `width` / `max-width`                | ロゴ、ボタン画像、本文幅       |
+| 最小操作範囲   | `min-height` / `padding`             | ボタン、CTA、メニュー          |
+| 要素間隔       | `gap` / `margin` / `padding`         | 一覧、カード内、セクション間   |
+| 切り抜き       | `object-fit` / `object-position`     | 写真、MV、カード画像           |
+| 重ねる基準     | `position: relative` / `absolute`    | 画像上テキスト、バッジ、ピン   |
+| はみ出し制御   | `overflow: hidden`                   | 角丸画像、比率枠、複合メディア |
+| 下寄せ         | `display: flex` / `margin-top: auto` | カードのボタン、日付、メタ情報 |
 
 ## 反復テキスト / 記事一覧の間隔
 
@@ -182,7 +182,7 @@
 
 ```html
 <a class="banner" href="#">
-  <img class="banner__img" src="banner.jpg" alt="">
+  <img class="banner__img" src="banner.jpg" alt="" />
   <span class="banner__text">Campaign</span>
 </a>
 ```
@@ -271,7 +271,7 @@
 ```html
 <article class="card">
   <a class="card__media" href="#">
-    <img src="thumb.jpg" alt="">
+    <img src="thumb.jpg" alt="" />
   </a>
   <div class="card__body">
     <h3 class="card__title">Title</h3>
@@ -536,10 +536,10 @@
 
 ## 関連ノート
 
-- [06_画像と背景](./06_画像と背景.md): 画像をHTMLで置くか背景で置くか
-- [07_レイアウト](./07_レイアウト.md): 親で並びと余白を管理する判断
-- [10_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
-- [11_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
+- [06\_画像と背景](./06_画像と背景.md): 画像をHTMLで置くか背景で置くか
+- [07\_レイアウト](./07_レイアウト.md): 親で並びと余白を管理する判断
+- [10\_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
+- [11\_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
 
 ## 仕様として見るキーワード
 
