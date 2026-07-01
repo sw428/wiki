@@ -1,4 +1,4 @@
-# 07_WordPressとSCSSのレイヤー
+# 08_WordPressとSCSSのレイヤー
 
 ## 目的
 
@@ -231,7 +231,7 @@ WordPressは、HTMLをCMS化する層。
 
 - [静的HTMLからWordPress化する流れ](../制作/06_静的HTMLからWordPress化する流れ.md)
 - [header.php・footer.phpに分割](../制作/03_header.php・footer.phpに分割.md)
-- [WordPressで読むPHPの型](./06_WordPressで読むPHPの型.md)
+- [WordPressで読むPHPの型](./07_WordPressで読むPHPの型.md)
 
 ## 自分の頭に残すこと
 

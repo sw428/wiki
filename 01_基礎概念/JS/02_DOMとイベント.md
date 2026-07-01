@@ -276,6 +276,38 @@ button.setAttribute("aria-label", "メニューを閉じる");
 - `aria-hidden`
 - `aria-label`
 
+## HTML属性とJSの型変換
+
+HTML属性は、属性があれば基本的に文字列として読まれる。
+一方、JavaScript内で状態を扱うときは、真偽値や数値に変換したほうが判断しやすい。
+
+開閉状態なら、よくある流れはこれ。
+
+```js
+const isOpen = button.getAttribute("aria-expanded") === "true";
+const nextOpen = !isOpen;
+
+button.setAttribute("aria-expanded", String(nextOpen));
+```
+
+ここで起きていることを分けると次。
+
+1. `getAttribute("aria-expanded")` で HTML 属性の値を文字列として読む
+2. `=== "true"` で、JS内で扱いやすい真偽値に変換する
+3. `!isOpen` でクリック後の状態を決める
+4. `String(nextOpen)` で、HTML属性に戻せる文字列へ変換する
+5. `setAttribute()` で HTML 側へ状態を書き戻す
+
+つまり、
+
+HTML属性の `"true"` / `"false"`
+-> JSの `true` / `false`
+-> HTML属性の `"true"` / `"false"`
+
+という受け渡しをしている。
+
+Web制作のJSでは、文法だけでなく「どこから受け取り、どの型で扱い、どこへ戻すか」を見ると追いやすい。
+
 ## 表示状態を変える
 
 ### hidden
@@ -574,6 +606,7 @@ button.addEventListener("click", function () {
 - 属性は最初の値、プロパティは今の値
 - `getAttribute("value")` と `.value` は違う
 - `setAttribute()` で状態系属性も更新できる
+- HTML属性は文字列として読み、JS側で真偽値などに変換してから戻す場面がある
 - `hidden` で表示状態を切り替えることもできる
 - イベントは「こうなったらこうする」
 - `addEventListener()` の第2引数には関数を渡す

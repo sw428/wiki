@@ -97,7 +97,7 @@ button.addEventListener("click", 関数);
 
 `addEventListener` が「クリックされたら関数を実行してね」なら、WordPressの `add_action` は「このタイミングが来たら関数を実行してね」に近い。
 
-詳しくは [functions.phpとフック](../基礎/05_functions.phpとフック.md) に戻す。
+詳しくは [functions.phpとフック](../基礎/06_functions.phpとフック.md) に戻す。
 
 ## VS Codeスニペット
 

@@ -1,4 +1,4 @@
-# 05_functions.phpとフック
+# 06_functions.phpとフック
 
 ## 目的
 
