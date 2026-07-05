@@ -236,6 +236,10 @@ base
 - [04_ボックスとdisplay](./04_ボックスとdisplay.md): HTML要素が画面上でどんな箱として扱われるか
 - [09_HTMLの意味と構造](./09_HTMLの意味と構造.md): 本文内の見出し・section・footerなどの意味構造
 
+## 一言でいうと
+
+`head` はページ解釈と読み込み、`body` は表示内容、`defer` はDOM構築後にJSを動かすための基本形。
+
 ## 参考
 
 - [web.dev: Document structure](https://web.dev/learn/html/document-structure)

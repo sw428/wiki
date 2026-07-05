@@ -257,3 +257,7 @@ ol {
 5. `padding` / `margin` / `gap`（内側余白か外側余白か）
 6. `position` / `grid` / `flex` の配置指定
 7. 詳細度・上書き順（同強度なら後勝ち）
+
+## 一言でいうと
+
+`display` は箱の種類、`box-sizing` はサイズ計算、`padding` / `margin` / `gap` は箱の内外の距離。

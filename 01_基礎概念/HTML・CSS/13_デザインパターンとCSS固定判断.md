@@ -547,3 +547,7 @@
 - [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit): `img` / `video` などの置換要素を、枠へどう収めるかを指定する。
 - [`picture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture): 表示条件に応じて別画像を選ばせる。
 - [Optimize Cumulative Layout Shift](https://web.dev/articles/optimize-cls): 画像や `iframe` などに寸法がないとレイアウトシフトの原因になりやすい。
+
+## 一言でいうと
+
+CSS固定はプロパティ名から決めず、バナー・カード・CTAなどの型を先に決めて、固定する対象と可変に残す対象を分ける。

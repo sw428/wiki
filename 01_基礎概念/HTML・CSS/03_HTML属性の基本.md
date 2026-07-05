@@ -358,6 +358,10 @@ style属性
 - [09_HTMLの意味と構造](./09_HTMLの意味と構造.md): `role` やARIAを含む意味構造
 - [12_セレクタと構造依存](./12_セレクタと構造依存.md): `id` / `class` / 属性セレクタを使うときの構造依存
 
+## 一言でいうと
+
+属性は、HTML要素とCSS・JS・A11yをつなぐ追加情報で、`id` は一意、`class` は設計用のフック。
+
 ## 参考
 
 - [web.dev: Attributes](https://web.dev/learn/html/attributes)

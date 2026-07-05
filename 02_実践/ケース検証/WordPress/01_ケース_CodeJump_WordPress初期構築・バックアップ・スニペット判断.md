@@ -505,6 +505,41 @@ WordPress初期では、細かいPHP文法を毎回手書きで再現するよ�
 - HTMLからWordPress化する作業に集中する
 - 変更範囲を小さく保つ
 
+### ページネーションは存在確認と総ページ数で読む
+
+案件内で次のようなコードが出てきた場合、PHP文法を細かく分解するより、まず「何を確認して、何を渡しているか」で読む。
+
+```php
+<?php
+  if (function_exists("pagination")) {
+    pagination($wp_query->max_num_pages);
+  }
+?>
+```
+
+このコードは、ページネーション用の関数が存在するか確認してから、その関数に総ページ数を渡している。
+
+- `function_exists("pagination")`: `pagination` という関数が定義されているか確認する
+- `pagination(...)`: ページネーションを出すための関数を呼び出す
+- `$wp_query->max_num_pages`: 現在のクエリで何ページ分あるかを表す値
+
+ここでの `pagination()` は、WordPress本体の標準関数というより、テーマ側や教材側で用意された独自関数として見る。
+
+大事なのは、ページネーション表示そのものをこの場で全部作っているのではなく、「表示用の関数があるなら、その関数に必要なページ数を渡す」という橋渡しをしている点。
+
+WordPress初期では、まず次の粒度で読めればよい。
+
+```text
+関数があるか確認する
+↓
+あれば呼ぶ
+↓
+現在の投稿一覧の総ページ数を渡す
+```
+
+`functions.php` などで `pagination()` が定義されていない場合、そのまま呼ぶとエラーになる可能性がある。
+そのため、`function_exists()` で確認してから呼ぶ形になっている。
+
 ### WordPress学習は切り分けが先
 
 WordPressは、HTML/CSSや資格学習と学習の質が違う。
@@ -569,6 +604,7 @@ HTML/CSSを壊さず、WordPressのテーマ構造へ変換できることを優
 - WordPressでは、知識の一貫性よりも、仕事に直結する境界線・優先順位・変更範囲の把握が重要。
 - CSSは状況判断、WordPressは型・配置場所・責任範囲の切り分けが重要。
 - WordPress初期では、スニペットは暗記回避ではなく、壊さず正確に作業するための道具として扱う。
+- ページネーションのコードは、`function_exists()` による存在確認、`pagination()` の呼び出し、`$wp_query->max_num_pages` の受け渡しに分けると読みやすい。
 
 ## 基礎概念への反映先
 
@@ -584,6 +620,7 @@ HTML/CSSを壊さず、WordPressのテーマ構造へ変換できることを優
   - 色分けはVS Code側の補助であり、PHPの実行とは別。
 - `01_基礎概念/WordPress/基礎/07_WordPressで読むPHPの型.md`
   - `bloginfo()` / `get_bloginfo()` / `home_url()` / `get_theme_file_uri()` の表示と取得の違い。
+  - `function_exists()` / `pagination()` / `$wp_query->max_num_pages` を、存在確認・関数呼び出し・総ページ数の受け渡しとして読む。
 - `01_基礎概念/PHP/04_関数.md`
   - 関数の戻り値と `echo` の基本整理。
 - `01_基礎概念/WordPress/制作/開発環境/02_WordPressスニペット運用.md`
