@@ -18,6 +18,7 @@
 | デザインパターン      | まず見ること                   | よく使う固定                                         | 基本形                                                 |
 | --------------------- | ------------------------------ | ---------------------------------------------------- | ------------------------------------------------------ |
 | 記事 / テキスト一覧   | 同じ項目が縦に続くか           | `gap` / `article + article`                          | 親で束ねられるなら `gap`、既存構造なら隣接兄弟         |
+| Archive / サイドバー一覧 | 外側の線か、項目間の線か     | 親の上下 `border` / `item + item`                    | 外側の線は親、内側の区切り線は隣接兄弟                 |
 | 写真バナー            | 枠として扱うか、画像自然比率か | `aspect-ratio` / `height: auto`                      | 枠なら親に `aspect-ratio`、完成画像なら `height: auto` |
 | 文字入りバナー        | 切れてよいか                   | `object-fit: contain` / `height: auto`               | 文字やロゴが切れるなら `cover` を避ける                |
 | 画像上テキスト        | 親の高さを誰が作るか           | `position` / `inset: 0` / `place-items`              | 親を基準箱、画像を高さ役、文字を重ね役に分ける         |
@@ -163,6 +164,64 @@
 - 親に一覧コンテナがあるなら `gap` が読みやすい。
 - 親を作れない、またはHTMLを変えない前提なら `article + article` の `margin-top` で「2個目以降だけ」を表せる。
 - 「項目同士の間隔」と「一覧の次のブロックまでの余白」を同じ `margin-bottom` に混ぜない。
+
+## Archive / リストの区切り線
+
+### 使う場面
+
+- サイドバーの Archive、カテゴリ一覧、月別一覧など、縦に並ぶリンクリスト。
+- リスト全体の上下に線があり、項目同士の間にも区切り線を入れたい場面。
+
+### 固定するもの
+
+- リスト全体の外側の線: 親の `border-top` / `border-bottom`
+- 項目同士の区切り線: `.item + .item`
+- 文字と線の距離: リンク要素の `padding`
+- 線の長さ: リスト幅または親幅
+
+```html
+<section class="p-archive">
+  <h2 class="p-archive__title">Archive</h2>
+
+  <ul class="p-archive__list">
+    <li class="p-archive__item">
+      <a class="p-archive__link" href="#">2026年7月</a>
+    </li>
+    <li class="p-archive__item">
+      <a class="p-archive__link" href="#">2025年11月</a>
+    </li>
+  </ul>
+</section>
+```
+
+```css
+.p-archive__list {
+  width: 220px;
+  margin-inline: auto;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #777;
+  border-bottom: 1px solid #777;
+}
+
+.p-archive__item + .p-archive__item {
+  border-top: 1px solid #777;
+}
+
+.p-archive__link {
+  display: block;
+  padding: 20px;
+  color: #333;
+  text-decoration: none;
+}
+```
+
+### 判断基準
+
+- 外側の上下線は、リスト全体の枠なので `.p-archive__list` に持たせる。
+- 項目間の線は、項目と項目の関係なので `.p-archive__item + .p-archive__item` で表す。
+- 各項目の下線として見るなら `.p-archive__item { border-bottom: ... }` でもよいが、外側の線と内側の区切り線を分ける方が読みやすい。
+- WordPressの `wp_get_archives()` で出力しても、最終的には `ul > li > a` にCSSを当てるだけなので、比重はHTML/CSS側にある。
 
 ## バナー
 
@@ -540,6 +599,7 @@
 - [07\_レイアウト](./07_レイアウト.md): 親で並びと余白を管理する判断
 - [10\_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
 - [11\_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
+- [12\_セレクタと構造依存](./12_セレクタと構造依存.md): `+` / `:nth-child()` / `:nth-of-type()` など、構造依存セレクタの判断
 
 ## 仕様として見るキーワード
 
