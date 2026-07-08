@@ -19,6 +19,8 @@
 | --------------------- | ------------------------------ | ---------------------------------------------------- | ------------------------------------------------------ |
 | 記事 / テキスト一覧   | 同じ項目が縦に続くか           | `gap` / `article + article`                          | 親で束ねられるなら `gap`、既存構造なら隣接兄弟         |
 | Archive / サイドバー一覧 | 外側の線か、項目間の線か     | 親の上下 `border` / `item + item`                    | 外側の線は親、内側の区切り線は隣接兄弟                 |
+| ステップ番号 / 自動連番 | 意味上のリストか、装飾番号か | `ol` / CSSカウンター / `::before`                   | 普通の番号リストは `ol`、デザイン番号はCSSで自動生成   |
+| 画像マスク / アイコン抜き | 画像を切るのか、見え方だけ抜くのか | `mask-image` / `mask-size` / `background-color` | 色をCSSで変えたい単色アイコンや形抜き表現に使う         |
 | 写真バナー            | 枠として扱うか、画像自然比率か | `aspect-ratio` / `height: auto`                      | 枠なら親に `aspect-ratio`、完成画像なら `height: auto` |
 | 文字入りバナー        | 切れてよいか                   | `object-fit: contain` / `height: auto`               | 文字やロゴが切れるなら `cover` を避ける                |
 | 画像上テキスト        | 親の高さを誰が作るか           | `position` / `inset: 0` / `place-items`              | 親を基準箱、画像を高さ役、文字を重ね役に分ける         |
@@ -38,6 +40,9 @@
 - `picture`: SP/PCで見せたい構図が変わる。
 - `gap`: 同じ親の中で、同種項目の間隔を作る。
 - `article + article`: 親を作らず、2個目以降だけ空ける。
+- `ol`: 意味として番号付きリストなら、まずHTML側で表す。
+- CSSカウンター: 番号をデザインパーツとして自動生成したい時に使う。
+- `mask-image`: 要素や背景を、画像の透明度・形で見える部分だけ抜きたい。
 - `position: absolute`: 通常フローから外して重ねる。親の高さは作らない。
 
 ## 画像制御パターン早見表
@@ -51,6 +56,7 @@
 | MV / カード画像 / 地図画像 / 写真サムネイル    | 枠いっぱいに見せる。切り抜き許容                       | 親に `aspect-ratio` + `overflow: hidden`、子画像に `width: 100%; height: 100%; object-fit: cover` |
 | 商品画像 / 文字入りバナー / 全体を見せたい素材 | 切り抜き不可。余白は許容                               | 親に比率枠を作るなら、子画像は `object-fit: contain`。枠不要なら `height: auto`                   |
 | 完成済みバナー画像 / 画像ボタン                | 画像そのものを縮小表示したいだけか、固定枠に収めたいか | そのままなら `height: auto`。固定枠なら親 `aspect-ratio` + 子 `object-fit`                        |
+| 単色アイコン / 形抜き表現                      | 画像の中身を表示したいのか、形だけ借りたいのか         | 色をCSSで持たせるなら `background-color` + `mask-image`。写真や意味画像には使い分け注意          |
 | YouTube / iframe                               | 自然な高さを前提にしにくい                             | 外側に `aspect-ratio`、中の `iframe` は `width: 100%; height: 100%; border: 0`                    |
 
 ### ごにょごにょ化しやすいサイン
@@ -102,6 +108,32 @@
 
 `aspect-ratio` は画像を小さくする指定ではなく、比率を持つ箱を作る指定。
 小さく見せたいだけなら、まず `width` / `max-width` / `min()` で実寸上限を作る。
+
+## 画像マスク / mask-image
+
+### パターンとして見る場面
+
+- SVGやPNGの形だけを借りて、色はCSS側で変えたいアイコン。
+- 画像や背景の端をグラデーションで消す表現。
+- 丸、波形、矢印などの形で、要素の見える範囲を抜く表現。
+
+### 固定するもの
+
+- 見える形: `mask-image`
+- マスクの大きさ: `mask-size`
+- マスクの位置: `mask-position`
+- 実際に見える色: `background-color`
+
+### 判断基準
+
+- 「画像の中身」ではなく「画像の形」を使いたい時に向いている。
+- 写真の収まりを調整したいだけなら、`object-fit` / `aspect-ratio` / `background-size` を先に見る。
+- 詳しい使い分けは [06_画像と背景](./06_画像と背景.md) の `mask-image` 側に戻る。
+
+### 一言でいうと
+
+`mask-image` は、画像制御の本体というより「形で抜くデザインパターン」として見る。
+詳細な仕組みは 06、UIパターンとしての使いどころはこのノートで確認する。
 
 ## 最初に分けること
 
@@ -222,6 +254,79 @@
 - 項目間の線は、項目と項目の関係なので `.p-archive__item + .p-archive__item` で表す。
 - 各項目の下線として見るなら `.p-archive__item { border-bottom: ... }` でもよいが、外側の線と内側の区切り線を分ける方が読みやすい。
 - WordPressの `wp_get_archives()` で出力しても、最終的には `ul > li > a` にCSSを当てるだけなので、比重はHTML/CSS側にある。
+
+## ステップ番号 / CSS自動連番
+
+### 使う場面
+
+- `01. SERVICE`、`STEP 01`、`01. 見出し` のように、番号そのものがデザインパーツになっているUI。
+- 項目の追加・削除・並び替えで、番号を自動で詰めたい場面。
+- HTMLに `01`、`02`、`03` を直接書くと、順番変更時に手修正が増える場面。
+
+### 先に分けること
+
+普通の番号付きリストなら、まず `ol > li` でよい。
+
+```html
+<ol>
+  <li>ログインする</li>
+  <li>投稿を追加する</li>
+  <li>公開する</li>
+</ol>
+```
+
+これは意味として「順序のあるリスト」なので、HTMLで表す方が自然。
+
+一方で、カンプ上の `01` / `02` / `03` が大きく装飾されていたり、`STEP 01` のように見出しの飾りとして扱われているなら、CSSカウンターを検討する。
+
+```html
+<ol class="step-list">
+  <li class="step-list__item">ログインする</li>
+  <li class="step-list__item">投稿を追加する</li>
+  <li class="step-list__item">公開する</li>
+</ol>
+```
+
+```css
+.step-list {
+  counter-reset: step-counter;
+  list-style: none;
+}
+
+.step-list__item {
+  counter-increment: step-counter;
+}
+
+.step-list__item::before {
+  content: "0" counter(step-counter) ".";
+}
+
+.step-list__item:nth-of-type(9) ~ .step-list__item::before {
+  content: counter(step-counter) ".";
+}
+```
+
+### 読み方
+
+- `counter-reset`: 親側でカウンターを用意する。
+- `counter-increment`: 項目が出るたびに番号を1つ進める。
+- `counter()`: 今の番号を表示する。
+- `::before`: 本文の前に番号を出す。
+- `"0"`: `01`、`02` のようにゼロ埋めする。
+- `:nth-of-type(9) ~ ...`: 10個目以降で `010` にならないよう、9個目の後ろから先頭の0を外す。
+
+### 判断基準
+
+- 意味として順序が大事: `ol` を優先する。
+- 番号が見た目のパーツ: CSSカウンターを検討する。
+- 項目の追加・削除で番号を自動更新したい: CSSカウンターが便利。
+- 10個以上になる可能性がある: ゼロ埋めの解除条件まで考える。
+- `:nth-of-type()` を使う場合は、クラス順ではなくタグ種類の順番を見ている点に注意する。詳しくは [12_セレクタと構造依存](./12_セレクタと構造依存.md) に戻る。
+
+### 一言でいうと
+
+普通の番号リストは `ol`。
+番号をデザインパーツとして自動管理したい時だけ、CSSカウンターを使う。
 
 ## バナー
 
@@ -445,6 +550,56 @@
 - テキスト長が変わるなら、固定 `width` より `padding` と `min-height` を優先する。
 - デザイン上、横幅をそろえる必要がある場合だけ `width` や `min-width` を検討する。
 
+### 同一ボタンかどうかの見分け方
+
+カンプ内に複数のボタンが出る場合、文字ではなく「見た目の核」と「役割」で見る。
+
+同一ボタンとして扱いやすいのは、次の違いだけの場合。
+
+- 文言だけが違う
+- リンク先だけが違う
+- 置いてある場所だけが違う
+- 同じサイズ感、同じ色、同じhover、同じ角丸で使われている
+
+```html
+<a class="c-button" href="#">詳しく見る</a>
+<a class="c-button" href="#">View More</a>
+<a class="c-button" href="#">お問い合わせ</a>
+```
+
+`c-button` は共通コンポーネントとして扱う場合の例。
+実際の接頭辞や命名は、案件側のBEM / SCSS運用に合わせる。
+
+違いがある場合は、別コンポーネントにする前に modifier で表せるかを見る。
+
+```html
+<a class="c-button" href="#">詳しく見る</a>
+<a class="c-button c-button--white" href="#">詳しく見る</a>
+<a class="c-button c-button--small" href="#">詳しく見る</a>
+<button class="c-button c-button--submit" type="submit">送信する</button>
+```
+
+判断の芯は次。
+
+- 同じ土台: 共通クラス
+- 色やサイズなどの差分: modifier
+- 役割や構造が違う: 別コンポーネント
+- そのページだけの余白や配置: ページ側・レイアウト側で調整
+
+書き出しは、完璧な設計書ではなく、カンプ上の部品を先に名前付けするメモでよい。
+
+```markdown
+## 共通化できそうなもの
+
+- 通常ボタン: c-button
+- 白背景ボタン: c-button c-button--white
+- 小さいボタン: c-button c-button--small
+- 記事カード: c-card
+- セクション見出し: c-section-title
+```
+
+この段階では、共通化を確定するより「何度も出るか」「差分だけか」「ページ固有か」を見えるようにすることを優先する。
+
 ## ヒーロー / MV
 
 ### 使う場面
@@ -595,7 +750,7 @@
 
 ## 関連ノート
 
-- [06\_画像と背景](./06_画像と背景.md): 画像をHTMLで置くか背景で置くか
+- [06\_画像と背景](./06_画像と背景.md): 画像をHTMLで置くか背景で置くか、`mask-image` で形抜きするか
 - [07\_レイアウト](./07_レイアウト.md): 親で並びと余白を管理する判断
 - [10\_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md): 画像・動画の比率、切り抜き、CLS対策
 - [11\_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md): SP/PCで存在を切る判断
@@ -605,6 +760,7 @@
 
 - [`aspect-ratio`](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio): 要素ボックスの望ましい幅/高さ比を指定する。
 - [`object-fit`](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit): `img` / `video` などの置換要素を、枠へどう収めるかを指定する。
+- [`mask-image`](https://developer.mozilla.org/en-US/docs/Web/CSS/mask-image): 要素を表示するマスクレイヤーの画像を指定する。
 - [`picture`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/picture): 表示条件に応じて別画像を選ばせる。
 - [Optimize Cumulative Layout Shift](https://web.dev/articles/optimize-cls): 画像や `iframe` などに寸法がないとレイアウトシフトの原因になりやすい。
 
