@@ -111,4 +111,4 @@ WordPressでは、決まったテンプレート構造に組み込み、決め�
 - [WordPressとSCSSのレイヤー](./08_WordPressとSCSSのレイヤー.md)
 - [静的HTMLからWordPress化する流れ](../制作/06_静的HTMLからWordPress化する流れ.md)
 - [WordPressスニペット運用](../制作/開発環境/02_WordPressスニペット運用.md)
-- [ケース\_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../02_実践/ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)
+- [ケース\_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../02_ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)

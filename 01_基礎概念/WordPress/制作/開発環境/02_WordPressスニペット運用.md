@@ -430,7 +430,7 @@ CSSは、プロパティを出せても、結局は前提条件と状況判断�
 - [WordPressで読むPHPの型](../../基礎/07_WordPressで読むPHPの型.md)
 - [WordPress学習の優先順位](../../基礎/01_WordPress学習の優先順位.md)
 - [functions.phpでCSSを読み込む](../04_functions.phpでCSSを読み込む.md)
-- [ケース_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../../02_実践/ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)
+- [ケース_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../../02_ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)
 
 ## 自分の頭に残すこと
 
