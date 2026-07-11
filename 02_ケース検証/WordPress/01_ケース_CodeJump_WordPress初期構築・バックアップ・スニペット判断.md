@@ -241,13 +241,14 @@ Localのバージョンや画面幅で表示が違う。
 
 そのため、`header.php` 全体の言語モードがPHPでも、HTMLスニペットが出ることがある。
 
-WordPress用スニペットをHTML部分でも出したいなら、グローバルスニペットにして `scope` を付ける。
+WordPress用スニペットをHTML部分でも出したいなら、グローバルスニペットにして `scope` と `include` を付ける。
 
 ```json
 {
   "WordPress bloginfo name": {
     "scope": "php,html",
-    "prefix": "wpname",
+    "include": "**/*.php",
+    "prefix": "info",
     "body": [
       "<?php bloginfo('name'); ?>"
     ],
@@ -260,7 +261,38 @@ WordPress用スニペットをHTML部分でも出したいなら、グローバ�
 
 1. VS Code右下の言語モードがPHPか
 2. スニペットを `php.json` やグローバルスニペットに入れているか
-3. HTML領域でも出したいスニペットに `scope: "php,html"` があるか
+3. HTML領域でも出したいスニペットに `scope: "php,html"` と `include: "**/*.php"` があるか
+
+### 普通のHTMLには出さず、PHPテンプレート内のHTML部分では出す
+
+WordPress用スニペットを `scope: "php,html"` だけにすると、普通の `.html` ファイルにも候補が出る。
+
+一方で `scope: "php"` だけにすると、`header.php` や `index.php` のHTML構造を書いている場所では候補が出ないことがある。
+
+今回の採用判断は、グローバルスニペットにして `scope` と `include` を両方使う形。
+
+```json
+{
+  "scope": "php,html",
+  "include": "**/*.php"
+}
+```
+
+これで、PHPファイルのHTML文脈でも出しつつ、普通の `.html` には出さない。
+
+さらに、関数定義など `functions.php` だけで使うものは次のように絞る。
+
+```json
+{
+  "scope": "php",
+  "include": "**/functions.php"
+}
+```
+
+`header.php` / `footer.php` / `index.php` の土台スニペットは、それぞれ `include: "**/header.php"` のようにファイル名で限定する。
+
+ファイル名で用途を絞るため、プレフィックスは `wp-` 付きにしなくてもよい。
+今回の運用では、入力しやすさを優先して `info`、`home`、`file`、`img`、`fnk`、`loop` などの短いprefixにする。
 
 ### head基本セットはスニペット1単位でよい
 
@@ -272,10 +304,11 @@ WordPress用スニペットをHTML部分でも出したいなら、グローバ�
 {
   "WordPress head basic simple": {
     "scope": "php,html",
-    "prefix": "wpheadbase",
+    "include": "**/header.php",
+    "prefix": "!!",
     "body": [
       "<!DOCTYPE html>",
-      "<html lang=\"ja\">",
+      "<html <?php language_attributes(); ?>>",
       "<head>",
       "  <meta charset=\"utf-8\">",
       "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
@@ -284,7 +317,10 @@ WordPress用スニペットをHTML部分でも出したいなら、グローバ�
       "  <link rel=\"icon\" href=\"<?php echo esc_url(get_theme_file_uri('${1:img/common/favicon.ico}')); ?>\">",
       "",
       "  <?php wp_head(); ?>",
-      "</head>"
+      "</head>",
+      "<body <?php body_class(); ?>>",
+      "<?php wp_body_open(); ?>",
+      "$0"
     ],
     "description": "WordPress header.php head basic simple"
   }
@@ -600,6 +636,7 @@ HTML/CSSを壊さず、WordPressのテーマ構造へ変換できることを優
 - WordPressでは「テーマコード」「uploads」「データベース」を分けると、Git管理とバックアップの違いが見えやすい。
 - CodeJumpのWordPress学習では、最初から保守運用全体を背負わず、自作テーマGit + Local Exportで十分。
 - `header.php` はPHPファイルだが、HTML領域ではHTML文脈になるため、スニペットの出方はカーソル位置に左右される。
+- WordPress用スニペットは `scope: "php,html"` と `include: "**/*.php"` を組み合わせると、PHPテンプレート内のHTML部分では出し、普通のHTMLファイルには出さない運用にできる。
 - `bloginfo()` と `get_bloginfo()` の違いは、PHP全体の深掘りより先に「表示する関数 / 値を返す関数」として覚えると実用的。
 - WordPressでは、知識の一貫性よりも、仕事に直結する境界線・優先順位・変更範囲の把握が重要。
 - CSSは状況判断、WordPressは型・配置場所・責任範囲の切り分けが重要。
@@ -624,4 +661,4 @@ HTML/CSSを壊さず、WordPressのテーマ構造へ変換できることを優
 - `01_基礎概念/PHP/04_関数.md`
   - 関数の戻り値と `echo` の基本整理。
 - `01_基礎概念/WordPress/制作/開発環境/02_WordPressスニペット運用.md`
-  - `header.php` のHTML文脈と `scope: "php,html"` の扱い。
+  - `header.php` のHTML文脈と `scope: "php,html"` / `include: "**/*.php"` の扱い。

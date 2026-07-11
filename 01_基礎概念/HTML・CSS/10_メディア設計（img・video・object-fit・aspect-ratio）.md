@@ -181,6 +181,50 @@ img {
 `img { max-width: 100%; }` は「親からはみ出さない」ための指定で、ロゴの実際の表示幅を決める指定ではない。
 ロゴのように切らずに見せる素材は、`aspect-ratio` で枠へ押し込む前に、専用の `width` と `height: auto` で自然比率を保つ。
 
+### 同じSVGロゴでPC/SPの表示幅だけ変える
+
+PC/SPで同じSVGロゴを使い、縦横比も同じなら、比率はSVG自身に任せる。
+
+- HTMLの `width` / `height` 属性: 元素材の比率をブラウザへ伝える
+- CSS変数: PC/SPでの表示幅を切り替える
+- `height: auto`: 素材比率から表示高さを自動計算する
+
+```html
+<img
+  class="header__logo-image"
+  src="./img/logo.svg"
+  alt="サイト名"
+  width="199"
+  height="25"
+>
+```
+
+```css
+.header__logo {
+  --logo-width: 358.13px;
+
+  width: min(100%, var(--logo-width));
+}
+
+.header__logo-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 767px) {
+  .header__logo {
+    --logo-width: 268.36px;
+  }
+}
+```
+
+`width` と `height` をCSSで両方固定すると、素材比率と指定値が少しズレた時に変形し得る。
+また、両方が確定している状態では `aspect-ratio` を足しても基本的に比率修正としては働かない。
+
+同一比率のロゴでは、`aspect-ratio` を重複して書くより、素材の固有比率 + `height: auto` を優先する。
+ただし、PC/SPで別比率の素材を使う場合や、意図的に枠へ収める場合は、別画像・親の `aspect-ratio`・`object-fit` の責務を分けて考える。
+
 ### `object-position` の表現と責務
 
 - 意図を共有する時は `left center` のような語彙指定が読みやすい。

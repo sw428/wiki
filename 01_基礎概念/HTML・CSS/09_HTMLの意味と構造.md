@@ -569,6 +569,39 @@ JSで開閉状態を変える場合は、見た目のクラスだけでなく、
 - 既存実装が `div + article` で統一されている場合は、今回だけ無理に `li` 化しない。
 - 判断軸は「意味の明確さ」と「既存との整合」の両方で決める。
 
+### スタッフ一覧のような人物カード構造
+
+- 見出しを持つ「スタッフ紹介」は `section` にする。
+- 見出しを持たないメインビジュアルは、無理に `section` にせず `div` でよい。
+- スタッフ一覧は複数人の集まりなので `ul > li` にする。
+- 1人分のカードが独立して読めるなら、`li` の中を `article` にする。
+- パンくずは階層順なので `nav` + `ol` にする。
+
+```html
+<nav class="breadcrumb" aria-label="パンくずリスト">
+  <ol class="breadcrumb__list">
+    <li class="breadcrumb__item"><a href="/">HOME</a></li>
+    <li class="breadcrumb__item" aria-current="page">スタッフ紹介</li>
+  </ol>
+</nav>
+
+<div class="hero">
+  <img class="hero__image" src="./img/hero.webp" alt="">
+</div>
+
+<section class="staff">
+  <h2 class="staff__title">スタッフ紹介</h2>
+
+  <ul class="staff__list">
+    <li class="staff__item">
+      <article class="staff-card">
+        <h3 class="staff-card__title">名前が入ります</h3>
+      </article>
+    </li>
+  </ul>
+</section>
+```
+
 ### `time` の表示差分運用
 
 - 同一記事カードなら、`datetime` と表示日付は一致させる。

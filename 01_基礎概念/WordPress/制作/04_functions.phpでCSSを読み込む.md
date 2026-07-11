@@ -103,60 +103,44 @@ button.addEventListener("click", 関数);
 
 基本的な使い分けはここに置く。
 
-スニペットが反応しない場合や、まとめて `php.json` に入れる場合は [WordPressスニペット運用](./開発環境/02_WordPressスニペット運用.md) を見る。
+スニペットが反応しない場合や、まとめて `wordpress.code-snippets` に入れる場合は [WordPressスニペット運用](./開発環境/02_WordPressスニペット運用.md) を見る。
 
-`functions.php` の先頭に `<?php` がまだない新規ファイル用。
+`functions.php` の先頭に `<?php` がまだない場合は、先に `php` スニペットで開始タグだけを出す。
 
-```json
-"WordPress enqueue styles with php tag": {
-  "prefix": "wpenqfull",
-  "body": [
-    "<?php",
-    "",
-    "// CSS読み込み用の関数を作る",
-    "function my_enqueue_styles() {",
-    "",
-    "  // ress.css を先に読み込む",
-    "  wp_enqueue_style('ress', '//unpkg.com/ress/dist/ress.min.css', array(), false, 'all');",
-    "",
-    "  // style.css を ress の後に読み込む",
-    "  wp_enqueue_style('style', get_stylesheet_uri(), array('ress'), false, 'all');",
-    "}",
-    "",
-    "// WordPressのCSS/JS読み込みタイミングで my_enqueue_styles を実行する",
-    "add_action('wp_enqueue_scripts', 'my_enqueue_styles');"
-  ],
-  "description": "WordPress enqueue CSS with PHP tag"
-}
+```php
+<?php
 ```
 
-すでに `<?php` があるファイルへ追記する用。
+CSS読み込み関数は、`functions.php` だけに出す。
 
 ```json
-"WordPress enqueue styles no php tag": {
-  "prefix": "wpenq",
+"WordPress enqueue styles": {
+  "scope": "php",
+  "include": "**/functions.php",
+  "prefix": "fnk",
   "body": [
     "// CSS読み込み用の関数を作る",
-    "function my_enqueue_styles() {",
+    "function ${1:my_enqueue_styles}() {",
     "",
-    "  // ress.css を先に読み込む",
-    "  wp_enqueue_style('ress', '//unpkg.com/ress/dist/ress.min.css', array(), false, 'all');",
+    "  // ${2:ress}.css を先に読み込む",
+    "  wp_enqueue_style('${2:ress}', '${3://unpkg.com/ress/dist/ress.min.css}', array(), false, 'all');",
     "",
-    "  // style.css を ress の後に読み込む",
-    "  wp_enqueue_style('style', get_stylesheet_uri(), array('ress'), false, 'all');",
+    "  // style.css を ${2:ress} の後に読み込む",
+    "  wp_enqueue_style('${4:style}', get_stylesheet_uri(), array('${2:ress}'), false, 'all');",
     "}",
     "",
-    "// WordPressのCSS/JS読み込みタイミングで my_enqueue_styles を実行する",
-    "add_action('wp_enqueue_scripts', 'my_enqueue_styles');"
+    "// WordPressのCSS/JS読み込みタイミングで ${1:my_enqueue_styles} を実行する",
+    "add_action('wp_enqueue_scripts', '${1:my_enqueue_styles}');",
+    "$0"
   ],
-  "description": "WordPress enqueue CSS without PHP tag"
+  "description": "WordPress functions.php CSS enqueue with comments"
 }
 ```
 
 おすすめ運用:
 
-- 新規 `functions.php` に最初から入れる: `wpenqfull`
-- すでに `<?php` があるファイルに追加する: `wpenq`
+- 新規 `functions.php`: `php` で `<?php` を出してから `fnk`
+- すでに `<?php` がある `functions.php`: `fnk`
 
 `functions.php` では、`<?php` はファイル先頭に1回だけでよい。
 
