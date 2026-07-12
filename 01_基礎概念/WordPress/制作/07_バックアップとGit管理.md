@@ -174,6 +174,6 @@ WordPress制作では、主に次を担当する。
 
 ## 関連
 
-- [ケース_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../02_ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)
+- [ケース_CodeJump WordPress初期構築・バックアップ・スニペット判断](../../../03_ケース検証/WordPress/01_ケース_CodeJump_WordPress初期構築・バックアップ・スニペット判断.md)
 - [テーマ作成手順](./01_テーマ作成手順.md)
 - [静的HTMLからWordPress化する流れ](./06_静的HTMLからWordPress化する流れ.md)

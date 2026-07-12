@@ -6,7 +6,7 @@
 
 - 基礎概念: `01_基礎概念`
 - 設計: `01_基礎概念/設計/CSS設計`
-- 検証元: `02_ケース検証`
+- 検証元: `03_ケース検証`
 
 ## このノートの目的
 
@@ -14,14 +14,44 @@
 - DOMの深さではなく、Block / Element / Modifier の責務で命名する
 - レイアウト責務やコンポーネント責務と混ざらない名前にする
 
-## BEMの基本
+## 基本の命名方針
 
-- Block: 部品のまとまり
-  - 例: `.contact-form`, `.faq`, `.card`
-- Element: Blockの内部要素
-  - 例: `.contact-form__field`, `.faq__question`
-- Modifier: 状態・差分
-  - 例: `.button--primary`, `.faq__item--open`
+クラス名はBEMを基本とする。
+
+```css
+.block {}
+.block__element {}
+.block--modifier {}
+```
+
+### Block
+
+独立した意味を持つまとまりに付ける。
+
+```html
+<section class="staff">
+  ...
+</section>
+```
+
+### Element
+
+Blockを構成する要素に付ける。
+
+```html
+<h2 class="staff__title">スタッフ紹介</h2>
+<ul class="staff__list">...</ul>
+```
+
+### Modifier
+
+BlockまたはElementの種類・状態の違いに使用する。
+
+```html
+<a class="button button--primary" href="#">
+  詳しく見る
+</a>
+```
 
 記号（`--` / `__`）そのものより、Block / Element / Modifier の責務を守ることを重視する。
 
@@ -40,29 +70,28 @@
 - ページ都合の余白調整をBlock本体へ直接埋め込むこと
 - IDセレクタやタグ連鎖で強引に勝たせること
 
-## 接頭辞の使い分け（FLOCSS寄り）
+## 接頭辞の使い分け
 
-共通部品を `c-` で扱う場合は、次の接頭辞で役割を分ける。
+接頭辞は最初から機械的に付けない。
 
 | 接頭辞 | 用途 | 例 |
 |---|---|---|
-| `l-` | ページ全体の骨組み、配置の器 | `l-header`, `l-main`, `l-footer`, `l-inner` |
+| `l-` | 当面はページ外枠と共通横幅だけ | `l-page`, `l-inner` |
 | `c-` | 複数箇所でそのまま再利用できる部品 | `c-logo`, `c-button`, `c-breadcrumb` |
-| `p-` | そのページや案件固有のまとまり | `p-hero`, `p-staff`, `p-staff-card` |
 | `u-` | 単一目的の補助クラス | `u-hidden-sp`, `u-text-center` |
 | `js-` | JavaScript取得用の目印 | `js-menu-button` |
 | `is-` / `has-` | 状態 | `is-open`, `is-active`, `has-error` |
 
-判断に迷ったら、最初から何でも `c-` に寄せない。
+通常のBlockは `.header`、`.staff`、`.staff-card` のように命名する。
 
-- 別ページへそのまま移しても使える: `c-`
-- そのページの文脈に強く依存する: `p-`
-- ヘッダー、フッター、インナーなどの大枠や配置: `l-`
+- `l-` は当面 `.l-page` と `.l-inner` に限定する
+- `c-` は、複数箇所で同じHTML構造・見た目・振る舞い・変更理由を共有すると確認できた場合に使用する
+- ページ固有という理由だけで `p-` は付けない
 - 表示切替や1プロパティ相当の補助: `u-`
 - JS取得専用で見た目を持たない: `js-`
 - 開閉、選択中、エラーなどの状態: `is-` / `has-`
 
-`c-` / `p-` の責務判断は、[コンポーネントと責務](./03_コンポーネントと責務.md) も参照する。
+接頭辞は分類を増やすためではなく、通常のBlockと異なる責務が確定したときだけ使う。共通化の判断は、[コンポーネントと責務](./03_コンポーネントと責務.md) も参照する。
 
 ## Blockを分ける判断
 
@@ -108,7 +137,7 @@ Blockを分けると、PCで横並び、SPで縦並び、別ページで再利�
 ```html
 <div class="blog-articles__newsletter">
   <div class="newsletter">
-    <div class="newsletter__inner">...</div>
+    <div class="newsletter__body">...</div>
   </div>
 </div>
 ```
@@ -120,11 +149,11 @@ Blockを分けると、PCで横並び、SPで縦並び、別ページで再利�
 
 ```html
 <div class="newsletter blog-articles__newsletter">
-  <div class="newsletter__inner">...</div>
+  <div class="newsletter__body">...</div>
 </div>
 ```
 
-`newsletter__inner` だけを単独で始める形は避ける。Block本体が不在になり、責務の追跡が難しくなる。
+`newsletter__body` だけを単独で始める形は避ける。Block本体が不在になり、責務の追跡が難しくなる。
 
 ## 同一役割の繰り返し要素
 
