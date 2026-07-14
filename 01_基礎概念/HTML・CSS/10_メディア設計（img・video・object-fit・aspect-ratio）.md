@@ -58,8 +58,8 @@
 
 1. そのまま見せる（比率維持）
    `height: auto` を使う。
-2. 枠に入れて見せる（比率固定）
-   親に `aspect-ratio`、子に `height: 100% + object-fit` を使う。
+2. 表示する比率をCSSで決める（比率固定）
+   画像だけで完結するなら画像自身に `aspect-ratio` を置く。文字や装飾も同じ領域へ重ねるなら、親に `aspect-ratio`、子に `height: 100% + object-fit` を使う。
 
 実装で迷ったら、先に「画像そのものを見せたいのか」「比率の箱へ入れたいのか」を分ける。
 ロゴ、電話画像、予約画像、文字入りバナーのように切れると困る素材は、枠へ押し込む前に `width` + `height: auto` で足りるかを見る。
@@ -72,7 +72,15 @@
   height: auto;
 }
 
-/* B: 枠に入れて見せる */
+/* B-1: 画像自身が比率の箱になる */
+.image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 375 / 400;
+  object-fit: cover;
+}
+
+/* B-2: 親が比率の箱になる */
 .frame {
   aspect-ratio: 329 / 259;
   overflow: hidden;
@@ -87,6 +95,13 @@
 }
 ```
 
+`height: 100%` は `aspect-ratio` と常にセットなのではない。
+
+- 画像自身に `aspect-ratio` がある: 画像要素自身の幅から高さが決まるため、`height: 100%` は不要
+- 親に `aspect-ratio` がある: 親が作った高さへ画像要素を合わせるため、画像に `height: 100%` が必要
+
+後者では、親の幅と `aspect-ratio` から親の高さが先に決まり、その確定した高さを基準に子画像の `height: 100%` が計算される。子の `height: 100%` が親の高さを作るわけではない。
+
 ## 外・箱・中身で分解する
 
 - 外: `grid/flex`（どこに置くか）
@@ -95,11 +110,22 @@
 
 この3つを混ぜないと、調整対象を誤りにくい。
 
-## `img`ではなく親に`aspect-ratio`を置く理由
+## 画像自身と親のどちらに`aspect-ratio`を置くか
 
-`aspect-ratio` を使う主目的は、画像そのものを変形することではなく、画像が入る「枠」の高さを先に確保すること。
+`aspect-ratio` は、指定した要素の幅と高さの比率を決める。画像自身にも親にも指定でき、どちらが正しいかではなく、どの要素をレイアウト上の枠として扱うかで選ぶ。
 
-そのため、カード画像やサムネイルのように比率をそろえたい場合は、親を伸び縮みする枠として扱い、その中に画像を入れる方が安定しやすい。
+画像1枚だけで完結する場合は、画像自身を比率の箱にしてよい。
+
+```css
+.hero__image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 375 / 400;
+  object-fit: cover;
+}
+```
+
+画像の上へ文字、ラベル、暗いオーバーレイ、ボタンなどを重ねる場合は、親を共通の枠にすると責務を分けやすい。
 
 ```css
 .card__image {
@@ -120,7 +146,7 @@
 - 親: レイアウト上の枠。幅に応じて高さを決める
 - `img`: 枠の中身。`object-fit` で収め方を決める
 
-`img` 自体に `width` / `height` の固定値や `aspect-ratio` を持たせすぎると、画像本来の比率、表示したい枠の比率、切り抜きの責任が混ざりやすい。
+親を枠にする場合、画像が `width: 100%; height: auto;` のままだと、画像要素の高さは画像自身の比率から決まり、親の高さと一致するとは限らない。`width: 100%; height: 100%` で画像要素の箱を親と同じ大きさにし、元画像データとの比率差を `object-fit` で処理する。
 
 自然な比率でそのまま見せたい画像は、基本形のままにする。
 
@@ -135,7 +161,68 @@ img {
 整理すると、次の2択で考える。
 
 - 画像の本来比率を守りたい: `img { max-width: 100%; height: auto; }`
-- 高さをそろえた枠に入れたい: 親に `aspect-ratio`、子に `object-fit`
+- 画像だけを指定比率で見せたい: 画像自身に `aspect-ratio` と `object-fit`
+- 画像・文字・装飾を同じ枠で管理したい: 親に `aspect-ratio`、子画像に `width: 100%; height: 100%; object-fit`
+
+## `<picture>`でPC/SP画像の比率が違う場合
+
+`<source>` が切り替える画像と、画面上に描画される `<img>` 要素は分けて考える。
+
+PC/SP画像をそれぞれ画像本来の比率で表示する場合は、選択される画像ごとの実寸をHTMLで伝え、表示幅をCSSで決める。
+
+```html
+<picture>
+  <source
+    media="(min-width: 768px)"
+    srcset="./img/mv-pc.jpg"
+    width="1920"
+    height="500"
+  >
+  <img
+    class="mv__image"
+    src="./img/mv-sp.jpg"
+    alt=""
+    width="375"
+    height="400"
+  >
+</picture>
+```
+
+```css
+.mv__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+```
+
+このHTMLの `1920` / `500` は「画面上で1920 × 500px表示する」という指定ではない。選択された画像の実寸と比率をブラウザへ伝える情報であり、実際の表示幅はCSSと親の幅で決まる。
+
+一方、PC/SPそれぞれで「デザイン上の枠比率」を固定したい場合は、CSSで比率を切り替える。この方式では `<source>` の `width` / `height` を表示比率の管理に使わない。
+
+```css
+.mv__media {
+  aspect-ratio: 375 / 400;
+  overflow: hidden;
+}
+
+.mv__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .mv__media {
+    aspect-ratio: 1920 / 500;
+  }
+}
+```
+
+ここで `375 / 400` は375 × 400pxへの固定ではない。たとえば枠の幅が300pxなら、高さは320pxになる。固定しているのは実寸ではなく比率である。
+
+同じ構図・同じ比率で解像度だけが違う画像は、PC/SP用の枠を分ける問題ではない。必要に応じて `srcset` の幅記述子と `sizes` を使い、ブラウザが適切な解像度を選べるようにする。
 
 ## `object-fit` / `aspect-ratio`
 
