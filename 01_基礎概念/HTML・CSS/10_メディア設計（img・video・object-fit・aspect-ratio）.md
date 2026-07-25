@@ -149,13 +149,19 @@ HTML寸法があっても、`width: 100%; height: auto;` が適用されれば�
 
 親を枠にする理由は、重ね要素だけではない。画像の読み込み失敗・非表示・差し替えに関係なくカードのメディア領域を保つ場合や、ローディング表示・スケルトン・クリック領域を同じ箱で管理する場合にも親を使う。
 
+```html
+<div class="card__media">
+  <img class="card__image" src="image.jpg" alt="">
+</div>
+```
+
 ```css
-.card__image {
+.card__media {
   aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 
-.card__image img {
+.card__image {
   display: block;
   width: 100%;
   height: 100%;
@@ -169,6 +175,50 @@ HTML寸法があっても、`width: 100%; height: auto;` が適用されれば�
 - `img`: 枠の中身。`object-fit` で収め方を決める
 
 親を枠にする場合、画像が `width: 100%; height: auto;` のままだと、画像要素の高さは画像自身の比率から決まり、親の高さと一致するとは限らない。`width: 100%; height: 100%` で画像要素の箱を親と同じ大きさにし、元画像データとの比率差を `object-fit` で処理する。
+
+### 画像ラッパーは必要な時だけ置く
+
+画像だから必ず `div` で囲むわけではない。画像自身へ必要な幅、比率、角丸を指定でき、それだけで表示が完結するなら `img` を直接置いてよい。
+
+```html
+<article class="staff-card">
+  <img
+    class="staff-card__image"
+    src="staff.jpg"
+    alt=""
+    width="220"
+    height="220"
+  >
+
+  <div class="staff-card__body">...</div>
+</article>
+```
+
+次のように、画像とは別の「メディア領域」を管理したい場合は `.staff-card__media` で囲む。
+
+- 一定の縦横比や円形の枠を保つ
+- `overflow: hidden` で切り抜く
+- ローディング表示やバッジを重ねる
+- 画像がなくても領域を確保する
+- 画像の配置と、画像データの収め方を別々に変更する
+
+```css
+.staff-card__media {
+  width: 220px;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.staff-card__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+```
+
+`article` はカード1件の意味を表す箱、`__media` は画像表示を制御する汎用の箱であり、追加する理由は別である。
 
 自然な比率でそのまま見せたい画像は、基本形のままにする。
 
@@ -406,6 +456,24 @@ PC/SPで同じSVGロゴを使い、縦横比も同じなら、比率はSVG自身
 同一比率のロゴでは、`aspect-ratio` を重複して書くより、素材の固有比率 + `height: auto` を優先する。
 ただし、PC/SPで別比率の素材を使う場合や、意図的に枠へ収める場合は、別画像・親の `aspect-ratio`・`object-fit` の責務を分けて考える。
 
+SVGの `viewBox` は、SVG内部のどの座標範囲を表示領域へ割り当てるかを示す。CSS上の表示幅・表示高さそのものではないため、カンプ上の寸法へ合わせる目的だけで変更しない。
+
+ロゴの表示幅を決めて `height: auto` で自然比率を使えるなら、`object-fit` は不要である。固定幅・固定高の箱へ全体を収める必要がある場合は `contain` を検討できるが、ロゴを切る `cover` は避ける。
+
+素材比率から計算した高さとカンプの測定値がわずかに違う場合は、次の順で確認する。
+
+1. カンプ測定値の小数丸め
+2. SVG内部の透明余白と、見えている図形の境界
+3. 素材の `viewBox` と縦横比
+4. 厳密な指定寸法が要件なら、素材データとカンプのどちらを正とするか
+
+実装側でロゴを変形・切り抜きして差を隠すのではなく、厳密な一致が必要な場合は素材またはデザイン側の修正対象として確認する。
+
+仕様確認先:
+
+- [SVG 2 - `viewBox` attribute](https://svgwg.org/svg2-draft/coords.html#ViewBoxAttribute)
+- [CSS Images - `object-fit`](https://drafts.csswg.org/css-images-3/#the-object-fit)
+
 ### `object-position` の表現と責務
 
 - 意図を共有する時は `left center` のような語彙指定が読みやすい。
@@ -549,6 +617,16 @@ PC/SPで同じSVGロゴを使い、縦横比も同じなら、比率はSVG自身
 ## 2倍書き出し画像の扱い
 
 2倍書き出しは、表示枠ではなく解像度・画質の問題である。
+
+画像が「基準表示寸法に対する正確な2倍書き出し」であると確認できる場合は、次の換算をHTML寸法の目安にできる。
+
+```txt
+画像ファイルのピクセル寸法 ÷ 書き出し倍率 = 基準表示寸法
+```
+
+ただし、常にファイル寸法を機械的に2で割るわけではない。カンプ上の表示寸法が分かっている場合は、その表示意図と画像比率を先に確認する。
+
+たとえば画像ファイルが `400 × 400px`、カンプ上の基準表示が `210 × 210px` なら、正確な2倍ではなく約1.9倍である。この場合、基準表示を210pxとするならHTMLは `width="210" height="210"` とし、最終的な可変表示をCSSで決める。
 
 たとえば表示基準が `800 × 450px` で、画像データを `1600 × 900px` で書き出しても、どちらも同じ `16 / 9` である。
 

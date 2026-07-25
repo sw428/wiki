@@ -98,6 +98,36 @@ JS
 `button` は、最初から「ボタン」という意味と操作機能を持っている。
 見た目はCSSで整えればよい。
 
+## リンクとボタンは押した結果で分ける
+
+見た目がボタン型でも、押した結果が別ページや別URLへの移動なら `a` を使う。
+
+```html
+<a class="staff__more-link" href="./staff/">
+  スタッフ一覧を見る
+  <span aria-hidden="true">→</span>
+</a>
+```
+
+`a` や `span` の既定表示が `inline` でも、必ず `p` の中へ置くという意味ではない。閉じた `p` の後ろへ、兄弟要素として `a` を置ける。表示上の改行との関係は [インラインと行の仕組み](./05_インラインと行の仕組み.md#ブロックの後ろにインライン要素を書いた時) で扱う。
+
+この要素は、**ボタンのような見た目をしたリンク**である。背景色、角丸、余白などはCSSで付けられるため、外見を理由に `button` へ変えない。
+
+| 押した結果 | 要素 |
+|---|---|
+| 別ページ、別URL、同一ページ内の位置へ移動する | `a` |
+| フォームを送信する | `button type="submit"` |
+| メニューの開閉、表示切替、ダイアログ表示などを実行する | `button type="button"` |
+
+`a` ならリンク先URLを持てるため、新しいタブで開く、リンク先をコピーするなど、リンクとして期待される操作も保てる。ページ移動をJavaScriptだけで `button` に実装しない。
+
+矢印がリンク名へ意味を足さない装飾なら、`aria-hidden="true"` で読み上げ対象から外してよい。単純な矢印なら疑似要素で表示する方法もある。
+
+仕様確認先:
+
+- [HTML Standard - `a` element](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element)
+- [HTML Standard - `button` element](https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element)
+
 ## DOM / CSSOM / レンダーツリー / AOM の役割
 
 これまでの整理では、画面表示までの流れを次のように見ていた。
@@ -220,6 +250,12 @@ header
 -> その範囲の導入・見出し領域
 ```
 
+ページ全体の `header` と、`article` や `section` 内の `header` は同じ文書内に共存できる。`header` はページに1つだけという要素ではない。
+
+一方、見出しと説明文をCSS上まとめたいだけで、導入領域としての意味を持たせる必要がない場合は `div` でよい。`div` を選ぶ理由は「ページの `header` を1つに制限するため」ではなく、意味を追加しない汎用箱で足りるためである。
+
+仕様確認先: [HTML Standard - `header` element](https://html.spec.whatwg.org/multipage/sections.html#the-header-element)
+
 ### `footer` も場所で意味が変わる
 
 `footer` も、いつでもサイト全体のフッターという意味ではない。
@@ -311,6 +347,8 @@ footer
 
 `article` は、単体で切り出しても意味が通る内容に使う。
 
+`article` を使う理由は、画像と本文を横並びにするためではない。カード1件が、見出し、日付、概要、詳細リンクなどを持ち、単独の記事・コンテンツとして成立するために使う。配置だけが目的なら `div` や `li` のクラスでもCSSは適用できる。
+
 例:
 
 - ブログ記事
@@ -326,6 +364,18 @@ footer
 
 通る
 -> article候補
+```
+
+カードの見た目だけを理由に、すべてを `article` にしない。
+
+```html
+<!-- 独立した記事として読める -->
+<li class="staff-list__item">
+  <article class="staff-card">...</article>
+</li>
+
+<!-- 一覧項目ではあるが、独立した記事ではない -->
+<li class="staff-card">...</li>
 ```
 
 ### `section` は見出しを持つ意味の区切り
@@ -444,6 +494,7 @@ roleで後付けするより、
 - [`img`](../../04_参照元/置換要素.md) はフレージングコンテンツなので、`p` 内に置くこと自体は仕様上可能。
 - ただし「段落本文の一部でない画像」を `p` に入れると意味が曖昧になりやすい。
 - 独立した図版として扱うなら `figure` + `figcaption` が適切。
+- 下層ページでサイトロゴを `h1` から外しても、ラッパーが自動的に `p` になるわけではない。段落なら `p`、配置・グルーピングなら `div`、ラッパーが不要ならリンクを直接置く形を検討する。
 
 ```html
 <figure>
@@ -575,13 +626,21 @@ JSで開閉状態を変える場合は、見た目のクラスだけでなく、
 - 見出しを持たないメインビジュアルは、無理に `section` にせず `div` でよい。
 - スタッフ一覧は複数人の集まりなので `ul > li` にする。
 - 1人分のカードが独立して読めるなら、`li` の中を `article` にする。
-- パンくずは階層順なので `nav` + `ol` にする。
+- `ul` は一覧全体、`li` は一覧の1項目、`article` は独立して読める1件分の内容、と役割を分ける。
+- `ul` の直下へ `article` を置かず、一覧項目を示す `li` の中へ置く。
+- 独立した記事ではなく、見た目だけのカードなら `li` 内は `div` でよい。
+- パンくずは、上位ページから現在地へ進む階層順なので `nav` + `ol` にする。
+- 上位ページは移動できるリンクにし、現在地は最後の1項目として置く。
+- `aria-current="page"` で現在地を明示する場合は、その項目だけに付ける。
+- 区切り記号は視覚上の補助であり、階層の意味はリスト構造とリンク関係で表す。
+- 区切りをCSSの文字生成で出す場合は、支援技術で装飾記号が余計に読まれないか確認する。問題があればCSSの線・背景か、`aria-hidden="true"` の実要素へ切り替える。
 
 ```html
 <nav class="breadcrumb" aria-label="パンくずリスト">
   <ol class="breadcrumb__list">
     <li class="breadcrumb__item"><a href="/">HOME</a></li>
-    <li class="breadcrumb__item" aria-current="page">スタッフ紹介</li>
+    <li class="breadcrumb__item"><a href="/section/">親ページ</a></li>
+    <li class="breadcrumb__item" aria-current="page">現在のページ</li>
   </ol>
 </nav>
 
@@ -602,9 +661,16 @@ JSで開閉状態を変える場合は、見た目のクラスだけでなく、
 </section>
 ```
 
+仕様確認先:
+
+- [HTML Standard - `ul` element](https://html.spec.whatwg.org/multipage/grouping-content.html#the-ul-element)
+- [HTML Standard - `article` element](https://html.spec.whatwg.org/multipage/sections.html#the-article-element)
+- [WAI-ARIA APG - Breadcrumb Pattern](https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/)
+
 ### `time` の表示差分運用
 
 - 同一記事カードなら、`datetime` と表示日付は一致させる。
+- `datetime` には `YYYY-MM-DD` などの有効な機械可読値を入れる。`20XX-03-01` のような仮値は実コードへ残さない。
 - SP/PCで文字を切り替える場合も、日付データ自体は同じ値を使う。
 - カンプ差分で日付が違う場合は、実装コメントを残して正規データへ統一する。
 - どうしても別日付を出し分ける仕様なら `time` 要素自体を分けるが、同一記事での運用は原則避ける。
@@ -635,6 +701,35 @@ JSで開閉状態を変える場合は、見た目のクラスだけでなく、
 補足:
 - `section` を使うなら、基本は見出しをセットで持たせる。
 - `address` はブラウザ初期で斜体になることがあるため、`font-style: normal;` で戻す。
+
+### `address` 内の `br` と `p`
+
+`address` は、最も近い `article` または `body` に対する連絡先情報であることを示す要素であり、住所の各行を自動で意味分けする要素ではない。
+
+| 要素 | 意味 | 住所内での使いどころ |
+|---|---|---|
+| `br` | 同じ内容の中の改行 | 1つの所在地を、郵便番号・住所・建物名などで改行する |
+| `p` | 1つの段落 | 内容として別の段落へ分ける理由がある |
+
+`br` は、住所や詩など、改行自体が内容の一部である場合に使う。カンプ上の幅で文章が折り返されているだけなら、HTMLへ `br` を固定せず、通常の折り返しとCSS上の幅に任せる。
+
+```html
+<address class="contact-info__address">
+  〒000-0000<br>
+  東京都○○区○○0-0-0<br>
+  ○○ビル3階
+</address>
+```
+
+見た目を1行ずつにしたいだけなら、各行を機械的に `p` へ分けない。反対に、独立した文章や段落として扱うなら `p` を使う。`p` の既定マージンは表示上の初期値なので、要素選択の理由にはせずCSSで調整する。
+
+また、郵便上の住所なら常に `address` になるわけではない。ページ全体または記事の連絡先である場合に使い、単に本文中で所在地を示すだけなら文脈に合う通常の段落などを選ぶ。
+
+仕様確認先:
+
+- [HTML Standard - `address` element](https://html.spec.whatwg.org/multipage/sections.html#the-address-element)
+- [HTML Standard - `br` element](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-br-element)
+- [HTML Standard - `p` element](https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element)
 
 ## クラス名はDOMの深さではなく役割で決める
 
