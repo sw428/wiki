@@ -375,6 +375,25 @@
 }
 ```
 
+### 背景画像をリンク面へ置く場合
+
+画像が装飾で、リンクの意味をHTMLの文字で伝えられるなら、`a` 自身を面にして背景画像を置ける。リンク面全体がクリック範囲になるため、画像の上へ別のリンクを絶対配置する必要はない。
+
+```html
+<a class="image-link" href="#">リンク名</a>
+```
+
+```css
+.image-link {
+  display: grid;
+  place-items: center;
+  min-height: var(--link-height);
+  background: url("../img/link-bg.jpg") center / cover no-repeat;
+}
+```
+
+`background-image` は要素の面積を作らないので、リンク側の `min-height`、`aspect-ratio`、`padding` などで押せる面を作る。画像自体が情報を持ち、HTMLの文字だけでは同じ内容を伝えられない場合は、背景ではなく `<img>` と代替テキストを使う。詳しい区別は [画像と背景](./06_画像と背景.md) を参照する。
+
 ### 判断基準
 
 - 写真バナー: `aspect-ratio` + `object-fit: cover` で枠を固定しやすい。

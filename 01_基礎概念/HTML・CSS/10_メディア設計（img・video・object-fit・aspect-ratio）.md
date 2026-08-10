@@ -220,6 +220,53 @@ HTML寸法があっても、`width: 100%; height: auto;` が適用されれば�
 
 `article` はカード1件の意味を表す箱、`__media` は画像表示を制御する汎用の箱であり、追加する理由は別である。
 
+### 円形画像は外周・切り抜き枠・画像データを分ける
+
+背景色のリングがある円形アバターでは、1つの `img` だけで考えず、次の3層を分ける。
+
+| 層 | 担当するもの |
+|---|---|
+| 外側のメディア領域 | 外周寸法、背景色、外側の円 |
+| 内側のフレーム | 画像を見せる範囲、円形のクリップ |
+| 画像 | 元画像の収め方、見える位置、必要時の拡大率 |
+
+```css
+.avatar__media {
+  --avatar-size: 12rem;
+  --ring-width: 0.5rem;
+
+  width: var(--avatar-size);
+  aspect-ratio: 1;
+  padding: var(--ring-width);
+  border-radius: 50%;
+  background: #f1f1f1;
+  box-sizing: border-box;
+}
+
+.avatar__frame {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.avatar__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+```
+
+borderがないこの例では、内側フレームの直径は `外周の使用サイズ - 左右のpadding` になる。`box-sizing: border-box` が外周寸法の中にpaddingを含めているためで、`content-box` のままならpadding分だけ外周が大きくなる。外周が合っていて画像の見え方だけが違う場合、外側の幅やpaddingを一緒に動かさない。
+
+- 見える位置だけを変える: `object-position`
+- 画像をさらに拡大する: 内側フレームでclipしたうえで、画像側の `transform: scale(...)`
+- 外周の直径を変える: 外側のメディア領域の `width` / `aspect-ratio`
+
+`scale()` はレイアウトで確定した外周寸法を作り直さず、描画結果を変える。拡大した画像を内側の円で止めるには、フレーム側の `overflow: hidden` が必要になる。
+
 自然な比率でそのまま見せたい画像は、基本形のままにする。
 
 ```css
