@@ -59,8 +59,8 @@ font box / [行ボックス](../../04_参照元/行ボックス.md) / border box
 - ボックス / `display` / `box-sizing` / `width`・`height` の `%` 基準は [04_ボックスとdisplay](./04_ボックスとdisplay.md)
 - [インラインコンテンツ](../../04_参照元/インラインコンテンツ.md) / [行ボックス](../../04_参照元/行ボックス.md) / [ベースライン](../../04_参照元/ベースライン.md) / `line-height` の継承は [05_インラインと行の仕組み](./05_インラインと行の仕組み.md)
 - 背景色/背景画像/`background-size`/`mask-image` は [06_画像と背景](./06_画像と背景.md)
-- Grid/Flex/Table/Float は [07_レイアウト](./07_レイアウト.md)
-- Reflow/CLS/Scroll Anchoring は [08_ブラウザ挙動とズレ](./08_ブラウザ挙動とズレ.md)
+- Grid/Flex/Table/Float、ブレークポイントの成立条件は [07_レイアウト](./07_レイアウト.md)
+- Reflow/CLS/Scroll Anchoring、DevToolsでの観測と変更追跡は [08_ブラウザ挙動とズレ](./08_ブラウザ挙動とズレ.md)
 - セマンティクス / AOM / ランドマーク / セクショニング / `role` の判断は [09_HTMLの意味と構造](./09_HTMLの意味と構造.md)
 - `img` サイズ指定とCLS対策は [10_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md)
 - 表示切替（`sp-only`/`pc-only` など）は [11_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md)
@@ -97,8 +97,8 @@ font box / [行ボックス](../../04_参照元/行ボックス.md) / border box
 - [04_ボックスとdisplay](./04_ボックスとdisplay.md): 表示ボックスの成立条件、サイズ指定の参照先と継承の区別
 - [05_インラインと行の仕組み](./05_インラインと行の仕組み.md): 行内レイアウトと `line-height` の基礎
 - [06_画像と背景](./06_画像と背景.md): 背景描画、置換要素、`mask-image` の区別
-- [07_レイアウト](./07_レイアウト.md): Grid/Flex/Table/Floatの使い分け
-- [08_ブラウザ挙動とズレ](./08_ブラウザ挙動とズレ.md): レンダリングとズレ原因
+- [07_レイアウト](./07_レイアウト.md): Grid/Flex/Table/Floatの使い分けと、配置が成立する幅からのブレークポイント判断
+- [08_ブラウザ挙動とズレ](./08_ブラウザ挙動とズレ.md): レンダリングとズレ原因、DevToolsでの観測と変更追跡
 - [09_HTMLの意味と構造](./09_HTMLの意味と構造.md): 意味構造、セマンティックHTML、AOM、ランドマーク、セクショニング、見出し階層、`role` の判断
 - [10_メディア設計（img・video・object-fit・aspect-ratio）](./10_メディア設計（img・video・object-fit・aspect-ratio）.md): メディア表示の安定化
 - [11_表示制御（sp-only／pc-only／revert設計）](./11_表示制御（sp-only／pc-only／revert設計）.md): デバイス別表示ルール
