@@ -825,6 +825,26 @@ JSで開閉状態を変える場合は、見た目のクラスだけでなく、
 - カンプ上で各項目の均等幅が明確な場合は、幅指定を追加する。
 - 区切り線、ナビ全体の余白、リンクの操作範囲を別責務として分ける。
 
+## バナー一覧
+
+複数の同種バナーは `ul > li > a` で構成する。
+
+```html
+<ul class="banner-list">
+  <li class="banner-list__item">
+    <a class="banner-list__link" href="">
+      <img class="banner-list__image" src="" alt="">
+      <span class="banner-list__text">リンク先を表す文言</span>
+    </a>
+  </li>
+</ul>
+```
+
+- バナー全体を `a` にする。
+- 画像と同等の内容をテキストで伝えているなら `alt=""` にする。
+- 画像にしかない情報があるなら、`alt` または表示テキストで補う。
+- `a` の中に別の `a` や `button` を入れない。
+
 ## `footer` の使い分け
 
 - ページ全体の締め情報（著作権、共通リンク、全体連絡先）はグローバル `footer` に置く。

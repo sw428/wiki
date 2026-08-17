@@ -713,6 +713,22 @@ grid-template-columns: repeat(2, minmax(0, 1fr));
 
 短い見出しやラベルは、`width: fit-content` で内容に近い幅へ縮めてから `margin-inline: auto` を使うと意図を表しやすい。一方、長い説明文は折り返し位置も設計対象になるため、`max-width` で行長を決める方が扱いやすい場合がある。
 
+今回の `.staff__description` のように、文章の箱を中央へ置き、箱の中の文字は左揃えにするなら責務を分ける。
+
+```css
+.staff__description {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: left;
+  white-space: normal;
+}
+```
+
+- `max-width`: 文章の行長を止める。
+- `margin-inline: auto`: 文章の箱を親の中央へ置く。
+- `text-align: left`: 箱の中の文字を左へ揃える。
+- `white-space: normal`: 画面幅に応じた自然な折り返しを許可する。
+
 ## ケース20_DevTools内の試作変更をChangesで確認する
 
 Stylesで余白や幅を何度も試した後は、ChangesパネルでDevTools内の変更をまとめて確認する。
@@ -744,10 +760,90 @@ viewportが `1024px` なら内容幅は約 `964px` になり、カード3枚を�
 
 今回は中間レイアウトを作らず、SPと3列PCの2段階にするなら、`@media (min-width: 1024px)` の1本へ整理する方針は妥当。ただし、採用前に `1023px`、`1024px`、カンプ幅までの中間値で、カード、`gap`、文字の折り返しが崩れないか確認する。
 
+## ケース22_バナー一覧の構造と重ね文字の中央寄せ
+
+複数の同種バナーは、一覧・項目・リンク面を分ける。
+
+```html
+<ul class="banner-list">
+  <li class="banner-list__item">
+    <a class="banner-list__link" href="">
+      <img class="banner-list__image" src="" alt="">
+      <span class="banner-list__text">リンク先を表す文言</span>
+    </a>
+  </li>
+</ul>
+```
+
+- バナー全体を `a` にする。
+- 画像と同等の内容をテキストで伝えているなら `alt=""` にする。
+- 画像にしかない情報があるなら、`alt` または表示テキストで補う。
+- `a` の中に別の `a` や `button` を入れない。
+
+文字を画像へ重ねる時、次の短い形でも中央へ置ける。
+
+```css
+.banner-list__link {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-list__text {
+  position: absolute;
+}
+```
+
+絶対配置された文字はflex itemではない。ただし、両側のinsetが `auto` の軸では、Flexコンテナの文脈を使ってstatic positionが計算される。このため `justify-content` と `align-items` が中央位置に関係する。
+
+この書き方は仕様上正しく、今回の用途で使ってよい。一方、重ねる範囲をコード上で明示したい場合は次の形も選べる。
+
+```css
+.banner-list__link {
+  position: relative;
+  display: inline-block;
+}
+
+.banner-list__text {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
+```
+
+短いFlex版はauto insetとstatic positionを利用する。`inset: 0` 版は「親全面へ重ね、その箱の中で中央」を明示する。正誤ではなく、変更時の読みやすさとチームの定石で選ぶ。`left: 0` などを指定した軸で中央位置が変わるのは、詳細度の競争ではなく、位置計算へ具体的な座標条件が入るためである。
+
+## ケース23_最大幅時の左右290pxを内側幅として扱う
+
+ケース21で確認したPCカンプ幅1600pxに対し、左右290pxを空けるなら、中身幅は1020pxになる。
+
+```txt
+1600px - 290px × 2 = 1020px
+```
+
+この場合、290pxを固定 `padding-inline` にせず、共通の中身幅を `.l-inner` で止める。
+
+```css
+.l-inner {
+  width: min(calc(100% - 40px), 1020px);
+  margin-inline: auto;
+}
+```
+
+- 1600pxでは、左右290pxが結果として残る。
+- 狭い画面では、中身が縮みながら左右20pxを残す。
+- 最大幅で止めるだけなら `clamp()` は不要。
+- ページ全体も1600pxで止める要件がある場合だけ、`.l-page` を別に検討する。
+
+貼り付けログの「この順番」が参照する見た目は本文に含まれていないため、項目順自体は確定しない。通常は意味が通る順にHTMLを置き、PC/SPで視覚順を変える必要がある場合だけ、参照図と読み順を確認して `order` や配置領域を検討する。
+
 ## 一般化した反映先
 
 - [HTMLの意味と構造](../../../01_基礎概念/HTML・CSS/09_HTMLの意味と構造.md)
   - `header` の複数利用、ロゴのラッパー、`br`、`time[datetime]`、リンクとボタン、パンくずの現在地の判断を補足。
+  - バナー一覧を `ul > li > a` で組み、リンク名と画像の `alt` を重複させない判断を補足。
 - [インラインと行の仕組み](../../../01_基礎概念/HTML・CSS/05_インラインと行の仕組み.md)
   - ブロックボックスの後ろにある行内要素の配置と、HTML上の親子・兄弟関係を分離して整理。
   - HTMLの空白処理、疑似要素の生成順、Flexでの匿名flex item、`nowrap` の役割を分離。
@@ -762,15 +858,18 @@ viewportが `1024px` なら内容幅は約 `964px` になり、カード3枚を�
 - [メディア設計](../../../01_基礎概念/HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md)
   - 画像ラッパーを置く条件と、メディア領域・画像本体の責務分離を補足。
   - 円形画像の外周、内側の切り抜き枠、画像データの位置・倍率を分ける確認順を補足。
+  - auto inset時のstatic positionとFlex文脈、明示的な `inset: 0` との可読性差を補足。
 - [ボックスとdisplay](../../../01_基礎概念/HTML・CSS/04_ボックスとdisplay.md)
   - 通常フローのブロックの幅が、包含ブロック内の利用可能幅から計算される既存原理と照合。
 - [LLMとGPT活用](../../../01_基礎概念/chatgpt/01_LLMとGPT活用（事実に近づく対話手順）.md)
   - AI初稿を比較・修正・説明へ使い、練習対象を1回ごとに絞る流れを補足。
 - [レイアウトと余白](../../../01_基礎概念/設計/CSS設計/04_レイアウトと余白.md)
   - `.l-page` を置く条件、`.l-inner` と全幅領域の分離、余白が箱の内側か外側かで担当を決める判断を反映。
+  - 最大幅時の左右290pxを固定paddingではなく、中身の最大幅と中央寄せの結果として扱う判断を反映。
 - [レイアウト](../../../01_基礎概念/HTML・CSS/07_レイアウト.md)
   - 固定トラックと可変トラックを分け、親責任を「常に `1fr` を使うこと」と混同しない判断を補足。
   - カンプ幅ではなく、列幅・`gap`・左右余白が成立する最小幅からブレークポイントを決める判断を補足。
+  - 大きな固定左右paddingを、中身の最大幅とauto marginへ分解する判断を補足。
 - [画像と背景](../../../01_基礎概念/HTML・CSS/06_画像と背景.md)
   - 意味をHTMLの文字で持つリンクでは、装飾画像をリンク面の背景にできる既存原理と照合。
 - [デザインパターンとCSS固定判断](../../../01_基礎概念/HTML・CSS/13_デザインパターンとCSS固定判断.md)
@@ -780,7 +879,7 @@ viewportが `1024px` なら内容幅は約 `964px` になり、カード3枚を�
 
 - [G-002 AI初稿を使う焦点別フロントエンド学習](../../../02_一般化候補/一般化候補一覧.md#g-002)
 
-ケース15〜21は、既存のメディア設計、画像と背景、Grid、行ボックス、CSS Transforms、auto margin、レスポンシブ設計、Chrome DevToolsの仕組みで説明できるため、新しい設計方針の候補IDは追加しない。
+ケース15〜23は、既存のメディア設計、画像と背景、Grid、行ボックス、CSS Transforms、auto margin、レスポンシブ設計、HTML構造、絶対配置の仕組みで説明できるため、新しい設計方針の候補IDは追加しない。
 
 ## 関連ケース
 

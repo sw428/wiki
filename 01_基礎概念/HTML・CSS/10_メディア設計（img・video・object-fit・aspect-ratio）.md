@@ -661,6 +661,54 @@ SVGの `viewBox` は、SVG内部のどの座標範囲を表示領域へ割り当
 絶対配置のテキストは親の高さを作らない。
 そのため、親の高さを作る画像や比率枠と、上に重ねる要素の責務を混ぜない。
 
+### insetを省略してもFlex中央寄せになる場合
+
+次の書き方でも、文字は中央へ来る。
+
+```css
+.banner-list__link {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-list__text {
+  position: absolute;
+}
+```
+
+これは偶然の挙動ではない。ただし、`.banner-list__text` が通常のflex itemとして配置されているわけでもない。
+
+1. `position: absolute` により、文字要素は通常フローとFlexレイアウトから外れる。
+2. その軸の両側のinsetが `auto` のままなら、ブラウザはstatic-position rectangleを使って仮の位置を求める。
+3. Flexコンテナ直下の絶対配置要素では、主軸の仮想位置に `justify-content` が関係する。
+4. 交差軸では、static positionを求める時の `align-self: auto` が親の `align-items` を参照するため、`align-items: center` が関係する。
+
+したがって、この要素は「flex item」ではなく、「Flexコンテナの絶対配置された子ボックス」と捉える。
+
+```css
+.banner-list__text {
+  position: absolute;
+  left: 0;
+}
+```
+
+のように片側のinsetを指定すると、その軸は `left: 0` という座標条件で決まる。これは `left` の詳細度が `justify-content` より高いというカスケード上の競争ではなく、位置計算へ具体的な条件が追加されたためである。
+
+| 書き方 | 長所 | 注意点 |
+|---|---|---|
+| 親をFlex中央寄せ、子は `absolute` のみ | 短く、仕様に沿って中央へ置ける | auto insetとstatic positionを利用するため、意図を読み取りにくい場合がある |
+| 子を `inset: 0`、子の中をGrid中央寄せ | 「親全面へ重ね、その中で中央」がコードに現れる | 指定は数行増える |
+
+共有コードでは、このノートの基本形である `inset: 0` + `place-items: center` を優先すると、位置指定を後から追加した時の影響と重ねる範囲を読み取りやすい。短いFlex版を使う場合も仕様上の誤りではなく、auto insetを利用していることを説明できればよい。
+
+仕様確認先:
+
+- [CSS Flexible Box Layout Module Level 1 - Absolutely-Positioned Flex Children](https://www.w3.org/TR/css-flexbox-1/#abspos-items)
+- [CSS Box Alignment Module Level 3 - align-self](https://drafts.csswg.org/css-align-3/#align-self-property)
+- [CSS Positioned Layout Module Level 3 - static position](https://drafts.csswg.org/css-position-3/#staticpos-rect)
+
 ## 2倍書き出し画像の扱い
 
 2倍書き出しは、表示枠ではなく解像度・画質の問題である。
