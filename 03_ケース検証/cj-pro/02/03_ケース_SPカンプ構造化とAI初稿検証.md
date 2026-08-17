@@ -119,6 +119,8 @@ AI初稿には、ページ構造を考える材料として使える部分と、
 | 氏名 | カードの見出し | `.staff-card__name` | カードの内容を識別する見出し |
 | 補助表示 | カード内の状態・補足 | `.staff-card__badge` | 現時点では独立Blockにする必要がない |
 
+同じページ内で複数回並ぶことは一覧の反復であり、それだけでは共通コンポーネントの根拠にならない。今回は `.staff-card` とし、複数ページで同じ構造・見た目・変更理由を共有すると確認できた時に `.c-staff-card` への昇格を検討する。
+
 ### 一覧・項目・記事を3層で考える
 
 スタッフのインタビュー記事一覧なら、一覧の1項目である `li` の中に、独立した内容である `article` を置く。
@@ -462,7 +464,11 @@ staff-card__body
 
 パンくずの右に残る広い空間は、短い内容を引いた残りであり、カンプ上の見た目だけを根拠に固定の `margin-right` として入れない。
 
-メインビジュアルは画面幅いっぱいにするため、`.l-inner` の外へ置く。SPは枠比率、PCは高さ500px固定という今回の条件をCSSへ分ける。
+メインビジュアルは画面幅いっぱいにするため、`.l-inner` の外へ置く。
+
+幅375pxのカンプ上で `375 × 400` になっているだけでは、SPの高さを常に400pxへ固定する意図か、`375 / 400` の比率で伸縮させる意図かは確定できない。基準幅では両方が同じ結果になるためである。
+
+今回はMVを画像そのものではなく、SPで高さ400px、PCで高さ500pxの表示領域として扱い、多少の切り抜きを許容する案を暫定採用する。
 
 ```html
 <main>
@@ -492,7 +498,7 @@ staff-card__body
 .mv__media {
   display: block;
   width: 100%;
-  aspect-ratio: 375 / 400;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -506,12 +512,13 @@ staff-card__body
 @media (min-width: 768px) {
   .mv__media {
     height: 500px;
-    aspect-ratio: auto;
   }
 }
 ```
 
-この条件では、PCカンプの幅をそのまま固定 `width` にしたり、固定高さと重複する `aspect-ratio` を追加したりしない。画像と後続見出しの距離は、画像内部ではなく、後続セクションまたは配置文脈で管理する。
+`picture` は画面条件に応じて画像候補を切り替えるが、表示領域を固定高にするか比率で伸縮させるかまでは決めない。固定高では画面幅によって `cover` の切り抜き位置が変わる。反対に構図維持を優先するなら、SP側を `aspect-ratio: 375 / 400` へ切り替える。
+
+この条件では、PCカンプの幅をそのまま固定 `width` にしたり、固定高さと重複する `aspect-ratio` を追加したりしない。実装後は320pxや414pxなど基準外の幅でも確認し、可能なら別幅のカンプまたはデザイナーの意図で固定高・比率を確定する。画像と後続見出しの距離は、画像内部ではなく、後続セクションまたは配置文脈で管理する。
 
 ## ケース15_円形画像は外周・内側の画像枠・画像データを分ける
 
@@ -524,8 +531,22 @@ staff-card__body
           └─ 元画像の表示範囲
 ```
 
+円形に見せるために画像を作り直したり、PNGをSVGへ変換したりする必要はない。支給されたPNGまたはSVGを `img` で置き、円形の外周と切り抜きをCSSで作る。
+
+`NEW`は人物画像へ含めず、意味を持つテキストとして画像枠の兄弟に置く。画像だけを内側のフレームで切り抜けば、バッジまで `overflow: hidden` で欠けるのを避けられる。
+
+```html
+<div class="staff-card__media">
+  <div class="staff-card__frame">
+    <img class="staff-card__image" src="" alt="">
+  </div>
+  <span class="staff-card__badge">NEW</span>
+</div>
+```
+
 ```css
-.c-staff-card__media {
+.staff-card__media {
+  position: relative;
   width: 210px;
   aspect-ratio: 1;
   padding: 10px;
@@ -534,14 +555,14 @@ staff-card__body
   box-sizing: border-box;
 }
 
-.c-staff-card__frame {
+.staff-card__frame {
   width: 100%;
   height: 100%;
   overflow: hidden;
   border-radius: 50%;
 }
 
-.c-staff-card__image {
+.staff-card__image {
   display: block;
   width: 100%;
   height: 100%;
@@ -549,17 +570,24 @@ staff-card__body
   object-position: center;
   transform: scale(1.1);
 }
+
+.staff-card__badge {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
 ```
 
-- `.c-staff-card__media`: 外周 `210px` と背景色のリングを担当する。
-- `.c-staff-card__frame`: `190px` の内側で、拡大した画像を円形に切り抜く。
-- `.c-staff-card__image`: 元画像をどの位置・倍率で見せるかを担当する。
+- `.staff-card__media`: 外周 `210px`、背景色のリング、バッジの配置基準を担当する。
+- `.staff-card__frame`: `190px` の内側で、拡大した画像だけを円形に切り抜く。
+- `.staff-card__image`: 元画像をどの位置・倍率で見せるかを担当する。
+- `.staff-card__badge`: `NEW`の形と文字を担当し、`right` / `bottom`の値はカンプに合わせる。
 
 `box-sizing: border-box` によって、`210px` の中に左右のpaddingも含まれる。今回の全称セレクタにも同じ指定はあるが、これがない `content-box` の状態では、`width: 210px` に左右 `10px` ずつが加わり、外周は `230px` になる。
 
 外周がカンプと合っているのに人物の大きさだけが違う場合は、外側の `width` や `padding` を動かさない。見える位置だけなら `object-position`、さらに拡大したいなら、切り抜き枠を固定したまま画像側の `transform: scale(...)` を調整する。
 
-`scale()` はレイアウト上の外周寸法を変えず、描画結果を拡大する。今回は `.c-staff-card__frame` の `overflow: hidden` が、内側の円からはみ出した描画を切り取る。
+`scale()` はレイアウト上の外周寸法を変えず、描画結果を拡大する。今回は `.staff-card__frame` の `overflow: hidden` が、内側の円からはみ出した描画を切り取る。
 
 ## ケース16_カンプの `315 × 84` を直指定値と決めつけない
 
@@ -600,6 +628,8 @@ SP幅 `375px` で `.l-inner` の左右に `30px` の余白がある場合、通�
   transform-origin: right center;
 }
 ```
+
+このページのような左から右（`ltr`）の書字方向では、正の角度は時計回り、負の角度は反時計回りになる。
 
 DevToolsで確認できる値は、同じ寸法を別表示したものではない。
 
@@ -697,11 +727,11 @@ grid-template-columns: repeat(2, minmax(0, 1fr));
 スタッフカード内の画像枠を中央へ置く時、`margin-inline: auto` はページ全体ではなく、画像枠を含むカードの利用可能幅を基準にする。
 
 ```css
-.c-staff-card {
+.staff-card {
   width: 277px;
 }
 
-.c-staff-card__media {
+.staff-card__media {
   width: 210px;
   margin-inline: auto;
 }
@@ -857,6 +887,7 @@ viewportが `1024px` なら内容幅は約 `964px` になり、カード3枚を�
   - 隣接兄弟セレクタと `::before` を組み合わせた、2個目以降の区切り表示を補足。
 - [メディア設計](../../../01_基礎概念/HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md)
   - 画像ラッパーを置く条件と、メディア領域・画像本体の責務分離を補足。
+  - 基準幅のカンプ1枚だけでは固定高と比率維持を判定できず、画像候補の切り替えと表示領域の決定も分ける判断を補足。
   - 円形画像の外周、内側の切り抜き枠、画像データの位置・倍率を分ける確認順を補足。
   - auto inset時のstatic positionとFlex文脈、明示的な `inset: 0` との可読性差を補足。
 - [ボックスとdisplay](../../../01_基礎概念/HTML・CSS/04_ボックスとdisplay.md)
