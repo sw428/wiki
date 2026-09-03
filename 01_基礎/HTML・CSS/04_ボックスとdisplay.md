@@ -8,7 +8,7 @@
 
 ## ルール
 
-- [DOM](../../03_参照/DOM.md) の要素ツリーとCSSの指定をもとにCSSのbox treeが作られ、LayoutとPaintを経て画面へ描画される（[状態変化](../../03_参照/状態変化.md)）。
+- [DOM](../../03_参照/DOM.md) などの要素ツリーに、カスケードと継承で各CSSプロパティの計算値が割り当てられ、`display` などに従ってCSSのbox treeが作られる。その後、LayoutとPaintを経て画面へ描画される（[状態変化](../../03_参照/状態変化.md)）。
 - `display` は「どの種類のボックスを生成するか」に関与する。
 - 文字は [テキストノード](../../03_参照/テキストノード.md) として扱われ、指定反映は [CSS適用境界](../../03_参照/CSS適用境界.md) を分けて見る。
 - `box-sizing` は「生成されたボックスのサイズ計算ルール」を決める。
@@ -34,27 +34,29 @@ MDN寄せで言うと、ブラウザはレイアウト時に要素を長方形�
 - ボックスモデル: 作られた箱を `content / padding / border / margin` で読む地図
 - `box-sizing`: `width` / `height` の指定値を content box 基準にするか border box 基準にするか
 
-### CSSOM・表示ボックス・Paint の関係
+### CSSルール・計算値・box tree・Paint の関係
 
-`width`, `height`, `padding`, `border`, `margin`, `box-sizing` などは、
-まず CSS の指定として CSSOM に入る。
+CSSは解析され、スタイルシートやCSSルールとして扱われる。[CSSOM](../../03_参照/CSSOM.md) は、そのスタイルシートやルールをオブジェクトとして参照・操作するための仕組みである。
 
-ただし、CSSOM の時点ではまだ画面上の最終的な大きさ・位置は決まっていない。
+その後、セレクタの一致、カスケード、継承によって、要素やテキストノードごとに各プロパティの計算値（computed value）が決まる。`width`, `height`, `padding`, `border`, `margin`, `box-sizing` などの指定も、この過程を通して対象へ適用される。
 
-その後、要素ツリーから `display` などに従ってCSSのbox treeが作られ、ブラウザ内部でレイアウトのためのボックスが生成される。
+計算値が決まった後、要素ツリーから `display` などに従ってCSSのbox treeが作られ、レイアウトのためのboxが生成される。
 
-生成されたボックスは、Layout で大きさ・位置が決まり、
+生成されたboxは、Layoutで使用値や実際の大きさ・位置が決まり、
 Paint で背景・文字・画像・枠線として画面に描画される。
 
 ```txt
 
 HTML
--> DOMに変換される
+-> 要素ツリーになる（通常はDOM）
 
 CSS
--> CSSOMに指定として入る
+-> CSSルールとして解析される
 
-DOM + CSSOM
+要素ツリー + CSSルール
+-> セレクタの一致、cascade / inheritance
+-> 各プロパティのcomputed valueが決まる
+
 -> display などに応じてCSSのbox treeが作られる
 -> Layoutで大きさ・位置が決まる
 -> Paintで実際に描かれる
@@ -76,7 +78,7 @@ DOM + CSSOM
 - 幅/高さはどこから来ているか
 - 余白は内側か外側か
 
-## ボックスモデルと描画ボックスの関係
+## ボックスモデルとbox tree上のboxの関係
 
 同じ「ボックス」という言葉でも、見ている階層が違う。
 ただし、完全に無関係な別物ではなく、同じ箱を別の観測視点から見ている。
@@ -85,8 +87,8 @@ DOM + CSSOM
 
 ```txt
 要素
--> display やレイアウト文脈に応じて表示ボックスが生成される
--> その箱を content / padding / border / margin で説明するのがボックスモデル
+-> display やレイアウト文脈に応じてbox tree上のboxが生成される
+-> そのboxを content / padding / border / margin の領域で説明するのがボックスモデル
 -> box-sizing が width / height の計算基準を調整する
 ```
 
@@ -96,9 +98,9 @@ DOM + CSSOM
 - `width`, `height`, `padding`, `border`, `margin`, `box-sizing` で直接触れる
 - つまり「CSSでサイズ・余白・枠線を調整するときの地図」
 
-### 描画ボックス（レイアウト上の箱）
+### box tree上のbox（CSS box）
 
-- ブラウザがレイアウト計算のために内部で作る箱
+- CSSがレイアウトを成立させるために生成するbox
 - ボックスの例: `block box`, `inline box`, `line box`, `anonymous box`
 - レイアウト内での役割の例: `flex container` / `flex item`, `grid container` / `grid item`
 - CSSで名前を直接指定して操作する対象ではない
@@ -106,23 +108,21 @@ DOM + CSSOM
 
 補足:
 
-- ボックスモデルと描画ボックスは、別階層だが同じ描画結果につながっている。
-- `display`, `position`, `line-height`, `font-size` などの指定で、内部で作られる描画ボックスの振る舞いは間接的に変わる。
+- ボックスモデルとbox tree上のboxは、別種の箱ではない。ボックスモデルは、生成されたCSS boxの領域構成を読むためのモデルである。
+- `display`, `position`, `line-height`, `font-size` などの指定で、box tree上のboxの種類や振る舞いが変わる。
 - `padding`, `border`, `margin`, `box-sizing` などの指定で、生成された箱のサイズ計算や周囲との距離が変わる。
 
 ```txt
 CSSプロパティを指定する
--> ブラウザ内部の描画ボックスの作られ方が変わる
+-> box tree上のboxの種類や振る舞いが変わる
 -> width / height / aspect-ratio / 余白の効き方が変わることがある
 ```
 
 ### 認識
 
-- ボックスモデル: CSSで直接調整する箱
-- 描画ボックス: ブラウザが画面を作るために内部で生成する箱
-- ボックスモデルは暗記対象ではなく、描画の流れを追うための地図として使う。
-
-より正確には、ボックスモデルは「別の箱」ではなく、生成された表示ボックスを `content / padding / border / margin` の層で読むためのモデル。
+- box tree上のbox: CSSがレイアウトを成立させるために生成するbox
+- ボックスモデル: 生成されたCSS boxを `content / padding / border / margin` の領域に分けて読むモデル
+- ボックスモデルは別の箱ではなく、サイズ・余白・枠線と描画の関係を追うための地図として使う。
 
 ### `block` の基本認識
 
@@ -180,7 +180,7 @@ a {
 }
 ```
 
-`display: block` や `inline-block` へ変えることで、`aspect-ratio` を使ったサイズ計算が可能になる。この変更は「ボックスモデルの調整」だけではなく、`display` によって描画ボックスの種類が変わることも含んでいる。
+`display: block` や `inline-block` へ変えることで、`aspect-ratio` を使ったサイズ計算が可能になる。この変更は「ボックスモデルの調整」だけではなく、`display` によってbox tree上のboxの種類が変わることも含んでいる。
 
 ## 見えている広さを「余白」と決めつけない
 
@@ -343,6 +343,8 @@ ol {
 ## 仕様確認先
 
 - [CSS Display Module Level 3 - Box Layout Modes](https://drafts.csswg.org/css-display-3/#intro)
+- [CSS Cascading and Inheritance Module Level 6 - Value Processing](https://drafts.csswg.org/css-cascade-6/#value-stages)
+- [CSS Object Model (CSSOM) Module Level 1](https://drafts.csswg.org/cssom-1/)
 - [CSS Box Sizing Module Level 4 - `aspect-ratio`](https://drafts.csswg.org/css-sizing-4/#aspect-ratio)
 - [CSS Positioned Layout Module Level 3 - Containing Blocks](https://drafts.csswg.org/css-position-3/#def-cb)
 - [CSS Gaps Module Level 1 - Gaps Between Boxes](https://drafts.csswg.org/css-gaps-1/)

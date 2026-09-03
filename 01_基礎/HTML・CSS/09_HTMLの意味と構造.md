@@ -197,15 +197,22 @@ JS
 - [HTML Standard - `a` element](https://html.spec.whatwg.org/multipage/text-level-semantics.html#the-a-element)
 - [HTML Standard - `button` element](https://html.spec.whatwg.org/multipage/form-elements.html#the-button-element)
 
-## DOM / CSSOM / レンダーツリー / AOM の役割
+## DOM / CSSOM / box tree / AOM の役割
 
-これまでの整理では、画面表示までの流れを次のように見ていた。
+画面表示までの流れは、次のように分けて見る。
 
 ```txt
-HTML -> DOM
-CSS -> CSSOM
-DOM + CSSOM -> レンダーツリー
+HTML -> DOMなどの要素ツリー
+CSS -> CSSルールとして解析される
+
+要素ツリー + CSSルール
+-> セレクタの一致、cascade / inheritance
+-> 各プロパティのcomputed value
+-> box tree
+-> Layout / Paint
 ```
+
+CSSOMは、スタイルシートやCSSルールをオブジェクトとして参照・操作する仕組みであり、要素ごとの最終表示結果そのものではない。
 
 セマンティックHTMLでは、ここにAOMの視点を足す。
 
@@ -215,8 +222,8 @@ AOMは Accessibility Object Model の略。
 | 構造 | 何を扱うか |
 |---|---|
 | DOM | 要素・テキスト・属性の構造 |
-| CSSOM | CSS指定の構造 |
-| レンダーツリー | 画面に描くための構造 |
+| CSSOM | スタイルシートやCSSルールを参照・操作するためのオブジェクト |
+| box tree | CSSによるレイアウトを成立させるためのboxの構造 |
 | AOM / アクセシビリティツリー | 支援技術に意味を伝えるための構造 |
 
 つまり、HTMLはDOMを作るだけでなく、AOM側にも意味を渡す。
