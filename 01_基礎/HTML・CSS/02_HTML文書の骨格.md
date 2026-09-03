@@ -157,6 +157,15 @@ link rel="stylesheet"
 -> HTMLと外部CSSファイルをつなぐ
 ```
 
+reset CSSとサイト固有CSSを分ける場合は、土台を先、上書きする側を後に置く。
+
+```html
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/style.css">
+```
+
+同じカスケード条件なら、後に位置する宣言が勝つ。これはダウンロード完了の速さではなく、HTMLからリンクした順番で決まる。詳しい確認方法は [CSSカスケードとDevToolsの見方](./15_CSSカスケードとDevToolsの見方.md) で扱う。
+
 ## JSは `defer` または `body` の最後で扱いやすくする
 
 ```html

@@ -1,6 +1,6 @@
 # プロファイルとSettings Sync
 
-## 目的
+## 目的　保留ちゃんと理解、確かめきっていない
 
 VS CodeのプロファイルとSettings Syncを混同しないためのメモ。
 
