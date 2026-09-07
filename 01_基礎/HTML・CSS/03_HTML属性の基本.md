@@ -3,7 +3,36 @@
 ## 目的
 
 - 属性を「タグに書き足すもの」ではなく、HTML要素へ情報・状態・参照・接続先を与えるものとして整理する。
-- `id` / `class` / ブール属性 / 列挙型属性 / `role` / `data-*` を、DOM・CSS・JS・A11yとの接続点として読む。
+- 属性を、DOM・CSS・JS・A11yとの接続点として読む。
+
+## 学び直すときの道筋
+
+### 最初に押さえる
+
+属性は、HTML要素に追加情報を与えるもの。まずは次の4つを見る。
+
+- `src` / `href` → 参照先を示す
+- `id` → ページ内の1つの要素を識別する
+- `class` → CSS/JSから要素を選ぶ
+- `alt` / `type` など → 画像の代替テキストや入力の種類などを与える
+
+ここでは属性一覧を暗記しない。「今この属性は何を担当している？」から考える。
+
+### 次へ進む目安
+
+HTMLを見たとき、「この属性は何のために付いているか」を本文やAIを使って確認できればよい。
+
+### 次に増やす
+
+必要になったときに、該当する本文へ進む。
+
+- ブール属性 / 列挙型属性
+- フォームの関連付け（`label for` と `id`）
+- ARIA / `role`
+- `data-*`
+- `tabindex`
+
+本文の分類表や詳しい例は、必要なものだけ読む。使っていない属性の全候補やJSの取得構文は後回しでよい。部品を実装・変更するときは、その部品で使う属性を確認する。
 
 ## 属性は開始タグに書く追加情報
 
@@ -44,8 +73,13 @@
 <section id="service-about">
 ```
 
-HTML自体は大文字・小文字を区別しない場面が多い。
-ただし、`id` や `class` のように制作者が決める文字列値は大文字・小文字が区別される。
+大文字・小文字の扱いは、名前と値を分けて見る。
+
+- `text/html` として読むHTMLでは、HTML要素のタグ名と属性名はASCIIの大文字・小文字を区別しない。たとえば `INPUT` と `input`、`TYPE` と `type` は同じ名前として扱う。
+- 属性値の扱いは属性ごとの仕様で決まる。名前のルールを、そのまま値へ広げない。
+- `id` や `class` の値は大文字・小文字を区別する。参照するときは表記を一致させる。
+
+これはHTML構文の話であり、XMLとして読むXHTMLにはそのまま適用しない。[HTML Standardの構文規則](https://html.spec.whatwg.org/multipage/syntax.html#syntax)を参照。
 
 ```html
 <input type="text">
@@ -199,7 +233,18 @@ input.removeAttribute("required");
 ブール属性と違い、属性が存在するだけで必ず `true` になるとは限らない。
 属性ごとに、値がない場合・不正な値の場合の扱いが違う。
 
-たとえば `contenteditable` は、`true` / `false` / `inherit` などの値を持つ列挙型属性として見る。
+たとえば `contenteditable` は、次のように値と状態を分けて見る。
+
+| HTMLでの指定 | 扱い |
+|---|---|
+| `contenteditable="true"` | 編集できる |
+| `contenteditable="false"` | 編集できない |
+| `contenteditable="plaintext-only"` | 書式を付けず、テキストだけ編集できる |
+| `contenteditable=""` または `contenteditable` | 空の値は `true` と同じ状態になる |
+| 属性を省略、または無効な値を指定 | 親要素の編集可否に従う継承状態になる |
+
+以前の説明では `inherit` をHTMLに書く有効な値に含めていたが、これは継承状態との混同だった。`contenteditable="inherit"` は有効なキーワードではなく、無効な値として継承状態になる。継承させたい場合は属性を省略する。
+JS側の `element.contentEditable` プロパティでは `"inherit"` を取得・設定できるため、HTML属性の値とは区別する。根拠は [HTML Standardのcontenteditable規定](https://html.spec.whatwg.org/multipage/interaction.html#the-contenteditable-attribute)。
 
 ```html
 <div contenteditable="false">編集できない</div>
