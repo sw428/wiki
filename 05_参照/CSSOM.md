@@ -60,7 +60,7 @@ CSS
 - [状態変化](./状態変化.md)
 - [CSS適用境界](./CSS適用境界.md)
 - [状態変化（DOM→CSSOM→Layout→Paint）](./状態変化（DOM→CSSOM→Layout→Paint）.md)
-- [ボックスとdisplay](../01_読めるようにする/HTML・CSS/04_ボックスとdisplay.md)
+- [ボックスとdisplay](../02_基礎/01_HTML・CSS/04_ボックスとdisplay.md)
 
 ## 仕様確認先
 

@@ -245,10 +245,10 @@
 
 ## 基礎概念への反映先
 
-- `01_読めるようにする/HTML・CSS/08_ブラウザ挙動とズレ.md`
+- `02_基礎/01_HTML・CSS/08_ブラウザ挙動とズレ.md`
   - `@media` ブロック漏れ時の確認順（親要素選択 / Computedソース確認）
-- `01_読めるようにする/HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `02_基礎/01_HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
   - `aspect-ratio` とサイズ上限の責務分離
   - 2倍書き出し画像の扱い（表示寸法基準）
-- `01_読めるようにする/HTML・CSS/09_HTMLの意味と構造.md`
+- `02_基礎/01_HTML・CSS/09_HTMLの意味と構造.md`
   - `time` の意味整合優先（同一記事で日付データを分岐させない）

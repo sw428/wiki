@@ -195,12 +195,12 @@ WordPressになったから `aspect-ratio` がなくなるわけではない。
 
 ## 基礎概念への反映先
 
-- `01_読めるようにする/WordPress/制作/開発環境/01_PHP Intelephense.md`
+- `02_基礎/06_WordPress/制作/開発環境/01_PHP Intelephense.md`
   - テーマだけ開き、`includePaths` でWordPress本体を参照させる運用を追加。
-- `01_読めるようにする/WordPress/制作/01_テーマ作成手順.md`
+- `02_基礎/06_WordPress/制作/01_テーマ作成手順.md`
   - Localサイト名、ローカルURL、WordPressサイトタイトル、テーマフォルダ名、Theme Nameの違いを補足。
   - Local親フォルダ名を直接変えず、新規サイト作成 + テーマコピーを安全案として追加。
-- `01_読めるようにする/WordPress/基礎/07_WordPressで読むPHPの型.md`
+- `02_基礎/06_WordPress/基礎/07_WordPressで読むPHPの型.md`
   - `home_url()` と `get_theme_file_uri()` の使い分け、`alt` の意味を補足。
-- `01_読めるようにする/HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `02_基礎/01_HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
   - SVGロゴは `width` + `height: auto` で表示幅を決める判断を補足。

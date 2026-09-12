@@ -645,20 +645,20 @@ HTML/CSSを壊さず、WordPressのテーマ構造へ変換できることを優
 
 ## 基礎概念への反映先
 
-- `01_読めるようにする/WordPress/基礎/01_WordPress学習の優先順位.md`
+- `02_基礎/06_WordPress/基礎/01_WordPress学習の優先順位.md`
   - WordPress学習では、環境理解・境界線・優先順位・スニペット活用を先に見る。
-- `01_読めるようにする/WordPress/制作/07_バックアップとGit管理.md`
+- `02_基礎/06_WordPress/制作/07_バックアップとGit管理.md`
   - 自作テーマはGit、WordPress全体はバックアップという分け方。
   - Local Export / uploads / database.sql の最低構成。
-- `01_読めるようにする/WordPress/制作/01_テーマ作成手順.md`
+- `02_基礎/06_WordPress/制作/01_テーマ作成手順.md`
   - LocalでWordPress本体を作ることと、自作テーマを作ることを分ける。
   - サイト名、テーマフォルダ名、`Theme Name` の違いを残す。
-- `01_読めるようにする/WordPress/制作/開発環境/01_PHP Intelephense.md`
+- `02_基礎/06_WordPress/制作/開発環境/01_PHP Intelephense.md`
   - 色分けはVS Code側の補助であり、PHPの実行とは別。
-- `01_読めるようにする/WordPress/基礎/07_WordPressで読むPHPの型.md`
+- `02_基礎/06_WordPress/基礎/07_WordPressで読むPHPの型.md`
   - `bloginfo()` / `get_bloginfo()` / `home_url()` / `get_theme_file_uri()` の表示と取得の違い。
   - `function_exists()` / `pagination()` / `$wp_query->max_num_pages` を、存在確認・関数呼び出し・総ページ数の受け渡しとして読む。
-- `01_読めるようにする/PHP/04_関数.md`
+- `02_基礎/05_PHP/04_関数.md`
   - 関数の戻り値と `echo` の基本整理。
-- `01_読めるようにする/WordPress/制作/開発環境/02_WordPressスニペット運用.md`
+- `02_基礎/06_WordPress/制作/開発環境/02_WordPressスニペット運用.md`
   - `header.php` のHTML文脈と `scope: "php,html"` / `include: "**/*.php"` の扱い。

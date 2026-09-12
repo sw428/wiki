@@ -344,18 +344,18 @@ body {
 
 ## 基礎概念へ戻した内容
 
-- `01_読めるようにする/HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `02_基礎/01_HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
   - 同一SVGロゴは、HTML属性で素材比率、CSS変数で表示幅、`height: auto` で高さ自動計算に分ける判断を追記。
   - 2倍書き出し画像では、ファイル寸法、HTMLの基準寸法、CSS上の表示寸法を分ける説明を補足。
   - SVGの `viewBox`、自然比率、`object-fit`、カンプ測定差の確認先を補足。
-- `01_読めるようにする/HTML・CSS/09_HTMLの意味と構造.md`
+- `02_基礎/01_HTML・CSS/09_HTMLの意味と構造.md`
   - staff一覧の `section + ul/li + article`、パンくずの `ol`、見出しなしheroの `div` 判断を追記。
   - `address` 内で、同じ連絡先の改行には `br`、別段落には `p` を使う区別を追記。
-- `01_読めるようにする/HTML・CSS/07_レイアウト.md`
+- `02_基礎/01_HTML・CSS/07_レイアウト.md`
   - `.l-page` と `.l-inner` の責務分離を追記。
-- `01_読めるようにする/設計/CSS設計/01_BEMとクラス命名.md`
+- `02_基礎/07_設計/CSS設計/01_BEMとクラス命名.md`
   - DOM階層を長いElement名へ写さず、再利用できるカードを独立Block化する判断を追記。
-- `01_読めるようにする/設計/CSS設計/00_CSS設計整理マップ.md`
+- `02_基礎/07_設計/CSS設計/00_CSS設計整理マップ.md`
   - `l-` / `c-` / `p-` / `u-` / `js-` / `is-` / `has-` の接頭辞運用、`.l-page` / `.l-inner` の境界、親Blockと子Blockの配置責務を追記。
-- `01_読めるようにする/HTML・CSS/13_デザインパターンとCSS固定判断.md`
+- `02_基礎/01_HTML・CSS/13_デザインパターンとCSS固定判断.md`
   - ロゴ素材とカンプの比率差を、実装側の変形・切り抜きで吸収せず、必要なら素材・デザイン側へ確認する判断を追記。
