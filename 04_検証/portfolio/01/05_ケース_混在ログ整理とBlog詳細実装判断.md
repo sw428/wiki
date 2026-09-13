@@ -203,14 +203,14 @@
 
 ## 基礎概念への反映先
 
-- `02_基礎/01_HTML・CSS/05_インラインと行の仕組み.md`
+- `02_基礎/01_HTML・CSS/08_インラインと行の仕組み/01_文字の行間と高さを確認する.md`
   - `inline-flex` の外側inline性と baseline 由来ギャップの補足
-- `02_基礎/01_HTML・CSS/09_HTMLの意味と構造.md`
+- `02_基礎/01_HTML・CSS/04_HTMLの意味と構造/01_意味からHTML要素を選ぶ.md`
   - 関連記事一覧の `section` / `ul` / `article` の判断軸
   - `time` の `datetime` と表示値の整合ルール
-- `02_基礎/01_HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md`
+- `02_基礎/01_HTML・CSS/11_メディア設計/00_メディア設計整理マップ.md`
   - 親に `aspect-ratio` を置いた時の子画像100%充填セット
-- `02_基礎/01_HTML・CSS/07_レイアウト.md`
+- `02_基礎/01_HTML・CSS/09_レイアウト/00_レイアウト整理マップ.md`
   - `l-inner` と `l-narrow` の責務分離（本文幅とメディア幅）
-- `02_基礎/01_HTML・CSS/11_表示制御（sp-only／pc-only／revert設計）.md`
+- `02_基礎/01_HTML・CSS/12_表示制御/00_表示制御整理マップ.md`
   - SP/PC出し分け時の「意味データを変えない」運用注意

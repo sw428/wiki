@@ -31,6 +31,6 @@ img.thumb {
 
 ## 関連ページ
 
-- [ボックスとdisplay](../02_基礎/01_HTML・CSS/04_ボックスとdisplay.md)
-- [画像と背景](../02_基礎/01_HTML・CSS/06_画像と背景.md)
-- [メディア設計（img・video・object-fit・aspect-ratio）](../02_基礎/01_HTML・CSS/10_メディア設計（img・video・object-fit・aspect-ratio）.md)
+- [ボックスとdisplay](../02_基礎/01_HTML・CSS/05_ボックスとdisplay/01_一つの箱とdisplay.md)
+- [imgとbackground-imageを選ぶ](../02_基礎/01_HTML・CSS/10_画像と背景/01_imgとbackground-imageを選ぶ.md)
+- [メディア設計](../02_基礎/01_HTML・CSS/11_メディア設計/00_メディア設計整理マップ.md)
