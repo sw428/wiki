@@ -6,7 +6,7 @@
 
 ## HTMLとCSSをつないで一つの箱を作る
 
-`index.html` と `css/style.css` を用意する。[文書の骨格](../02_HTML文書の骨格.md#最低限の基本形)を使い、HTMLのCSS読み込み先を `css/style.css` に合わせる。
+`index.html` と `css/style.css` を用意する。[最小のHTML文書](../02_HTML文書の骨格/01_最小のHTML文書を作る.md#最小の基本形)を使い、HTMLのCSS読み込み先を `css/style.css` に合わせる。
 
 `body` には次を書く。
 
