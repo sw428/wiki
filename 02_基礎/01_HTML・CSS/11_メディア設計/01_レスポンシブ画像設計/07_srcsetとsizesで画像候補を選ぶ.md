@@ -1,73 +1,8 @@
-# 03_pictureとsrcsetで画像候補を切り替える
+# 07_srcsetとsizesで画像候補を選ぶ
 
-PC/SPで構図が違う画像を使う場合と、同じ構図の高密度画像を用意する場合では、切り替える理由が違う。最初に「構図・比率を変えるのか」「同じ表示領域へ異なる画素密度を渡すのか」を分ける。
+同じ構図の画像について、画面密度やレイアウト上の表示幅に合うファイルをブラウザへ選ばせる方法を扱う。SPとPCで構図そのものを変える場合は、先に[画像切替型](./06_画像切替型.md)を確認する。
 
-## pictureで構図を切り替える
-
-```html
-<picture>
-  <source
-    media="(min-width: 768px)"
-    srcset="./img/mv-pc.jpg"
-    width="1920"
-    height="500"
-  >
-  <img
-    class="mv__image"
-    src="./img/mv-sp.jpg"
-    alt=""
-    width="375"
-    height="400"
-  >
-</picture>
-```
-
-```css
-.mv__image {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-```
-
-| 要素 | 担当すること |
-| --- | --- |
-| `picture` | 複数の画像候補を選ぶ文脈を作る |
-| `source` | メディア条件、候補、候補の寸法情報を渡す |
-| `img` | 選ばれた画像を実際に表示する。alt・class・CSSの対象になる |
-
-`source`自身が画面上の箱になるわけではない。選択結果は`img`へ渡され、画面上の表示幅は`img`へ適用されたCSSと外側のレイアウトで決まる。
-
-`source`の`width` / `height`が使える場合、選ばれた候補の寸法と比率をブラウザへ伝えられる。これらは「1920 × 500pxで固定表示する」という指定ではない。
-
-## 画像候補と表示枠を分ける
-
-`picture`でPC画像が選ばれても、CSSが親幅まで広げるとは限らない。`max-width: 100%`は上限であり、小さい画像を親幅へ拡大する指定ではない。親幅いっぱいに表示するなら`width: 100%`を使う。
-
-PC/SPそれぞれの自然比率で見せる場合は、選択される画像ごとの寸法属性と`height: auto`を使う。デザイン上の比率を固定して切り抜く場合は、候補選択とは別にCSSで枠を作る。
-
-```css
-.mv__media {
-  aspect-ratio: 375 / 400;
-  overflow: hidden;
-}
-
-.mv__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-@media (min-width: 768px) {
-  .mv__media {
-    aspect-ratio: 1920 / 500;
-  }
-}
-```
-
-ここで`375 / 400`は固定ピクセル寸法ではない。枠の幅が300pxなら高さは320pxになる。
-
-## srcsetで表示密度を切り替える
+## 同じ表示領域へ密度の違う画像を渡す
 
 同じ構図・同じ表示領域に対して高密度画像を選ばせるなら、密度記述子を使える。
 
@@ -97,6 +32,8 @@ PC/SPそれぞれの自然比率で見せる場合は、選択される画像ご
 - ファイル名の`@2x`: 人間向けの名前。これだけではブラウザの選択条件にならない
 
 画像ファイルが1600 × 900pxでも、表示基準が800 × 450pxなら比率はどちらも16:9である。`aspect-ratio: 800 / 450`と書いても表示が半分になるわけではない。
+
+## 表示幅に応じて候補を選ぶ
 
 表示幅自体がレイアウトによって大きく変わる場合は、幅記述子と`sizes`を使う方法がある。
 
@@ -132,7 +69,5 @@ DevToolsやConsoleで次を分けて見る。
 
 ## 仕様確認先
 
-- [HTML Standard: The picture element](https://html.spec.whatwg.org/multipage/embedded-content.html#the-picture-element)
 - [HTML Standard: Responsive images](https://html.spec.whatwg.org/multipage/images.html#responsive-images)
 - [HTML Standard: The srcset attribute](https://html.spec.whatwg.org/multipage/images.html#srcset-attribute)
-
