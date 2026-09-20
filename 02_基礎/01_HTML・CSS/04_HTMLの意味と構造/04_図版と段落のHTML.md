@@ -38,6 +38,6 @@
 
 ## 画像の見た目を調整する段階へ
 
-ここで決めたのはHTML上の意味。幅・高さ・収め方は[メディア設計](../11_メディア設計/00_メディア設計整理マップ.md)、文字を画像化するかとaltの判断は[文字を画像にする前に確認する](../10_画像と背景/05_文字を画像にする前に確認する.md)で扱う。
+ここで決めたのはHTML上の意味。幅・高さ・収め方は[レスポンシブ画像設計](../12_レスポンシブ画像設計/00_レスポンシブ画像設計整理マップ.md)、文字を画像化するかとaltの判断は[文字を画像にする前に確認する](../10_画像と背景/05_文字を画像にする前に確認する.md)で扱う。
 
 仕様確認先：[p](https://html.spec.whatwg.org/multipage/grouping-content.html#the-p-element)、[figure](https://html.spec.whatwg.org/multipage/grouping-content.html#the-figure-element)。

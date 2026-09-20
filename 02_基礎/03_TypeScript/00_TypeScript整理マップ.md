@@ -39,6 +39,8 @@ TypeScriptは次の順で読む。
 - [06_Reactで使うTypeScript](./06_Reactで使うTypeScript.md)
 - [メモ(TypeScript)](./メモ(TypeScript).md)
 
+Reactの画面・コンポーネント・状態そのものは[React整理マップ](../04_React/00_React整理マップ.md)、Props・State・Eventへ型を付ける説明はこの章で扱う。
+
 ## まず読む順
 
 1. [01_TypeScriptの土台](./01_TypeScriptの土台.md)

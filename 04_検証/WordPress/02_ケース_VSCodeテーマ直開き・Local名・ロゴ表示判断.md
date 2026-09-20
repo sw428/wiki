@@ -202,5 +202,5 @@ WordPressになったから `aspect-ratio` がなくなるわけではない。
   - Local親フォルダ名を直接変えず、新規サイト作成 + テーマコピーを安全案として追加。
 - `02_基礎/06_WordPress/基礎/07_WordPressで読むPHPの型.md`
   - `home_url()` と `get_theme_file_uri()` の使い分け、`alt` の意味を補足。
-- `02_基礎/01_HTML・CSS/11_メディア設計/00_メディア設計整理マップ.md`
+- `02_基礎/01_HTML・CSS/11_メディアの表示枠と重ね配置/00_メディアの表示枠と重ね配置整理マップ.md`
   - SVGロゴは `width` + `height: auto` で表示幅を決める判断を補足。

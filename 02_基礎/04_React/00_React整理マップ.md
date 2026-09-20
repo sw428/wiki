@@ -37,6 +37,8 @@ Reactは次の順で見ると迷いにくい。
 - [05_Effectとデータ取得](./05_Effectとデータ取得.md)
 - [メモ(React)](./メモ(React).md)
 
+Props・State・Eventの型付けが必要な場合は[Reactで使うTypeScript](../03_TypeScript/06_Reactで使うTypeScript.md)へ進む。Reactの画面と状態を扱う説明、TypeScriptで型を付ける説明を分ける。
+
 ## まず読む順
 
 1. [01_Reactの土台](./01_Reactの土台.md)
