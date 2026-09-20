@@ -53,7 +53,7 @@ BEMはHTMLに付けるクラス名の決め方。入れ子はCSSやSCSSをまと
 独立した意味を持つまとまりに付ける。
 
 ```html
-<section class="staff">
+<section class="card-list">
   ...
 </section>
 ```
@@ -63,8 +63,8 @@ BEMはHTMLに付けるクラス名の決め方。入れ子はCSSやSCSSをまと
 Blockを構成する要素に付ける。
 
 ```html
-<h2 class="staff__title">スタッフ紹介</h2>
-<ul class="staff__list">...</ul>
+<h2 class="card-list__title">記事一覧</h2>
+<ul class="card-list__items">...</ul>
 ```
 
 ### Modifier
@@ -87,7 +87,7 @@ BlockまたはElementの種類・状態の違いに使用する。
 
 名前はDOMの入れ子を写すのではなく、担当する役割から選ぶ。`box / wrap / content` だけでは役割が伝わらない場合は具体化する。同じ外見でも責務や再利用範囲が異なるなら、別クラスを検討する。
 
-HTML要素自体の選択は[HTMLの意味と構造](../../01_HTML・CSS/04_HTMLの意味と構造/01_意味からHTML要素を選ぶ.md)、画像アイコンの囲み方は[装飾アイコンとラベル](../../01_HTML・CSS/14_デザインパターンとCSS設計判断/09_装飾アイコンとラベルを小さな部品として扱う.md)へ分担する。
+HTML要素自体の選択は[HTMLの意味と構造](../../01_HTML・CSS/04_HTMLの意味と構造/01_意味からHTML要素を選ぶ.md)、画像アイコンの囲み方は[装飾アイコンとラベル](../../01_HTML・CSS/15_デザインパターンとCSS設計判断/09_装飾アイコンとラベルを小さな部品として扱う.md)へ分担する。
 
 ## 命名ルール（当面の採用方針）
 
@@ -100,7 +100,7 @@ HTML要素自体の選択は[HTMLの意味と構造](../../01_HTML・CSS/04_HTML
 ## やらないこと
 
 - `block__element__element` のような多段命名
-- `staff__list-item-card-image` のようにDOM階層を全部名前へ写すこと
+- `card-list__item-card-image` のようにDOM階層を全部名前へ写すこと
 - ページ都合の余白調整をBlock本体へ直接埋め込むこと
 - IDセレクタやタグ連鎖で強引に勝たせること
 
@@ -116,7 +116,7 @@ HTML要素自体の選択は[HTMLの意味と構造](../../01_HTML・CSS/04_HTML
 | `js-` | JavaScript取得用の目印 | `js-menu-button` |
 | `is-` / `has-` | 状態 | `is-open`, `is-active`, `has-error` |
 
-通常のBlockは `.header`、`.staff`、`.staff-card` のように命名する。
+通常のBlockは `.header`、`.card-list`、`.card` のように命名する。
 
 - `l-` は当面 `.l-page` と `.l-inner` に限定する
 - `c-` は、複数箇所で同じHTML構造・見た目・振る舞い・変更理由を共有すると確認できた場合に使用する
@@ -147,20 +147,20 @@ HTML要素自体の選択は[HTMLの意味と構造](../../01_HTML・CSS/04_HTML
 一覧セクションの中にカードが入る場合でも、カード1件分が独立して読めるなら別Blockにする。
 
 ```html
-<ul class="staff__list">
-  <li class="staff__item">
-    <article class="staff-card">
-      <img class="staff-card__image" src="./img/staff-01.webp" alt="スタッフの写真">
-      <h3 class="staff-card__title">名前が入ります</h3>
-      <p class="staff-card__text">紹介文が入ります。</p>
+<ul class="card-list">
+  <li class="card-list__item">
+    <article class="card">
+      <img class="card__image" src="./img/article-01.webp" alt="">
+      <h3 class="card__title">記事タイトル</h3>
+      <p class="card__text">記事の概要が入ります。</p>
     </article>
   </li>
 </ul>
 ```
 
-- `staff__list` / `staff__item`: staffセクション内での一覧構造
-- `staff-card`: スタッフ1人分のカード本体
-- `staff-card__image` / `staff-card__title`: カード内部の要素
+- `card-list` / `card-list__item`: カードを並べる一覧構造
+- `card`: カード1件の本体
+- `card__image` / `card__title`: カード内部の要素
 
 Blockを分けると、PCで横並び、SPで縦並び、別ページで再利用といった変更を追いやすくなる。
 
