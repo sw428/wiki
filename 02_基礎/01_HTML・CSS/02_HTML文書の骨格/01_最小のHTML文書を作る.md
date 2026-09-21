@@ -1,6 +1,18 @@
 # 01_最小のHTML文書を作る
 
-HTMLファイルを新しく作るときは、まず文書情報を置く`head`と、ページ本文を置く`body`を分ける。最初からすべての要素を暗記せず、見本のどこを変更するか分かればよい。
+## このページの役割
+
+HTMLファイルを新しく作るときの基本形を確認する。
+
+ここでは各行の細かな仕組みをすべて覚えるのではなく、
+
+```text
+HTML文書全体はどの形から始めるか
+
+どこを書き換えてページを作るか
+```
+
+を確認する。
 
 ## 最小の基本形
 
@@ -22,75 +34,86 @@ HTMLファイルを新しく作るときは、まず文書情報を置く`head`�
 </html>
 ```
 
-この例は、次の四つに分けて読む。
+まずは、この形を一つのHTML文書として見る。
 
-```txt
+CSSやJavaScriptをまだ使わない場合は、対応する`link`または`script`を外してよい。存在しないファイルを見本のまま読み込ませない。
+
+## 大きく分けて読む
+
+最初は次のように分ければよい。
+
+```text
 <!DOCTYPE html>
--> 標準に沿った表示モードへ入るための宣言
+→ HTML文書の先頭に置く宣言
 
-<html lang="ja">
--> HTML文書全体の根と、文書の主な言語
+<html>
+→ HTML文書全体
 
 <head>
--> 文書情報と外部ファイルの読み込み
+→ 文書についての情報や外部ファイルの読み込み
 
 <body>
--> 見出しや本文など、ページの内容
+→ ページの内容
 ```
 
-まず変更する場所は、`title`、`body`の内容、CSS・JavaScriptのファイルパス。ブラウザでタイトルと本文が表示され、CSS・JavaScriptが意図したファイルから読み込まれたか確認する。
+それぞれの詳しい役割は別ページで確認する。文書先頭の宣言は[DOCTYPEの役割を理解する](./02_DOCTYPEの役割を理解する.md)、文書全体・文書情報・本文の区分は[html・head・bodyの役割を分ける](./03_html・head・bodyの役割を分ける.md)で確認する。
 
-## DOCTYPEは要素ではなく宣言
+## 最初に変更する場所
+
+見本からページを作るときは、まず次を変更する。
+
+```text
+title
+→ ページのタイトル
+
+body
+→ 見出し、文章、画像などページの内容
+
+CSSのパス
+→ 読み込むCSSファイル
+
+JavaScriptのパス
+→ 読み込むJavaScriptファイル
+```
+
+CSSファイルの指定は[CSSを読み込む](./08_CSSを読み込む.md)、JavaScriptファイルの指定は[JavaScriptを読み込む](./09_JavaScriptを読み込む.md)で確認する。
+
+たとえば、
 
 ```html
-<!DOCTYPE html>
+<title>料金案内</title>
 ```
 
-DOCTYPEはHTML要素ではない。HTMLパーサーはこれをDOCTYPEトークンとして扱い、DOMでは`DocumentType`ノードになる。
-
-現在のHTMLでは、この短いDOCTYPEを文書の先頭に書く。DOCTYPEがない場合や古い形式の一部では、ブラウザが過去のWebページとの互換性を優先するquirks modeに入ることがある。ここでは、通常のCSS仕様に近いno-quirks modeで表示させるための宣言と捉える。
-
-## `html`は文書の根になる
+や、
 
 ```html
-<html lang="ja">
+<body>
+  <h1>料金案内</h1>
+</body>
 ```
 
-`html`要素はHTML文書のルート。中には`head`、続いて`body`を置く。
+のようにページに合わせて変更する。
 
-`lang="ja"`は見た目を変える指定ではなく、文書の主な言語を示す。音声読み上げの発音や翻訳などが言語を判断する手掛かりになる。日本語を主に使うページなら`ja`とし、実際の内容に合わせて値を変える。
+## 書いたらブラウザで確認する
 
-HTML構文では`html`、`head`、`body`のタグを省略できる場合があるが、制作中に文書の範囲を読み取りやすくするため、この基本形では明示する。
+HTMLを書いたら、ブラウザで開いて確認する。
 
-## `head`と`body`を分ける
+まずは、
 
-| 場所 | 主な内容 |
-| --- | --- |
-| `head` | 文字エンコーディング、文書タイトル、viewport、CSS・JavaScriptなど |
-| `body` | 見出し、段落、画像、リンク、操作部品などページの内容 |
+```text
+ページタイトルが変わっているか
 
-`head`は本文外から文書を支える情報の集まり。`body`は文書の内容を置く場所だが、CSSの`display: none`などにより、中のすべてが常に画面へ見えるとは限らない。
+bodyに書いた内容が表示されているか
 
-`charset`、`title`、`viewport`は[headに文書情報を書く](./02_headに文書情報を書く.md)、CSSとJavaScriptは[CSSとJavaScriptを読み込む](./03_CSSとJavaScriptを読み込む.md)へ進む。
+CSSが読み込まれているか
 
-## 次へ進む目安
+JavaScriptが必要なら動いているか
+```
 
-見本やAIを使いながら、次を選べればこの入口から先へ進める。
+を確認できればよい。
 
-1. ページタイトルを変更する場所。
-2. 画面の本文を書く場所。
-3. CSSとJavaScriptのパスを変更する場所。
-4. ブラウザとDevToolsで読み込み結果を確かめる場所。
-
-タグと要素の読み方が曖昧なら[タグ・内容・要素を区別する](../01_HTMLの土台/03_タグ・内容・要素を区別する.md)へ戻る。次は[HTML属性の基本](../03_HTML属性の基本/01_属性を役割から読み分ける.md)で、`id`や`class`などを確認する。
+読み込みに問題がある場合はDevToolsも使って確認する。
 
 ## 一言でいうと
 
-`head`には文書情報と読み込み、`body`にはページの内容を書き、DOCTYPEと`html`で文書全体を囲む。
-
-## 仕様確認先
-
-- [HTML Standard - Writing HTML documents](https://html.spec.whatwg.org/multipage/syntax.html#writing)
-- [HTML Standard - The `html` element](https://html.spec.whatwg.org/multipage/semantics.html#the-html-element)
-- [HTML Standard - The `head` element](https://html.spec.whatwg.org/multipage/semantics.html#the-head-element)
-- [HTML Standard - The `body` element](https://html.spec.whatwg.org/multipage/sections.html#the-body-element)
+HTMLファイルを作るときは基本形から始め、まず`title`、`body`、CSS・JavaScriptの読み込み先をページに合わせて変更する。

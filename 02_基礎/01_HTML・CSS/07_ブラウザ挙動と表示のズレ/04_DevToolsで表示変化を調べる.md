@@ -47,7 +47,7 @@ Changesが追跡するのはDevTools内で行った編集である。CSSはEleme
 
 ## 測定対象を決めてから値を取る
 
-DevToolsのBox Modelはtransform前のCSSボックス、`getBoundingClientRect()`はtransformを反映した軸平行の外接矩形を確認するときに使う。回転した図形では同じ値にならない。必要になったら[transform後の外接矩形](../../../03_詳細/01_HTML・CSS/02_transform後の外接矩形.md)で条件と計算例を確認する。
+DevToolsのBox Modelはtransform前のCSSボックス、`getBoundingClientRect()`はtransformを反映した軸平行の外接矩形を確認するときに使う。回転した図形では同じ値にならない。必要になったら[transform後の外接矩形](../../../03_詳細/01_HTML・CSS/03_transform後の外接矩形.md)で条件と計算例を確認する。
 
 ## 公式情報
 

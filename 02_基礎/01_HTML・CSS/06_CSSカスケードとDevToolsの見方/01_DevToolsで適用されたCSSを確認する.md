@@ -8,7 +8,7 @@ CSSを書いたのに表示が変わらないときは、コードを眺める�
 
 Chromeで「お知らせ」を右クリックして「検証」を選ぶ。Elementsで `div.notice` が選ばれていることを確かめる。
 
-1. **書いた指定を探す**：Stylesで `.notice` を探し、`background-color` や `color` と、出典の `style.css` を確認する。CSSが見つからなければ、[HTML側の読み込み](../02_HTML文書の骨格/03_CSSとJavaScriptを読み込む.md#外部cssはheadから読み込む)と選択した要素を確認する。
+1. **書いた指定を探す**：Stylesで `.notice` を探し、`background-color` や`color`と、出典の`style.css`を確認する。CSSが見つからなければ、[HTML側のCSS読み込み](../02_HTML文書の骨格/08_CSSを読み込む.md#cssはlinkで読み込む)と選択した要素を確認する。
 2. **一つだけ変える**：Stylesで `color` の値を `tomato` に変え、「お知らせ」の文字色が変わるかを見る。背景や余白はそのままにし、文字色との対応だけを確認する。
 3. **結果を見る**：Computedで `color` を探す。色名と別の表記で表示されることもあるため、文字列の一致だけでなく色の結果を確認する。
 
