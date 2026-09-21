@@ -76,7 +76,7 @@ SP専用・PC専用の要素を作るときは、最初に「どの画面幅で�
 
 レイアウトの都合でSP用・PC用の要素を分けても、内容まで別の事実へしない。
 
-- 日時は同じ`datetime`と表示内容を使う
+- 日時は[同じ日付データ](../04_HTMLの意味と構造/15_日付をtimeで表す.md#spとpcで同じ日付データを使う)を使う
 - 価格、電話番号、リンク先を片側だけ更新し忘れない
 - 同じ操作を2つ置く場合は、表示中の要素が正しく操作できるか確認する
 
@@ -89,4 +89,3 @@ SP専用・PC専用の要素を作るときは、最初に「どの画面幅で�
 - [Media Queries Level 4: width](https://www.w3.org/TR/mediaqueries-4/#width)
 - [CSS Display Module Level 3: Box generation](https://www.w3.org/TR/css-display-3/#box-generation)
 - [CSS Cascading and Inheritance Level 5: revert](https://www.w3.org/TR/css-cascade-5/#defaulting-keywords)
-

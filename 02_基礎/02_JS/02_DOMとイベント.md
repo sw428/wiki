@@ -218,6 +218,23 @@ DOM上で今その要素が持っている現在値。
 - 属性 = HTMLに書かれた初期情報
 - プロパティ = DOM上の現在の状態
 
+### ブール属性に対応するプロパティ
+
+HTMLのブール属性へ`"false"`と書いても、属性が存在するため偽にはならない。
+
+```html
+<input required="false">
+```
+
+一方、対応するDOMプロパティがブール値を扱う場合は、JavaScriptから`true`と`false`で変更できる。
+
+```js
+input.required = true;
+input.required = false;
+```
+
+`input.required = false`では、反映先の`required`属性も取り除かれる。HTML属性の構文とDOMプロパティが受け取る値を同じ規則だと考えない。
+
 ## getAttribute() と .value の違い
 
 ### getAttribute("value")
