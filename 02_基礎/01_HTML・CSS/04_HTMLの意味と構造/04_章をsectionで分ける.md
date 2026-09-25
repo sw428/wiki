@@ -130,7 +130,7 @@ section
 `div`は、それ自体では文書上の意味を追加しない。
 
 ```html
-<div class="background-wrapper">
+<div>
   ...
 </div>
 ```
@@ -140,7 +140,7 @@ section
 一方、
 
 ```html
-<section class="instructor">
+<section>
   <h2>講師紹介</h2>
   ...
 </section>

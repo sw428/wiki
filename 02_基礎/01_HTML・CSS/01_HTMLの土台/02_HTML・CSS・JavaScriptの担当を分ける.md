@@ -94,11 +94,11 @@ DOMの詳しい仕組みやJavaScriptからの操作は、このページでは�
 実際のWebページでは、HTML・CSS・JavaScriptを組み合わせて作る。
 
 ```html
-<button class="menu-button">メニュー</button>
+<button class="button">メニュー</button>
 ```
 
 ```css
-.menu-button {
+.button {
   width: 120px;
 }
 ```

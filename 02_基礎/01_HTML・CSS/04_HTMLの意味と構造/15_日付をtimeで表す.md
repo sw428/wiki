@@ -278,13 +278,13 @@ time
 見た目は、どちらの要素でもCSSから指定できる。
 
 ```html
-<time class="article-date" datetime="2026-09-22">
+<time class="date" datetime="2026-09-22">
   2026.09.22
 </time>
 ```
 
 ```css
-.article-date {
+.date {
   font-size: 0.875rem;
 }
 ```

@@ -40,7 +40,7 @@ CSSで見た目の順番だけを変更すると、画面上の並びとキー�
 ## 負の値は通常のTab順から外す
 
 ```html
-<section id="error-summary" tabindex="-1">
+<section id="summary" tabindex="-1">
   入力内容を確認してください。
 </section>
 ```
@@ -50,7 +50,7 @@ CSSで見た目の順番だけを変更すると、画面上の並びとキー�
 一方で、JavaScriptからフォーカスを移す対象にはできる。
 
 ```js
-document.getElementById("error-summary").focus();
+document.getElementById("summary").focus();
 ```
 
 たとえば、処理の結果として表示されたエラー領域や、画面切り替え後の見出しなどへフォーカスを移したい場合に使える。

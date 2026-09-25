@@ -88,7 +88,7 @@ li
 ```html
 <ul>
   <li>
-    <div class="card">
+    <div>
       <h3>タイトル</h3>
       <p>説明文</p>
     </div>
@@ -135,7 +135,7 @@ li
 画面上で横に並んでいても、内容が一覧なら`ul`や`ol`を使える。
 
 ```html
-<ul class="skill-list">
+<ul class="list">
   <li>HTML</li>
   <li>CSS</li>
   <li>JavaScript</li>
@@ -145,7 +145,7 @@ li
 CSSで、
 
 ```css
-.skill-list {
+.list {
   display: flex;
 }
 ```
@@ -155,7 +155,7 @@ CSSで、
 リストマーカーの点を消しても、HTML上の一覧という意味は変わらない。
 
 ```css
-.skill-list {
+.list {
   list-style: none;
 }
 ```

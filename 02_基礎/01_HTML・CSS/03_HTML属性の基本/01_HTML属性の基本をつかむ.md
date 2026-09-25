@@ -5,7 +5,7 @@ HTML属性は、要素へ情報・状態・参照先・関係などを追加す�
 ```html
 <a href="/about/">会社概要</a>
 <input type="email" required>
-<button class="menu-button" aria-expanded="false">メニュー</button>
+<button class="button" aria-expanded="false">メニュー</button>
 ```
 
 同じ`属性名="属性値"`という形でも、属性ごとに役割は異なる。

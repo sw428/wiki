@@ -227,7 +227,7 @@ address
 一方、配置のための外側の箱が必要なだけなら、`div`を使える。
 
 ```html
-<div class="contact-layout">
+<div>
   <address>
     ...
   </address>

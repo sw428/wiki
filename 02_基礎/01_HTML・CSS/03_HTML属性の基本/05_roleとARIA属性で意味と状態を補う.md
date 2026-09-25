@@ -44,12 +44,12 @@ ARIA属性は、要素の現在の状態や、他の要素との関係を伝え�
 <button
   type="button"
   aria-expanded="false"
-  aria-controls="site-nav"
+  aria-controls="menu"
 >
   メニュー
 </button>
 
-<nav id="site-nav" hidden>
+<nav id="menu" hidden>
   ...
 </nav>
 ```
@@ -107,14 +107,14 @@ DOMとアクセシビリティツリーの関係は、[意味構造とアクセ�
 `aria-labelledby`、`aria-describedby`、`aria-controls`などは、別の要素の`id`を参照できる。
 
 ```html
-<h2 id="dialog-title">設定</h2>
+<h2 id="title">設定</h2>
 
-<div role="dialog" aria-labelledby="dialog-title">
+<div role="dialog" aria-labelledby="title">
   ...
 </div>
 ```
 
-`aria-labelledby="dialog-title"`が、`id="dialog-title"`の要素を参照している。
+`aria-labelledby="title"`が、`id="title"`の要素を参照している。
 
 参照を使うときは、
 

@@ -44,7 +44,7 @@
 たとえば、サービスの特徴を3件並べる場合。
 
 ```html
-<ul class="feature-list">
+<ul>
   <li>
     <h3>高品質</h3>
     <p>品質を重視して制作します。</p>
@@ -103,7 +103,7 @@ li
 たとえば記事一覧。
 
 ```html
-<ul class="article-list">
+<ul>
   <li>
     <article>
       <h2>
@@ -154,7 +154,7 @@ article
 `li`の中には複数の要素を直接置ける。
 
 ```html
-<li class="course-card">
+<li>
   <img src="course.jpg" alt="">
   <h3>Web制作コース</h3>
   <p>HTMLとCSSを学びます。</p>
@@ -175,11 +175,11 @@ liの中には必ずdivを1つ置く
 一方、画像とは別に本文部分だけへ余白を付けたい場合は、範囲を作るために`div`を追加できる。
 
 ```html
-<ul class="staff-list">
-  <li class="staff-card">
+<ul>
+  <li>
     <img src="staff01.jpg" alt="">
 
-    <div class="staff-card__body">
+    <div>
       <h3>山田 太郎</h3>
       <p>Webデザイナー</p>
     </div>
@@ -211,8 +211,8 @@ div
 カード全体を押して詳細ページへ移動させるデザインでも、意味としてはリンク。
 
 ```html
-<article class="article-card">
-  <a class="article-card__link" href="/article/">
+<article>
+  <a href="/article/">
     <h2>記事タイトル</h2>
     <p>記事の概要です。</p>
   </a>

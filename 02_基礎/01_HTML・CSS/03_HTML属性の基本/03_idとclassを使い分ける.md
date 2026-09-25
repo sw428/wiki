@@ -42,11 +42,11 @@
 ### JavaScript
 
 ```html
-<button id="menu-button" type="button">メニュー</button>
+<button id="menu" type="button">メニュー</button>
 ```
 
 ```js
-const button = document.getElementById("menu-button");
+const button = document.getElementById("menu");
 ```
 
 `id`は、JavaScriptから特定の要素を参照するときにも使える。
@@ -65,7 +65,7 @@ const button = document.getElementById("menu-button");
 ## `class`は要素を分類する
 
 ```html
-<article class="card card--featured">...</article>
+<article class="card featured">...</article>
 <article class="card">...</article>
 ```
 
@@ -79,7 +79,7 @@ const button = document.getElementById("menu-button");
 
 ```text
 card
-card--featured
+featured
 ```
 
 という二つのクラスに所属している。
@@ -109,7 +109,7 @@ const cards = document.querySelectorAll(".card");
 一つの要素を識別して参照する必要があるなら、`id`を使う。
 
 ```html
-<h2 id="news-title">お知らせ</h2>
+<h2 id="title">お知らせ</h2>
 ```
 
 複数の要素を同じ分類として扱うなら、`class`を使う。

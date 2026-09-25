@@ -37,12 +37,12 @@ HTMLでは「どう見えるか」より先に、**その内容が文書の中�
 たとえば、サービス紹介という一つのまとまりなら、次のように書ける。
 
 ```html
-<section class="service">
-  <h2 class="service__title">サービス紹介</h2>
-  <p class="service__description">
+<section>
+  <h2>サービス紹介</h2>
+  <p>
     制作から公開後の更新まで支援します。
   </p>
-  <a class="service__link" href="./service/">
+  <a href="./service/">
     サービスの詳細を見る
   </a>
 </section>
@@ -81,9 +81,9 @@ HTMLの要素から画面上の箱が作られる工程は、[ブラウザが表
 たとえば、見出しと説明を配置上まとめたいだけなら、次のように書ける。
 
 ```html
-<div class="service__inner">
-  <h2 class="service__title">サービス紹介</h2>
-  <p class="service__description">
+<div>
+  <h2>サービス紹介</h2>
+  <p>
     制作から公開後の更新まで支援します。
   </p>
 </div>

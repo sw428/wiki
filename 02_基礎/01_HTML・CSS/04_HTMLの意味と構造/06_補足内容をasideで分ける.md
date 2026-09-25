@@ -129,7 +129,7 @@ aside
 `div`は、それ自体では意味を追加しない。
 
 ```html
-<div class="aside-layout">
+<div>
   ...
 </div>
 ```

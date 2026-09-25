@@ -61,9 +61,9 @@ aria-current="page"
 表示される見出しがある場合は、その見出しの`id`を`aria-labelledby`から参照する方法もある。
 
 ```html
-<h2 id="breadcrumb-title">現在地</h2>
+<h2 id="title">現在地</h2>
 
-<nav aria-labelledby="breadcrumb-title">
+<nav aria-labelledby="title">
   ...
 </nav>
 ```

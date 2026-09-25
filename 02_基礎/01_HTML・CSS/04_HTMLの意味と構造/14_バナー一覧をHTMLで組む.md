@@ -20,7 +20,7 @@
 基本形は、
 
 ```html
-<ul class="banner-list">
+<ul>
   <li>
     <a href="/campaign-a/">
       <img src="banner-a.jpg" alt="キャンペーンA">
@@ -68,7 +68,7 @@ img
 バナーを押して別ページへ移動するなら、各`li`の中に`a`を置く。
 
 ```html
-<ul class="banner-list">
+<ul>
   <li>
     <a href="/campaign/">
       <img src="campaign.jpg" alt="春の入会キャンペーン">
@@ -129,10 +129,8 @@ alt="春の入会キャンペーン：今なら入会金無料"
   <a href="/course/">
     <img src="course.jpg" alt="">
 
-    <span class="banner-card__body">
-      <strong>Web制作コース</strong>
-      <span>HTMLとCSSを基礎から学びます。</span>
-    </span>
+    <strong>Web制作コース</strong>
+    <span>HTMLとCSSを基礎から学びます。</span>
   </a>
 </li>
 ```
@@ -157,7 +155,7 @@ img
 
 ```html
 <li>
-  <a class="banner-card" href="/service/">
+  <a href="/service/">
     <img src="service.jpg" alt="">
     <strong>サービス紹介</strong>
     <span>提供サービスを見る</span>
@@ -209,7 +207,7 @@ img
 1件の中に複数の移動先や、その場で行う操作があるなら、カード全体を一つの`a`で囲まない。
 
 ```html
-<li class="banner-card">
+<li>
   <img src="service.jpg" alt="">
   <h3>Web制作</h3>
   <p>Webサイト制作を行います。</p>
