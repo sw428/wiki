@@ -130,25 +130,17 @@ section
 `div`は、それ自体では文書上の意味を追加しない。
 
 ```html
-<div class="cards">
+<div class="background-wrapper">
   ...
 </div>
 ```
 
-これは、
-
-```text
-カードを横並びにする
-幅を制御する
-背景を付ける
-```
-
-など、主に実装上の都合でまとめるために使える。
+要素を横並びにする、幅を制御する、背景を付けるなど、配置や装飾のためだけにまとめるなら`div`を検討する。
 
 一方、
 
 ```html
-<section>
+<section class="instructor">
   <h2>講師紹介</h2>
   ...
 </section>
@@ -166,19 +158,7 @@ div
 → 意味を追加せず、必要な範囲をまとめる
 ```
 
-となる。
-
-## 見た目だけでsectionにしない
-
-デザイン上、背景色が変わっていたり余白が大きく空いていても、それだけでは`section`にする理由にはならない。
-
-```html
-<div class="background-wrapper">
-  ...
-</div>
-```
-
-のように、装飾やレイアウトのためだけなら`div`でよいことがある。
+`section`にもclassを付けてCSSで見た目を調整できる。`section`とclassのどちらか一方を選ぶのではなく、文書上の役割は要素、CSSやJavaScriptから参照する名前はclassが担当する。
 
 逆に、見た目が続いていても、
 
@@ -278,27 +258,6 @@ article
 と分けられる。
 
 `article`の詳しい判断は次のページで扱う。
-
-## sectionにclassを付けてもよい
-
-意味を持つ`section`でも、CSS用のclassを付けられる。
-
-```html
-<section class="service">
-  <h2>サービス</h2>
-  ...
-</section>
-```
-
-```text
-section
-→ HTML上の意味
-
-class
-→ CSSやJavaScriptから分類・参照するための名前
-```
-
-なので、どちらか一方を選ぶ話ではない。
 
 ## 判断するときの見方
 
