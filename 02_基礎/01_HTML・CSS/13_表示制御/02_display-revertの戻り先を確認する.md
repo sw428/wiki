@@ -96,11 +96,10 @@ author originの`revert`がカスケードに勝つと、そのプロパティ�
 4. 画面幅を切り替え、どのmedia queryが成立したかを見る。
 5. 表示されたが並びが違う場合は、以前の見た目ではなく現在のComputedから原因を探す。
 
-カスケード全体は[カスケード全体の優先順位](../06_CSSカスケードとDevToolsの見方/03_カスケード全体の優先順位.md)へ戻る。
+カスケード全体は[カスケード全体の優先順位](../06_CSSカスケードとDevToolsの見方/04_カスケード全体の優先順位.md)へ戻る。
 
 ## 仕様確認先
 
 - [CSS Cascading and Inheritance Level 5: revert](https://www.w3.org/TR/css-cascade-5/#valdef-all-revert)
 - [CSS Cascading and Inheritance Level 5: revert-layer](https://www.w3.org/TR/css-cascade-5/#valdef-all-revert-layer)
 - [Media Queries Level 4: Range context](https://www.w3.org/TR/mediaqueries-4/#mq-range-context)
-

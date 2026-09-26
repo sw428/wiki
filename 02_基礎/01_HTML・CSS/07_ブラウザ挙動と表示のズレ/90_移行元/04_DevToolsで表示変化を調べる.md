@@ -2,7 +2,7 @@
 
 表示が予想と違うときは、原因候補を一度に変えず、対象要素と確認する値を一つずつ絞る。
 
-CSS宣言の採用・不採用を調べる基本操作は[06のDevTools入口](../06_CSSカスケードとDevToolsの見方/01_DevToolsで適用されたCSSを確認する.md)を使う。このページでは、寸法・Grid・Flex・編集差分・メディアクエリの確認先を分ける。
+CSS宣言の採用・不採用を調べる基本操作は[06のDevTools入口](../../06_CSSカスケードとDevToolsの見方/01_DevToolsで適用されたCSSを確認する.md)を使う。このページでは、寸法・Grid・Flex・編集差分・メディアクエリの確認先を分ける。
 
 ## Computedで結果の値を見る
 
@@ -12,7 +12,7 @@ Computedは、対象要素で最終的に使われる値を調べる場所であ
 2. Computedで確認したいプロパティ名を検索する。
 3. Stylesの宣言と、Computedに出た結果を区別する。
 
-幅・高さ・余白は[05のボックスモデル図](../05_ボックスとdisplay/03_ボックスモデルの4領域.md#devtoolsで4領域を対応させる)でも確認できる。
+幅・高さ・余白は[05のボックスモデル図](../../05_ボックスとdisplay/03_ボックスモデルの4領域.md#devtoolsで4領域を対応させる)でも確認できる。
 
 ## Grid Overlayでトラックとgapを見る
 
@@ -47,7 +47,7 @@ Changesが追跡するのはDevTools内で行った編集である。CSSはEleme
 
 ## 測定対象を決めてから値を取る
 
-DevToolsのBox Modelはtransform前のCSSボックス、`getBoundingClientRect()`はtransformを反映した軸平行の外接矩形を確認するときに使う。回転した図形では同じ値にならない。必要になったら[transform後の外接矩形](../../../03_詳細/01_HTML・CSS/03_transform後の外接矩形.md)で条件と計算例を確認する。
+DevToolsのBox Modelはtransform前のCSSボックス、`getBoundingClientRect()`はtransformを反映した軸平行の外接矩形を確認するときに使う。回転した図形では同じ値にならない。必要になったら[transform後の外接矩形](../../../../03_詳細/01_HTML・CSS/03_transform後の外接矩形.md)で条件と計算例を確認する。
 
 ## 公式情報
 
