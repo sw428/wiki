@@ -21,14 +21,14 @@
 通常フローの非置換`inline-block`で`width: auto`のときは、通常ブロックのように利用可能幅へ一律に広がらず、内容に必要な幅と利用可能幅から収まる幅が決まる。そのため内容に沿った幅に見えやすいが、`auto`自体を「内容幅」という固定の意味では扱わない。
 
 ```html
-<a class="button" href="#">View Recipe</a>
+<a class="button" href="#">詳細を見る</a>
 ```
 
 ```css
 .button {
   display: inline-block;
-  padding: 18px 60px;
-  border: 1px solid #2b2a27;
+  padding: 12px 24px;
+  border: 1px solid #555;
   text-decoration: none;
 }
 ```
@@ -41,8 +41,8 @@
 
 ```html
 <a class="button" href="#">
-  <span class="button__text">View Recipe</span>
-  <span class="button__icon" aria-hidden="true">→</span>
+  <span>詳細を見る</span>
+  <span aria-hidden="true">→</span>
 </a>
 ```
 
@@ -52,8 +52,8 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 18px 60px;
-  border: 1px solid #2b2a27;
+  padding: 12px 24px;
+  border: 1px solid #555;
   text-decoration: none;
 }
 ```
@@ -70,12 +70,14 @@
 
 ## 疑似要素もpaddingの内側に入る
 
+`::before`と `::after`は、元の要素の内容の前後に生成され、その要素の行内レイアウトやFlexなどの規則に従って配置される。この例では `.button`がFlexコンテナなので、文字と `::after`の間隔を `gap`で作れる。
+
 ```css
 .button {
   display: inline-flex;
   align-items: center;
-  gap: 18px;
-  padding-inline: 20px 16px;
+  gap: 8px;
+  padding-inline: 16px;
 }
 
 .button::after {
@@ -83,7 +85,7 @@
 }
 ```
 
-`::after`は元の要素の中に生成されるため、この例ではpaddingの内側へ配置される。
+`::after`は元の要素の中に生成されるため、この例ではpaddingの内側へ配置される。「直前の文字のベースライン終端から描画される」とは考えない。
 
 ```text
 [左padding][文字][gap][::after][右padding]
