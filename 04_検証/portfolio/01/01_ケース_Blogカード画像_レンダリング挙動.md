@@ -241,7 +241,7 @@
 
 ## 移項監査結果（2026-08-27）
 
-- [ボックスとdisplay](../../../02_基礎/01_HTML・CSS/05_ボックスとdisplay/01_一つの箱とdisplay.md)
+- [ボックスとdisplay](../../../02_基礎/01_HTML・CSS/05_ボックスとdisplay/01_ボックスとdisplayの読み方.md)
   - blockの `width: auto`、ボックスモデル、`box-sizing` は既存基礎で充足。
 - [メディアの表示枠と重ね配置](../../../02_基礎/01_HTML・CSS/11_メディアの表示枠と重ね配置/00_メディアの表示枠と重ね配置整理マップ.md)
   - 画像比率、`object-fit`、`object-position`、HTML寸法属性は既存基礎で充足。DevToolsのAttributes Styleと最終表示・比率予約の区別だけを追加。
