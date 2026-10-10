@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="760" viewBox="0 0 720 760" role="img" aria-labelledby="title desc">
   <title id="title">正のmarginと負のmarginの相殺</title>
-  <desc id="desc">子Aのmargin-bottomが40px、子Bのmargin-topがマイナス10pxの場合、上下marginが相殺されて実際の間隔が30pxになる図。</desc>
+  <desc id="desc">子Aのmargin-bottomが40px、子Bのmargin-topがマイナス10pxの場合、上下marginが相殺されて実際の間隔が30pxになる図。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを20秒周期で繰り返す。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。</desc>
   <defs>
     <style>
       .head { font: 700 26px 'Noto Sans CJK JP', sans-serif; fill:#27272a; }
@@ -10,6 +10,18 @@
       .value { font: 700 23px 'Noto Sans CJK JP', sans-serif; fill:#292929; }
       .red { fill:#c93030; }
       .tan { fill:#8d6339; }
+      @media (prefers-reduced-motion: no-preference) {
+        .moving { animation: move 20s infinite; }
+        .applied { animation: reveal 20s infinite; }
+        @keyframes move {
+          0%, 10% { transform: translateY(30px); }
+          22.5%, 100% { transform: translateY(0); }
+        }
+        @keyframes reveal {
+          0%, 22%, 99%, 100% { opacity: 0; }
+          24%, 97% { opacity: 1; }
+        }
+      }
     </style>
     <marker id="arr-brown" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#315fa0" stroke-width="1.7"/></marker>
     <marker id="arr-red" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
@@ -19,15 +31,17 @@
   <text x="360" y="91" class="sub" text-anchor="middle">通常のブロック配置にある兄弟要素</text>
 
   <!-- Child A -->
-  <rect x="178" y="144" width="364" height="120" fill="#CFE4F7" stroke="#315fa0" stroke-width="2"/>
+  <rect x="178" y="144" width="364" height="120" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
   <text x="360" y="202" class="txt" text-anchor="middle">子A</text>
   <text x="360" y="235" class="sub" text-anchor="middle" style="fill: #315fa0">margin-bottom: 40px</text>
 
   <!-- Illustrative margin area, last 10px behind child B -->
   <rect x="178" y="264" width="364" height="120" fill="#f9cc9d"/>
   <rect x="178" y="354" width="364" height="30" fill="#f9cc9d"/>
+  <g class="applied">
   <text x="360" y="304" class="small tan" text-anchor="middle" style="fill: #111111">相殺後に残る余白</text>
   <text x="360" y="337" class="value tan" text-anchor="middle" style="fill: #111111">30px</text>
+  </g>
 
   <!-- 40px margin reference -->
     <line x1="154" y1="264" x2="174" y2="264" stroke="#315fa0" stroke-width="1.5" stroke-dasharray="3 3"/>
@@ -39,17 +53,23 @@
   <text x="629" y="391" class="small" >元の位置</text>
 
   <!-- Child B starts 10px higher than its original top position -->
-  <rect x="178" y="354" width="364" height="120" fill="#F7CFD3" stroke="#c93030" stroke-width="2"/>
+  <g class="moving" id="moving-child-b">
+  <rect x="178" y="354" width="364" height="120" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
   <text x="360" y="411" class="txt" text-anchor="middle">子B</text>
   <text x="360" y="444" class="sub" text-anchor="middle" style="fill: #c93030">margin-top: -10px</text>
+  </g>
 
   <!-- -10px upward arrow -->
+  <g class="applied">
   <line x1="585" y1="384" x2="585" y2="354" stroke="#c93030" stroke-width="2.3" marker-end="url(#arr-red)"/>
   <text x="615" y="347" class="value red">-10px</text>
+  </g>
 
   <line x1="94" y1="529" x2="626" y2="529" stroke="#dedede" stroke-width="1.5"/>
+  <g class="applied">
   <text x="360" y="589" class="sub" text-anchor="middle">子Aと子Bの実際の間隔</text>
   <text x="360" y="636" class="head" text-anchor="middle" style="fill: #111111">40px + (-10px) = 30px</text>
+  </g>
   <text x="360" y="704" class="small" text-anchor="middle">※ オレンジ色はmarginの範囲を説明するための色です。</text>
   <text x="360" y="728" class="small" text-anchor="middle">実際のCSSではmarginに背景色は付きません。</text>
 </svg>

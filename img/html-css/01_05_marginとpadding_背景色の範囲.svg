@@ -2,6 +2,13 @@
 <title id="title">paddingとmargin：要素の背景色の範囲</title>
 <desc id="desc">要素の背景色は赤。paddingの領域には要素の背景が付き、marginの領域には付かない。contentの大きさは両方同じ。左右は別々のCSS例。図は模式図で、marginのオレンジは説明用の色。</desc>
 <defs>
+  <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
+  <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024" style="mask-type:luminance">
+    <rect x="0" y="0" width="1536" height="1024" fill="#ffffff"/>
+    <rect x="604" y="314" width="72" height="46" fill="#000000"/>
+  </mask>
+</defs>
+<defs>
 <marker id="black" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>
 </marker>
@@ -44,7 +51,7 @@
 <text x="808" y="76" font-size="52" fill="#000" font-weight="700" text-anchor="start" >② margin: 30px</text>
 <text x="808" y="130" font-size="32" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの外側に余白ができます。</text>
 <rect x="84" y="165" width="612" height="288" rx="0" fill="url(#redFill)" stroke="#ffff00" stroke-width="4" />
-<rect x="174" y="255" width="432" height="108" rx="0" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+<rect x="174" y="255" width="432" height="108" rx="0" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 8" mask="url(#guide-gap-1)"/>
 <text x="390" y="328" font-size="44" fill="#fff" font-weight="700" text-anchor="middle" >こんにちは</text>
 <rect x="823" y="145" width="612" height="288" rx="0" fill="url(#marginFill)" stroke="#fb7700" stroke-width="3" stroke-dasharray="12 10"/>
 <rect x="913" y="235" width="432" height="108" rx="0" fill="url(#redFill)" stroke="#ffff00" stroke-width="4" />

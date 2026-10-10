@@ -1,34 +1,75 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 760" width="900" height="760" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 940" width="900" height="940" role="img" aria-labelledby="title desc">
   <title id="title">子Aにmargin-bottom: -40pxを指定</title>
-  <desc id="desc">子A自身は動かず、後続の子Bが通常位置から40px上へ詰まり、子Aに重なる。点線の親の範囲は補助線で、実際のborderではない。箱の高さは模式的に示す。</desc>
+  <desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が配置に影響しない例。子A自身は動かず、後続する兄弟要素全て（子B・子C）が通常位置から40px上へ詰まる。子Bは子Aに重なり、子Bの子と子Cの子もそれぞれの親と一緒に移動する。通常位置から指定後までを20秒周期で繰り返す。動きを減らす設定では指定後の静止図を表示する。点線の親の範囲は補助線で、実際のborderではない。箱の高さは模式的に示す。</desc>
+<defs>
+  <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
+  <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="900" height="940" style="mask-type:luminance">
+    <rect x="0" y="0" width="900" height="940" fill="#ffffff"/>
+    <rect x="751" y="281" width="111" height="35" fill="#000000" class="applied"/>
+    <rect x="751" y="471" width="111" height="35" fill="#000000" class="applied"/>
+    <rect x="262" y="775" width="376" height="28" fill="#000000" class="applied"/>
+    <rect x="64" y="358" width="130" height="28" fill="#000000"/>
+    <rect x="123" y="323" width="72" height="35" fill="#000000"/>
+  </mask>
+</defs>
   <style>
     .title { font: 700 34px 'Arial','Hiragino Sans','Yu Gothic',sans-serif; fill:#222; }
     .subtitle { font: 500 22px 'Arial','Hiragino Sans','Yu Gothic',sans-serif; fill:#444444; }
     .label { font: 700 24px 'Arial','Hiragino Sans','Yu Gothic',sans-serif; }
     .small { font: 500 18px 'Arial','Hiragino Sans','Yu Gothic',sans-serif; fill:#444444; }
     .note { font: 600 20px 'Arial','Hiragino Sans','Yu Gothic',sans-serif; fill:#444444; }
+    @media (prefers-reduced-motion: no-preference) {
+      .moving { animation: move 20s infinite; }
+      .applied { animation: reveal 20s infinite; }
+      @keyframes move {
+        0%, 10% { transform: translateY(40px); }
+        22.5%, 100% { transform: translateY(0); }
+      }
+      @keyframes reveal {
+        0%, 22%, 99%, 100% { opacity: 0; }
+        24%, 97% { opacity: 1; }
+      }
+    }
   </style>
   <defs>
     <marker id="moveRed" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
+    <marker id="movePurple" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto"><path d="M0 0 L10 5 L0 10" fill="none" stroke="#7c3aed" stroke-width="2"/></marker>
   </defs>
-  <rect width="900" height="760" fill="#fff"/>
+  <rect width="900" height="940" fill="#fff"/>
   <text x="450" y="58" text-anchor="middle" class="title">margin-bottom: -40px</text>
-  <text x="450" y="95" text-anchor="middle" class="subtitle">子Aの位置は変わらず、次の兄弟要素の子Bが40px上へ詰まる</text>
-  <rect x="140" y="145" width="620" height="430" fill="#f5f5f5" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
-  <text x="450" y="552" text-anchor="middle" class="small">親要素</text>
+  <text x="450" y="95" text-anchor="middle" class="subtitle">子Aは動かず、後続する兄弟要素全てが40px上へ詰まる</text>
+  <rect x="140" y="145" width="620" height="630" fill="#f5f5f5"/>
+<rect x="140" y="145" width="620" height="630" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8 7" mask="url(#guide-gap-1)"/>
+  <text x="450" y="750" text-anchor="middle" class="small">親要素</text>
   <!-- 子Aの下端は320。負のmargin指定前の子Bの上端も320。 -->
   <rect x="220" y="190" width="460" height="130" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
   <text x="450" y="247" text-anchor="middle" class="label" fill="#315fa0">子A（位置は変わらない）</text>
   <!-- 子Bは320から280へ40px上がる。 -->
-  <rect x="220" y="280" width="460" height="130" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-  <text x="450" y="372" text-anchor="middle" class="label" fill="#c93030">子B</text>
+  <g class="moving" id="moving-child-b">
+  <rect x="220" y="280" width="460" height="190" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+  <text x="450" y="350" text-anchor="middle" class="label" fill="#c93030">子B</text>
+  <rect x="310" y="384" width="280" height="50" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
+  <text x="450" y="416" text-anchor="middle" class="small" style="fill:#be185d">子Bの子</text>
+  </g>
+  <!-- 子Cも510から470へ40px上がり、その子も一緒に動く。 -->
+  <g class="moving" id="moving-child-c">
+  <rect x="220" y="470" width="460" height="190" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="450" y="540" text-anchor="middle" class="label" fill="#7c3aed">子C</text>
+  <rect x="310" y="574" width="280" height="50" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"/>
+  <text x="450" y="606" text-anchor="middle" class="small" style="fill:#a21caf">子Cの子</text>
+  </g>
   <line x1="220" y1="320" x2="680" y2="320" stroke="#666666" stroke-width="2" stroke-dasharray="6 6"/>
-  <text x="450" y="458" text-anchor="middle" class="small">点線：負のmargin指定前の子Bの上端</text>
+  <text x="450" y="795" text-anchor="middle" class="small applied">子B内の点線：負のmargin指定前の子Bの上端</text>
   <!-- 下側の指定は子Aの青、移動は子Bの赤で示す。 -->
-  <text x="190" y="305" text-anchor="end" class="label" fill="#315fa0">-40px</text>
-  <text x="190" y="334" text-anchor="end" class="small" style="fill:#315fa0">子Aの下margin</text>
+  <text x="190" y="349" text-anchor="end" class="label" fill="#315fa0">-40px</text>
+  <text x="190" y="378" text-anchor="end" class="small" style="fill:#315fa0">子Aの下margin</text>
+  <g class="applied">
   <line x1="740" y1="320" x2="740" y2="280" stroke="#c93030" stroke-width="3" marker-end="url(#moveRed)"/>
   <text x="755" y="307" class="label" fill="#c93030">40px上へ</text>
-  <text x="450" y="635" text-anchor="middle" class="note">負の margin-bottom は、後ろに続く子Bを上へ詰める</text>
-  <text x="450" y="670" text-anchor="middle" class="note">子A自身は動かない</text>
+  <line x1="740" y1="510" x2="740" y2="470" stroke="#7c3aed" stroke-width="3" marker-end="url(#movePurple)"/>
+  <text x="755" y="497" class="label" fill="#7c3aed">40px上へ</text>
+  <text x="450" y="835" text-anchor="middle" class="note">負の margin-bottom は、後続する兄弟要素全てを上へ詰める</text>
+  <text x="450" y="870" text-anchor="middle" class="note">子B・子Cと、その中の子は一緒に上へ動く</text>
+  <text x="450" y="905" text-anchor="middle" class="note">子A自身は動かない</text>
+  </g>
 </svg>

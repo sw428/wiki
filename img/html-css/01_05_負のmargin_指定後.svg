@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="1000" viewBox="440 120 600 1000" role="img" aria-labelledby="title desc">
 <title id="title">② 子Bにmargin-top: -40pxを指定</title>
-<desc id="desc">子Aは動かず、子Bとその子、後続の子Cとその子が40px上へ動く。 親子関係と変化を示す模式図で、高さや間隔はCSSの寸法どおりではない。点線は親の範囲を示す補助線。</desc>
+<desc id="desc">子Aは動かず、子Bとその子、後続の子Cとその子が40px上へ動く。通常位置から指定後までを20秒周期で繰り返す。動きを減らす設定では指定後の静止図を表示する。親子関係と変化を示す模式図で、高さや間隔はCSSの寸法どおりではない。点線は親の範囲を示す補助線。</desc>
 <style>
     .title { font: 700 30px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#222; }
     .subtitle { font: 500 20px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }
@@ -8,6 +8,18 @@
     .small { font: 500 16px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }
     .em { font: 700 18px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#c93030; }
     .note { font: 500 17px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#2b5fd9; }
+    @media (prefers-reduced-motion: no-preference) {
+      .moving { animation: move 20s infinite; }
+      .applied { animation: reveal 20s infinite; }
+      @keyframes move {
+        0%, 10% { transform: translateY(40px); }
+        22.5%, 100% { transform: translateY(0); }
+      }
+      @keyframes reveal {
+        0%, 22%, 99%, 100% { opacity: 0; }
+        24%, 97% { opacity: 1; }
+      }
+    }
   </style>
 <defs>
 <marker id="moveRed" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
@@ -27,19 +39,24 @@
   <text x="670" y="365" text-anchor="middle" class="label">子A</text>
 
   <!-- child B shifted up 40 -->
+  <g class="moving" id="moving-child-b">
   <rect x="560" y="390" width="220" height="180" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
   <text x="670" y="445" text-anchor="middle" class="label">子B</text>
   <text x="670" y="475" text-anchor="middle" class="small" style="fill: #c93030">margin-top: -40px</text>
   <rect x="595" y="495" width="150" height="48" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
   <text x="670" y="525" text-anchor="middle" class="small">子Bの子</text>
+  </g>
 
   <!-- child C shifted up 40 -->
+  <g class="moving" id="moving-child-c">
   <rect x="560" y="590" width="220" height="180" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
   <text x="670" y="645" text-anchor="middle" class="label">子C</text>
   <rect x="595" y="695" width="150" height="48" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"/>
   <text x="670" y="725" text-anchor="middle" class="small">子Cの子</text>
+  </g>
 
   <!-- arrows and notes -->
+  <g class="applied">
   <line x1="810" y1="430" x2="810" y2="390" stroke="#c93030" stroke-width="3" marker-end="url(#moveRed)"/>
   <text x="825" y="415" class="em" style="fill: #c93030">40px上がる</text>
 
@@ -48,5 +65,6 @@
 
   <text x="670" y="1040" text-anchor="middle" class="note">子Bの子は子Bと一緒に上がる</text>
   <text x="670" y="1070" text-anchor="middle" class="note">子Cも、その中の子Cの子も一緒に上へ動く</text>
+  </g>
 
   </svg>
