@@ -18,6 +18,8 @@ Computedは、対象要素で最終的に使われる値を調べる場所であ
 
 Flexの `space-between`は、Gridと同じ形で空きの寸法を表示できるとは限らない。必要ならConsoleで `getBoundingClientRect()`を使い、隣接する要素の座標差から確認する。
 
+選んだ要素、親子、隣接要素の距離を測る具体的なコマンドは[Consoleで表示を測る](../06_CSSカスケードとDevToolsの見方/05_Consoleで表示を測る.md#選んだ要素と隣の要素を測る)にまとめる。ここでは測定値が、どの箱のどの範囲を表すかを確認する。
+
 ## 測定対象を決めてから値を取る
 
 DevToolsのBox Modelはtransform前のCSSボックス、`getBoundingClientRect()`はtransformを反映した軸平行の外接矩形を確認するときに使う。回転した図形では同じ値にならない。必要になったら[transform後の外接矩形](../../../03_詳細/01_HTML・CSS/03_transform後の外接矩形.md)で条件と計算例を確認する。

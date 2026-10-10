@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="436" viewBox="0 0 340 218" role="img" aria-labelledby="title desc">
+<title id="title">① 通常のブロック配置（相殺する）</title>
+<desc id="desc">親の20pxと最初の子の40pxの上marginが相殺し、親の外側に40pxの余白ができる。 灰色の点線は説明用補助線で、CSSのborderではない。前の要素のmarginは0。模式図。</desc>
+<rect x="0" y="0" width="340" height="218" fill="#ffffff"/>
+<style>
+    text { font-family: "Noto Sans CJK JP", "Yu Gothic", sans-serif; }
+  </style>
+<text x="12" y="20" font-size="14" font-weight="bold" fill="#222222">① 通常のブロック配置（相殺する）</text>
+  <rect x="60" y="31" width="242" height="38" fill="#CCE0F7" stroke="#315fa0"/>
+  <text x="181" y="55" text-anchor="middle" font-size="12" fill="#222222">前の要素</text>
+  <rect x="60" y="69" width="242" height="40" fill="#f9cc9d"/>
+  <text x="181" y="92" text-anchor="middle" font-size="12" fill="#8A581B" style="fill: #111111">40px（相殺結果）</text>
+  <rect x="60" y="109" width="242" height="88" fill="#f5f5f5"/>
+  <rect x="60" y="109" width="242" height="88" fill="none" stroke="#666666" stroke-dasharray="8 7" stroke-width="2"/>
+  <line x1="60" y1="109" x2="302" y2="109" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+  <text x="53" y="112" text-anchor="end" font-size="10" fill="#444444">上端</text>
+  <rect x="78" y="109" width="206" height="43" fill="#F6C3C3" stroke="#A65D5D"/>
+  <text x="181" y="135" font-size="13" text-anchor="middle" fill="#222222">子要素</text>
+  <text x="181" y="182" font-size="12" text-anchor="middle" fill="#444444">親要素</text>
+  </svg>

@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="341" viewBox="0 432 1000 341" role="img" aria-labelledby="title desc">
+<title id="title">② padding-top: 30pxを追加</title>
+<desc id="desc">親のmargin-top 20px、padding-top 30px、子のmargin-top 40pxで、前の要素の下端から子の上端まで90px。 灰色の点線は親の範囲を示す補助線で、CSSのborderではない。模式図で寸法は縮尺どおりではない。</desc>
+<rect x="0" y="432" width="1000" height="341" fill="#FFFFFF"/>
+<rect x="26" y="446" width="948" height="313" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
+<rect x="26" y="446" width="948" height="52" rx="16" fill="#EBF6FF"/>
+<rect x="26" y="486" width="948" height="12" rx="0" fill="#EBF6FF"/>
+<text x="49" y="480" font-family="'Noto Sans CJK JP', sans-serif" font-size="23" fill="#183B5A" font-weight="700">② padding-top: 30px を追加</text>
+<rect x="835" y="456" width="116" height="33" rx="16" fill="#FFFFFF" stroke="#BFD3E5" stroke-width="1"/>
+<text x="893" y="479" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#205980" font-weight="700" text-anchor="middle">相殺しない</text>
+<rect x="73" y="511" width="420" height="43" rx="4" fill="#D7E9FB" stroke="#50799B" stroke-width="1.3"/>
+<text x="283" y="539" font-family="'Noto Sans CJK JP', sans-serif" font-size="17" fill="#274564" font-weight="700" text-anchor="middle">前の要素（margin: 0）</text>
+<rect x="73" y="554" width="420" height="25" rx="0" fill="#f9cc9d"/>
+<text x="283" y="572" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#9C5A13" font-weight="700" text-anchor="middle" style="fill: #444444">親margin：20px</text>
+<rect x="73" y="579" width="420" height="166" rx="0" fill="#f5f5f5"/>
+<rect x="73" y="579" width="420" height="37.5" rx="0" fill="#cae6d1"/>
+<text x="283" y="609.5" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#26724a" font-weight="700" text-anchor="middle">親padding：30px</text>
+<rect x="73" y="616.5" width="420" height="50" rx="0" fill="#f9cc9d"/>
+<text x="283" y="646.5" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" fill="#9C5A13" font-weight="700" text-anchor="middle" style="fill: #b42337">子margin：40px</text>
+<rect x="73" y="666.5" width="420" height="48" rx="0" fill="#F7C7C9" stroke="#B65B63" stroke-width="1.3"/>
+<text x="283" y="697.5" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#762F37" font-weight="700" text-anchor="middle">子要素</text>
+<text x="283" y="733" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#444444" font-weight="700" text-anchor="middle">親要素</text>
+<line x1="73" y1="579" x2="493" y2="579" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="73" y1="579" x2="73" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="493" y1="579" x2="493" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="73" y1="745" x2="493" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="71" y="571" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#444444" font-weight="700">親の上端</text>
+<rect x="521" y="508" width="435" height="135" rx="10" fill="#F4F6F8" stroke="#DCE2E9" stroke-width="1.2"/>
+<text x="540" y="539" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">.parent { margin-top: 20px;</text>
+<text x="540" y="566" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">          padding-top: 30px; }</text>
+<text x="540" y="593" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">.child  { margin-top: 40px; }</text>
+<text x="521" y="669" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" fill="#344054">前の要素 → 子要素の上端：</text>
+<text x="848" y="669" font-family="'Noto Sans CJK JP', sans-serif" font-size="28" fill="#B44B25" font-weight="700" style="fill: #111111">90px</text>
+<text x="521" y="701" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#0E527F" font-weight="700" style="fill: #111111">20px + 30px + 40px = 90px</text>
+<text x="521" y="732" font-family="'Noto Sans CJK JP', sans-serif" font-size="15" fill="#334155">paddingが間に入るため、親子のmarginは相殺しない。</text>
+</svg>

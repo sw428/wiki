@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="820" viewBox="0 0 980 820" role="img" aria-labelledby="title desc">
+<title id="title">③ 子の負のmargin-top</title>
+<desc id="desc">子の通常位置350pxにmargin-topマイナス150pxが作用し、子の上端は200px。親の上端は250pxなので子は親より50px上にはみ出す。子の下margin60pxの後に見出しが続く。 通常フローのブロック配置で、ほかのmarginやborder、位置指定の影響がない例。縦の距離はCSSの1pxを図の0.8単位で示す。箱の大きさは例示用で親の下側は図の途中で省略。灰色の点線は説明用で実際のborderではない。</desc>
+<defs>
+<marker id="black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>
+</marker>
+<marker id="blue" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#315fa0" stroke-width="2"/>
+</marker>
+<marker id="green" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#26724a" stroke-width="2"/>
+</marker>
+<marker id="red" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
+</defs>
+<g font-family="Yu Gothic, Meiryo, Noto Sans CJK JP, sans-serif">
+<rect x="0" y="0" width="980" height="820" fill="#ffffff" />
+<rect x="30" y="20" width="920" height="94" fill="#f1f5f9" />
+<text x="52" y="61" font-size="35" fill="#111" font-weight="700" text-anchor="start">③ 子の負のmargin-top</text>
+<text x="52" y="96" font-size="25" fill="#334155" font-weight="400" text-anchor="start">.child { margin: -150px auto 60px; }</text>
+<rect x="180" y="140" width="400" height="80" fill="#cfe4ff" stroke="#315fa0" stroke-width="2" />
+<text x="380" y="190" font-size="29" fill="#10233f" font-weight="700" text-anchor="middle">前の要素 .before</text>
+<rect x="180" y="220" width="400" height="200" fill="#f9cc9d" />
+<rect x="180" y="420" width="400" height="280" fill="#f5f5f5" />
+<rect x="180" y="420" width="400" height="80" fill="#cae6d1" />
+<line x1="180" y1="420" x2="580" y2="420" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="180" y1="420" x2="180" y2="700" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="580" y1="420" x2="580" y2="700" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<text x="380" y="664" font-size="27" fill="#444444" font-weight="700" text-anchor="middle">親要素 .parent</text>
+<text x="380" y="693" font-size="20" fill="#444444" font-weight="400" text-anchor="middle">↓ 下へ続く</text>
+<line x1="165" y1="220" x2="615" y2="220" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="710" y="227" font-size="22" fill="#334155" font-weight="400" text-anchor="start">前の要素の下端：0px</text>
+<text x="710" y="427" font-size="22" fill="#444444" font-weight="400" text-anchor="start">親の上端：250px</text>
+<text x="380" y="306" font-size="22" fill="#315fa0" font-weight="600" text-anchor="middle">前の要素のmargin-bottom</text>
+<text x="380" y="340" font-size="25" fill="#315fa0" font-weight="700" text-anchor="middle">250px</text>
+<rect x="235" y="380" width="290" height="80" fill="#f8cfd6" stroke="#e6586b" stroke-width="2" />
+<text x="380" y="432" font-size="28" fill="#111" font-weight="700" text-anchor="middle">子要素 .child</text>
+<rect x="235" y="460" width="290" height="48" fill="#f9cc9d" />
+<text x="380" y="492" font-size="23" fill="#c93030" font-weight="600" text-anchor="middle">下margin: 60px</text>
+<rect x="235" y="508" width="290" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="2" />
+<text x="380" y="536" font-size="24" fill="#10233f" font-weight="700" text-anchor="middle">見出し .heading</text>
+<line x1="130" y1="220" x2="130" y2="380" stroke="#111111" stroke-width="3" marker-start="url(#black)" marker-end="url(#black)"/>
+<text x="115" y="288" font-size="20" fill="#111111" font-weight="600" text-anchor="end">実際の距離</text>
+<text x="115" y="321" font-size="24" fill="#111111" font-weight="700" text-anchor="end">200px</text>
+<line x1="585" y1="500" x2="685" y2="500" stroke="#a8a29e" stroke-width="2" stroke-dasharray="6 5"/>
+<line x1="665" y1="500" x2="665" y2="380" stroke="#c93030" stroke-width="3" marker-end="url(#red)"/>
+<text x="710" y="474" font-size="25" fill="#c93030" font-weight="700" text-anchor="start">150px上へ</text>
+<text x="710" y="387" font-size="22" fill="#111111" font-weight="700" text-anchor="start" style="fill: #111111">子の上端：200px</text>
+<text x="710" y="507" font-size="22" fill="#78716c" font-weight="400" text-anchor="start" style="fill: #111111">通常位置：350px</text>
+<text x="710" y="574" font-size="21" fill="#26724a" font-weight="400" text-anchor="start">padding-top: 100px</text>
+<text x="710" y="615" font-size="23" fill="#334155" font-weight="400" text-anchor="start">親の上端より</text>
+<text x="710" y="648" font-size="23" fill="#111111" font-weight="700" text-anchor="start">50px上にはみ出す</text>
+<rect x="30" y="716" width="920" height="53" fill="#fff1f2" />
+<text x="490" y="753" font-size="31" fill="#111111" font-weight="700" text-anchor="middle">250 + 100 − 150 = 200px</text>
+<text x="40" y="798" font-size="20" fill="#475569" font-weight="400" text-anchor="start">点線は親の補助線で、CSSのborderではありません。図は模式図です。</text>
+</g>
+</svg>

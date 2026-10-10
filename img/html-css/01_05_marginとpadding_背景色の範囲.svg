@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+<title id="title">paddingとmargin：要素の背景色の範囲</title>
+<desc id="desc">要素の背景色は赤。paddingの領域には要素の背景が付き、marginの領域には付かない。contentの大きさは両方同じ。左右は別々のCSS例。図は模式図で、marginのオレンジは説明用の色。</desc>
+<defs>
+<marker id="black" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>
+</marker>
+<marker id="blue" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#0d455c" stroke-width="2"/>
+</marker>
+<marker id="orange" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/>
+</marker>
+<marker id="white" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+<path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#26724a" stroke-width="2"/>
+</marker>
+<linearGradient id="blueFill" x2="1" y2="1">
+<stop stop-color="#d9eaff"/>
+<stop offset="1" stop-color="#cfe3fc"/>
+</linearGradient>
+<linearGradient id="redFill" x2="1" y2="1">
+<stop stop-color="#ff8585"/>
+<stop offset="1" stop-color="#ff9494"/>
+</linearGradient>
+<linearGradient id="childFill" x2="1" y2="1">
+<stop stop-color="#f9c8cd"/>
+<stop offset="1" stop-color="#f3bfc5"/>
+</linearGradient>
+<linearGradient id="marginFill" x2="1" y2="1">
+<stop stop-color="#f9cc9d"/>
+<stop offset="1" stop-color="#f9cc9d"/>
+</linearGradient>
+<linearGradient id="grayPanel" x2="1" y2="1">
+<stop stop-color="#f0f1f3"/>
+<stop offset="1" stop-color="#e9ebee"/>
+</linearGradient>
+</defs>
+<g font-family="Yu Gothic, Meiryo, Noto Sans CJK JP, sans-serif">
+<rect x="0" y="0" width="1536" height="1024" rx="0" fill="#ffffff" />
+<rect x="16" y="10" width="742" height="600" rx="18" fill="#e5f3ff" />
+<rect x="778" y="10" width="742" height="600" rx="18" fill="#fff0e0" />
+<text x="48" y="76" font-size="52" fill="#000" font-weight="700" text-anchor="start" >① padding: 30px</text>
+<text x="48" y="130" font-size="32" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの内側に余白ができます。</text>
+<text x="808" y="76" font-size="52" fill="#000" font-weight="700" text-anchor="start" >② margin: 30px</text>
+<text x="808" y="130" font-size="32" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの外側に余白ができます。</text>
+<rect x="84" y="165" width="612" height="288" rx="0" fill="url(#redFill)" stroke="#ffff00" stroke-width="4" />
+<rect x="174" y="255" width="432" height="108" rx="0" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="390" y="328" font-size="44" fill="#fff" font-weight="700" text-anchor="middle" >こんにちは</text>
+<rect x="823" y="145" width="612" height="288" rx="0" fill="url(#marginFill)" stroke="#fb7700" stroke-width="3" stroke-dasharray="12 10"/>
+<rect x="913" y="235" width="432" height="108" rx="0" fill="url(#redFill)" stroke="#ffff00" stroke-width="4" />
+<text x="1129" y="308" font-size="44" fill="#fff" font-weight="700" text-anchor="middle" >こんにちは</text>
+<line x1="388" y1="178" x2="388" y2="243" stroke="#26724a" stroke-width="3" marker-start="url(#white)" marker-end="url(#white)"/>
+<line x1="98" y1="309" x2="162" y2="309" stroke="#26724a" stroke-width="3" marker-start="url(#white)" marker-end="url(#white)"/>
+<line x1="618" y1="309" x2="683" y2="309" stroke="#26724a" stroke-width="3" marker-start="url(#white)" marker-end="url(#white)"/>
+<line x1="388" y1="375" x2="388" y2="440" stroke="#26724a" stroke-width="3" marker-start="url(#white)" marker-end="url(#white)"/>
+<text x="410" y="216" font-size="29" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
+<text x="98" y="347" font-size="29" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
+<text x="608" y="347" font-size="29" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
+<text x="410" y="416" font-size="29" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
+<text x="1154" y="195" font-size="29" fill="#c93030" font-weight="400" text-anchor="start" >30px</text>
+<text x="834" y="326" font-size="29" fill="#c93030" font-weight="400" text-anchor="start" >30px</text>
+<text x="1353" y="326" font-size="29" fill="#c93030" font-weight="400" text-anchor="start" >30px</text>
+<text x="1154" y="406" font-size="29" fill="#c93030" font-weight="400" text-anchor="start" >30px</text>
+<text x="58" y="507" font-size="25" fill="#111111" font-weight="400" text-anchor="start" >paddingを増やすと、ボーダーの内側の余白が増えます。</text>
+<text x="58" y="549" font-size="24" fill="#111111" font-weight="400" text-anchor="start" >要素の背景色（赤）はcontentとpaddingの領域に広がります。</text>
+<text x="821" y="507" font-size="25" fill="#111111" font-weight="400" text-anchor="start" >marginを増やすと、ボーダーの外側の余白が増えます。</text>
+<text x="821" y="548" font-size="25" fill="#111111" font-weight="400" text-anchor="start" >要素の背景色（赤）はcontentとpaddingの領域にのみ</text>
+<text x="821" y="589" font-size="25" fill="#111111" font-weight="400" text-anchor="start" >広がり、marginの領域には広がりません。</text>
+<rect x="18" y="626" width="1500" height="112" rx="18" fill="#fff" stroke="#e2e5e9" stroke-width="3" />
+<rect x="50" y="655" width="90" height="54" rx="0" fill="url(#redFill)" />
+<text x="158" y="679" font-size="23" fill="#111" font-weight="600" text-anchor="start" >要素の背景色（red）</text>
+<text x="158" y="715" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >content + paddingの領域</text>
+<rect x="478" y="655" width="90" height="54" rx="0" fill="url(#marginFill)" stroke="#fb7700" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="585" y="679" font-size="23" fill="#111" font-weight="600" text-anchor="start" >marginの領域</text>
+<text x="585" y="715" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >（背景色は付かない）</text>
+<rect x="824" y="655" width="90" height="54" rx="0" fill="#fff" stroke="#ffff00" stroke-width="4" />
+<text x="932" y="679" font-size="23" fill="#111" font-weight="600" text-anchor="start" >ボーダー</text>
+<text x="932" y="715" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >（要素の境界線）</text>
+<rect x="1190" y="655" width="90" height="54" rx="0" fill="none" stroke="#b9c0c9" stroke-width="3" stroke-dasharray="10 8"/>
+<text x="1297" y="679" font-size="23" fill="#111" font-weight="600" text-anchor="start" >コンテンツの領域</text>
+<text x="1297" y="715" font-size="22" fill="#475569" font-weight="400" text-anchor="start" >（大きさは両方同じ）</text>
+<rect x="16" y="754" width="742" height="255" rx="18" fill="#e5f3ff" />
+<rect x="778" y="754" width="742" height="255" rx="18" fill="#fff0e0" />
+<text x="60" y="798" font-size="24" fill="#111111" font-weight="400" text-anchor="start" >HTML</text>
+<text x="178" y="798" font-size="24" fill="#1637a5" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace">&lt;div class=&quot;box&quot;&gt;こんにちは&lt;/div&gt;</text>
+<text x="60" y="851" font-size="24" fill="#111111" font-weight="400" text-anchor="start" >CSS</text>
+<text x="178" y="851" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">.box {</text>
+<text x="178" y="884" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  background-color: red;</text>
+<text x="178" y="917" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  padding: 30px;</text>
+<text x="178" y="950" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  border: 2px solid #ffff00;</text>
+<text x="178" y="983" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">}</text>
+<text x="820" y="798" font-size="24" fill="#111111" font-weight="400" text-anchor="start" >HTML</text>
+<text x="938" y="798" font-size="24" fill="#1637a5" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace">&lt;div class=&quot;box&quot;&gt;こんにちは&lt;/div&gt;</text>
+<text x="820" y="851" font-size="24" fill="#111111" font-weight="400" text-anchor="start" >CSS</text>
+<text x="938" y="851" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">.box {</text>
+<text x="938" y="884" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  background-color: red;</text>
+<text x="938" y="917" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  margin: 30px;</text>
+<text x="938" y="950" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">  border: 2px solid #ffff00;</text>
+<text x="938" y="983" font-size="24" fill="#111" font-weight="400" text-anchor="start" font-family="Consolas, Yu Gothic, monospace" xml:space="preserve">}</text>
+</g>
+</svg>

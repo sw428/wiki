@@ -35,7 +35,7 @@ DevToolsの[Stylesペイン](../../../05_参照/ペイン.md)では、次の順�
 
 ### Stylesペインの画面例
 
-![Chrome DevToolsのStylesペインにelement.style、作者CSS、User Agent CSS、継承元が並ぶ画面](../img/DevTools_Stylesペイン.png)
+![Chrome DevToolsのStylesペインにelement.style、作者CSS、User Agent CSS、継承元が並ぶ画面](../../../img/html-css/DevTools_Stylesペイン.png)
 
 この例では、上から `element.style`、ページ側のCSS、User Agent CSS、継承元の規則が表示されている。User Agent CSSの `margin: 8px` には打ち消し線があり、ページ側の `margin: 0` が使われている。
 
@@ -53,6 +53,8 @@ DevToolsの[Stylesペイン](../../../05_参照/ペイン.md)では、次の順�
 打ち消し線だけでは、「詳細度で負けた」とは限らない。まず、選んだ要素、プロパティ、出典ファイル、最終値を確認する。どの宣言が勝ったかという理由が必要になったら、[優先条件が同じときの記述順](./02_優先条件が同じときの記述順.md)へ進む。
 
 幅・高さ・余白を図で確認する場合は、[DevToolsのボックスモデル図](../05_ボックスとdisplay/03_ボックスモデルの4領域.md#devtoolsで4領域を対応させる)と分けて考える。
+
+要素の座標や隣との距離を数値で測る場合は、[Consoleで表示を測る](./05_Consoleで表示を測る.md)を使う。
 
 ## 次へ進む目安
 
