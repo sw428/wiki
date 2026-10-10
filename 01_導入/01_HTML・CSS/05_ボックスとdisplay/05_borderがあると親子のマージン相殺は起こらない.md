@@ -65,7 +65,7 @@ $$
 ```css
 .parent {
   margin-top: 20px;
-  border-top: 2px solid #ffff00;
+  border-top: 2px solid #f2ed20;
 }
 
 .child {

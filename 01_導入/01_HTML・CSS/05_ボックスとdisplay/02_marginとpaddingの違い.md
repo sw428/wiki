@@ -27,7 +27,7 @@
 .box {
   margin: 30px;
   padding: 20px;
-  border: 2px solid #ffff00;
+  border: 2px solid #f2ed20;
   background-color: lightblue;
 }
 ```

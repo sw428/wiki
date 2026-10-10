@@ -43,11 +43,11 @@
 <text x="65" y="233" font-size="34" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの内側に余白ができます。</text>
 <text x="833" y="175" font-size="52" fill="#000" font-weight="700" text-anchor="start" >② margin: 30px</text>
 <text x="833" y="233" font-size="34" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの外側に余白ができます。</text>
-<rect x="90" y="310" width="600" height="330" rx="0" fill="#cae6d1" stroke="#ffff00" stroke-width="4" />
+<rect x="90" y="310" width="600" height="330" rx="0" fill="#cae6d1" stroke="#f2ed20" stroke-width="5" />
 <rect x="180" y="400" width="420" height="150" rx="0" fill="#fff" />
 <text x="390" y="488" font-size="38" fill="#14212c" font-weight="700" text-anchor="middle" >こんにちは</text>
 <rect x="835" y="285" width="600" height="330" rx="0" fill="url(#marginFill)" stroke="#fb8b21" stroke-width="3" stroke-dasharray="12 10"/>
-<rect x="925" y="375" width="420" height="150" rx="0" fill="#fff" stroke="#ffff00" stroke-width="4" />
+<rect x="925" y="375" width="420" height="150" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="5" />
 <text x="1135" y="463" font-size="38" fill="#14212c" font-weight="700" text-anchor="middle" >こんにちは</text>
 <line x1="385" y1="321" x2="385" y2="389" stroke="#26724a" stroke-width="3" marker-start="url(#blue)" marker-end="url(#blue)"/>
 <line x1="104" y1="475" x2="168" y2="475" stroke="#26724a" stroke-width="3" marker-start="url(#blue)" marker-end="url(#blue)"/>
@@ -71,7 +71,7 @@
 <rect x="834" y="793" width="80" height="48" rx="0" fill="url(#marginFill)" stroke="#fb8b21" stroke-width="3" stroke-dasharray="10 8"/>
 <text x="932" y="809" font-size="23" fill="#111" font-weight="600" text-anchor="start" >marginの領域</text>
 <text x="932" y="844" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >ボーダーの外側（オレンジ）</text>
-<rect x="1260" y="793" width="62" height="48" rx="0" fill="#fff" stroke="#ffff00" stroke-width="4" />
+<rect x="1260" y="793" width="62" height="48" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="5" />
 <text x="1340" y="820" font-size="22" fill="#111" font-weight="600" text-anchor="start" >ボーダー（黄線）</text>
 </g>
 </svg>
