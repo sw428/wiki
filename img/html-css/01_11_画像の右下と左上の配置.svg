@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+  <title id="title">同じ画像を親の右下と左上に合わせる</title>
+  <desc id="desc">親は364pxかける255px、画像は119pxかける66px。左の図はright 0とbottom 0で親と画像の右下が重なる。右の図はtop 0とleft 0で親と画像の左上が重なる。灰色の点線は親の範囲を示す補助線で、実際のborderではない。両図で画像の大きさは変わらない。</desc>
+  <style>
+    text { font-family: "Yu Gothic", Meiryo, sans-serif; }
+    .heading { font-size: 26px; font-weight: 700; fill: #111111; }
+    .code { font-size: 21px; fill: #111111; }
+    .parent { fill: #f5f5f5; }
+    .guide { fill: none; stroke: #666666; stroke-width: 2; stroke-dasharray: 8 7; }
+    .parent-label { font-size: 19px; fill: #444444; }
+    .image-label { font-size: 18px; fill: #c93030; }
+    .result { font-size: 22px; font-weight: 700; fill: #111111; }
+  </style>
+  <defs>
+    <mask id="label-clear">
+      <rect width="1080" height="600" fill="#ffffff"/>
+      <rect x="623" y="275" width="168" height="31" fill="#000000"/>
+    </mask>
+    <g id="picture">
+      <rect width="119" height="66" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+      <circle cx="91" cy="17" r="6" fill="#c93030" opacity="0.65"/>
+      <path d="M 8 54 L 36 22 L 63 54 M 51 54 L 76 31 L 100 54" fill="none" stroke="#c93030" stroke-width="2" stroke-linejoin="round"/>
+    </g>
+    <g id="coincidence">
+      <circle r="9" fill="#ffffff" stroke="#666666" stroke-width="2"/>
+      <circle r="5" fill="#c93030"/>
+    </g>
+  </defs>
+  <rect width="1080" height="600" fill="#ffffff"/>
+  <text x="45" y="47" class="heading">どの端を、親のどの端に合わせるか</text>
+
+  <text x="90" y="103" class="heading">① 右下へ置く</text>
+  <text x="90" y="136" class="code">right: 0; bottom: 0;</text>
+  <text x="90" y="178" class="parent-label">親：364 × 255px</text>
+  <rect x="90" y="200" width="364" height="255" class="parent"/>
+  <use href="#picture" x="335" y="389"/>
+  <rect x="90" y="200" width="364" height="255" class="guide"/>
+  <text x="290" y="374" class="image-label">画像：119 × 66px</text>
+  <use href="#coincidence" x="454" y="455"/>
+  <text x="90" y="505" class="result">親の右下 ＝ 画像の右下</text>
+
+  <text x="630" y="103" class="heading">② 左上へ置く</text>
+  <text x="630" y="136" class="code">top: 0; left: 0;</text>
+  <text x="630" y="178" class="parent-label">親：364 × 255px</text>
+  <rect x="630" y="200" width="364" height="255" class="parent"/>
+  <use href="#picture" x="630" y="200"/>
+  <rect x="630" y="200" width="364" height="255" class="guide" mask="url(#label-clear)"/>
+  <text x="630" y="296" class="image-label">画像：119 × 66px</text>
+  <use href="#coincidence" x="630" y="200"/>
+  <text x="630" y="505" class="result">親の左上 ＝ 画像の左上</text>
+
+  <use href="#coincidence" x="100" y="555"/>
+  <text x="121" y="562" class="parent-label">親と画像の角が重なる点</text>
+</svg>
