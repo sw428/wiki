@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
-<title id="title">正しい挙動（親0px・子40px）</title>
-<desc id="desc">通常フローで親子の上marginが相殺する例。前の要素の下端から親と子の上端まで40px。親と子の上端はそろう。 灰色の点線は親の範囲を示す説明用の補助線で実際のborderではない。図は模式図。</desc>
+<title id="title">親の上marginが0でも、子の上margin40pxが親子間で相殺する</title>
+<desc id="desc">通常フローのブロック配置で、親と最初の子の上marginが相殺する条件を満たし、前の要素にはmarginがない例。親のmargin-top: 0と子のmargin-top: 40pxが相殺し、前の要素の下端から親と子の上端まで40pxになる。親と子の上端はそろい、親の内側に40pxの空間ができる配置ではない。オレンジは親の外側の余白を示す説明用の色。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <defs>
 <marker id="black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>

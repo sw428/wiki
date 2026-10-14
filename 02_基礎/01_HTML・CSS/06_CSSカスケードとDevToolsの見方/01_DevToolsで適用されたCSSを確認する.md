@@ -35,7 +35,7 @@ DevToolsの[Stylesペイン](../../../05_参照/ペイン.md)では、次の順�
 
 ### Stylesペインの画面例
 
-![Chrome DevToolsのStylesペインにelement.style、作者CSS、User Agent CSS、継承元が並ぶ画面](../../../img/html-css/DevTools_Stylesペイン.png)
+![bodyのmargin: 0に対してUser Agent CSSのmargin: 8pxに打ち消し線が付き、宣言の出典と継承元も表示されたDevToolsのStylesペイン](../../../img/html-css/DevTools_Stylesペイン.png)
 
 この例では、上から `element.style`、ページ側のCSS、User Agent CSS、継承元の規則が表示されている。User Agent CSSの `margin: 8px` には打ち消し線があり、ページ側の `margin: 0` が使われている。
 

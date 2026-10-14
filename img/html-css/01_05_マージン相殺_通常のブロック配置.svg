@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="436" viewBox="0 0 340 218" role="img" aria-labelledby="title desc">
-<title id="title">① 通常のブロック配置（相殺する）</title>
-<desc id="desc">親の20pxと最初の子の40pxの上marginが相殺し、親の外側に40pxの余白ができる。 灰色の点線は説明用補助線で、CSSのborderではない。前の要素のmarginは0。模式図。</desc>
+<title id="title">通常のブロック配置で親子の上marginが相殺する</title>
+<desc id="desc">通常フローのブロック配置で、親と最初の子の上marginが相殺する条件を満たす例。親のmargin-top: 20pxと子のmargin-top: 40pxが相殺し、親の外側に40pxの余白ができる。前の要素にはmarginがないため、その下端から親と子の上端まで40pxになり、親と子の上端はそろう。オレンジはmarginの説明用の色で、実際の背景色ではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <rect x="0" y="0" width="340" height="218" fill="#ffffff"/>
 <style>
     text { font-family: "Noto Sans CJK JP", "Yu Gothic", sans-serif; }

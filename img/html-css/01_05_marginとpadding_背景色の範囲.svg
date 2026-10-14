@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
-<title id="title">paddingとmargin：要素の背景色の範囲</title>
-<desc id="desc">要素の背景色は赤。paddingの領域には要素の背景が付き、marginの領域には付かない。contentの大きさは両方同じ。左右は別々のCSS例。図は模式図で、marginのオレンジは説明用の色。</desc>
+<title id="title">paddingとmarginの違い：要素の背景色が付く範囲</title>
+<desc id="desc">内容の大きさをそろえた、別々のCSS例を比較する。左はpadding: 30pxでcontentとpaddingに赤い背景色が付き、右はmargin: 30pxでborderの外側の余白に要素の赤い背景色が付かない。緑の寸法表示はpadding、黄色の線はborder、オレンジはmarginの説明用の色を示す。margin自体の背景色を指定した図ではない。図内のHTMLとCSSは各比較例に対応する。</desc>
 <defs>
   <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
   <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="1536" height="1024" style="mask-type:luminance">

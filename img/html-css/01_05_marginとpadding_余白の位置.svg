@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
-<title id="title">paddingとmargin：余白の位置</title>
-<desc id="desc">paddingはborderの内側、marginはborderの外側。contentの大きさは両方同じ。30pxの矢印は説明用で、marginのオレンジは実際の背景色ではない。図は模式図。</desc>
+<title id="title">paddingとmarginの違い：borderの内側と外側</title>
+<desc id="desc">内容の大きさが同じ二つの箱を比較する。左はpadding: 30pxでborderの内側に緑の余白、右はmargin: 30pxでborderの外側にオレンジの余白がある。白はcontent、黄色はborderを示す。緑とオレンジは領域を区別する説明用の色で、marginに要素の背景色が付くことを示してはいない。寸法と配置は模式的に示す。</desc>
 <defs>
 <marker id="black" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>

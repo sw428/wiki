@@ -54,7 +54,7 @@ $$
 
 親要素は、前の要素の下端から250px離れた位置に始まります。
 
-![前の要素の下端を0pxとし、下margin250pxの先で親要素が始まる図](../../../img/html-css/01_05_paddingと負のmargin_前の要素のmargin.svg)
+![前の要素の下端を0pxとし、そのmargin-bottom: 250pxによって親の上端が250pxになる図](../../../img/html-css/01_05_paddingと負のmargin_前の要素のmargin.svg)
 
 #### ② 親のpadding-top
 
@@ -64,7 +64,7 @@ $$
 
 負のmarginがなければ、子は前の要素の下端から350px下に配置されます。
 
-![親の上端250pxに上padding100pxを加え、負のmarginがなければ子の上端が350pxになる図](../../../img/html-css/01_05_paddingと負のmargin_親のpadding.svg)
+![親の上端250pxにpadding-top: 100pxを加え、負のmarginがない子の上端が350pxになる図](../../../img/html-css/01_05_paddingと負のmargin_親のpadding.svg)
 
 #### ③ 子のmargin-top: -150px
 
@@ -74,7 +74,7 @@ $$
 
 最終的に、子の上端は前の要素の下端より200px下になります。
 
-![子の通常位置350pxから負のmarginで150px上がり、上端が200pxとなって親の上端より50pxはみ出す図](../../../img/html-css/01_05_paddingと負のmargin_負のmargin適用後.svg)
+![子のmargin-top: -150pxで通常位置350pxから上端200pxへ移り、親の上端250pxより50px上にはみ出す様子と、後続の見出しの移動を示す図](../../../img/html-css/01_05_paddingと負のmargin_負のmargin適用後.svg)
 
 ### 4. なぜマージン相殺しない？
 

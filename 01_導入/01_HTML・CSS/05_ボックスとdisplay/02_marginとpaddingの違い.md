@@ -13,7 +13,7 @@
 3. `border`：要素の境界線
 4. `margin`：borderの外側
 
-![paddingはborderの内側、marginはborderの外側にあることを、各30pxの余白で比較した図](../../../img/html-css/01_05_marginとpadding_余白の位置.svg)
+![同じ大きさのcontentに対し、padding 30pxはborderの内側、margin 30pxはborderの外側に余白を作る比較図](../../../img/html-css/01_05_marginとpadding_余白の位置.svg)
 
 図の白・緑・黄・オレンジは、content・padding・border・marginの領域を区別するための色です。
 
@@ -46,7 +46,7 @@
 
 例えば、背景色を持つ箱の中に文章があるとします。
 
-![内容の大きさをそろえ、paddingとmarginをそれぞれ30pxにしたときの余白と背景の違いを示す図](../../../img/html-css/01_05_marginとpadding_背景色の範囲.svg)
+![padding 30pxの領域には要素の赤い背景色が付き、margin 30pxの領域には付かないことを、同じcontentの大きさで比較する図](../../../img/html-css/01_05_marginとpadding_背景色の範囲.svg)
 
 この比較図では、要素の背景を赤で示しています。緑の矢印と数値は、paddingの範囲を示す説明用の表示です。内容の大きさをそろえ、paddingとmarginをそれぞれ30pxにした別々の例です。
 

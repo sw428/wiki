@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="341" viewBox="0 432 1000 341" role="img" aria-labelledby="title desc">
-<title id="title">② padding-top: 30pxを追加</title>
-<desc id="desc">親のmargin-top 20px、padding-top 30px、子のmargin-top 40pxで、前の要素の下端から子の上端まで90px。 灰色の点線は親の範囲を示す補助線で、CSSのborderではない。模式図で寸法は縮尺どおりではない。</desc>
+<title id="title">親のpadding-topが親子の上marginの相殺を防ぐ</title>
+<desc id="desc">通常フローのブロック配置で、前の要素にはmarginがない例。親のmargin-top: 20px、padding-top: 30px、最初の子のmargin-top: 40pxを示す。親の上paddingが親子のmarginを隔てるため相殺せず、前の要素の下端から子の上端まで20pxと30pxと40pxを加えた90pxになる。親の内側にはpadding 30pxと子の上margin 40pxが残る。緑はpadding、オレンジはmarginの説明用の色。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <defs>
   <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
   <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="432" width="1000" height="341" style="mask-type:luminance">

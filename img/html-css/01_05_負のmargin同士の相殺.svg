@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="880" viewBox="0 0 900 880" role="img" aria-labelledby="title description">
-  <title id="title">負のmargin同士のマージン相殺</title>
-  <desc id="description">子Aのmargin-bottomはマイナス20px、子Bのmargin-topはマイナス30px。相殺結果はマイナス30pxとなり、子Aと子Bが30px重なる。両方のmarginが0の通常位置から、二つの指定を相殺した結果の位置までを20秒周期で繰り返す。指定値を別々に足して移動させる図ではない。重なりと結果の寸法は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。</desc>
+  <title id="title">兄弟要素の負の上下marginが相殺し、30px重なる</title>
+  <desc id="description">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: -20pxと子Bのmargin-top: -30pxは足し合わせず、絶対値が大きい-30pxが相殺結果となり、子Aと子Bが30px重なる。両方のmarginが0の通常位置から、相殺後の位置までを20秒周期で繰り返す。指定値を別々に足して移動させる図ではない。子Aは動かず、子Bが30px上へ詰まる。重なりと結果の寸法は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。親の灰色点線は説明用の補助線で、実際のCSSのborderではない。</desc>
   <style>
     text { font-family: "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif; fill: #26282d; }
     .title { font-size: 33px; font-weight: 700; }

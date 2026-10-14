@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 340 205" role="img" aria-labelledby="svgTitle svgDesc">
-  <title id="svgTitle">兄弟要素のマージン相殺</title>
-  <desc id="svgDesc">上の要素のmargin-bottomが40px、下の要素のmargin-topが30pxのとき、二つは足されず、実際の間隔が40pxになる例。</desc>
+  <title id="svgTitle">兄弟要素の正の上下marginが相殺した間隔</title>
+  <desc id="svgDesc">通常フローの兄弟ブロック要素で、隣接する上下marginが相殺する条件を満たす例。上の要素のmargin-bottom: 40pxと下の要素のmargin-top: 30pxは足し合わせず、大きい方の40pxが実際の間隔になる。オレンジは相殺するmarginの範囲を示す説明用の色で、要素の背景色ではない。箱の色付き外枠は要素を識別する補助表示。</desc>
   <rect width="340" height="205" fill="#ffffff"/>
   <rect x="65" y="12" width="210" height="55" fill="#F9CACA" stroke="#c93030" stroke-width="2"/>
   <text x="170" y="44" text-anchor="middle" font-family="sans-serif" font-size="14" fill="#292929" font-weight="600">上の要素</text>

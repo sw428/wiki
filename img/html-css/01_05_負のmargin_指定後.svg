@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="1000" viewBox="440 120 600 1000" role="img" aria-labelledby="title desc">
-<title id="title">② 子Bにmargin-top: -40pxを指定</title>
-<desc id="desc">子Aは動かず、子Bとその子、後続の子Cとその子が40px上へ動く。通常位置から指定後までを20秒周期で繰り返す。動きを減らす設定では指定後の静止図を表示する。親子関係と変化を示す模式図で、高さや間隔はCSSの寸法どおりではない。点線は親の範囲を示す補助線。</desc>
+<title id="title">子Bの負のmargin-topで自身と後続の子Cが40px上へ動く</title>
+<desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が移動に影響しない例。子Bにmargin-top: -40pxを指定すると、子Aは動かず、子Bとその子、後続の子Cとその子が通常位置から40px上へ動く。通常位置から指定後までを20秒周期で繰り返し、動きを減らす設定では指定後の静止図を表示する。上向き片矢印は子B・子Cの移動を示す。親子関係と変化を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <style>
     .title { font: 700 30px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#222; }
     .subtitle { font: 500 20px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }

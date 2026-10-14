@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="700" height="1000" viewBox="0 0 700 1000" role="img" aria-labelledby="title desc">
-<title id="title">上marginにより子B・C・Dが40px上へ詰まる</title>
-<desc id="desc">子A〜Dにはそれぞれ子が一つある。通常フローで各兄弟の高さは100px、他の上下marginは0。子BからDとその子が40px上へ動く。14秒周期。動きを減らす設定では最終状態を表示する。図の外枠と親の点線は説明用でCSSのborderではない。詳細は参照元Markdownに記載する。</desc>
+<title id="title">子Bの負のmargin-topで子B・C・Dが40px上へ詰まる</title>
+<desc id="desc">通常フローのブロック配置で、子AからDの高さは各100px、ほかの上下marginは0とし、それぞれの箱に子が一つある。子Bにmargin-top: -40pxを指定すると、子B・C・Dとそれぞれの子が指定前から40px上へ移る。子Aとその子の位置は変わらない。指定前から上margin適用後までを14秒周期で繰り返し、動きを減らす設定では適用後の静止図を表示する。色付きの片矢印は各要素の上への移動を示す。箱の外枠と親の灰色点線は識別と範囲の補助表示で、実際のCSSのborderではない。横幅と内部の子の寸法は模式的に示す。</desc>
 <style>text{font-family:"Yu Gothic","Meiryo",sans-serif}.heading{font-size:28px;font-weight:700}.label{font-size:23px;font-weight:700}.small{font-size:20px}.code{font-size:19px;font-family:Consolas,monospace}.phase-before,.phase-top,.phase-applying-top,.phase-applying-bottom,.mid-effects{opacity:0}.phase-final{opacity:1}
 @media(prefers-reduced-motion:no-preference){
 #stage-2-b,#stage-2-c,#stage-2-d{animation:move-top 14s infinite}

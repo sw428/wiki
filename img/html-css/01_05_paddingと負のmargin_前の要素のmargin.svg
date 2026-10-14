@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="820" viewBox="0 0 980 820" role="img" aria-labelledby="title desc">
-<title id="title">① 前の要素のmargin-bottom</title>
-<desc id="desc">前の要素の下端が0px。下margin250pxにより親の上端は250px。子の位置は次の図で確認する。 通常フローのブロック配置で、ほかのmarginやborder、位置指定の影響がない例。縦の距離はCSSの1pxを図の0.8単位で示す。箱の大きさは例示用で親の下側は図の途中で省略。灰色の点線は説明用で実際のborderではない。</desc>
+<title id="title">前の要素のmargin-bottomで親の開始位置を確認する</title>
+<desc id="desc">前の要素の下端を基準の0pxとし、margin-bottom: 250pxをオレンジの領域で示す。その先で親要素が始まり、親の上端は250pxになる。通常フローのブロック配置で、ほかのmarginやborder、位置指定がこの距離に影響しない例。子の位置はこの図には示していない。縦の距離はCSSの1pxを図の0.8単位で示し、箱の大きさは模式的で親の下側は省略する。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <defs>
 <marker id="black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>

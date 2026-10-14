@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 940" width="900" height="940" role="img" aria-labelledby="title desc">
-  <title id="title">子Aにmargin-bottom: -40pxを指定</title>
-  <desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が配置に影響しない例。子A自身は動かず、後続する兄弟要素全て（子B・子C）が通常位置から40px上へ詰まる。子Bは子Aに重なり、子Bの子と子Cの子もそれぞれの親と一緒に移動する。通常位置から指定後までを20秒周期で繰り返す。動きを減らす設定では指定後の静止図を表示する。点線の親の範囲は補助線で、実際のborderではない。箱の高さは模式的に示す。</desc>
+  <title id="title">子Aの負のmargin-bottomで後続の子B・Cだけが40px上へ詰まる</title>
+  <desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が配置に影響しない例。子Aにmargin-bottom: -40pxを指定しても子A自身は動かず、後続の子B・Cが通常位置から40px上へ詰まる。子Bは子Aに重なり、子Bの子と子Cの子もそれぞれの親と一緒に移動する。指定元である子Aの下marginを青、移動する子B・Cの上向き片矢印を赤・紫で示す。通常位置から指定後までを20秒周期で繰り返し、動きを減らす設定では指定後の静止図を表示する。子B内の点線は指定前の上端、親の灰色点線は範囲の補助線で、実際のCSSのborderではない。箱の高さは模式的に示す。</desc>
 <defs>
   <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
   <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="0" width="900" height="940" style="mask-type:luminance">

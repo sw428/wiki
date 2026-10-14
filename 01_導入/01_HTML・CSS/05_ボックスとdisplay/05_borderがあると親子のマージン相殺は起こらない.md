@@ -26,7 +26,7 @@ $$
 
 親の内側には40pxの余白ができず、親と子の上端がそろいます。
 
-![親の20pxと最初の子の40pxの上marginが相殺して40pxになる図](../../../img/html-css/01_05_親子のマージン相殺_paddingとborderなし.svg)
+![padding・borderがなく相殺条件を満たす親子で、親の上margin 20pxと子の上margin 40pxが相殺し、前の要素の下端から親と子の上端まで40pxになる図](../../../img/html-css/01_05_親子のマージン相殺_paddingとborderなし.svg)
 
 ### 2. 親にpaddingを追加する
 
@@ -41,7 +41,7 @@ $$
 }
 ```
 
-![親にpadding-topを付けると上marginが相殺せず、20pxと30pxと40pxで90pxになる図](../../../img/html-css/01_05_親子のマージン相殺_paddingあり.svg)
+![親のpadding-top: 30pxが上marginの相殺を防ぎ、親margin 20px・padding 30px・子margin 40pxで、前の要素の下端から子の上端まで90pxになる図](../../../img/html-css/01_05_親子のマージン相殺_paddingあり.svg)
 
 親の `padding-top: 30px` が親と子のmarginを隔てるため、相殺が起こらなくなります。
 
@@ -73,7 +73,7 @@ $$
 }
 ```
 
-![親にborder-topを付けると上marginが相殺せず、20pxと2pxと40pxで62pxになる図](../../../img/html-css/01_05_親子のマージン相殺_borderあり.svg)
+![親のborder-top: 2pxが上marginの相殺を防ぎ、親margin 20px・border 2px・子margin 40pxで、前の要素の下端から子の上端まで62pxになる図](../../../img/html-css/01_05_親子のマージン相殺_borderあり.svg)
 
 灰色の点線は親要素の位置と範囲を示す補助線です。実際のCSSのborderではありません。③の黄線だけが実際のborderです。図は模式図で、寸法は縮尺どおりではありません。
 

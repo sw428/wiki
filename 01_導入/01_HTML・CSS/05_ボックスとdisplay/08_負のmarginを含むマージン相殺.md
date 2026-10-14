@@ -31,7 +31,7 @@
 
 図は計算の模式図です。オレンジ色はmarginの説明用の色で、実際のmarginには背景色は付きません。
 
-![子Aの下margin40pxと子Bの上marginマイナス10pxが相殺し、実際の間隔が30pxになる図](../../../img/html-css/01_05_正と負のmarginの相殺.svg)
+![子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、子Bが10px上へ詰まって実際の間隔が30pxになる図](../../../img/html-css/01_05_正と負のmarginの相殺.svg)
 
 計算は、
 

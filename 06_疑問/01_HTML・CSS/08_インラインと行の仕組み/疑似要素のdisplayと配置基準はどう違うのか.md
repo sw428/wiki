@@ -56,7 +56,7 @@
 
 ### 配置基準の比較図（原文外）
 
-![空のafterをinline-blockとabsoluteで配置したときの、ベースラインと親の基準領域の比較](../../../img/html-css/02_08_afterのinline-blockとabsoluteの配置基準.svg)
+![空の::afterを、上段ではinline-blockで文字のベースラインにそろえ、下段ではabsoluteで親の右上からtop: 8px・right: -20pxへ順にずらす配置基準の比較図](../../../img/html-css/02_08_afterのinline-blockとabsoluteの配置基準.svg)
 
 > [!NOTE]
 > この図と注記は保存したGPTの説明とは別に作成したものです。一行の横書きで、空の`::after`、親と疑似要素にpadding・borderがなく、上下marginもない場合を示します。`vertical-align`は初期値の`baseline`です。

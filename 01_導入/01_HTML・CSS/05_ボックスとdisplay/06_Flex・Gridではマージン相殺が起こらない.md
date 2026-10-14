@@ -24,7 +24,7 @@ $$
 
 親の外側に40pxの余白ができ、親と子の上端がそろいます。
 
-![通常のブロック配置で親20pxと子40pxの上marginが相殺し40pxになる図](../../../img/html-css/01_05_マージン相殺_通常のブロック配置.svg)
+![通常のブロック配置で親のmargin-top: 20pxと子のmargin-top: 40pxが相殺し、親の外側に40pxの余白ができて親と子の上端がそろう図](../../../img/html-css/01_05_マージン相殺_通常のブロック配置.svg)
 
 ### 2. 親をFlex・Gridにする
 
@@ -42,7 +42,7 @@ $$
 
 `display: grid` でも同じように、親と子の上marginは相殺しません。
 
-![Flex・Gridでは親20pxと子40pxの上marginが相殺せず、前の要素から子まで60pxになる図](../../../img/html-css/01_05_マージン相殺_FlexとGrid.svg)
+![親がFlex・Gridの場合、親のmargin-top: 20pxと子のmargin-top: 40pxが相殺せず、前の要素の下端から子の上端まで60pxになる図](../../../img/html-css/01_05_マージン相殺_FlexとGrid.svg)
 
 灰色の点線は親要素の範囲を示す説明用の補助線で、実際のCSSのborderではありません。前の要素のmarginは0pxとします。図は模式図です。
 

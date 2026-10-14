@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="1000" viewBox="-70 120 600 1000" role="img" aria-labelledby="title desc">
-<title id="title">① 通常：負のmarginを指定する前</title>
-<desc id="desc">子A、子B、子Cが順に並ぶ。子Bの子は子B、子Cの子は子Cの内側にある。 親子関係と変化を示す模式図で、高さや間隔はCSSの寸法どおりではない。点線は親の範囲を示す補助線。</desc>
+<title id="title">子Bの負のmargin-topを指定する前の通常の配置</title>
+<desc id="desc">親の中で子A・子B・子Cが通常の順に並び、子Bの子は子B、子Cの子は子Cの内側にある。子Bのmargin-topが0の指定前の静止図で、指定後の移動はこの図には示さない。親子関係と配置を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <style>
     .title { font: 700 30px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#222; }
     .subtitle { font: 500 20px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }

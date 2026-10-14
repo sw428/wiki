@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="760" viewBox="0 0 720 760" role="img" aria-labelledby="title desc">
-  <title id="title">正のmarginと負のmarginの相殺</title>
-  <desc id="desc">子Aのmargin-bottomが40px、子Bのmargin-topがマイナス10pxの場合、上下marginが相殺されて実際の間隔が30pxになる図。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを20秒周期で繰り返す。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。</desc>
+  <title id="title">正と負の上下marginが相殺し、兄弟要素の間隔が30pxになる</title>
+  <desc id="desc">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、実際の間隔は40pxから10pxを引いた30pxになる。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを20秒周期で繰り返す。子Aは動かず、子Bが10px上へ詰まる。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。オレンジはmarginを示す説明用の色で、実際の背景色ではない。</desc>
   <defs>
     <style>
       .head { font: 700 26px 'Noto Sans CJK JP', sans-serif; fill:#27272a; }

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
-  <title id="title">同じ画像を親の右下と左上に合わせる</title>
-  <desc id="desc">親は364pxかける255px、画像は119pxかける66px。左の図はright 0とbottom 0で親と画像の右下が重なる。右の図はtop 0とleft 0で親と画像の左上が重なる。灰色の点線は親の範囲を示す補助線で、実際のborderではない。両図で画像の大きさは変わらない。</desc>
+  <title id="title">absoluteで同じ画像の右下・左上を親の同じ角に合わせる</title>
+  <desc id="desc">position: relativeの親を幅364px・高さ255px、その子の画像をposition: absolute、幅119px・高さ66pxとして配置を比較する。親と画像にmargin・padding・borderはない。左はright: 0; bottom: 0で親と画像の右下、右はtop: 0; left: 0で親と画像の左上が重なる。両図で親と画像の大きさは同じ。赤い箱は画像要素の表示範囲、丸印は角が重なる点、灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。画像の幅や高さを変える比較ではない。</desc>
   <style>
     text { font-family: "Yu Gothic", Meiryo, sans-serif; }
     .heading { font-size: 26px; font-weight: 700; fill: #111111; }
@@ -18,8 +18,6 @@
     </mask>
     <g id="picture">
       <rect width="119" height="66" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-      <circle cx="91" cy="17" r="6" fill="#c93030" opacity="0.65"/>
-      <path d="M 8 54 L 36 22 L 63 54 M 51 54 L 76 31 L 100 54" fill="none" stroke="#c93030" stroke-width="2" stroke-linejoin="round"/>
     </g>
     <g id="coincidence">
       <circle r="9" fill="#ffffff" stroke="#666666" stroke-width="2"/>

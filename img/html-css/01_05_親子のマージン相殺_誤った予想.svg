@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1536" viewBox="0 0 1024 1536" role="img" aria-labelledby="title desc">
-<title id="title">よくある誤ったイメージ</title>
-<desc id="desc">誤った予想の図。親の上端から子の上端まで40pxの空間ができると考える例。黒い矢印は親の上端と子の上端を結ぶ。相殺条件ではこの配置にはならない。 灰色の点線は親の範囲を示す説明用の補助線で実際のborderではない。図は模式図。</desc>
+<title id="title">親子の上marginが相殺する条件で、子だけが下がると考えた誤った予想</title>
+<desc id="desc">親のmargin-top: 0、子のmargin-top: 40pxについて、親の上端から子の上端まで内側に40pxの空間ができると考えた誤った予想の図。黒い両矢印は、その予想上の親と子の上端の間隔を示す。親子の上marginが相殺する条件を満たす場合はこの配置にはならない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <defs>
 <marker id="black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#111111" stroke-width="2"/>

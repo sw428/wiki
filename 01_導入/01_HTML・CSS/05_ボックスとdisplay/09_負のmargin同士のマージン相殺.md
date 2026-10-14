@@ -29,7 +29,7 @@
 
 子Bは子Aの下端より30px上に配置されます。図は通常フローのブロック同士が相殺する場合です。
 
-![子Aの下marginマイナス20pxと子Bの上marginマイナス30pxが相殺してマイナス30pxとなり、30px重なる図](../../../img/html-css/01_05_負のmargin同士の相殺.svg)
+![相殺条件を満たす兄弟要素で、子Aのmargin-bottom: -20pxと子Bのmargin-top: -30pxが相殺して-30pxとなり、30px重なる図](../../../img/html-css/01_05_負のmargin同士の相殺.svg)
 
 単純に足すと、
 

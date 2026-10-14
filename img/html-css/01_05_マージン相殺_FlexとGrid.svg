@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="680" height="436" viewBox="0 222 340 218" role="img" aria-labelledby="title desc">
-<title id="title">② Flex・Grid（相殺しない）</title>
-<desc id="desc">親の20pxと子の40pxの上marginが別々に作用し、前の要素から子の上端まで60pxになる。 灰色の点線は説明用補助線で、CSSのborderではない。前の要素のmarginは0。模式図。</desc>
+<title id="title">Flex・Gridでは親子の上marginが相殺しない</title>
+<desc id="desc">親をFlexまたはGridにした場合の模式図。親のmargin-top: 20pxは親の外側、子のmargin-top: 40pxは親の内側に別々に作用する。前の要素にはmarginがないため、その下端から子の上端までの距離は20pxと40pxを加えた60pxになる。オレンジはmarginの説明用の色で、実際の背景色ではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <defs>
   <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
   <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="222" width="340" height="218" style="mask-type:luminance">

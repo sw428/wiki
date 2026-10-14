@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="341" viewBox="0 100 1000 341" role="img" aria-labelledby="title desc">
-<title id="title">① 相殺する（padding・borderなし）</title>
-<desc id="desc">親margin-top 20pxと最初の子margin-top 40pxが相殺して40pxになる。前の要素のmarginは0。 灰色の点線は親の範囲を示す補助線で、CSSのborderではない。模式図で寸法は縮尺どおりではない。</desc>
+<title id="title">padding・borderがない親と最初の子の上marginが相殺する</title>
+<desc id="desc">通常フローのブロック配置で、親と最初の子の上marginが相殺する条件を満たし、前の要素にはmarginがない例。親の上側にはpaddingもborderもなく、親のmargin-top: 20pxと子のmargin-top: 40pxが相殺して40pxになる。前の要素の下端から親と子の上端まで40pxで、親と子の上端はそろう。オレンジは親の外側のmarginを示す説明用の色。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <defs>
   <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
   <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="100" width="1000" height="341" style="mask-type:luminance">
