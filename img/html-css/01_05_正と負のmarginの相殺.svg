@@ -1,25 +1,25 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="720" height="760" viewBox="0 0 720 760" role="img" aria-labelledby="title desc">
   <title id="title">正と負の上下marginが相殺し、兄弟要素の間隔が30pxになる</title>
-  <desc id="desc">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、実際の間隔は40pxから10pxを引いた30pxになる。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを20秒周期で繰り返す。子Aは動かず、子Bが10px上へ詰まる。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。オレンジはmarginを示す説明用の色で、実際の背景色ではない。</desc>
+  <desc id="desc">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、実際の間隔は40pxから10pxを引いた30pxになる。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを20秒周期で繰り返す。子Aは動かず、子Bが10px上へ詰まる。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。オレンジはmarginを示す説明用の色で、実際の背景色ではない。各段階の説明を表示して1.5秒待ち、その後2秒かけて移動する。</desc>
   <defs>
     <style>
-      .head { font: 700 26px 'Noto Sans CJK JP', sans-serif; fill:#27272a; }
-      .txt { font: 600 21px 'Noto Sans CJK JP', sans-serif; fill:#292929; }
-      .sub { font: 500 18px 'Noto Sans CJK JP', sans-serif; fill:#414141; }
-      .small { font: 500 16px 'Noto Sans CJK JP', sans-serif; fill:#555; }
-      .value { font: 700 23px 'Noto Sans CJK JP', sans-serif; fill:#292929; }
+      .head { font-weight:700;font-size:26px;font-family:'Noto Sans CJK JP', sans-serif; fill:#111111; }
+      .txt { font-weight:600;font-size:21px;font-family:'Noto Sans CJK JP', sans-serif; fill:#111111; }
+      .sub { font-weight:500;font-size:18px;font-family:'Noto Sans CJK JP', sans-serif; fill:#111111; }
+      .small { font-weight:500;font-size:16px;font-family:'Noto Sans CJK JP', sans-serif; fill:#111111; }
+      .value { font-weight:700;font-size:23px;font-family:'Noto Sans CJK JP', sans-serif; fill:#111111; }
       .red { fill:#c93030; }
-      .tan { fill:#8d6339; }
+      .tan { fill:#111111; }
       @media (prefers-reduced-motion: no-preference) {
         .moving { animation: move 20s infinite; }
         .applied { animation: reveal 20s infinite; }
         @keyframes move {
-          0%, 10% { transform: translateY(30px); }
-          22.5%, 100% { transform: translateY(0); }
+          0%, 7.5% { transform: translateY(30px); }
+          17.5%, 100% { transform: translateY(0); }
         }
         @keyframes reveal {
-          0%, 22%, 99%, 100% { opacity: 0; }
-          24%, 97% { opacity: 1; }
+          0%, 17.5%, 99%, 100% { opacity: 0; }
+          19%, 97% { opacity: 1; }
         }
       }
     </style>
@@ -28,11 +28,11 @@
   </defs>
   <rect width="720" height="760" fill="#fff"/>
   <text x="360" y="55" class="head" text-anchor="middle">正のmarginと負のmarginの相殺</text>
-  <text x="360" y="91" class="sub" text-anchor="middle">通常のブロック配置にある兄弟要素</text>
+  <text style="fill:#111111" fill="#111111" x="360" y="91" class="sub" text-anchor="middle">通常のブロック配置にある兄弟要素</text>
 
   <!-- Child A -->
   <rect x="178" y="144" width="364" height="120" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-  <text x="360" y="202" class="txt" text-anchor="middle">子A</text>
+  <text x="360" y="202" class="txt" text-anchor="middle" fill="#315fa0" style="fill:#315fa0">子A</text>
   <text x="360" y="235" class="sub" text-anchor="middle" style="fill: #315fa0">margin-bottom: 40px</text>
 
   <!-- Illustrative margin area, last 10px behind child B -->
@@ -50,12 +50,12 @@
 
   <!-- position reference before applying -10px -->
   <line x1="548" y1="384" x2="620" y2="384" stroke="#a8a29e" stroke-width="2" stroke-dasharray="5 5"/>
-  <text x="629" y="391" class="small" >元の位置</text>
+  <text style="fill:#111111" fill="#111111" x="629" y="391" class="small" >元の位置</text>
 
   <!-- Child B starts 10px higher than its original top position -->
   <g class="moving" id="moving-child-b">
   <rect x="178" y="354" width="364" height="120" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-  <text x="360" y="411" class="txt" text-anchor="middle">子B</text>
+  <text x="360" y="411" class="txt" text-anchor="middle" fill="#c93030" style="fill:#c93030">子B</text>
   <text x="360" y="444" class="sub" text-anchor="middle" style="fill: #c93030">margin-top: -10px</text>
   </g>
 
@@ -67,9 +67,9 @@
 
   <line x1="94" y1="529" x2="626" y2="529" stroke="#dedede" stroke-width="1.5"/>
   <g class="applied">
-  <text x="360" y="589" class="sub" text-anchor="middle">子Aと子Bの実際の間隔</text>
+  <text style="fill:#111111" fill="#111111" x="360" y="589" class="sub" text-anchor="middle">子Aと子Bの実際の間隔</text>
   <text x="360" y="636" class="head" text-anchor="middle" style="fill: #111111">40px + (-10px) = 30px</text>
   </g>
-  <text x="360" y="704" class="small" text-anchor="middle">※ オレンジ色はmarginの範囲を説明するための色です。</text>
-  <text x="360" y="728" class="small" text-anchor="middle">実際のCSSではmarginに背景色は付きません。</text>
-</svg>
+  <text style="fill:#111111" fill="#111111" x="360" y="704" class="small" text-anchor="middle">※ オレンジ色はmarginの範囲を説明するための色です。</text>
+  <text style="fill:#111111" fill="#111111" x="360" y="728" class="small" text-anchor="middle">実際のCSSではmarginに背景色は付きません。</text>
+<style>.cue-before{opacity:0}.cue-after{opacity:1}@media(prefers-reduced-motion:no-preference){.cue-before{animation:cue-before 20s steps(1,end) infinite}.cue-after{animation:cue-after 20s steps(1,end) infinite}@keyframes cue-before{0%,17.499995%{opacity:1}17.5%,100%{opacity:0}}@keyframes cue-after{0%,17.499995%{opacity:0}17.5%,100%{opacity:1}}}</style><g id="stage-caption"><text class="cue-before" x="360" y="125" text-anchor="middle" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="360">正負のmarginを相殺し、子Bを10px上へ</tspan></text><text class="cue-after" x="360" y="125" text-anchor="middle" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="360">移動後：実際の間隔は30px</tspan></text></g></svg>

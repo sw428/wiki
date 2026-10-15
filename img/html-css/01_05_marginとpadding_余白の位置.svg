@@ -39,15 +39,15 @@
 <rect x="0" y="0" width="1536" height="1024" rx="0" fill="#ffffff" />
 <rect x="28" y="100" width="726" height="615" rx="18" fill="url(#grayPanel)" />
 <rect x="782" y="100" width="726" height="615" rx="18" fill="url(#grayPanel)" />
-<text x="65" y="175" font-size="52" fill="#000" font-weight="700" text-anchor="start" >① padding: 30px</text>
+<text x="65" y="175" font-size="52" font-weight="700" text-anchor="start"  fill="#111111">① padding: 30px</text>
 <text x="65" y="233" font-size="34" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの内側に余白ができます。</text>
-<text x="833" y="175" font-size="52" fill="#000" font-weight="700" text-anchor="start" >② margin: 30px</text>
+<text x="833" y="175" font-size="52" font-weight="700" text-anchor="start"  fill="#111111">② margin: 30px</text>
 <text x="833" y="233" font-size="34" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの外側に余白ができます。</text>
-<rect x="90" y="310" width="600" height="330" rx="0" fill="#cae6d1" stroke="#f2ed20" stroke-width="5" />
+<rect x="90" y="310" width="600" height="330" rx="0" fill="#cae6d1" stroke="#f2ed20" stroke-width="6" />
 <rect x="180" y="400" width="420" height="150" rx="0" fill="#fff" />
 <text x="390" y="488" font-size="38" fill="#14212c" font-weight="700" text-anchor="middle" >こんにちは</text>
 <rect x="835" y="285" width="600" height="330" rx="0" fill="url(#marginFill)" stroke="#fb8b21" stroke-width="3" stroke-dasharray="12 10"/>
-<rect x="925" y="375" width="420" height="150" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="5" />
+<rect x="925" y="375" width="420" height="150" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="6" />
 <text x="1135" y="463" font-size="38" fill="#14212c" font-weight="700" text-anchor="middle" >こんにちは</text>
 <line x1="385" y1="321" x2="385" y2="389" stroke="#26724a" stroke-width="3" marker-start="url(#blue)" marker-end="url(#blue)"/>
 <line x1="104" y1="475" x2="168" y2="475" stroke="#26724a" stroke-width="3" marker-start="url(#blue)" marker-end="url(#blue)"/>
@@ -57,21 +57,21 @@
 <text x="100" y="515" font-size="30" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
 <text x="610" y="515" font-size="30" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
 <text x="408" y="607" font-size="30" fill="#26724a" font-weight="400" text-anchor="start" >30px</text>
-<text x="1160" y="341" font-size="30" fill="#444444" font-weight="400" text-anchor="start" >30px</text>
-<text x="844" y="490" font-size="30" fill="#444444" font-weight="400" text-anchor="start" >30px</text>
-<text x="1355" y="490" font-size="30" fill="#444444" font-weight="400" text-anchor="start" >30px</text>
-<text x="1160" y="582" font-size="30" fill="#444444" font-weight="400" text-anchor="start" >30px</text>
+<text x="1160" y="341" font-size="30" font-weight="400" text-anchor="start"  fill="#444444">30px</text>
+<text x="844" y="490" font-size="30" font-weight="400" text-anchor="start"  fill="#444444">30px</text>
+<text x="1355" y="490" font-size="30" font-weight="400" text-anchor="start"  fill="#444444">30px</text>
+<text x="1160" y="582" font-size="30" font-weight="400" text-anchor="start"  fill="#444444">30px</text>
 <rect x="28" y="748" width="1480" height="146" rx="20" fill="#f8fafc" />
 <rect x="64" y="789" width="90" height="54" rx="0" fill="#fff" stroke="#9ca3aa" stroke-width="3" />
 <text x="174" y="809" font-size="23" fill="#111" font-weight="600" text-anchor="start" >コンテンツ（こんにちは）</text>
-<text x="174" y="844" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >大きさは両方同じ</text>
+<text style="fill:#111111" x="174" y="844" font-size="23" fill="#111111" font-weight="400" text-anchor="start" >大きさは両方同じ</text>
 <rect x="480" y="793" width="80" height="48" rx="0" fill="#cae6d1" />
 <text x="578" y="809" font-size="23" fill="#26724a" font-weight="600" text-anchor="start" >paddingの領域</text>
 <text x="578" y="844" font-size="23" fill="#26724a" font-weight="400" text-anchor="start" >ボーダーの内側（緑）</text>
 <rect x="834" y="793" width="80" height="48" rx="0" fill="url(#marginFill)" stroke="#fb8b21" stroke-width="3" stroke-dasharray="10 8"/>
 <text x="932" y="809" font-size="23" fill="#111" font-weight="600" text-anchor="start" >marginの領域</text>
-<text x="932" y="844" font-size="23" fill="#475569" font-weight="400" text-anchor="start" >ボーダーの外側（オレンジ）</text>
-<rect x="1260" y="793" width="62" height="48" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="5" />
+<text style="fill:#111111" x="932" y="844" font-size="23" fill="#111111" font-weight="400" text-anchor="start" >ボーダーの外側（オレンジ）</text>
+<rect x="1260" y="793" width="62" height="48" rx="0" fill="#fff" stroke="#f2ed20" stroke-width="6" />
 <text x="1340" y="820" font-size="22" fill="#111" font-weight="600" text-anchor="start" >ボーダー（黄線）</text>
 </g>
 </svg>

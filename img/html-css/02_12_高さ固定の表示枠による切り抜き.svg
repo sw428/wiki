@@ -37,22 +37,22 @@
 </clipPath>
 </defs>
 <rect width="1000" height="850" fill="#ffffff"/>
-<text x="500" y="51" class="title" text-anchor="middle">高さ固定の表示枠で切り取る例</text>
-<text x="500" y="86" class="sub" text-anchor="middle">object-fit: cover ／ 高さ固定の枠</text>
+<text style="fill:#111111" fill="#111111" x="500" y="51" class="title" text-anchor="middle">高さ固定の表示枠で切り取る例</text>
+<text x="500" y="86" class="sub" text-anchor="middle" fill="#111111" style="fill:#111111">object-fit: cover ／ 高さ固定の枠</text>
 <rect x="40" y="125" width="440" height="690" rx="10" fill="#f5f5f5" stroke="#dddddd"/>
 <rect x="520" y="125" width="440" height="690" rx="10" fill="#f5f5f5" stroke="#dddddd"/>
 <rect x="55" y="140" width="410" height="43" rx="9" fill="#cfe4ff"/>
 <rect x="535" y="140" width="410" height="43" rx="9" fill="#cfe4ff"/>
-<text x="260" y="170" class="heading" text-anchor="middle">左右が切り取られる</text>
-<text x="740" y="170" class="heading" text-anchor="middle">上下が切り取られる</text>
-<text x="260" y="208" class="sub" text-anchor="middle">元画像が表示枠より横長</text>
-<text x="740" y="208" class="sub" text-anchor="middle">元画像が表示枠より縦長</text>
+<text style="fill:#111111" fill="#111111" x="260" y="170" class="heading" text-anchor="middle">左右が切り取られる</text>
+<text style="fill:#111111" fill="#111111" x="740" y="170" class="heading" text-anchor="middle">上下が切り取られる</text>
+<text x="260" y="208" class="sub" text-anchor="middle" fill="#111111" style="fill:#111111">元画像が表示枠より横長</text>
+<text x="740" y="208" class="sub" text-anchor="middle" fill="#111111" style="fill:#111111">元画像が表示枠より縦長</text>
 <use href="#wide" transform="translate(85 300)"/>
 <rect x="85" y="300" width="116.666667" height="180" fill="#999999" opacity=".45"/>
 <rect x="318.333333" y="300" width="116.666667" height="180" fill="#999999" opacity=".45"/>
 <rect x="85" y="300" width="350" height="180" class="source"/>
 <rect x="201.666667" y="300" width="116.666666" height="180" class="frame"/>
-<text x="85" y="513" class="caption">元の画像（横長）</text>
+<text x="85" y="513" class="caption" fill="#111111" style="fill:#111111">元の画像（横長）</text>
 <path d="M318 478L349 501" fill="none" stroke="#315fa0" stroke-width="2"/>
 <rect x="349" y="488" width="116" height="56" rx="5" fill="#315fa0"/>
 <text x="407" y="511" class="tag" text-anchor="middle">表示枠</text>
@@ -66,7 +66,7 @@
 <rect x="846" y="410" width="108" height="56" rx="5" fill="#315fa0"/>
 <text x="900" y="433" class="tag" text-anchor="middle">表示枠</text>
 <text x="900" y="456" class="tag" text-anchor="middle">（高さ固定）</text>
-<text x="740" y="595" class="caption" text-anchor="middle">元の画像（縦長）</text>
+<text x="740" y="595" class="caption" text-anchor="middle" fill="#111111" style="fill:#111111">元の画像（縦長）</text>
 <g fill="#315fa0">
 <path d="M253 562H267V590H278L260 614L242 590H253Z"/>
 <path d="M733 605H747V620H758L740 644L722 620H733Z"/>
@@ -79,6 +79,6 @@
 <use href="#tall" transform="translate(677 599) scale(.6)"/>
 </g>
 <rect x="677" y="650" width="126" height="108" fill="none" stroke="#666666" stroke-width="2"/>
-<text x="260" y="791" class="heading" text-anchor="middle">最終表示</text>
-<text x="740" y="791" class="heading" text-anchor="middle">最終表示</text>
+<text style="fill:#111111" fill="#111111" x="260" y="791" class="heading" text-anchor="middle">最終表示</text>
+<text style="fill:#111111" fill="#111111" x="740" y="791" class="heading" text-anchor="middle">最終表示</text>
 </svg>

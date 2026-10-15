@@ -1,4 +1,4 @@
-# ⑧ 負のmarginを含むマージン相殺
+# ⑨ 負のmarginを含むマージン相殺
 
 前回は、負のmarginによって要素や後続の兄弟要素が上に移動する仕組みを説明しました。
 
@@ -31,7 +31,7 @@
 
 図は計算の模式図です。オレンジ色はmarginの説明用の色で、実際のmarginには背景色は付きません。
 
-![子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、子Bが10px上へ詰まって実際の間隔が30pxになる図](../../../img/html-css/01_05_正と負のmarginの相殺.svg)
+![子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、子Bが10px上へ詰まって実際の間隔が30pxになる図。各段階は説明を1.5秒表示してから2秒で動かす](../../../img/html-css/01_05_正と負のmarginの相殺.svg)
 
 計算は、
 

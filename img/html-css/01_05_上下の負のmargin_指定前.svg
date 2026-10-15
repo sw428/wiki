@@ -2,16 +2,16 @@
 <title id="title">上下の負のmarginを指定する前の子A〜Dの配置</title>
 <desc id="desc">子AからDが通常フローのブロック配置で上から順に並び、それぞれの子は親となる箱の内側にある。各兄弟の高さは100px、上下marginは0で、子Bの負のmarginを指定する前の静止図。横幅と内部の子の寸法は模式的に示す。箱の色付き外枠と親の灰色点線は識別と範囲の補助表示で、実際のCSSのborderではない。</desc>
 <style>text{font-family:"Yu Gothic","Meiryo",sans-serif}.heading{font-size:28px;font-weight:700}.label{font-size:23px;font-weight:700}.small{font-size:20px}.code{font-size:19px;font-family:Consolas,monospace}.phase-before,.phase-top,.mid-effects{opacity:0}.phase-final{opacity:1}</style>
-<defs><marker id="m1-b" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#c93030" stroke-width="2"/></marker><marker id="m1-c" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7c3aed" stroke-width="2"/></marker><marker id="m1-d" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#be185d" stroke-width="2"/></marker></defs><rect width="700" height="1000" fill="#ffffff"/><text x="40" y="48" class="heading" fill="#222222">① 指定前</text><text x="42" y="131" class="small" fill="#444444">親要素 .parent</text><rect x="40" y="150" width="620" height="800" fill="#f5f5f5" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/><g id="stage-1-a"><rect x="70" y="150" width="250" height="200" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="98" y="186" class="label" fill="#315fa0">子A .a</text>
+<defs><marker id="m1-b" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#c93030" stroke-width="2"/></marker><marker id="m1-c" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#7c3aed" stroke-width="2"/></marker><marker id="m1-d" markerUnits="userSpaceOnUse" markerWidth="10" markerHeight="10" viewBox="0 0 10 10" refX="9" refY="5" orient="auto"><path d="M 1 1 L 9 5 L 1 9" fill="none" stroke="#be185d" stroke-width="2"/></marker></defs><rect width="700" height="1000" fill="#ffffff"/><text x="40" y="48" class="heading" fill="#111111" style="fill:#111111">① 子Bに負のmarginを指定する前</text><text style="fill:#444444" x="620" y="131" text-anchor="end" class="small" fill="#444444">親要素 .parent</text><rect x="40" y="150" width="620" height="800" fill="#f5f5f5" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/><g id="stage-1-a"><rect x="70" y="150" width="250" height="200" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="98" y="186" class="label" fill="#315fa0" style="fill:#315fa0">子A .a</text>
 <rect x="108" y="205" width="174" height="45" rx="4" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
-<text x="133" y="235" class="small" fill="#be185d">子Aの子</text></g><g id="stage-1-b"><rect x="70" y="350" width="250" height="200" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="98" y="386" class="label" fill="#c93030">子B .b</text>
+<text x="133" y="235" class="small" fill="#be185d" style="fill:#be185d">子Aの子</text></g><g id="stage-1-b"><rect x="70" y="350" width="250" height="200" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+<text x="98" y="386" class="label" fill="#c93030" style="fill:#c93030">子B .b</text>
 <rect x="108" y="405" width="174" height="45" rx="4" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"/>
-<text x="133" y="435" class="small" fill="#a21caf">子Bの子</text></g><g id="stage-1-c"><rect x="70" y="550" width="250" height="200" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
-<text x="98" y="586" class="label" fill="#7c3aed">子C .c</text>
+<text x="133" y="435" class="small" fill="#a21caf" style="fill:#a21caf">子Bの子</text></g><g id="stage-1-c"><rect x="70" y="550" width="250" height="200" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
+<text x="98" y="586" class="label" fill="#7c3aed" style="fill:#7c3aed">子C .c</text>
 <rect x="108" y="605" width="174" height="45" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="133" y="635" class="small" fill="#315fa0">子Cの子</text></g><g id="stage-1-d"><rect x="70" y="750" width="250" height="200" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
-<text x="98" y="786" class="label" fill="#be185d">子D .d</text>
+<text x="133" y="635" class="small" fill="#315fa0" style="fill:#315fa0">子Cの子</text></g><g id="stage-1-d"><rect x="70" y="750" width="250" height="200" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
+<text x="98" y="786" class="label" fill="#be185d" style="fill:#be185d">子D .d</text>
 <rect x="108" y="805" width="174" height="45" rx="4" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
-<text x="133" y="835" class="small" fill="#7c3aed">子Dの子</text></g></svg>
+<text x="133" y="835" class="small" fill="#7c3aed" style="fill:#7c3aed">子Dの子</text></g></svg>

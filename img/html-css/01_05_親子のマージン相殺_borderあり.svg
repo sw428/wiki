@@ -13,32 +13,31 @@
 <rect x="26" y="778" width="948" height="313" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
 <rect x="26" y="778" width="948" height="52" rx="16" fill="#FFF5EB"/>
 <rect x="26" y="818" width="948" height="12" rx="0" fill="#FFF5EB"/>
-<text x="49" y="812" font-family="'Noto Sans CJK JP', sans-serif" font-size="23" fill="#183B5A" font-weight="700">③ border-top: 2px を追加</text>
+<text x="49" y="812" font-family="'Noto Sans CJK JP', sans-serif" font-size="23" font-weight="700" fill="#111111">③ border-top: 2px を追加</text>
 <rect x="835" y="788" width="116" height="33" rx="16" fill="#FFFFFF" stroke="#BFD3E5" stroke-width="1"/>
-<text x="893" y="811" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#205980" font-weight="700" text-anchor="middle">相殺しない</text>
-<rect x="73" y="843" width="420" height="43" rx="4" fill="#D7E9FB" stroke="#50799B" stroke-width="1.3"/>
-<text x="283" y="871" font-family="'Noto Sans CJK JP', sans-serif" font-size="17" fill="#274564" font-weight="700" text-anchor="middle">前の要素（margin: 0）</text>
+<text style="fill:#111111" x="893" y="811" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#111111" font-weight="700" text-anchor="middle">相殺しない</text>
+<rect x="73" y="843" width="420" height="43" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.3"/>
+<text x="283" y="871" font-family="'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#315fa0">前の要素（margin: 0）</text>
 <rect x="73" y="886" width="420" height="25" rx="0" fill="#f9cc9d"/>
-<text x="283" y="904" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#9C5A13" font-weight="700" text-anchor="middle" style="fill: #444444">親margin：20px</text>
+<text x="283" y="904" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" font-weight="700" text-anchor="middle" style="fill:#444444" fill="#444444">親margin：20px</text>
 <rect x="73" y="911" width="420" height="166" rx="0" fill="#f5f5f5"/>
-<rect x="73" y="911" width="420" height="4" rx="0" fill="#f2ed20"/>
+<rect x="73" y="911" width="420" height="5" rx="0" fill="#f2ed20"/>
 <rect x="73" y="914" width="420" height="50" rx="0" fill="#f9cc9d"/>
-<text x="283" y="944" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" fill="#9C5A13" font-weight="700" text-anchor="middle" style="fill: #b42337">子margin：40px</text>
-<rect x="73" y="964" width="420" height="48" rx="0" fill="#F7C7C9" stroke="#B65B63" stroke-width="1.3"/>
-<text x="283" y="995" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#762F37" font-weight="700" text-anchor="middle">子要素</text>
+<text x="283" y="944" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" font-weight="700" text-anchor="middle" style="fill:#c93030" fill="#c93030">子margin：40px</text>
+<rect x="73" y="964" width="420" height="48" rx="0" fill="#f8cfd6" stroke="#c93030" stroke-width="1.3"/>
+<text x="283" y="995" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#c93030">子要素</text>
 <text x="283" y="1065" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#444444" font-weight="700" text-anchor="middle">親要素</text>
 <line x1="73" y1="911" x2="493" y2="911" stroke="#666666" stroke-width="2" stroke-dasharray="8 7" mask="url(#guide-gap-1)"/>
-<rect x="73" y="911" width="420" height="4" rx="0" fill="#f2ed20"/>
+<rect x="73" y="911" width="420" height="5" rx="0" fill="#f2ed20"/>
 <line x1="73" y1="911" x2="73" y2="1077" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
 <line x1="493" y1="911" x2="493" y2="1077" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
 <line x1="73" y1="1077" x2="493" y2="1077" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
 <text x="71" y="898" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#444444" font-weight="700">親の上端</text>
 <rect x="521" y="840" width="435" height="135" rx="10" fill="#F4F6F8" stroke="#DCE2E9" stroke-width="1.2"/>
-<text x="540" y="871" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">.parent { margin-top: 20px;</text>
-<text x="540" y="898" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">          border-top: 2px solid #f2ed20; }</text>
-<text x="540" y="925" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#334155">.child  { margin-top: 40px; }</text>
-<text x="521" y="1001" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" fill="#344054">前の要素 → 子要素の上端：</text>
-<text x="848" y="1001" font-family="'Noto Sans CJK JP', sans-serif" font-size="28" fill="#B44B25" font-weight="700" style="fill: #111111">62px</text>
-<text x="521" y="1033" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#0E527F" font-weight="700" style="fill: #111111">20px + 2px + 40px = 62px</text>
-<text x="521" y="1064" font-family="'Noto Sans CJK JP', sans-serif" font-size="15" fill="#334155">borderが間に入るため、親子のmarginは相殺しない。</text>
+<text x="540" y="871" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#111111">.parent { margin-top: 20px;</text>
+<text x="540" y="898" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#111111">          border-top: 2px solid #f2ed20; }</text>
+<text x="540" y="925" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#111111">.child  { margin-top: 40px; }</text>
+<text style="fill:#111111" x="521" y="1001" font-family="'Noto Sans CJK JP', sans-serif" font-size="18" fill="#111111">前の要素 → 子要素の上端：</text>
+<text x="521" y="1033" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#111111" font-weight="700" style="fill:#111111">20px + 2px + 40px = 62px</text>
+<text style="fill:#111111" x="521" y="1064" font-family="'Noto Sans CJK JP', sans-serif" font-size="15" fill="#111111">borderが間に入るため、親子のmarginは相殺しない。</text>
 </svg>

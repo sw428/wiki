@@ -25,9 +25,9 @@
     </g>
   </defs>
   <rect width="1080" height="600" fill="#ffffff"/>
-  <text x="45" y="47" class="heading">どの端を、親のどの端に合わせるか</text>
+  <text style="fill:#111111" fill="#111111" x="45" y="47" class="heading">どの端を、親のどの端に合わせるか</text>
 
-  <text x="90" y="103" class="heading">① 右下へ置く</text>
+  <text style="fill:#111111" x="90" y="103" class="heading" fill="#111111">① 右下へ置く</text>
   <text x="90" y="136" class="code">right: 0; bottom: 0;</text>
   <text x="90" y="178" class="parent-label">親：364 × 255px</text>
   <rect x="90" y="200" width="364" height="255" class="parent"/>
@@ -37,7 +37,7 @@
   <use href="#coincidence" x="454" y="455"/>
   <text x="90" y="505" class="result">親の右下 ＝ 画像の右下</text>
 
-  <text x="630" y="103" class="heading">② 左上へ置く</text>
+  <text style="fill:#111111" x="630" y="103" class="heading" fill="#111111">② 左上へ置く</text>
   <text x="630" y="136" class="code">top: 0; left: 0;</text>
   <text x="630" y="178" class="parent-label">親：364 × 255px</text>
   <rect x="630" y="200" width="364" height="255" class="parent"/>
@@ -48,5 +48,5 @@
   <text x="630" y="505" class="result">親の左上 ＝ 画像の左上</text>
 
   <use href="#coincidence" x="100" y="555"/>
-  <text x="121" y="562" class="parent-label">親と画像の角が重なる点</text>
+  <text x="121" y="562" class="parent-label" fill="#111111" style="fill:#111111">親と画像の角が重なる点</text>
 </svg>

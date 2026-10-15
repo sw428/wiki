@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="600" height="1000" viewBox="440 120 600 1000" role="img" aria-labelledby="title desc">
 <title id="title">子Bの負のmargin-topで自身と後続の子Cが40px上へ動く</title>
-<desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が移動に影響しない例。子Bにmargin-top: -40pxを指定すると、子Aは動かず、子Bとその子、後続の子Cとその子が通常位置から40px上へ動く。通常位置から指定後までを20秒周期で繰り返し、動きを減らす設定では指定後の静止図を表示する。上向き片矢印は子B・子Cの移動を示す。親子関係と変化を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
+<desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が移動に影響しない例。子Bにmargin-top: -40pxを指定すると、子Aは動かず、子Bとその子、後続の子Cとその子が通常位置から40px上へ動く。通常位置から指定後までを20秒周期で繰り返し、動きを減らす設定では指定後の静止図を表示する。上向き片矢印は子B・子Cの移動を示す。親子関係と変化を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。各段階の説明を表示して1.5秒待ち、その後2秒かけて移動する。</desc>
 <style>
-    .title { font: 700 30px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#222; }
-    .subtitle { font: 500 20px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }
-    .label { font: 700 20px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#222; }
-    .small { font: 500 16px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#444; }
-    .em { font: 700 18px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#c93030; }
-    .note { font: 500 17px 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#2b5fd9; }
+    .title { font-weight:700; font-size:30px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#111111; }
+    .subtitle { font-weight:500; font-size:20px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#111111; }
+    .label { font-weight:700; font-size:20px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#111111; }
+    .small { font-weight:500; font-size:16px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#111111; }
+    .em { font-weight:700; font-size:18px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#c93030; }
+    .note { font-weight:500; font-size:17px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#111111; }
     @media (prefers-reduced-motion: no-preference) {
       .moving { animation: move 20s infinite; }
       .applied { animation: reveal 20s infinite; }
       @keyframes move {
-        0%, 10% { transform: translateY(40px); }
-        22.5%, 100% { transform: translateY(0); }
+        0%, 7.5% { transform: translateY(40px); }
+        17.5%, 100% { transform: translateY(0); }
       }
       @keyframes reveal {
-        0%, 22%, 99%, 100% { opacity: 0; }
-        24%, 97% { opacity: 1; }
+        0%, 17.5%, 99%, 100% { opacity: 0; }
+        19%, 97% { opacity: 1; }
       }
     }
   </style>
@@ -28,43 +28,43 @@
 <rect x="440" y="120" width="600" height="1000" fill="#fff"/>
 <!-- Right panel -->
   <rect x="475" y="130" width="390" height="980" rx="18" fill="#fff9f9"/>
-  <text x="500" y="180" class="title">② 負のmargin</text>
+  <text style="fill:#111111" x="500" y="180" class="title" fill="#111111">② 子Bに上-margin</text>
   <text x="500" y="215" class="subtitle" style="fill: #c93030">child-b の margin-top: -40px</text>
 
   <rect x="520" y="260" width="300" height="760" fill="#f5f5f5" stroke="#666" stroke-width="2" stroke-dasharray="8 7"/>
-  <text x="670" y="995" text-anchor="middle" class="small">親要素 .parent</text>
+  <text style="fill:#444444" fill="#444444" x="820" y="245" text-anchor="end" class="small">親要素 .parent</text>
 
   <!-- child A -->
   <rect x="560" y="300" width="220" height="110" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-  <text x="670" y="365" text-anchor="middle" class="label">子A</text>
+  <text x="670" y="365" text-anchor="middle" class="label" fill="#315fa0" style="fill:#315fa0">子A</text>
 
   <!-- child B shifted up 40 -->
   <g class="moving" id="moving-child-b">
   <rect x="560" y="390" width="220" height="180" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-  <text x="670" y="445" text-anchor="middle" class="label">子B</text>
+  <text x="670" y="445" text-anchor="middle" class="label" fill="#c93030" style="fill:#c93030">子B</text>
   <text x="670" y="475" text-anchor="middle" class="small" style="fill: #c93030">margin-top: -40px</text>
   <rect x="595" y="495" width="150" height="48" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
-  <text x="670" y="525" text-anchor="middle" class="small">子Bの子</text>
+  <text x="670" y="525" text-anchor="middle" class="small" fill="#be185d" style="fill:#be185d">子Bの子</text>
   </g>
 
   <!-- child C shifted up 40 -->
   <g class="moving" id="moving-child-c">
   <rect x="560" y="590" width="220" height="180" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
-  <text x="670" y="645" text-anchor="middle" class="label">子C</text>
+  <text x="670" y="645" text-anchor="middle" class="label" fill="#7c3aed" style="fill:#7c3aed">子C</text>
   <rect x="595" y="695" width="150" height="48" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"/>
-  <text x="670" y="725" text-anchor="middle" class="small">子Cの子</text>
+  <text x="670" y="725" text-anchor="middle" class="small" fill="#a21caf" style="fill:#a21caf">子Cの子</text>
   </g>
 
   <!-- arrows and notes -->
   <g class="applied">
-  <line x1="810" y1="430" x2="810" y2="390" stroke="#c93030" stroke-width="3" marker-end="url(#moveRed)"/>
-  <text x="825" y="415" class="em" style="fill: #c93030">40px上がる</text>
+  <line x1="845" y1="430" x2="845" y2="390" stroke="#c93030" stroke-width="3" marker-end="url(#moveRed)"/>
+  <text fill="#c93030" x="875" y="415" class="em" style="fill:#c93030">40px上がる</text>
 
-  <line x1="810" y1="630" x2="810" y2="590" stroke="#7c3aed" stroke-width="3" marker-end="url(#movePurple)"/>
-  <text x="825" y="615" class="em" style="fill: #7c3aed">40px上に詰まる</text>
+  <line x1="845" y1="630" x2="845" y2="590" stroke="#7c3aed" stroke-width="3" marker-end="url(#movePurple)"/>
+  <text fill="#7c3aed" x="875" y="615" class="em" style="fill:#7c3aed">40px上に詰まる</text>
 
-  <text x="670" y="1040" text-anchor="middle" class="note">子Bの子は子Bと一緒に上がる</text>
-  <text x="670" y="1070" text-anchor="middle" class="note">子Cも、その中の子Cの子も一緒に上へ動く</text>
+  <text style="fill:#111111" fill="#111111" x="670" y="1040" text-anchor="middle" class="note">子Bの子は子Bと一緒に上がる</text>
+  <text style="fill:#111111" fill="#111111" x="670" y="1070" text-anchor="middle" class="note">子Cも、その中の子Cの子も一緒に上へ動く</text>
   </g>
 
-  </svg>
+  <style>.cue-before{opacity:0}.cue-after{opacity:1}@media(prefers-reduced-motion:no-preference){.cue-before{animation:cue-before 20s steps(1,end) infinite}.cue-after{animation:cue-after 20s steps(1,end) infinite}@keyframes cue-before{0%,17.499995%{opacity:1}17.5%,100%{opacity:0}}@keyframes cue-after{0%,17.499995%{opacity:0}17.5%,100%{opacity:1}}}</style><g id="stage-caption"><text class="cue-before" x="845" y="245" text-anchor="start" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="845">子Bと子Cを</tspan><tspan x="845" dy="26">40px上へ</tspan></text><text class="cue-after" x="845" y="245" text-anchor="start" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="845">移動後</tspan><tspan x="845" dy="26">子B・Cは上へ</tspan></text></g></svg>

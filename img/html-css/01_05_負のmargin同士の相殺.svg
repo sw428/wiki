@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="880" viewBox="0 0 900 880" role="img" aria-labelledby="title description">
   <title id="title">兄弟要素の負の上下marginが相殺し、30px重なる</title>
-  <desc id="description">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: -20pxと子Bのmargin-top: -30pxは足し合わせず、絶対値が大きい-30pxが相殺結果となり、子Aと子Bが30px重なる。両方のmarginが0の通常位置から、相殺後の位置までを20秒周期で繰り返す。指定値を別々に足して移動させる図ではない。子Aは動かず、子Bが30px上へ詰まる。重なりと結果の寸法は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。親の灰色点線は説明用の補助線で、実際のCSSのborderではない。</desc>
+  <desc id="description">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: -20pxと子Bのmargin-top: -30pxは足し合わせず、絶対値が大きい-30pxが相殺結果となり、子Aと子Bが30px重なる。両方のmarginが0の通常位置から、相殺後の位置までを20秒周期で繰り返す。指定値を別々に足して移動させる図ではない。子Aは動かず、子Bが30px上へ詰まる。重なりと結果の寸法は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。親の灰色点線は説明用の補助線で、実際のCSSのborderではない。各段階の説明を表示して1.5秒待ち、その後2秒かけて移動する。</desc>
   <style>
-    text { font-family: "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif; fill: #26282d; }
+    text { font-family: "Noto Sans CJK JP", "Yu Gothic", "Hiragino Kaku Gothic ProN", sans-serif; fill: #111111; }
     .title { font-size: 33px; font-weight: 700; }
     .subtitle { font-size: 18px; fill: #545961; }
     .heading { font-size: 21px; font-weight: 700; }
@@ -16,12 +16,12 @@
       .moving { animation: move 20s infinite; }
       .applied { animation: reveal 20s infinite; }
       @keyframes move {
-        0%, 10% { transform: translateY(30px); }
-        22.5%, 100% { transform: translateY(0); }
+        0%, 7.5% { transform: translateY(30px); }
+        17.5%, 100% { transform: translateY(0); }
       }
       @keyframes reveal {
-        0%, 22%, 99%, 100% { opacity: 0; }
-        24%, 97% { opacity: 1; }
+        0%, 17.5%, 99%, 100% { opacity: 0; }
+        19%, 97% { opacity: 1; }
       }
     }
   </style>
@@ -31,11 +31,11 @@
     </marker>
   </defs>
   <rect width="900" height="880" fill="#ffffff"/>
-  <text x="56" y="73" class="title">⑨ 負のmargin同士のマージン相殺</text>
-  <text x="58" y="110" class="subtitle">通常フローの兄弟ブロック要素（相殺する場合）</text>
+  <text style="fill:#111111" x="56" y="73" class="title" fill="#111111">⑩ 負のmargin同士のマージン相殺</text>
+  <text style="fill:#111111" fill="#111111" x="58" y="110" class="subtitle">通常フローの兄弟ブロック要素（相殺する場合）</text>
 
   <rect x="54" y="142" width="792" height="142" rx="13" fill="#f4f5f7"/>
-  <text x="81" y="181" class="heading">CSSの指定</text>
+  <text style="fill:#111111" fill="#111111" x="81" y="181" class="heading">CSSの指定</text>
   <text x="82" y="216" class="body" style="fill: #315fa0">子A　 margin-bottom: <tspan font-weight="700">-20px</tspan>;</text>
   <text x="82" y="251" class="body" style="fill: #c93030">子B　 margin-top: <tspan font-weight="700">-30px</tspan>;</text>
 
@@ -45,7 +45,7 @@
 
   <!-- child A, ending at y=503 -->
   <rect x="195" y="370" width="425" height="133" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-  <text x="408" y="430" text-anchor="middle" class="box-label">子A</text>
+  <text x="408" y="430" text-anchor="middle" class="box-label" fill="#315fa0" style="fill:#315fa0">子A</text>
   <text x="408" y="463" text-anchor="middle" class="sm" style="fill: #315fa0">margin-bottom: -20px</text>
 
   <!-- child B begins 30 px above child A's bottom -->
@@ -54,9 +54,9 @@
   <!-- overlapping area, highlighted for teaching clarity -->
   <g class="applied">
   <rect x="195" y="473" width="425" height="30" fill="#dca7b8" opacity="0.55"/>
-  <path d="M195 473 H620 M195 503 H620" stroke="#8c5b64" stroke-width="1.6" stroke-dasharray="6 5"/>
+  <path d="M195 473 H620 M195 503 H620" stroke="#666666" stroke-width="1.6" stroke-dasharray="6 5"/>
   </g>
-  <text x="408" y="551" text-anchor="middle" class="box-label">子B</text>
+  <text x="408" y="551" text-anchor="middle" class="box-label" fill="#c93030" style="fill:#c93030">子B</text>
   <text x="408" y="585" text-anchor="middle" class="sm" style="fill: #c93030">margin-top: -30px</text>
   </g>
 
@@ -70,9 +70,9 @@
 
   <!-- Bottom result -->
   <rect x="54" y="689" width="792" height="134" rx="13" fill="#fcf1e4"/>
-  <text x="450" y="733" text-anchor="middle" class="heading">負のmargin同士は足し算しない</text>
+  <text style="fill:#111111" fill="#111111" x="450" y="733" text-anchor="middle" class="heading">負のmargin同士は足し算しない</text>
   <g class="applied">
   <text x="450" y="775" text-anchor="middle" class="result">-20px と -30px → 相殺結果 -30px</text>
   <text x="450" y="803" text-anchor="middle" class="sm">絶対値が大きい方が結果になり、要素は30px重なる</text>
   </g>
-</svg>
+<style>.cue-before{opacity:0}.cue-after{opacity:1}@media(prefers-reduced-motion:no-preference){.cue-before{animation:cue-before 20s steps(1,end) infinite}.cue-after{animation:cue-after 20s steps(1,end) infinite}@keyframes cue-before{0%,17.499995%{opacity:1}17.5%,100%{opacity:0}}@keyframes cue-after{0%,17.499995%{opacity:0}17.5%,100%{opacity:1}}}</style><g id="stage-caption"><text class="cue-before" x="450" y="306" text-anchor="middle" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="450">負のmargin同士を相殺し、子Bを30px上へ</tspan></text><text class="cue-after" x="450" y="306" text-anchor="middle" fill="#111111" style="fill:#111111;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:600"><tspan x="450">移動後：箱が30px重なる</tspan></text></g></svg>
