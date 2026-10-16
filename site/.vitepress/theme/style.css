@@ -1,0 +1,177 @@
+:root {
+  --wiki-toc-color: #6b7280;
+  --vp-c-brand-1: var(--wiki-brand-1-light, #087f73);
+  --vp-c-brand-2: var(--wiki-brand-2-light, #0b9284);
+  --vp-c-brand-3: var(--wiki-brand-3-light, #087f73);
+  --vp-c-brand-soft: var(--wiki-brand-soft-light, rgba(8, 127, 115, 0.1));
+  --vp-font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+}
+
+.dark {
+  --wiki-toc-color: #b0b6c0;
+  --vp-c-brand-1: var(--wiki-brand-1-dark, #65d8c6);
+  --vp-c-brand-2: var(--wiki-brand-2-dark, #85e5d6);
+  --vp-c-brand-3: var(--wiki-brand-3-dark, #167d70);
+  --vp-c-brand-soft: var(--wiki-brand-soft-dark, rgba(101, 216, 198, 0.12));
+}
+
+.VPContent.is-home {
+  display: grid;
+  align-items: center;
+}
+
+.VPContent.is-home .VPHome {
+  width: 100%;
+  margin-bottom: 0;
+  padding-block: clamp(32px, 6vh, 64px);
+}
+
+.VPHome .VPHomeFeatures .container {
+  max-width: 360px;
+}
+
+.VPHome .VPHomeFeatures .items {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 0;
+}
+
+.VPHome .VPHomeFeatures .item.grid-4 {
+  width: auto;
+  padding: 0;
+}
+
+.VPHome .VPHomeFeatures .VPFeature {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  border-color: var(--vp-c-divider);
+  background-color: var(--vp-c-brand-soft);
+}
+
+.VPHome .VPHomeFeatures .box {
+  width: 100%;
+  height: auto;
+  padding: 16px 24px;
+  text-align: center;
+}
+
+.VPHome .VPHomeFeatures .title {
+  font-size: 18px;
+  line-height: 1.5;
+  letter-spacing: 0.1em;
+}
+
+.VPHome .VPHomeFeatures .VPFeature:focus-visible {
+  outline: 2px solid var(--vp-c-brand-1);
+  outline-offset: 4px;
+}
+
+.dark .VPHome .VPHomeFeatures .VPFeature {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.dark .VPHome .VPHomeFeatures .title {
+  color: var(--wiki-brand-1-light, #087f73);
+}
+
+.dark .VPHome .VPHomeFeatures .VPFeature:hover {
+  border-color: var(--wiki-brand-1-light, #087f73);
+}
+
+.dark .vp-doc :is(h1, h2, h3, h4, h5, h6) {
+  color: #fff;
+}
+
+.dark .wiki-index .vp-doc p {
+  color: #fff;
+}
+
+.wiki-index .vp-doc li a {
+  color: var(--wiki-toc-color);
+}
+
+.wiki-index .vp-doc li a:is(:hover, :focus-visible, :active) {
+  color: var(--vp-c-brand-1);
+}
+
+.VPSidebar .VPSidebarItem {
+  --vp-c-text-2: var(--wiki-toc-color);
+}
+
+.VPSidebar .group:first-of-type .VPSidebarItem {
+  --vp-c-text-1: var(--vp-c-brand-1);
+  --vp-c-text-2: var(--vp-c-brand-1);
+}
+
+.VPDocAsideOutline {
+  --vp-c-text-1: var(--vp-c-brand-1);
+  --vp-c-text-2: var(--wiki-toc-color);
+  color: #3c3c43;
+}
+
+.dark .VPSidebar {
+  --vp-c-text-1: #fff;
+}
+
+.dark .VPDocAsideOutline {
+  color: #fff;
+}
+
+.vp-doc {
+  line-height: 1.9;
+  overflow-wrap: anywhere;
+}
+
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.95;
+}
+
+.vp-doc h1 {
+  font-size: clamp(1.6rem, 3vw, 2rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.vp-doc img[src*="/wiki/img/"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5rem auto;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.wiki-unpublished {
+  text-decoration: underline dotted var(--vp-c-divider);
+  text-underline-offset: 4px;
+  cursor: help;
+}
+
+@media (max-width: 640px) {
+  .vp-doc div[class*="language-"] {
+    margin-inline: 0;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 767px) {
+  .VPNavBar .container > .title {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+  }
+
+  .VPNavBarTitle .title span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .VPNavBarTitle .logo {
+    flex-shrink: 0;
+  }
+}
