@@ -7,6 +7,7 @@ import { wikiMarkdown } from '../scripts/markdown.mjs';
 const link = route => `/${encodePath(route)}.html`;
 const sidebar = {};
 const nextArticles = new Map();
+const previousArticles = new Map();
 const escapeText = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 for (const collection of catalog.collections) {
   const articles = catalog.articles.filter(article => article.collection === collection.id);
@@ -20,13 +21,19 @@ for (const collection of catalog.collections) {
   ];
   const pages = sidebar[`/${collection.route}/`].flatMap(item => item.items || [item]);
   const articlesByLink = new Map(articles.map(article => [link(article.route), article]));
-  for (let index = 0; index < pages.length - 1; index++) {
-    const next = articlesByLink.get(pages[index + 1].link);
-    if (next?.category) {
-      const source = decodeURIComponent(pages[index].link).slice(1).replace(/\.html$/, '.md');
-      nextArticles.set(source, next);
-    }
+  for (let index = 0; index < pages.length; index++) {
+    const source = decodeURIComponent(pages[index].link).slice(1).replace(/\.html$/, '.md');
+    const next = articlesByLink.get(pages[index + 1]?.link);
+    const previous = articlesByLink.get(pages[index - 1]?.link);
+    if (next?.category) nextArticles.set(source, next);
+    if (previous?.category) previousArticles.set(source, previous);
   }
+}
+
+for (const directory of catalog.directories) {
+  const first = catalog.articles.find(article => path.posix.dirname(article.source) === directory.source)
+    || catalog.articles.find(article => article.source.startsWith(`${directory.source}/`));
+  if (first) nextArticles.set(`${directory.route}.md`, first);
 }
 
 export default defineConfig({
@@ -43,12 +50,17 @@ export default defineConfig({
   outDir: path.join(siteRoot, 'dist'),
   cacheDir: path.join(siteRoot, '.vitepress', 'cache'),
   transformPageData(page) {
-    const next = nextArticles.get(page.relativePath);
-    if (!next || page.frontmatter.next !== undefined) return;
-    page.frontmatter.next = {
-      text: `<span class="wiki-pager-category">${escapeText(cleanLabel(next.category))}</span>${escapeText(next.title)}`,
-      link: link(next.route)
-    };
+    for (const [direction, articles] of [['prev', previousArticles], ['next', nextArticles]]) {
+      const article = articles.get(page.relativePath);
+      if (!article || page.frontmatter[direction] !== undefined) continue;
+      const category = article.category
+        ? `<span class="wiki-pager-category">${escapeText(cleanLabel(article.category))}</span>`
+        : '';
+      page.frontmatter[direction] = {
+        text: `${category}${escapeText(article.title)}`,
+        link: link(article.route)
+      };
+    }
   },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${siteBase()}favicon.svg` }],
