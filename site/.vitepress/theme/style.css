@@ -90,11 +90,32 @@
 }
 
 .wiki-index .vp-doc li a {
-  color: var(--wiki-toc-color);
+  color: var(--wiki-index-link-color, var(--wiki-toc-color));
+}
+
+.wiki-index .vp-doc li a[href$="/index.html"] {
+  --wiki-index-link-color: #000;
+}
+
+.dark .wiki-index .vp-doc li a[href$="/index.html"] {
+  --wiki-index-link-color: #fff;
 }
 
 .wiki-index .vp-doc li a:is(:hover, :focus-visible, :active) {
   color: var(--vp-c-brand-1);
+}
+
+.VPDocFooter .wiki-pager-category {
+  display: block;
+  margin-bottom: 4px;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.dark .VPDocFooter .wiki-pager-category {
+  color: #fff;
 }
 
 .VPSidebar .VPSidebarItem {

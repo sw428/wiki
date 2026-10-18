@@ -17,3 +17,4 @@
 - [GPT Sol ProとCodex Ultraの違い](./2026-09-05_GPT-Sol-ProとCodex-Ultraの違い.md)
 - [CodexのMedium・High運用](./2026-09-05_CodexのMedium・High運用.md)
 - [HTML・CSSのSVG表現規約と三者運用](./2026-10-16_HTML・CSSのSVG表現規約と三者運用.md)
+- [VS Code拡張機能のCSS配置構想とJavaScript学習](./2026-10-17_VS%20Code拡張機能のCSS配置構想とJavaScript学習.md)

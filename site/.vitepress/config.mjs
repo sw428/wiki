@@ -6,6 +6,8 @@ import { wikiMarkdown } from '../scripts/markdown.mjs';
 
 const link = route => `/${encodePath(route)}.html`;
 const sidebar = {};
+const nextArticles = new Map();
+const escapeText = text => text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
 for (const collection of catalog.collections) {
   const articles = catalog.articles.filter(article => article.collection === collection.id);
   const categories = [...new Set(articles.map(article => article.category))].sort(compareNames);
@@ -16,6 +18,15 @@ for (const collection of catalog.collections) {
       return category ? { text: cleanLabel(category), collapsed: true, items } : { text: '記事', items };
     })
   ];
+  const pages = sidebar[`/${collection.route}/`].flatMap(item => item.items || [item]);
+  const articlesByLink = new Map(articles.map(article => [link(article.route), article]));
+  for (let index = 0; index < pages.length - 1; index++) {
+    const next = articlesByLink.get(pages[index + 1].link);
+    if (next?.category) {
+      const source = decodeURIComponent(pages[index].link).slice(1).replace(/\.html$/, '.md');
+      nextArticles.set(source, next);
+    }
+  }
 }
 
 export default defineConfig({
@@ -31,6 +42,14 @@ export default defineConfig({
   srcDir: 'generated',
   outDir: path.join(siteRoot, 'dist'),
   cacheDir: path.join(siteRoot, '.vitepress', 'cache'),
+  transformPageData(page) {
+    const next = nextArticles.get(page.relativePath);
+    if (!next || page.frontmatter.next !== undefined) return;
+    page.frontmatter.next = {
+      text: `<span class="wiki-pager-category">${escapeText(cleanLabel(next.category))}</span>${escapeText(next.title)}`,
+      link: link(next.route)
+    };
+  },
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: `${siteBase()}favicon.svg` }],
     ['meta', { name: 'theme-color', content: '#087f73' }]
