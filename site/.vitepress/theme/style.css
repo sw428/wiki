@@ -8,6 +8,13 @@
 }
 
 .dark {
+  --vp-c-bg: #26282e;
+  --vp-c-bg-alt: #202228;
+  --vp-c-bg-elv: #2d3037;
+  --vp-c-bg-soft: #2c2f36;
+  --vp-c-border: #535965;
+  --vp-c-divider: #454953;
+  --vp-c-gutter: #343841;
   --wiki-toc-color: #b0b6c0;
   --vp-c-brand-1: var(--wiki-brand-1-dark, #65d8c6);
   --vp-c-brand-2: var(--wiki-brand-2-dark, #85e5d6);
@@ -149,6 +156,13 @@
 .vp-doc p,
 .vp-doc li {
   line-height: 1.95;
+}
+
+.vp-doc tr,
+.vp-doc tr:nth-child(2n),
+.vp-doc th,
+.vp-doc td {
+  background-color: var(--vp-c-bg);
 }
 
 .vp-doc h1 {
