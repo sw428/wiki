@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="920" viewBox="0 0 1120 920" role="img" aria-labelledby="title desc">
+  <title id="title">動く図解：minmax(0, 1fr) — 親幅に合わせて3列が伸縮</title>
+  <desc id="desc">親の幅が640pxから340pxに縮み、また戻るアニメーション。gapは20px固定、3つの列幅は各200pxから100pxへ縮む。minmaxの0は縮められる最小値、1frは空き領域の分配を示す。</desc>
+  <defs>
+    <style>
+      .ja{font-family:'Noto Sans CJK JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif}
+      .mono{font-family:ui-monospace,'SFMono-Regular',Consolas,monospace}
+      .ink{fill:#14243A}.muted{fill:#60718A}.blue{fill:#2467BA}.green{fill:#1B866E}
+      .heading{font-size:33px;font-weight:800}.sub{font-size:19px}.label{font-size:20px;font-weight:700}
+      .body{font-size:19px}.num{font-size:21px;font-weight:750}
+    </style>
+    <marker id="arrBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#2467BA" stroke-width="1.4"/></marker>
+  </defs>
+
+  <rect x="0" y="0" width="1120" height="920" fill="#F6F9FD"/>
+  <rect x="38" y="32" width="1044" height="856" rx="26" fill="#FFFFFF" stroke="#DBE4EF" stroke-width="2"/>
+  <text x="83" y="94" class="ja heading ink">minmax(0, 1fr) は何を決める？</text>
+  <text x="83" y="131" class="ja sub muted">列の「縮められる限界」と「余った幅の分け方」を指定する</text>
+
+  <!-- formula -->
+  <rect x="80" y="166" width="960" height="120" rx="18" fill="#F5F8FC"/>
+  <text x="127" y="242" class="mono" font-size="47" font-weight="700" fill="#14243A">minmax(</text>
+  <rect x="367" y="191" width="81" height="69" rx="12" fill="#DDF6EA"/>
+  <text x="405" y="241" class="mono" font-size="47" text-anchor="middle" font-weight="700" fill="#147B60">0</text>
+  <text x="459" y="242" class="mono" font-size="47" font-weight="700" fill="#14243A">,</text>
+  <rect x="512" y="191" width="174" height="69" rx="12" fill="#DFECFE"/>
+  <text x="599" y="241" class="mono" font-size="47" text-anchor="middle" font-weight="700" fill="#2467BA">1fr</text>
+  <text x="704" y="242" class="mono" font-size="47" font-weight="700" fill="#14243A">)</text>
+
+  <!-- explanation tiles -->
+  <rect x="82" y="305" width="466" height="138" rx="16" fill="#ECFAF3" stroke="#A3DECA"/>
+  <rect x="572" y="305" width="466" height="138" rx="16" fill="#ECF4FF" stroke="#B2CEEF"/>
+  <text x="111" y="352" class="ja label green">0 ＝ 最小幅</text>
+  <text x="111" y="386" class="ja body ink">内容に引っ張られず、必要なら</text>
+  <text x="111" y="415" class="ja body ink">0pxまで列を縮めてよい</text>
+  <text x="601" y="352" class="ja label blue">1fr ＝ 幅の分配比率</text>
+  <text x="601" y="386" class="ja body ink">gapを引いた残りの幅を</text>
+  <text x="601" y="415" class="ja body ink">「1つ分」として受け取る</text>
+
+  <path d="M405 260 V295" stroke="#1B866E" stroke-width="2" stroke-dasharray="5 5"/>
+  <path d="M599 260 V295" stroke="#2467BA" stroke-width="2" stroke-dasharray="5 5"/>
+
+  <!-- example -->
+  <text x="82" y="494" class="ja" font-size="25" font-weight="800" fill="#14243A">例：minmax(0, 1fr) を3列に使ったときの伸縮</text>
+  <text x="82" y="527" class="ja sub muted">▶ 上の図が動きます：親幅が縮むと、3つの 1fr も同じ割合で縮む</text>
+
+  <text x="82" y="574" class="ja label ink">親の内容幅：640px<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="82" y="574" class="ja label ink" opacity="0">親の内容幅：340px<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <rect x="82" y="594" width="640" height="96" rx="10" fill="#F9FBFE" stroke="#8A9EB9" stroke-width="2"><animate attributeName="width" values="640;640;340;340;640;640" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></rect>
+  <rect x="82" y="594" width="200" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"><animate attributeName="width" values="200;200;100;100;200;200" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></rect>
+  <rect x="302" y="594" width="200" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"><animate attributeName="width" values="200;200;100;100;200;200" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/><animate attributeName="x" values="302;302;202;202;302;302" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></rect>
+  <rect x="522" y="594" width="200" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"><animate attributeName="width" values="200;200;100;100;200;200" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/><animate attributeName="x" values="522;522;322;322;522;522" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></rect>
+  <text x="182" y="639" class="mono num blue" text-anchor="middle">1fr<animate attributeName="x" values="182;182;132;132;182;182" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="182" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle">200px<animate attributeName="x" values="182;182;132;132;182;182" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="182" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle" opacity="0">100px<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/><animate attributeName="x" values="182;182;132;132;182;182" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="402" y="639" class="mono num blue" text-anchor="middle">1fr<animate attributeName="x" values="402;402;252;252;402;402" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="402" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle">200px<animate attributeName="x" values="402;402;252;252;402;402" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="402" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle" opacity="0">100px<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/><animate attributeName="x" values="402;402;252;252;402;402" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="622" y="639" class="mono num blue" text-anchor="middle">1fr<animate attributeName="x" values="622;622;372;372;622;622" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="622" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle">200px<animate attributeName="x" values="622;622;372;372;622;622" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/><animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="622" y="669" class="mono" font-size="19" fill="#315A8B" text-anchor="middle" opacity="0">100px<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/><animate attributeName="x" values="622;622;372;372;622;622" keyTimes="0;0.20;0.45;0.65;0.94;1" dur="9s" repeatCount="indefinite" calcMode="spline" keySplines="0 0 1 1;0.33 0 0.67 1;0 0 1 1;0.33 0 0.67 1;0 0 1 1"/></text>
+  <text x="756" y="639" class="ja body ink">(640 − 40) ÷ 3<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="756" y="639" class="ja body ink" opacity="0">(340 − 40) ÷ 3<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+  <text x="756" y="670" class="ja label blue">＝ 1列 200px<animate attributeName="opacity" values="1;1;0;0;1;1" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+
+  <text x="756" y="670" class="ja label blue" opacity="0">＝ 1列 100px<animate attributeName="opacity" values="0;0;1;1;0;0" keyTimes="0;0.325;0.326;0.795;0.796;1" dur="9s" repeatCount="indefinite" calcMode="discrete"/></text>
+
+  <text x="82" y="738" class="ja label ink">下：親が340pxのとき（比較用・固定）</text>
+  <rect x="82" y="757" width="340" height="96" rx="10" fill="#F9FBFE" stroke="#8A9EB9" stroke-width="2"/>
+  <rect x="82" y="757" width="100" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"/>
+  <rect x="202" y="757" width="100" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"/>
+  <rect x="322" y="757" width="100" height="96" rx="8" fill="#DAEAFE" stroke="#7AA9E0" stroke-width="1"/>
+  <text x="132" y="803" class="mono" font-size="18" font-weight="700" fill="#2467BA" text-anchor="middle">1fr</text>
+  <text x="132" y="831" class="mono" font-size="16" fill="#315A8B" text-anchor="middle">100px</text>
+  <text x="252" y="803" class="mono" font-size="18" font-weight="700" fill="#2467BA" text-anchor="middle">1fr</text>
+  <text x="252" y="831" class="mono" font-size="16" fill="#315A8B" text-anchor="middle">100px</text>
+  <text x="372" y="803" class="mono" font-size="18" font-weight="700" fill="#2467BA" text-anchor="middle">1fr</text>
+  <text x="372" y="831" class="mono" font-size="16" fill="#315A8B" text-anchor="middle">100px</text>
+  <text x="192" y="818" class="mono" font-size="13" fill="#56647A" text-anchor="middle" transform="rotate(-90 192 818)">20</text>
+  <text x="312" y="818" class="mono" font-size="13" fill="#56647A" text-anchor="middle" transform="rotate(-90 312 818)">20</text>
+  <text x="458" y="802" class="ja body ink">(340 − 40) ÷ 3</text>
+  <text x="458" y="835" class="ja label blue">＝ 1列 100px</text>
+
+  <rect x="740" y="701" width="300" height="151" rx="15" fill="#FFF7E8" stroke="#F3D6A4"/>
+  <text x="759" y="737" class="ja" font-size="20" font-weight="800" fill="#9D5E0D">よくある勘違い</text>
+  <text x="759" y="772" class="ja" font-size="18" fill="#14243A">「0」は列を0pxに</text>
+  <text x="759" y="798" class="ja" font-size="18" fill="#14243A">する指定ではない。</text>
+  <text x="759" y="826" class="ja" font-size="18" fill="#14243A">縮められる下限の指定。</text>
+<text x="756" y="688" class="ja sub muted">列間 gap：20px × 2（固定）</text><rect x="810" y="468" width="228" height="39" rx="18" fill="#E4F0FF" stroke="#BBD4F4"/><text x="924" y="495" class="ja" text-anchor="middle" font-size="17" font-weight="700" fill="#2467BA">▶ 自動再生（9秒周期）</text></svg>
