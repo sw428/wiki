@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="736" height="693" viewBox="0 0 736 693" preserveAspectRatio="xMidYMin meet" style="max-width:100%;height:auto" role="img" aria-labelledby="title desc">
+<title id="title">Gridの列・行・セルと子の幅</title>
+<desc id="desc">親の内容幅540px、2列は各256px、gap28pxで固定。子の幅164pxを指定した状態から、widthを外して256pxへ広げ、再指定して164pxへ戻す。変えるのは子の幅だけで、行108pxと子の高さ48pxは固定。列1を薄いシアンの縦帯、行1を薄いオレンジの横帯として示し、交点を1セルと表記する。gapは薄紫のすき間。列の見出しと寸法線はシアン、行の見出しと寸法線はオレンジ、gapの文字と寸法線は紫で区別する。子Cはgapと異なる紅紫。題名と動作説明は太めの黒。各説明を表示して2.5秒以上待ち、3秒で幅を変える。17秒周期。動きを減らす設定では164pxの静止表示。説明は前の文字を消して0.25秒空白にし、次の文字を0.25秒で表示する。完全に表示してから2.5秒以上待ち、3秒かけて動く。説明は動作中も表示し、各動作の後にも静止時間を追加する。タイトルの直下に、対象を示すセレクタと波括弧で囲んだCSSを、VS CodeのLight+を基に彩度を抑えた構文色で示す。</desc>
+<rect x="0" y="0" width="736" height="693" fill="#ffffff"/>
+<g id="drawing" transform="translate(0 119)">
+
+
+<style>text{font-family:"Yu Gothic",Meiryo,sans-serif;font-size:20px;fill:#000000;font-weight:500}.small{font-size:18px}.parent-label{fill:#444444}.still{display:none}@media(prefers-reduced-motion:reduce){.motion{display:none}.still{display:inline}}.cell{fill:white;stroke:#9ca3af;stroke-width:1.25}.measure{fill:none;stroke:#000000;stroke-width:1.2;marker-start:url(#arrow);marker-end:url(#arrow)}.title,.status{fill:#000000;font-weight:700}.column{fill:#007F99;font-weight:700;font-size:18px}.row{fill:#D66A00;font-weight:700}.column-measure{stroke:#007F99;marker-start:url(#column-arrow);marker-end:url(#column-arrow)}.row-measure{stroke:#D66A00;marker-start:url(#row-arrow);marker-end:url(#row-arrow)}.gap{fill:#7C3AED;font-weight:700}.gap-measure{stroke:#7C3AED;marker-start:url(#gap-arrow);marker-end:url(#gap-arrow)}</style>
+<rect width="736" height="574" fill="white"/>
+<defs><marker id="arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L5 3 L1 5" fill="none" stroke="#000000" stroke-width="1.2"/></marker><marker id="column-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L5 3 L1 5" fill="none" stroke="#007F99" stroke-width="1.2"/></marker><marker id="row-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L5 3 L1 5" fill="none" stroke="#D66A00" stroke-width="1.2"/></marker><marker id="gap-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto-start-reverse" markerUnits="userSpaceOnUse"><path d="M1 1 L5 3 L1 5" fill="none" stroke="#7C3AED" stroke-width="1.2"/></marker></defs>
+
+<g class="motion">
+<g class="caption"><text x="24" y="68" class="status" opacity="1">子のwidthを外す → 子が列幅まで広がる<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.5;1" dur="17s" calcMode="discrete" repeatCount="indefinite"/></text>
+<text x="24" y="68" class="status" opacity="0">width:164pxへ戻す → 子だけ縮む<animate attributeName="opacity" values="0;1;0" keyTimes="0;0.5;1" dur="17s" calcMode="discrete" repeatCount="indefinite"/></text></g><text x="72" y="118" class="parent-label">親：内容幅540px（固定）</text>
+<text x="200" y="156" text-anchor="middle" class="column">column 1（列）256px</text><path d="M72 170 H328" class="measure column-measure"/>
+<text x="484" y="156" text-anchor="middle" class="column">column 2（列）256px</text><path d="M356 170 H612" class="measure column-measure"/>
+<rect x="72" y="192" width="540" height="244" fill="#f5f5f5"/>
+<rect x="72" y="192" width="256" height="108" class="cell"/>
+<rect x="356" y="192" width="256" height="108" class="cell"/>
+<rect x="72" y="328" width="256" height="108" class="cell"/>
+<rect x="356" y="328" width="256" height="108" class="cell"/>
+<rect data-region="column" x="72" y="192" width="256" height="244" fill="#007F99" fill-opacity="0.10"/>
+<rect data-region="row" x="72" y="192" width="540" height="108" fill="#D66A00" fill-opacity="0.12"/>
+<rect data-region="column-gap" x="328" y="192" width="28" height="244" fill="#ECE5FF"/>
+<rect data-region="row-gap" x="72" y="300" width="540" height="28" fill="#ECE5FF"/>
+<rect x="72" y="192" width="540" height="244" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<rect data-child="0" x="72" y="192" width="164" height="48" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"><animate attributeName="width" values="164;164;256;256;164;164" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></rect>
+<text x="154" y="224" text-anchor="middle" style="fill:#315fa0">子A<animate attributeName="x" values="154;154;200;200;154;154" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></text>
+<rect data-child="1" x="356" y="192" width="164" height="48" fill="#f8cfd6" stroke="#c93030" stroke-width="2"><animate attributeName="width" values="164;164;256;256;164;164" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></rect>
+<text x="438" y="224" text-anchor="middle" style="fill:#c93030">子B<animate attributeName="x" values="438;438;484;484;438;438" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></text>
+<rect data-child="2" x="72" y="328" width="164" height="48" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"><animate attributeName="width" values="164;164;256;256;164;164" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></rect>
+<text x="154" y="360" text-anchor="middle" style="fill:#a21caf">子C<animate attributeName="x" values="154;154;200;200;154;154" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></text>
+<rect data-child="3" x="356" y="328" width="164" height="48" fill="#fbe0eb" stroke="#be185d" stroke-width="2"><animate attributeName="width" values="164;164;256;256;164;164" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></rect>
+<text x="438" y="360" text-anchor="middle" style="fill:#be185d">子D<animate attributeName="x" values="438;438;484;484;438;438" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></text>
+<line x1="72" y1="394" x2="236" y2="394" class="measure"><animate attributeName="x2" values="236;236;328;328;236;236" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></line>
+<text x="154" y="421" text-anchor="middle" class="small">子の幅<animate attributeName="x" values="154;154;200;200;154;154" keyTimes="0;0.176470588;0.352941177;0.676470588;0.852941177;1" dur="17s" repeatCount="indefinite"/></text>
+<text x="200" y="285" text-anchor="middle" class="small">1セル（列1 × 行1）</text>
+<path d="M626 192 V300" class="measure row-measure"/><path d="M626 328 V436" class="measure row-measure"/><text x="634" y="232" class="small row">row1（行）</text><text x="636" y="260" class="small row">108px</text>
+<text x="634" y="368" class="small row">row2（行）</text><text x="636" y="396" class="small row">108px</text>
+<path d="M634 300 V328" class="measure gap-measure"/><text x="646" y="320" class="small gap">gap28px</text>
+<path d="M328 454 H356" class="measure gap-measure"/><text x="342" y="485" text-anchor="middle" class="small gap">列間のgap：28px</text>
+<path d="M24 540 H64" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/><text x="76" y="547" class="small parent-label">親の外周</text>
+<rect x="266" y="528" width="28" height="20" class="cell"/><text x="306" y="547" class="small">セルの境界</text>
+<rect x="520" y="528" width="28" height="20" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/><text x="560" y="547" class="small">子の箱</text>
+</g>
+<g class="still"><text x="24" y="68" class="status">子の幅164px ／ 列256px（静止表示）</text><text x="72" y="118" class="parent-label">親：内容幅540px（固定）</text>
+<text x="200" y="156" text-anchor="middle" class="column">column 1（列）256px</text><path d="M72 170 H328" class="measure column-measure"/>
+<text x="484" y="156" text-anchor="middle" class="column">column 2（列）256px</text><path d="M356 170 H612" class="measure column-measure"/>
+<rect x="72" y="192" width="540" height="244" fill="#f5f5f5"/>
+<rect x="72" y="192" width="256" height="108" class="cell"/>
+<rect x="356" y="192" width="256" height="108" class="cell"/>
+<rect x="72" y="328" width="256" height="108" class="cell"/>
+<rect x="356" y="328" width="256" height="108" class="cell"/>
+<rect data-region="column" x="72" y="192" width="256" height="244" fill="#007F99" fill-opacity="0.10"/>
+<rect data-region="row" x="72" y="192" width="540" height="108" fill="#D66A00" fill-opacity="0.12"/>
+<rect data-region="column-gap" x="328" y="192" width="28" height="244" fill="#ECE5FF"/>
+<rect data-region="row-gap" x="72" y="300" width="540" height="28" fill="#ECE5FF"/>
+<rect x="72" y="192" width="540" height="244" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<rect data-child="0" x="72" y="192" width="164" height="48" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"></rect>
+<text x="154" y="224" text-anchor="middle" style="fill:#315fa0">子A</text>
+<rect data-child="1" x="356" y="192" width="164" height="48" fill="#f8cfd6" stroke="#c93030" stroke-width="2"></rect>
+<text x="438" y="224" text-anchor="middle" style="fill:#c93030">子B</text>
+<rect data-child="2" x="72" y="328" width="164" height="48" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"></rect>
+<text x="154" y="360" text-anchor="middle" style="fill:#a21caf">子C</text>
+<rect data-child="3" x="356" y="328" width="164" height="48" fill="#fbe0eb" stroke="#be185d" stroke-width="2"></rect>
+<text x="438" y="360" text-anchor="middle" style="fill:#be185d">子D</text>
+<line x1="72" y1="394" x2="236" y2="394" class="measure"></line>
+<text x="154" y="421" text-anchor="middle" class="small">子の幅</text>
+<text x="200" y="285" text-anchor="middle" class="small">1セル（列1 × 行1）</text>
+<path d="M626 192 V300" class="measure row-measure"/><path d="M626 328 V436" class="measure row-measure"/><text x="634" y="232" class="small row">row1（行）</text><text x="636" y="260" class="small row">108px</text>
+<text x="634" y="368" class="small row">row2（行）</text><text x="636" y="396" class="small row">108px</text>
+<path d="M634 300 V328" class="measure gap-measure"/><text x="646" y="320" class="small gap">gap28px</text>
+<path d="M328 454 H356" class="measure gap-measure"/><text x="342" y="485" text-anchor="middle" class="small gap">列間のgap：28px</text>
+<path d="M24 540 H64" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/><text x="76" y="547" class="small parent-label">親の外周</text>
+<rect x="266" y="528" width="28" height="20" class="cell"/><text x="306" y="547" class="small">セルの境界</text>
+<rect x="520" y="528" width="28" height="20" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/><text x="560" y="547" class="small">子の箱</text>
+</g>
+<style>@media(prefers-reduced-motion:no-preference){.caption{animation:caption 17s linear infinite}@keyframes caption{0%{opacity:0}1.470588235%{opacity:0}2.94117647%{opacity:1}49.999941177%{opacity:1}50%{opacity:0}51.470588235%{opacity:0}52.94117647%{opacity:1}100%{opacity:1}}}</style></g>
+<text x="24" y="32" class="title">Gridの列・行・セルと子の幅</text>
+<g id="css"><text x="28" y="68" xml:space="preserve" style="font-family:Consolas,Meiryo,monospace;font-size:19px;font-weight:500;fill:#313539"><tspan x="28"><tspan fill="#744047" style="fill:#744047">.parent</tspan><tspan fill="#313539" style="fill:#313539"> { </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">display</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#365F8F" style="fill:#365F8F">grid</tspan><tspan fill="#313539" style="fill:#313539">; </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">width</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">540px</tspan><tspan fill="#313539" style="fill:#313539">; </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">gap</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">28px</tspan><tspan fill="#313539" style="fill:#313539">;</tspan></tspan><tspan x="28" dy="28"><tspan fill="#313539" style="fill:#313539">  </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">grid-template-columns</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#7A633D" style="fill:#7A633D">repeat</tspan><tspan fill="#313539" style="fill:#313539">(</tspan><tspan fill="#3B765B" style="fill:#3B765B">2</tspan><tspan fill="#313539" style="fill:#313539">, </tspan><tspan fill="#7A633D" style="fill:#7A633D">minmax</tspan><tspan fill="#313539" style="fill:#313539">(</tspan><tspan fill="#3B765B" style="fill:#3B765B">0</tspan><tspan fill="#313539" style="fill:#313539">, </tspan><tspan fill="#3B765B" style="fill:#3B765B">1fr</tspan><tspan fill="#313539" style="fill:#313539">));</tspan></tspan><tspan x="28" dy="28"><tspan fill="#313539" style="fill:#313539">  </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">grid-template-rows</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#7A633D" style="fill:#7A633D">repeat</tspan><tspan fill="#313539" style="fill:#313539">(</tspan><tspan fill="#3B765B" style="fill:#3B765B">2</tspan><tspan fill="#313539" style="fill:#313539">, </tspan><tspan fill="#3B765B" style="fill:#3B765B">108px</tspan><tspan fill="#313539" style="fill:#313539">); }</tspan></tspan><tspan x="28" dy="28"><tspan fill="#744047" style="fill:#744047">.child</tspan><tspan fill="#313539" style="fill:#313539"> { </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">width</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">164px</tspan><tspan fill="#313539" style="fill:#313539">; </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">height</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">48px</tspan><tspan fill="#313539" style="fill:#313539">; }</tspan></tspan></text></g>
+</svg>

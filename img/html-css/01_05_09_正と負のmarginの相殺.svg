@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="666.5" height="760" viewBox="0 0 720 821" preserveAspectRatio="xMidYMin meet" style="max-width:100%;height:auto" role="img" aria-labelledby="title desc">
+<title id="title">正と負の上下marginが相殺し、兄弟要素の間隔が30pxになる</title>
+<desc id="desc">通常フローの兄弟ブロック要素で、上下marginが相殺する条件を満たす例。子Aのmargin-bottom: 40pxと子Bのmargin-top: -10pxが相殺し、実際の間隔は40pxから10pxを引いた30pxになる。子Aの下marginだけがある位置から、子Bの負の上marginを適用した位置までを25秒周期で繰り返す。子Aは動かず、子Bが10px上へ詰まる。結果の数値は移動後に表示し、動きを減らす設定では指定後の静止図を表示する。オレンジはmarginを示す説明用の色で、実際の背景色ではない。各段階の説明を表示して2.5秒以上待ち、その後3秒かけて移動する。説明は前の文字を消して0.25秒空白にし、次の文字を0.25秒で表示する。完全に表示してから2.5秒以上待ち、3秒かけて動く。説明は動作中も表示し、各動作の後にも静止時間を追加する。タイトルの直下に、対象を示すセレクタと波括弧で囲んだCSSを、VS CodeのLight+を基に彩度を抑えた構文色で示す。</desc>
+<rect x="0" y="0" width="720" height="821" fill="#ffffff"/>
+<g id="drawing" transform="translate(0 61)">
+
+
+  <defs>
+    <style>
+      .head { font-weight:700;font-size:26px;font-family:'Noto Sans CJK JP', sans-serif; fill:#000000; }
+      .txt { font-weight:600;font-size:21px;font-family:'Noto Sans CJK JP', sans-serif; fill:#000000; }
+      .sub { font-weight:500;font-size:18px;font-family:'Noto Sans CJK JP', sans-serif; fill:#000000; }
+      .small { font-weight:500;font-size:16px;font-family:'Noto Sans CJK JP', sans-serif; fill:#000000; }
+      .value { font-weight:700;font-size:23px;font-family:'Noto Sans CJK JP', sans-serif; fill:#000000; }
+      .red { fill:#c93030; }
+      .tan { fill:#000000; }
+      @media (prefers-reduced-motion: no-preference) {
+        .moving { animation: move 25s infinite; }
+        .applied { animation: reveal 25s infinite; }
+        @keyframes move {
+          0%, 12% { transform: translateY(30px); }
+          24.000000001%, 100% { transform: translateY(0); }}
+        @keyframes reveal {
+          0%, 24.000000001%, 99.2%, 100% { opacity: 0; }
+          35.199999999%, 97.6% { opacity: 1; }}
+      }
+    </style>
+    <marker id="arr-brown" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#315fa0" stroke-width="1.7"/></marker>
+    <marker id="arr-red" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
+  </defs>
+  <rect width="720" height="760" fill="#fff"/>
+
+  <text style="fill:#000000" fill="#000000" x="360" y="91" class="sub" text-anchor="middle">通常のブロック配置にある兄弟要素</text>
+
+  <!-- Child A -->
+  <rect x="178" y="144" width="364" height="120" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+  <text x="360" y="202" class="txt" text-anchor="middle" fill="#315fa0" style="fill:#315fa0">子A</text>
+  <text x="360" y="235" class="sub" text-anchor="middle" style="fill: #315fa0">margin-bottom: 40px</text>
+
+  <!-- Illustrative margin area, last 10px behind child B -->
+  <rect x="178" y="264" width="364" height="120" fill="#f9cc9d"/>
+  <rect x="178" y="354" width="364" height="30" fill="#f9cc9d"/>
+  <g class="applied">
+  <text x="360" y="304" class="small tan" text-anchor="middle" style="fill: #000000">相殺後に残る余白</text>
+  <text x="360" y="337" class="value tan" text-anchor="middle" style="fill: #000000">30px</text>
+  </g>
+
+  <!-- 40px margin reference -->
+    <line x1="154" y1="264" x2="174" y2="264" stroke="#315fa0" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <line x1="154" y1="384" x2="174" y2="384" stroke="#315fa0" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="123" y="323" class="value tan" text-anchor="end" style="fill: #315fa0">40px</text>
+
+  <!-- position reference before applying -10px -->
+  <line x1="548" y1="384" x2="620" y2="384" stroke="#a8a29e" stroke-width="2" stroke-dasharray="5 5"/>
+  <text style="fill:#000000" fill="#000000" x="629" y="391" class="small" >元の位置</text>
+
+  <!-- Child B starts 10px higher than its original top position -->
+  <g class="moving" id="moving-child-b">
+  <rect x="178" y="354" width="364" height="120" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+  <text x="360" y="411" class="txt" text-anchor="middle" fill="#c93030" style="fill:#c93030">子B</text>
+  <text x="360" y="444" class="sub" text-anchor="middle" style="fill: #c93030">margin-top: -10px</text>
+  </g>
+
+  <!-- -10px upward arrow -->
+  <g class="applied">
+  <line x1="585" y1="384" x2="585" y2="354" stroke="#c93030" stroke-width="2.3" marker-end="url(#arr-red)"/>
+  <text x="615" y="347" class="value red">-10px</text>
+  </g>
+
+  <line x1="94" y1="529" x2="626" y2="529" stroke="#dedede" stroke-width="1.5"/>
+  <g class="applied">
+  <text style="fill:#000000" fill="#000000" x="360" y="589" class="sub" text-anchor="middle">子Aと子Bの実際の間隔</text>
+  <text x="360" y="636" class="head" text-anchor="middle" style="fill: #000000">40px + (-10px) = 30px</text>
+  </g>
+  <text style="fill:#000000" fill="#000000" x="360" y="704" class="small" text-anchor="middle">※ オレンジ色はmarginの範囲を説明するための色です。</text>
+  <text style="fill:#000000" fill="#000000" x="360" y="728" class="small" text-anchor="middle">実際のCSSではmarginに背景色は付きません。</text>
+<style>.cue-before{opacity:0}.cue-after{opacity:1}@media(prefers-reduced-motion:no-preference){.cue-before{animation:cue-before 25s steps(1,end) infinite}.cue-after{animation:cue-after 25s steps(1,end) infinite}@keyframes cue-before{0%,23.999994%{opacity:1}24.000000001%,100%{opacity:0}}@keyframes cue-after{0%,23.999994%{opacity:0}24.000000001%,100%{opacity:1}}}</style><g id="stage-caption" class="caption"><text class="cue-before" x="360" y="125" text-anchor="middle" fill="#000000" style="fill:#000000;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:700"><tspan x="360">Aのbottomの＋marginとBのtopの－marginで、Bが10px上へ</tspan></text><text class="cue-after" x="360" y="125" text-anchor="middle" fill="#000000" style="fill:#000000;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:700"><tspan x="360">移動後：実際の間隔は30px</tspan></text></g><style>@media(prefers-reduced-motion:no-preference){.caption{animation:caption 25s linear infinite}@keyframes caption{0%{opacity:0}1%{opacity:0}2%{opacity:1}23.99996%{opacity:1}24%{opacity:0}25%{opacity:0}26%{opacity:1}100%{opacity:1}}}</style></g>
+<text x="360" y="55" class="head" text-anchor="middle">正のmarginと負のmarginの相殺</text>
+<g id="css"><text x="28" y="91" xml:space="preserve" style="font-family:Consolas,Meiryo,monospace;font-size:19px;font-weight:500;fill:#313539"><tspan x="28"><tspan fill="#4C764C" style="fill:#4C764C">/* 子A */</tspan><tspan fill="#313539" style="fill:#313539"> </tspan><tspan fill="#744047" style="fill:#744047">.a</tspan><tspan fill="#313539" style="fill:#313539"> { </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">margin-bottom</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">40px</tspan><tspan fill="#313539" style="fill:#313539">; }</tspan></tspan><tspan x="28" dy="28"><tspan fill="#4C764C" style="fill:#4C764C">/* 子B */</tspan><tspan fill="#313539" style="fill:#313539"> </tspan><tspan fill="#744047" style="fill:#744047">.b</tspan><tspan fill="#313539" style="fill:#313539"> { </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">margin-top</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">-10px</tspan><tspan fill="#313539" style="fill:#313539">; }</tspan></tspan></text></g>
+</svg>
