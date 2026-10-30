@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="454.18" height="760" viewBox="440 120 600 1004" preserveAspectRatio="xMidYMin meet" style="max-width:100%;height:auto" role="img" aria-labelledby="title desc">
+<title id="title">子Bの負のmargin-topで自身と後続の子Cが40px上へ動く</title>
+<desc id="desc">通常フローのブロック配置で、ほかのmarginや位置指定が移動に影響しない例。子Bにmargin-top: -40pxを指定すると、子Aは動かず、子Bとその子、後続の子Cとその子が通常位置から40px上へ動く。通常位置から指定後までを25秒周期で繰り返し、動きを減らす設定では指定後の静止図を表示する。上向き片矢印は子B・子Cの移動を示す。親子関係と変化を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。各段階の説明を表示して2.5秒以上待ち、その後3秒かけて移動する。説明は前の文字を消して0.25秒空白にし、次の文字を0.25秒で表示する。完全に表示してから2.5秒以上待ち、3秒かけて動く。説明は動作中も表示し、各動作の後にも静止時間を追加する。タイトルの直下に、対象を示すセレクタと波括弧で囲んだCSSを、VS CodeのLight+を基に彩度を抑えた構文色で示す。</desc>
+<rect x="440" y="120" width="600" height="1004" fill="#ffffff"/>
+<g id="drawing" transform="translate(0 4)">
+
+
+<style>
+    .title { font-weight:700; font-size:30px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
+    .subtitle { font-weight:500; font-size:20px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
+    .label { font-weight:700; font-size:20px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
+    .small { font-weight:500; font-size:16px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
+    .em { font-weight:700; font-size:18px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#c93030; }
+    .note { font-weight:500; font-size:17px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
+    @media (prefers-reduced-motion: no-preference) {
+      .moving { animation: move 25s infinite; }
+      .applied { animation: reveal 25s infinite; }
+      @keyframes move {
+        0%, 12% { transform: translateY(40px); }
+        24.000000001%, 100% { transform: translateY(0); }}
+      @keyframes reveal {
+        0%, 24.000000001%, 99.2%, 100% { opacity: 0; }
+        35.199999999%, 97.6% { opacity: 1; }}
+    }
+  </style>
+<defs>
+<marker id="moveRed" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#c93030" stroke-width="2"/></marker>
+<marker id="movePurple" markerUnits="userSpaceOnUse" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="10" markerHeight="10" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#7c3aed" stroke-width="2"/></marker>
+</defs>
+<rect x="440" y="120" width="600" height="1000" fill="#fff"/>
+<!-- Right panel -->
+
+
+
+
+  <rect x="520" y="260" width="300" height="760" fill="#f5f5f5" stroke="#666" stroke-width="2" stroke-dasharray="8 7"/>
+  <text style="fill:#444444" fill="#444444" x="820" y="245" text-anchor="end" class="small">親要素 .parent</text>
+
+  <!-- child A -->
+  <rect x="560" y="300" width="220" height="110" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+  <text x="670" y="365" text-anchor="middle" class="label" fill="#315fa0" style="fill:#315fa0">子A</text>
+
+  <!-- child B shifted up 40 -->
+  <g class="moving" id="moving-child-b">
+  <rect x="560" y="390" width="220" height="180" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+  <text x="670" y="445" text-anchor="middle" class="label" fill="#c93030" style="fill:#c93030">子B</text>
+  <text x="670" y="475" text-anchor="middle" class="small" style="fill: #c93030">margin-top: -40px</text>
+  <rect x="595" y="495" width="150" height="48" fill="#fbe0eb" stroke="#be185d" stroke-width="2"/>
+  <text x="670" y="525" text-anchor="middle" class="small" fill="#be185d" style="fill:#be185d">子Bの子</text>
+  </g>
+
+  <!-- child C shifted up 40 -->
+  <g class="moving" id="moving-child-c">
+  <rect x="560" y="590" width="220" height="180" fill="#e9ddff" stroke="#7c3aed" stroke-width="2"/>
+  <text x="670" y="645" text-anchor="middle" class="label" fill="#7c3aed" style="fill:#7c3aed">子C</text>
+  <rect x="595" y="695" width="150" height="48" fill="#f3dcf7" stroke="#a21caf" stroke-width="2"/>
+  <text x="670" y="725" text-anchor="middle" class="small" fill="#a21caf" style="fill:#a21caf">子Cの子</text>
+  </g>
+
+  <!-- arrows and notes -->
+  <g class="applied">
+  <line x1="845" y1="430" x2="845" y2="390" stroke="#c93030" stroke-width="3" marker-end="url(#moveRed)"/>
+  <text fill="#c93030" x="875" y="415" class="em" style="fill:#c93030">40px上がる</text>
+
+  <line x1="845" y1="630" x2="845" y2="590" stroke="#7c3aed" stroke-width="3" marker-end="url(#movePurple)"/>
+  <text fill="#7c3aed" x="875" y="615" class="em" style="fill:#7c3aed">40px上に詰まる</text>
+
+  <text style="fill:#000000" fill="#000000" x="670" y="1040" text-anchor="middle" class="note">子Bの子は子Bと一緒に上がる</text>
+  <text style="fill:#000000" fill="#000000" x="670" y="1070" text-anchor="middle" class="note">子Cも、その中の子Cの子も一緒に上へ動く</text>
+  </g>
+
+  <style>.cue-before{opacity:0}.cue-after{opacity:1}@media(prefers-reduced-motion:no-preference){.cue-before{animation:cue-before 25s steps(1,end) infinite}.cue-after{animation:cue-after 25s steps(1,end) infinite}@keyframes cue-before{0%,23.999994%{opacity:1}24.000000001%,100%{opacity:0}}@keyframes cue-after{0%,23.999994%{opacity:0}24.000000001%,100%{opacity:1}}}</style><g id="stage-caption" class="caption"><text class="cue-before" x="845" y="245" text-anchor="start" fill="#000000" style="fill:#000000;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:700"><tspan x="845">子Bのtopの－marginで</tspan><tspan x="845" dy="26">B・Cが40px上へ</tspan></text><text class="cue-after" x="845" y="245" text-anchor="start" fill="#000000" style="fill:#000000;font-family:Yu Gothic,Meiryo,sans-serif;font-size:18px;font-weight:700"><tspan x="845">移動後</tspan><tspan x="845" dy="26">B・Cが40px上へ</tspan></text></g><style>@media(prefers-reduced-motion:no-preference){.caption{animation:caption 25s linear infinite}@keyframes caption{0%{opacity:0}1%{opacity:0}2%{opacity:1}23.99996%{opacity:1}24%{opacity:0}25%{opacity:0}26%{opacity:1}100%{opacity:1}}}</style></g>
+<text style="fill:#000000" x="500" y="180" class="title" fill="#000000">② 子Bのtopの－margin</text>
+<g id="css"><text x="468" y="216" xml:space="preserve" style="font-family:Consolas,Meiryo,monospace;font-size:19px;font-weight:500;fill:#313539"><tspan x="468"><tspan fill="#4C764C" style="fill:#4C764C">/* 子B */</tspan><tspan fill="#313539" style="fill:#313539"> </tspan><tspan fill="#744047" style="fill:#744047">.b</tspan><tspan fill="#313539" style="fill:#313539"> { </tspan><tspan fill="#AE3A42" style="fill:#AE3A42">margin-top</tspan><tspan fill="#313539" style="fill:#313539">: </tspan><tspan fill="#3B765B" style="fill:#3B765B">-40px</tspan><tspan fill="#313539" style="fill:#313539">; }</tspan></tspan></text></g>
+</svg>
