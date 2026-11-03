@@ -10,14 +10,20 @@
 | 前後する別ブロックの間 | margin | その箱の外側にある別の内容との距離を表せる |
 | 枠線や背景と中身の間 | padding | 箱の内側で中身との距離を作れる |
 
+![同じ2列2行で、親のgap30pxはトラック間、親のpadding20pxは内周、子のmargin10pxは各子の外周に空間を作る](../../../img/html-css/02_09_12_gapとpaddingとmarginの場所.svg)
+
+図は余白が付く場所の比較。紫はgap、緑はpadding、オレンジはmargin。
+
+`gap`はトラック間、`padding`は親の内側の端に入る。各子にmarginを付けた場合は、最初と最後の子の外側にも空きができる。図のmarginは片側10pxずつなので、隣り合う子の箱の間は20pxになる。Gridアイテムのmarginは相殺しない。
+
 ```css
 .list {
   display: grid;
-  gap: 16px;
+  gap: 20px;
 }
 
 .section {
-  margin-block-end: 48px;
+  margin-block-end: 50px;
   padding-inline: 20px;
 }
 ```
@@ -32,7 +38,7 @@
 
 ```css
 .item + .item {
-  margin-block-start: 16px;
+  margin-block-start: 20px;
 }
 ```
 
