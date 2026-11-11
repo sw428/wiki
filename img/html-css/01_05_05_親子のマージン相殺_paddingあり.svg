@@ -1,18 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="341" viewBox="0 432 1000 341" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="296.4" viewBox="0 383 1000 390" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
 <title id="title">親のpadding-topが親子の上marginの相殺を防ぐ</title>
-<desc id="desc">通常フローのブロック配置で、前の要素にはmarginがない例。親のmargin-top: 20px、padding-top: 30px、最初の子のmargin-top: 40pxを示す。親の上paddingが親子のmarginを隔てるため相殺せず、前の要素の下端から子の上端まで20pxと30pxと40pxを加えた90pxになる。親の内側にはpadding 30pxと子の上margin 40pxが残る。緑はpadding、オレンジはmarginの説明用の色。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
-<defs>
-  <!-- 文字・数値の下だけ補助線を隠し、領域の背景は保つ。 -->
-  <mask id="guide-gap-1" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="432" width="1000" height="341" style="mask-type:luminance">
-    <rect x="0" y="432" width="1000" height="341" fill="#ffffff"/>
-    <rect x="66" y="551" width="65" height="28" fill="#000000"/>
-    <rect x="222" y="552" width="121" height="28" fill="#000000"/>
-  </mask>
-  <mask id="guide-gap-2" maskUnits="userSpaceOnUse" maskContentUnits="userSpaceOnUse" x="0" y="432" width="1000" height="341" style="mask-type:luminance">
-    <rect x="0" y="432" width="1000" height="341" fill="#ffffff"/>
-    <rect x="66" y="551" width="65" height="28" fill="#000000"/>
-  </mask>
-</defs>
+<desc id="desc">通常フローのブロック配置で、前の要素にはmarginがない例。親のmargin-top: 20px、padding-top: 30px、最初の子のmargin-top: 40pxを示す。親の上paddingが親子のmarginを隔てるため相殺せず、前の要素の下端から子の上端まで20pxと30pxと40pxを加えた90pxになる。親の内側にはpadding 30pxと子の上margin 40pxが残る。緑はpadding、オレンジはmarginの説明用の色。灰色の実線は親の範囲を示す補助線で、実際のCSSのborderではない。寸法と配置は模式的に示す。</desc>
 <rect x="0" y="432" width="1000" height="341" fill="#FFFFFF"/>
 <rect x="26" y="446" width="948" height="313" rx="16" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.4"/>
 <rect x="26" y="446" width="948" height="52" rx="16" fill="#EBF6FF"/>
@@ -23,7 +11,7 @@
 <rect x="73" y="511" width="420" height="43" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.3"/>
 <text x="283" y="539" font-family="'Noto Sans CJK JP', sans-serif" font-size="17" font-weight="700" text-anchor="middle" fill="#315fa0">前の要素（margin: 0）</text>
 <rect x="73" y="554" width="420" height="25" rx="0" fill="#f9cc9d"/>
-<text x="283" y="572" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" font-weight="700" text-anchor="middle" style="fill:#444444" fill="#444444">親margin：20px</text>
+<text x="283" y="570" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" font-weight="700" text-anchor="middle" style="fill:#444444" fill="#444444">親margin：20px</text>
 <rect x="73" y="579" width="420" height="166" rx="0" fill="#f5f5f5"/>
 <rect x="73" y="579" width="420" height="37.5" rx="0" fill="#cae6d1"/>
 <text x="283" y="609.5" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#26724a" font-weight="700" text-anchor="middle">親padding：30px</text>
@@ -32,10 +20,10 @@
 <rect x="73" y="666.5" width="420" height="48" rx="0" fill="#f8cfd6" stroke="#c93030" stroke-width="1.3"/>
 <text x="283" y="697.5" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" font-weight="700" text-anchor="middle" fill="#c93030">子要素</text>
 <text x="283" y="733" font-family="'Noto Sans CJK JP', sans-serif" font-size="16" fill="#444444" font-weight="700" text-anchor="middle">親要素</text>
-<line x1="73" y1="579" x2="493" y2="579" stroke="#666666" stroke-width="2" stroke-dasharray="8 7" mask="url(#guide-gap-1)"/>
-<line x1="73" y1="579" x2="73" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7" mask="url(#guide-gap-2)"/>
-<line x1="493" y1="579" x2="493" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
-<line x1="73" y1="745" x2="493" y2="745" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="70.35" y1="576.35" x2="495.65" y2="576.35" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="2.65" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
+<line x1="70.35" y1="576.35" x2="70.35" y2="747.65" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="2.65" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
+<line x1="495.65" y1="576.35" x2="495.65" y2="747.65" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="2.65" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
+<line x1="70.35" y1="747.65" x2="495.65" y2="747.65" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="2.65" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
 <text x="71" y="571" font-family="'Noto Sans CJK JP', sans-serif" font-size="14" fill="#444444" font-weight="700">親の上端</text>
 <rect x="521" y="508" width="435" height="135" rx="10" fill="#F4F6F8" stroke="#DCE2E9" stroke-width="1.2"/>
 <text x="540" y="539" font-family="'Noto Sans Mono CJK JP', monospace" font-size="18" fill="#000000">.parent { margin-top: 20px;</text>
@@ -45,4 +33,4 @@
 <text x="848" y="669" font-family="'Noto Sans CJK JP', sans-serif" font-size="28" fill="#000000" font-weight="700" style="fill:#000000">90px</text>
 <text x="521" y="701" font-family="'Noto Sans CJK JP', sans-serif" font-size="19" fill="#000000" font-weight="700" style="fill:#000000">20px + 30px + 40px = 90px</text>
 <text style="fill:#000000" x="521" y="732" font-family="'Noto Sans CJK JP', sans-serif" font-size="15" fill="#000000">paddingが間に入るため、親子のmarginは相殺しない。</text>
-</svg>
+<g id="parent-boundary-note"><rect x="0" y="383" width="1000" height="49" fill="#ffffff"/><text x="986" y="401.2" text-anchor="end" style="fill:#444444;font-family:Yu Gothic,Meiryo,sans-serif;font-size:14px;font-weight:400"><tspan x="986">※ 灰色の線はborderではなく、</tspan><tspan x="986" dy="21">親の範囲を示す補助線です。</tspan></text></g></svg>

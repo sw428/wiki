@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="850" viewBox="0 0 1000 850" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="705.88" height="600" viewBox="0 0 1000 850" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
 <title id="title">高さ固定の表示枠で元画像の左右・上下を切り取る例</title>
 <desc id="desc">高さをそろえた青い表示枠とobject-fit: coverによる切り抜きを、二つの元画像で比較する模式図。左は元画像が表示枠より横長なので左右、右は元画像が表示枠より縦長なので上下の灰色部分が枠の外へ隠れる。両方ともA・C・D・Fが隠れ、中央のB・丸・Eが表示枠内に残る。下向きの矢印の先に、残る内容を縮小した最終表示を示す。枠線と格子は説明用の補助線で、実際のCSSのborderではない。</desc>
 <style>text{font-family:'Yu Gothic','Meiryo',sans-serif;fill:#444444}.title{font-size:29px;font-weight:700;fill:#222222}.heading{font-size:25px;font-weight:700;fill:#222222}.sub{font-size:19px}.caption{font-size:19px}.letters{font-size:20px;font-weight:500}.grid{fill:none;stroke:#d5d5d5;stroke-width:1.5}.source{fill:none;stroke:#999999;stroke-width:2}.frame{fill:none;stroke:#315fa0;stroke-width:3}.tag{font-size:17px;fill:#ffffff;font-weight:700}</style>

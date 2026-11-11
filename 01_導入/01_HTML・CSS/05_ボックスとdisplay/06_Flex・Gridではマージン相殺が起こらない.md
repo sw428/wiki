@@ -44,7 +44,7 @@ $$
 
 ![親がFlex・Gridの場合、親のmargin-top: 20pxと子のmargin-top: 40pxが相殺せず、前の要素の下端から子の上端まで60pxになる図](../../../img/html-css/01_05_06_マージン相殺_FlexとGrid.svg)
 
-灰色の点線は親要素の範囲を示す説明用の補助線で、実際のCSSのborderではありません。前の要素のmarginは0pxとします。図は模式図です。
+灰色の実線は親要素の範囲を示す説明用の補助線で、実際のCSSのborderではありません。前の要素のmarginは0pxとします。図は模式図です。
 
 Flex・Gridでは、親の上marginと子の上marginは別々に作用します。
 
