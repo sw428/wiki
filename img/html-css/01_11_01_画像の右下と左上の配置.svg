@@ -1,21 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="600" viewBox="0 0 1080 600" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="456.7" viewBox="0 -49 1080 649" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
   <title id="title">absoluteで同じ画像の右下・左上を親の同じ角に合わせる</title>
-  <desc id="desc">position: relativeの親を幅364px・高さ255px、その子の画像をposition: absolute、幅119px・高さ66pxとして配置を比較する。親と画像にmargin・padding・borderはない。左はright: 0; bottom: 0で親と画像の右下、右はtop: 0; left: 0で親と画像の左上が重なる。両図で親と画像の大きさは同じ。赤い箱は画像要素の表示範囲、丸印は角が重なる点、灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。画像の幅や高さを変える比較ではない。</desc>
+  <desc id="desc">position: relativeの親を幅364px・高さ255px、その子の画像をposition: absolute、幅119px・高さ66pxとして配置を比較する。親と画像にmargin・padding・borderはない。左はright: 0; bottom: 0で親と画像の右下、右はtop: 0; left: 0で親と画像の左上が重なる。両図で親と画像の大きさは同じ。赤い箱は画像要素の表示範囲、丸印は角が重なる点、灰色の実線は親の範囲を示す補助線で、実際のCSSのborderではない。画像の幅や高さを変える比較ではない。</desc>
   <style>
     text { font-family: "Yu Gothic", Meiryo, sans-serif; }
     .heading { font-size: 26px; font-weight: 700; fill: #000000; }
     .code { font-size: 21px; fill: #000000; }
     .parent { fill: #f5f5f5; }
-    .guide { fill: none; stroke: #666666; stroke-width: 2; stroke-dasharray: 8 7; }
+    .guide { fill: none; stroke: #666666; stroke-width: 2; stroke-dasharray: none; }
     .parent-label { font-size: 19px; fill: #444444; }
     .image-label { font-size: 18px; fill: #c93030; }
     .result { font-size: 22px; font-weight: 700; fill: #000000; }
   </style>
   <defs>
-    <mask id="label-clear">
-      <rect width="1080" height="600" fill="#ffffff"/>
-      <rect x="623" y="275" width="168" height="31" fill="#000000"/>
-    </mask>
+
     <g id="picture">
       <rect width="119" height="66" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
     </g>
@@ -32,7 +29,7 @@
   <text x="90" y="178" class="parent-label">親：364 × 255px</text>
   <rect x="90" y="200" width="364" height="255" class="parent"/>
   <use href="#picture" x="335" y="389"/>
-  <rect x="90" y="200" width="364" height="255" class="guide"/>
+  <rect x="87" y="197" width="370" height="261" class="guide" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" fill="none" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
   <text x="290" y="374" class="image-label">画像：119 × 66px</text>
   <use href="#coincidence" x="454" y="455"/>
   <text x="90" y="505" class="result">親の右下 ＝ 画像の右下</text>
@@ -42,11 +39,11 @@
   <text x="630" y="178" class="parent-label">親：364 × 255px</text>
   <rect x="630" y="200" width="364" height="255" class="parent"/>
   <use href="#picture" x="630" y="200"/>
-  <rect x="630" y="200" width="364" height="255" class="guide" mask="url(#label-clear)"/>
+  <rect x="627" y="197" width="370" height="261" class="guide" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" fill="none" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
   <text x="630" y="296" class="image-label">画像：119 × 66px</text>
   <use href="#coincidence" x="630" y="200"/>
   <text x="630" y="505" class="result">親の左上 ＝ 画像の左上</text>
 
   <use href="#coincidence" x="100" y="555"/>
   <text x="121" y="562" class="parent-label" fill="#000000" style="fill:#000000">親と画像の角が重なる点</text>
-</svg>
+<g id="parent-boundary-note"><rect x="0" y="-49" width="1080" height="49" fill="#ffffff"/><text x="1066" y="-30.8" text-anchor="end" style="fill:#444444;font-family:Yu Gothic,Meiryo,sans-serif;font-size:14px;font-weight:400"><tspan x="1066">※ 灰色の線はborderではなく、</tspan><tspan x="1066" dy="21">親の範囲を示す補助線です。</tspan></text></g></svg>

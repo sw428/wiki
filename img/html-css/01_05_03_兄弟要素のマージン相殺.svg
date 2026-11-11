@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 340 205" role="img" aria-labelledby="svgTitle svgDesc">
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="410" viewBox="0 0 340 205" role="img" aria-labelledby="svgTitle svgDesc" style="max-width:100%;height:auto">
   <title id="svgTitle">兄弟要素の正の上下marginが相殺した間隔</title>
   <desc id="svgDesc">通常フローの兄弟ブロック要素で、隣接する上下marginが相殺する条件を満たす例。上の要素のmargin-bottom: 40pxと下の要素のmargin-top: 30pxは足し合わせず、大きい方の40pxが実際の間隔になる。オレンジは相殺するmarginの範囲を示す説明用の色で、要素の背景色ではない。箱の色付き外枠は要素を識別する補助表示。</desc>
   <rect width="340" height="205" fill="#ffffff"/>

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="506.67" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
 <title id="title">paddingとmarginの違い：borderの内側と外側</title>
 <desc id="desc">内容の大きさが同じ二つの箱を比較する。左はpadding: 30pxでborderの内側に緑の余白、右はmargin: 30pxでborderの外側にオレンジの余白がある。白はcontent、黄色はborderを示す。緑とオレンジは領域を区別する説明用の色で、marginに要素の背景色が付くことを示してはいない。寸法と配置は模式的に示す。</desc>
 <defs>

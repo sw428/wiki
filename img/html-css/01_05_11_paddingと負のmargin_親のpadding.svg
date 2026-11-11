@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="980" height="820" viewBox="0 0 980 820" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="668.18" height="600" viewBox="0 -60 980 880" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
 <title id="title">親のpadding-topで負のmargin指定前の子の位置を確認する</title>
-<desc id="desc">前の要素の下端を0pxとし、そのmargin-bottom: 250pxの先で親が始まる。親のpadding-top: 100pxを緑の領域と寸法で示し、負のmarginがない子の上端は250pxに100pxを加えた350pxになる。通常フローのブロック配置で、ほかのmarginやborder、位置指定がこの距離に影響しない例。縦の距離はCSSの1pxを図の0.8単位で示し、箱の大きさは模式的で親の下側は省略する。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
+<desc id="desc">前の要素の下端を0pxとし、そのmargin-bottom: 250pxの先で親が始まる。親のpadding-top: 100pxを緑の領域と寸法で示し、負のmarginがない子の上端は250pxに100pxを加えた350pxになる。通常フローのブロック配置で、ほかのmarginやborder、位置指定がこの距離に影響しない例。縦の距離はCSSの1pxを図の0.8単位で示し、箱の大きさは模式的で親の下側は省略する。灰色の実線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <defs>
 <marker id="black" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
 <path d="M 0 0 L 10 5 L 0 10" fill="none" stroke="#000000" stroke-width="2"/>
@@ -25,9 +25,9 @@
 <rect x="180" y="220" width="400" height="200" fill="#f9cc9d" />
 <rect x="180" y="420" width="400" height="280" fill="#f5f5f5" />
 <rect x="180" y="420" width="400" height="80" fill="#cae6d1" />
-<line x1="180" y1="420" x2="580" y2="420" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
-<line x1="180" y1="420" x2="180" y2="700" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
-<line x1="580" y1="420" x2="580" y2="700" stroke="#666666" stroke-width="2" stroke-dasharray="8 7"/>
+<line x1="177" y1="417" x2="583" y2="417" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
+<line x1="177" y1="417" x2="177" y2="703" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
+<line x1="583" y1="417" x2="583" y2="703" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
 <text x="380" y="664" font-size="27" fill="#444444" font-weight="700" text-anchor="middle">親要素 .parent</text>
 <text x="380" y="693" font-size="20" font-weight="400" text-anchor="middle" fill="#000000">↓ 下へ続く</text>
 <line x1="165" y1="220" x2="615" y2="220" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5 5"/>
@@ -43,6 +43,6 @@
 <text style="fill:#000000" x="710" y="540" font-size="21" fill="#000000" font-weight="400" text-anchor="start">（負のmarginなし）</text>
 <rect x="30" y="716" width="920" height="53" fill="#f1f5f9" />
 <text x="490" y="753" font-size="31" fill="#000000" font-weight="700" text-anchor="middle" style="fill:#000000">250 + 100 = 350px</text>
-<text style="fill:#000000" x="40" y="798" font-size="20" fill="#000000" font-weight="400" text-anchor="start">点線は親の補助線で、CSSのborderではありません。図は模式図です。</text>
+<text style="fill:#000000" x="40" y="798" font-size="20" fill="#000000" font-weight="400" text-anchor="start">実線は親の補助線で、CSSのborderではありません。図は模式図です。</text>
 </g>
-</svg>
+<g id="parent-boundary-note"><rect x="0" y="-60" width="980" height="60" fill="#ffffff"/><text x="963" y="-37.9" text-anchor="end" style="fill:#444444;font-family:Yu Gothic,Meiryo,sans-serif;font-size:17px;font-weight:400"><tspan x="963">※ 灰色の線はborderではなく、</tspan><tspan x="963" dy="25.5">親の範囲を示す補助線です。</tspan></text></g></svg>

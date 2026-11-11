@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="1000" viewBox="-70 120 600 1000" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" width="339.62" height="600" viewBox="-70 60 600 1060" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
 <title id="title">子Bの負のmargin-topを指定する前の通常の配置</title>
-<desc id="desc">親の中で子A・子B・子Cが通常の順に並び、子Bの子は子B、子Cの子は子Cの内側にある。子Bのmargin-topが0の指定前の静止図で、指定後の移動はこの図には示さない。親子関係と配置を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の点線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
+<desc id="desc">親の中で子A・子B・子Cが通常の順に並び、子Bの子は子B、子Cの子は子Cの内側にある。子Bのmargin-topが0の指定前の静止図で、指定後の移動はこの図には示さない。親子関係と配置を示す模式図で、箱の高さや間隔はCSSの寸法どおりではない。灰色の実線は親の範囲を示す補助線で、実際のCSSのborderではない。</desc>
 <style>
     .title { font-weight:700; font-size:30px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
     .subtitle { font-weight:500; font-size:20px; font-family:'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif; fill:#000000; }
@@ -20,7 +20,7 @@
   <text style="fill:#000000" x="60" y="180" class="title" fill="#000000">① 子Bに負のmarginを指定する前</text>
   <text x="60" y="215" class="subtitle" style="fill:#000000">child-b の margin-top: <tspan style="fill:#c93030">0</tspan></text>
 
-  <rect x="80" y="260" width="300" height="760" fill="#f5f5f5" stroke="#666" stroke-width="2" stroke-dasharray="8 7"/>
+  <rect x="80" y="260" width="300" height="760" fill="#f5f5f5"/><rect x="77" y="257" width="306" height="766" fill="none" stroke="#666666" stroke-width="2" stroke-dasharray="none" data-parent-boundary="true" data-outline-offset="3" data-outline-gap="1" style="stroke:#666666;stroke-width:2;stroke-opacity:1;stroke-dasharray:none"/>
   <text style="fill:#444444" fill="#444444" x="380" y="245" text-anchor="end" class="small">親要素 .parent</text>
 
   <!-- child A -->
@@ -42,4 +42,4 @@
 
   <text style="fill:#000000" fill="#000000" x="230" y="1060" text-anchor="middle" class="note">子A → 子B → 子C が通常どおり並ぶ</text>
 
-  </svg>
+  <g id="parent-boundary-note"><rect x="-70" y="60" width="600" height="60" fill="#ffffff"/><text x="513" y="82.1" text-anchor="end" style="fill:#444444;font-family:Yu Gothic,Meiryo,sans-serif;font-size:17px;font-weight:400"><tspan x="513">※ 灰色の線はborderではなく、</tspan><tspan x="513" dy="25.5">親の範囲を示す補助線です。</tspan></text></g></svg>
