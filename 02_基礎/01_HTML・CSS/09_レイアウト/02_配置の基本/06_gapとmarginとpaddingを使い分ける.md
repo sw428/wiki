@@ -10,7 +10,7 @@
 | 前後する別ブロックの間 | margin | その箱の外側にある別の内容との距離を表せる |
 | 枠線や背景と中身の間 | padding | 箱の内側で中身との距離を作れる |
 
-![同じ2列2行で、親のgap30pxはトラック間、親のpadding20pxは内周、子のmargin10pxは各子の外周に空間を作る](../../../../img/html-css/02_09_12_gapとpaddingとmarginの場所.svg)
+![同じ2列2行で、親のgap30pxはトラック間、親のpadding20pxは内周、子のmargin10pxは各子の外周に空間を作る](../../../../00_Wiki共通/画像/img/html-css/02_09_12_gapとpaddingとmarginの場所.svg)
 
 図は余白が付く場所の比較。紫はgap、緑はpadding、オレンジはmargin。
 
