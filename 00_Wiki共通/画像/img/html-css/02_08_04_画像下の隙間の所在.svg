@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="317.4583333333333" style="max-width:100%;height:auto" viewBox="0 0 960 401" role="img" aria-labelledby="title desc">
+<title id="title">画像下の隙間の所在</title>
+<desc id="desc">インライン画像の内側の行にできる下側の空間と、inline-flexの外側の行の基準線を分けて示す。</desc>
+<rect x="0" y="0" width="960" height="401" rx="16" fill="#FCFDFE"/>
+<style>
+ text { font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif; fill:#000000; }
+ .title {font-size:22px;font-weight:700;} .label {font-size:17px;font-weight:700;}
+ .body {font-size:17px;} .small {font-size:16px;} .tiny {font-size:15px;}
+ .muted,.blue,.green,.orange {fill:#000000;}
+ .line {stroke:#7c3aed;stroke-width:2;stroke-dasharray:6 5;}
+</style>
+<text x="35" y="43" class="title" >③ 画像下の隙間は「内側」か「外側」かを分ける</text>
+<rect x="31" y="65" width="430" height="320" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<rect x="499" y="65" width="430" height="320" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<text x="52" y="99" class="label" style="fill:#444444" >A：インライン画像を囲む箱</text>
+<text x="520" y="99" class="label" style="fill:#444444" >B：inline-flexの箱</text>
+<rect x="83" y="120" width="323" height="185" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<rect x="134" y="149" width="219" height="105" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="243" y="206" class="label" text-anchor="middle">img</text>
+<line x1="105" y1="255" x2="387" y2="255" class="line"/>
+<rect x="105" y="259" width="282" height="24" rx="2" fill="#eeeeee" stroke="none" stroke-width="0" />
+<text x="246" y="275" class="small orange" text-anchor="middle">内部の行の下側の空間</text>
+<rect x="540" y="123" width="345" height="140" rx="9" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<rect x="565" y="142" width="126" height="100" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="628" y="199" class="label" text-anchor="middle">img</text>
+<rect x="705" y="167" width="154" height="52" rx="4" fill="#f8cfd6" stroke="#c93030" stroke-width="1.8" />
+<text x="782" y="198" class="label" text-anchor="middle">文字</text>
+<line x1="522" y1="278" x2="904" y2="278" class="line"/>
+<text x="714" y="302" class="small orange" >外側の行の基準線</text>
+<text x="922" y="62" text-anchor="end" style="font-size:12px;fill:#000000">※ 灰色の線はborderではなく、親の範囲を示す補助線です。</text>
+</svg>

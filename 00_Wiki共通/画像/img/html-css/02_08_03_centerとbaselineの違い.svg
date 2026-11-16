@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="318.25" style="max-width:100%;height:auto" viewBox="0 0 960 402" role="img" aria-labelledby="title desc">
+<title id="title">centerとbaselineの違い</title>
+<desc id="desc">Flexアイテムの箱の中心を合わせるcenterと、ベースラインを合わせるbaselineを模式的に比較する。</desc>
+<rect x="0" y="0" width="960" height="402" rx="16" fill="#FCFDFE"/>
+<style>
+ text { font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif; fill:#000000; }
+ .title {font-size:22px;font-weight:700;} .label {font-size:17px;font-weight:700;}
+ .body {font-size:17px;} .small {font-size:16px;} .tiny {font-size:15px;}
+ .muted,.blue,.green,.orange {fill:#000000;}
+ .line {stroke:#7c3aed;stroke-width:2;stroke-dasharray:6 5;}
+</style>
+<text x="35" y="43" class="title" >④ FFC内でも、何を基準に揃えるか選べる</text>
+<rect x="30" y="66" width="437" height="289" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<rect x="493" y="66" width="437" height="289" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<text x="57" y="102" class="label" style="fill:#c93030" >align-items: center</text>
+<text x="521" y="102" class="label" style="fill:#c93030" >align-items: baseline</text>
+<rect x="73" y="120" width="348" height="182" rx="9" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<line x1="92" y1="211" x2="401" y2="211" stroke="#317BA2" stroke-width="1.5" stroke-dasharray="5 5"/>
+<rect x="110" y="165" width="94" height="92" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="157" y="217" class="body" text-anchor="middle">icon</text>
+<rect x="227" y="192" width="166" height="39" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="1.8" />
+<text x="310" y="218" class="body" text-anchor="middle">テキスト</text>
+<text x="108" y="324" class="body blue" >箱の中心線が揃う</text>
+<rect x="531" y="120" width="348" height="182" rx="9" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<line x1="550" y1="248" x2="855" y2="248" class="line"/>
+<rect x="570" y="156" width="94" height="92" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="617" y="208" class="body" text-anchor="middle">icon</text>
+<rect x="697" y="215" width="166" height="55" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="1.8" />
+<text x="780" y="248" class="body" text-anchor="middle">テキスト</text>
+<text x="569" y="324" class="body green" >ベースラインを基準に揃える</text>
+<text x="922" y="62" text-anchor="end" style="font-size:12px;fill:#000000">※ 灰色の線はborderではなく、親の範囲を示す補助線です。</text>
+</svg>
