@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="554.2153846153847" style="max-width:100%;height:auto" viewBox="0 0 1300 948" role="img" aria-labelledby="main-title main-desc">
+<title id="main-title">inline-blockの外側のベースラインはどう決まる？</title>
+<desc id="main-desc">通常は内側の最後の行ボックスのベースラインを利用するが、内側に行ボックスがないかoverflowがvisible以外の場合、下側マージン境界が使われる。4パターンの比較。</desc>
+<style>
+  .bg { fill:#f7f9fc; }
+  .card {fill:#fff; stroke:#d9e3ec; stroke-width:1.5;}
+  .ttl {font:700 36px 'Noto Sans CJK JP',sans-serif; fill:#000000;}
+  .sub {font:400 17px 'Noto Sans CJK JP',sans-serif; fill:#526a7b;}
+  .cardttl {font:700 25px 'Noto Sans CJK JP',sans-serif; fill:#000000;}
+  .desc {font:400 17px 'Noto Sans CJK JP',sans-serif; fill:#4d6373;}
+  .code {font:500 16px 'Noto Sans Mono CJK JP',monospace; fill:#375574;}
+  .small {font:500 23px 'Noto Sans CJK JP',sans-serif; fill:#000000;}
+  .tiny {font:500 21px 'Noto Sans CJK JP',sans-serif; fill:#000000;}
+  .sample {font:600 25px 'Noto Sans CJK JP',sans-serif; fill:#000000;}
+  .inside {font:600 25px 'Noto Sans CJK JP',sans-serif; fill:#315fa0;}
+  .badge {font:700 16px 'Noto Sans Mono CJK JP',monospace; fill:#fff;}
+  .box {fill:#cfe4ff; stroke:#315fa0; stroke-width:2.5;}
+  .linebox {fill:#e2ddff; fill-opacity:.62; stroke:#7b65c8; stroke-width:1.4; stroke-dasharray:4 4;}
+  .outerline {stroke:#7c3aed; stroke-width:2.5; stroke-dasharray:8 5;}
+  .innerline {stroke:#7254c2; stroke-width:3.5;}
+  .marginbox {fill:#f9cc9d; stroke:none;}
+  .footer {font:500 16px 'Noto Sans CJK JP',sans-serif; fill:#516677;}
+</style>
+<rect x="0" y="0" width="1300" height="948" class="bg" />
+<text x="37" y="63" class="ttl" >inline-blockのベースラインは、どこで決まる？</text>
+<rect x="35" y="131" width="600" height="351" class="card" rx="16"/>
+<text x="58" y="170" class="cardttl" >01  通常：内側の文字がある</text>
+<line x1="64" y1="368" x2="605" y2="368" class="outerline" />
+<text x="81" y="362" class="sample" >前</text>
+<text x="513" y="362" class="sample" >後</text>
+<rect x="665" y="131" width="600" height="351" class="card" rx="16"/>
+<text x="688" y="170" class="cardttl" >02  内側に行ボックスがない</text>
+<line x1="694" y1="368" x2="1235" y2="368" class="outerline" />
+<text x="711" y="362" class="sample" >前</text>
+<text x="1143" y="362" class="sample" >後</text>
+<rect x="35" y="498" width="600" height="351" class="card" rx="16"/>
+<text x="58" y="537" class="cardttl" >03  <tspan fill="#c93030">overflow: hidden</tspan></text>
+<line x1="64" y1="735" x2="605" y2="735" class="outerline" />
+<text x="81" y="729" class="sample" >前</text>
+<text x="513" y="729" class="sample" >後</text>
+<rect x="665" y="498" width="600" height="351" class="card" rx="16"/>
+<text x="688" y="537" class="cardttl" >04  行ボックスなし＋<tspan fill="#c93030">margin-bottom</tspan></text>
+<line x1="694" y1="735" x2="1235" y2="735" class="outerline" />
+<text x="711" y="729" class="sample" >前</text>
+<text x="1143" y="729" class="sample" >後</text>
+<rect x="170" y="269" width="290" height="153" class="box" rx="4"/>
+<rect x="190" y="291" width="250" height="95" class="linebox" rx="4"/>
+<text x="217" y="368" class="inside" >文字 画像</text>
+<line x1="186" y1="368" x2="447" y2="368" class="innerline" />
+<text x="203" y="412" class="tiny" >内側の行ボックス</text>
+<text x="58" y="463" class="small" >内側の最終行の基準 ＝ 外側の基準</text>
+<rect x="800" y="274" width="290" height="94" class="box" rx="4"/>
+<text x="852" y="329" class="inside" >行ボックスなし</text>
+<text x="808" y="412" class="tiny" >margin-bottom: 0 の場合</text>
+<text x="688" y="463" class="small" >下マージン境界 ＝ ボーダー下端</text>
+<rect x="170" y="637" width="290" height="98" class="box" rx="4"/>
+<rect x="191" y="645" width="250" height="64" class="linebox" rx="4"/>
+<text x="214" y="697" class="inside" >文字 画像</text>
+<line x1="187" y1="697" x2="444" y2="697" class="innerline" />
+<text x="210" y="775" class="tiny" >内側のベースライン</text>
+<text x="58" y="830" class="small" >内側の基準 ≠ 外側の基準</text>
+<rect x="800" y="611" width="290" height="94" class="box" rx="4"/>
+<rect x="800" y="705" width="290" height="30" class="marginbox" />
+<text x="851" y="666" class="inside" >行ボックスなし</text>
+<text x="1100" y="780" class="tiny" style="fill:#315fa0" >30px</text>
+<text x="688" y="830" class="small" >下マージン境界はボーダーより30px下</text>
+
+<text x="40" y="899" class="small">破線：親の行のベースライン　実線：内側のベースライン</text>
+<rect x="40" y="913" width="40" height="22" class="marginbox"/><text x="95" y="933" class="small">オレンジ：margin-bottomの領域</text>
+</svg>

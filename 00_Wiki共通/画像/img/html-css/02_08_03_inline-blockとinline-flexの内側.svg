@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="316.6666666666667" style="max-width:100%;height:auto" viewBox="0 0 960 400" role="img" aria-labelledby="title desc">
+<title id="title">inline-blockとinline-flexの内側</title>
+<desc id="desc">同じ画像と文字が、inline-blockでは通常フローの行に、inline-flexではFlexアイテムとして並ぶ模式比較。</desc>
+<rect x="0" y="0" width="960" height="400" rx="16" fill="#FCFDFE"/>
+<style>
+ text { font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif; fill:#000000; }
+ .title {font-size:22px;font-weight:700;} .label {font-size:17px;font-weight:700;}
+ .body {font-size:17px;} .small {font-size:16px;} .tiny {font-size:15px;}
+ .muted,.blue,.green,.orange {fill:#000000;}
+ .line {stroke:#7c3aed;stroke-width:2;stroke-dasharray:6 5;}
+</style>
+<text x="35" y="43" class="title" >② 内側の配置ルールが異なる</text>
+<rect x="32" y="65" width="430" height="315" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<rect x="498" y="65" width="430" height="315" rx="12" fill="#ffffff" stroke="#dddddd" stroke-width="1.8" />
+<text x="58" y="100" class="label" style="fill:#444444" >inline-block</text>
+<text x="527" y="100" class="label" style="fill:#444444" >inline-flex</text>
+<text x="58" y="125" class="small muted" >内側：通常フロー（BFCを形成）</text>
+<text x="527" y="125" class="small muted" >内側：FFCを形成</text>
+<rect x="73" y="144" width="340" height="174" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<rect x="539" y="144" width="340" height="174" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="2" />
+<rect x="110" y="174" width="135" height="94" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="177" y="228" class="label" text-anchor="middle">img</text>
+<rect x="257" y="201" width="118" height="54" rx="4" fill="#f8cfd6" stroke="#c93030" stroke-width="1.8" />
+<text x="316" y="233" class="label" text-anchor="middle">span</text>
+<line x1="94" y1="269" x2="395" y2="269" class="line"/>
+<rect x="94" y="271" width="301" height="25" rx="2" fill="#eeeeee" stroke="none" stroke-width="0" />
+<text x="246" y="290" class="small orange" text-anchor="middle">行の下側の空間</text>
+<rect x="568" y="174" width="135" height="94" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.8" />
+<text x="635" y="228" class="label" text-anchor="middle">img</text>
+<rect x="714" y="193" width="133" height="56" rx="4" fill="#f8cfd6" stroke="#c93030" stroke-width="1.8" />
+<text x="780" y="224" class="label" text-anchor="middle">span</text>
+<text x="922" y="62" text-anchor="end" style="font-size:12px;fill:#000000">※ 灰色の線はborderではなく、親の範囲を示す補助線です。</text>
+</svg>
