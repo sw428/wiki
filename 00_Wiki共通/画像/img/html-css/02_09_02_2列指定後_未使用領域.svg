@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="550" height="350" viewBox="0 0 550 350" role="img" aria-labelledby="title desc" style="max-width:100%;height:auto">
+<title id="title">② 列幅と右側の余りを確かめる</title>
+<desc id="desc">親の内容幅510pxに幅150pxの列を2本指定し、子A〜Fを2列3行に配置する。列の合計幅は300pxで、右側210pxは未使用領域。列間・行間のgapはまだない。子Aは赤、子B〜Fは青。</desc>
+<metadata id="grid-data">{"type":"static","states":[{"width":510,"height":120,"rows":[40,40,40],"gapx":0,"gapy":0,"items":[{"id":"A","x":0,"y":0,"w":150,"h":40},{"id":"B","x":150,"y":0,"w":150,"h":40},{"id":"C","x":0,"y":40,"w":150,"h":40},{"id":"D","x":150,"y":40,"w":150,"h":40},{"id":"E","x":0,"y":80,"w":150,"h":40},{"id":"F","x":150,"y":80,"w":150,"h":40}]}],"plot":{"x":20,"y":126},"focus":"fixed-column-width-and-unused-space"}</metadata>
+<style>
+text{font-family:Meiryo,"Yu Gothic",sans-serif;font-size:24px;font-weight:500;fill:#000000}
+.parent-label{font-size:26px;fill:#444444}.column{font-size:26px;fill:#007F99}
+.unused{font-size:26px;fill:#000000}.note{font-size:24px;fill:#000000}
+.column-line{stroke:#007F99;stroke-width:1.5;fill:none}
+.parent-edge{stroke:#666666;stroke-width:2;fill:none;stroke-dasharray:none}
+</style>
+<rect width="550" height="350" fill="#ffffff"/>
+<!-- CSS・可視の題名・計算の説明は掲載先Markdownで読む。箱の寸法と比較条件は維持する。 -->
+<text x="20" y="42" class="parent-label">親：内容幅510px（一定）</text>
+<text x="398" y="42">gapなし</text>
+<g class="column-line"><path d="M20 110H170 M170 110H320 M20 104V116 M170 104V116 M320 104V116"/></g>
+<text x="95" y="90" text-anchor="middle" class="column">150px</text>
+<text x="245" y="90" text-anchor="middle" class="column">150px</text>
+<rect x="20" y="126" width="510" height="120" fill="#f5f5f5"/>
+<rect data-child="A" x="20" y="126" width="150" height="40" fill="#f8cfd6" stroke="#c93030" stroke-width="1.5"/>
+<text data-label="A" x="30" y="154" style="fill:#c93030">A</text>
+<rect data-child="B" x="170" y="126" width="150" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<text data-label="B" x="180" y="154" style="fill:#315fa0">B</text>
+<rect data-child="C" x="20" y="166" width="150" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<text data-label="C" x="30" y="194" style="fill:#315fa0">C</text>
+<rect data-child="D" x="170" y="166" width="150" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<text data-label="D" x="180" y="194" style="fill:#315fa0">D</text>
+<rect data-child="E" x="20" y="206" width="150" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<text data-label="E" x="30" y="234" style="fill:#315fa0">E</text>
+<rect data-child="F" x="170" y="206" width="150" height="40" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<text data-label="F" x="180" y="234" style="fill:#315fa0">F</text>
+<rect class="parent-edge" x="17.25" y="123.25" width="515.5" height="125.5" data-parent-boundary="true" data-outline-offset="2.75" data-outline-gap="1"/>
+<text x="425" y="171" text-anchor="middle" class="unused">未使用</text>
+<text x="425" y="213" text-anchor="middle" class="unused">210px</text>
+<text x="20" y="290" class="note">※ 灰色の線はborderではなく、</text>
+<text x="20" y="330" class="note">親の範囲を示す補助線です。</text>
+</svg>
