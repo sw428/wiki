@@ -18,3 +18,4 @@
 - [CodexのMedium・High運用](./2026-09-05_CodexのMedium・High運用.md)
 - [HTML・CSSのSVG表現規約と三者運用](./2026-10-16_HTML・CSSのSVG表現規約と三者運用.md)
 - [VS Code拡張機能のCSS配置構想とJavaScript学習](./2026-10-17_VS%20Code拡張機能のCSS配置構想とJavaScript学習.md)
+- [既存Wikiになじむ文章の作成と全体整合性（参考ログ）](./2026-11-19_GPTのWiki文章作成と全体整合性.md)
