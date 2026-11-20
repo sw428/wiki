@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="333.56" viewBox="0 0 900 395" role="img" aria-labelledby="title desc" style="max-width:100%">
+<title id="title">通常フローとGridの配置比較</title>
+<desc id="desc">同じsection内のh2とpが、通常フローでは縦へ並び、Gridを指定するとそれぞれ160pxと240pxの列へ横並びになる模式比較。Gridでは列間にgap20pxが入る。</desc>
+<rect width="100%" height="100%" rx="14" fill="#FCFDFE"/>
+<style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;fill:#000000}.head{font-size:25px;font-weight:700}.label{font-size:22px;font-weight:700}.body{font-size:20px}.note{font-size:17px}.parent-label{fill:#444444;font-size:21px;font-weight:700}.blue{fill:#315fa0}.red{fill:#c93030}.green{fill:#26724a}.purple{fill:#7C3AED}</style>
+<text x="35" y="46" class="head">同じHTMLでも、親の配置方法で並びが変わる</text>
+<text x="65" y="93" class="label">通常フロー</text>
+<text x="483" y="93" class="label">Grid</text>
+<rect x="55" y="120" width="365" height="205" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="2"/>
+<rect x="480" y="120" width="365" height="205" rx="8" fill="#f5f5f5" stroke="#666666" stroke-width="2"/>
+<text x="73" y="148" class="parent-label">section</text>
+<text x="497" y="148" class="parent-label">section</text>
+<rect x="74" y="164" width="328" height="57" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="238" y="200" class="body blue" text-anchor="middle">h2　見出し</text>
+<rect x="74" y="240" width="328" height="57" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+<text x="238" y="276" class="body red" text-anchor="middle">p　本文</text>
+<rect x="497" y="164" width="125" height="131" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<rect x="622" y="164" width="26" height="131" fill="#ECE5FF"/>
+<rect x="648" y="164" width="178" height="131" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
+<text x="559" y="233" class="body blue" text-anchor="middle">h2</text>
+<text x="737" y="233" class="body red" text-anchor="middle">p　本文</text>
+<text x="559" y="317" class="note blue" text-anchor="middle">160px</text>
+<text x="635" y="317" class="note purple" text-anchor="middle">20px</text>
+<text x="737" y="317" class="note red" text-anchor="middle">240px</text>
+<text x="35" y="372" class="note">※ 灰色の線はborderではなく、親の範囲を示す補助線です。寸法は模式表示です。</text>
+</svg>
