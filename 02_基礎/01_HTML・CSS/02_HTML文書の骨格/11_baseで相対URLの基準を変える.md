@@ -34,7 +34,7 @@
 
 すると、リンク先は**`https://example.com/help/guide.html`**になります。`base`に指定した`help/`が、相対URLを解決する基準になったためです。
 
-![同じhref guide.htmlが、baseなしではdocs/guide.htmlへ向かい、baseでhelp/を指定するとhelp/guide.htmlへ向かう比較図](../../../00_Wiki共通/03_画像/img/html-css/02_02_11_baseで相対URLの行き先を変える.svg)
+![同じhref guide.htmlが、baseなしではdocs/guide.htmlへ向かい、baseでhelp/を指定するとhelp/guide.htmlへ向かう比較図](../../../07_画像/img/html-css/02_02_11_baseで相対URLの行き先を変える.svg)
 
 大事なのは、**今開いている文書は`docs/index.html`のままなのに、リンクだけが`help/guide.html`を指す**という違いです。`base`は文書を移動する指定ではなく、その文書の相対URLの行き先を決める指定です。
 

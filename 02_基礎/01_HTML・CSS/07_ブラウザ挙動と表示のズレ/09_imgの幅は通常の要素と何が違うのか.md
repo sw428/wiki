@@ -16,7 +16,7 @@ ChromiumのBlinkでは、DOM側の`HTMLImageElement`などが画像要素の情�
 
 処理の関係は次のとおり。
 
-[![img要素の情報から画像固有情報・CSS・レイアウト計算を経て画面表示へ至る関係](../../../00_Wiki共通/03_画像/img/html-css/02_07_09_img要素_ブラウザ処理_全体図.svg)](../../../00_Wiki共通/03_画像/img/html-css/02_07_09_img要素_ブラウザ処理_全体図.svg)
+[![img要素の情報から画像固有情報・CSS・レイアウト計算を経て画面表示へ至る関係](../../../07_画像/img/html-css/02_07_09_img要素_ブラウザ処理_全体図.svg)](../../../07_画像/img/html-css/02_07_09_img要素_ブラウザ処理_全体図.svg)
 
 1. **HTML・DOM**：`img`、`src`、`width`、`height`などの要素情報を扱う。
 2. **画像固有情報**：取得した画像リソースから固有幅・固有高さ・縦横比などを得る。
@@ -48,7 +48,7 @@ ChromiumのBlinkでは、`HTMLImageElement`、`LayoutImage`、`LayoutReplaced`�
 
 前提：横書き・通常フロー。子要素は配置されたレイアウトの規則に従う。
 
-[![要素情報・CSSレイアウト・ブラウザエンジンの関係、width autoの比較表、divとimgの幅の違い](../../../00_Wiki共通/03_画像/img/html-css/02_07_09_width_要素情報_CSSレイアウト_ブラウザエンジン.svg)](../../../00_Wiki共通/03_画像/img/html-css/02_07_09_width_要素情報_CSSレイアウト_ブラウザエンジン.svg)
+[![要素情報・CSSレイアウト・ブラウザエンジンの関係、width autoの比較表、divとimgの幅の違い](../../../07_画像/img/html-css/02_07_09_width_要素情報_CSSレイアウト_ブラウザエンジン.svg)](../../../07_画像/img/html-css/02_07_09_width_要素情報_CSSレイアウト_ブラウザエンジン.svg)
 
 レイアウト方式自体の説明は、[blockとinline](../05_ボックスとdisplay/05_blockとinlineの広がり方.md)、[inline-block](../08_インラインと行の仕組み/03_inline-blockとinline-flexを使い分ける.md)、[FlexとGrid](../09_レイアウト/01_レイアウトで調整したいことから読む.md)へ進む。
 
