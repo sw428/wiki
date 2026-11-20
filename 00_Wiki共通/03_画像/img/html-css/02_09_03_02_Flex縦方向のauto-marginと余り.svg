@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="380" viewBox="0 0 960 480" role="img" aria-labelledby="title desc">
+  <title id="title">縦Flexのauto marginは、余った高さを受け取る</title>
+  <desc id="desc">左はmin-heightを持つカードに余った高さがあり、日付の上のmargin-block-start: autoが受け取る。右はmin-heightを外し、内容に応じた高さになって余りがないため、日付が直前の説明文に続く。親から別の高さが与えられない場合の模式図。</desc>
+  <rect x="0" y="0" width="960" height="480" rx="16" fill="#FCFDFE"/>
+  <style>
+    text { font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif; fill:#1f2937; }
+    .title {font-size:22px;font-weight:700;}
+    .heading {font-size:19px;font-weight:700;}
+    .body {font-size:17px;}
+    .note {font-size:15px;fill:#374151;}
+    .item {fill:#ffffff;stroke:#9ca3af;stroke-width:1.5;}
+    .card {fill:#f5f7fa;stroke:#4b5563;stroke-width:2;}
+  </style>
+  <text class="title" x="34" y="40">縦Flex：日付を下へ送れるのは、親に余りがあるとき</text>
+  <text class="heading" x="62" y="83">① min-height: 240px がある</text>
+  <text class="heading" x="528" y="83">② min-height を外す</text>
+  <rect class="card" x="61" y="100" width="360" height="303" rx="10"/>
+  <rect class="card" x="529" y="100" width="360" height="180" rx="10"/>
+  <rect class="item" x="83" y="126" width="316" height="47" rx="6"/>
+  <rect class="item" x="83" y="183" width="316" height="48" rx="6"/>
+  <text class="body" x="101" y="155">見出し</text>
+  <text class="body" x="101" y="213">説明文</text>
+  <rect x="83" y="242" width="316" height="88" rx="6" fill="#dceafa" stroke="#3476ba" stroke-width="2" stroke-dasharray="6 5"/>
+  <text class="body" x="241" y="277" text-anchor="middle">余った高さ</text>
+  <text class="note" x="241" y="305" text-anchor="middle">auto margin が受け取る</text>
+  <rect x="83" y="340" width="316" height="43" rx="6" fill="#f7d8df" stroke="#be4d67" stroke-width="1.7"/>
+  <text class="body" x="101" y="367">日付（.meta）</text>
+  <rect class="item" x="551" y="126" width="316" height="47" rx="6"/>
+  <rect class="item" x="551" y="183" width="316" height="48" rx="6"/>
+  <text class="body" x="569" y="155">見出し</text>
+  <text class="body" x="569" y="213">説明文</text>
+  <rect x="551" y="237" width="316" height="33" rx="6" fill="#f7d8df" stroke="#be4d67" stroke-width="1.7"/>
+  <text class="body" x="569" y="259">日付（.meta）</text>
+  <line x1="707" y1="302" x2="707" y2="336" stroke="#64748b" stroke-width="2"/>
+  <path d="M700 329 L707 338 L714 329" fill="none" stroke="#64748b" stroke-width="2"/>
+  <text class="body" x="707" y="370" text-anchor="middle">配れる余りがない</text>
+  <text class="note" x="480" y="437" text-anchor="middle">※ 内容が短く、他の親から高さを与えられていない場合の模式図です。</text>
+  <text class="note" x="480" y="460" text-anchor="middle">灰色の線は説明用の箱の境界で、CSSのborder指定を示すものではありません。</text>
+</svg>
