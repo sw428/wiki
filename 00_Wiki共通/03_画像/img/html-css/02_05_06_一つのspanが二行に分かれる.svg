@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="375.04" viewBox="0 0 920 454" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">HTMLでは一つでも、表示では二行に分かれる</title><desc id="desc">DOM上のspan要素は一つだが、表示幅を狭くするとそのインラインの内容が二行に分かれる。要素数と行内の箱の数は同じとは限らない。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="454" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">HTMLでは一つでも、表示では二行に分かれる</text>
+<rect x="34" y="79" width="417" height="309" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="58" y="117" font-size="19" fill="#193B64" font-weight="700">HTML：spanは一つ</text>
+<rect x="466" y="79" width="419" height="309" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="490" y="117" font-size="19" fill="#193B64" font-weight="700">表示：二行に折り返す</text>
+<rect x="65" y="152" width="358" height="153" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<text x="88" y="193" font-size="21" fill="#25384F" font-weight="400">&lt;p&gt;…</text>
+<rect x="99" y="212" width="310" height="53" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="254" y="245" font-size="19" fill="#25384F" font-weight="600" text-anchor="middle">&lt;span&gt;長い文章…&lt;/span&gt;</text>
+<rect x="498" y="151" width="354" height="168" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="518" y="190" width="315" height="48" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="532" y="219" font-size="18" fill="#25384F" font-weight="400">ここは途中で折り返す</text>
+<rect x="518" y="254" width="239" height="48" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="532" y="283" font-size="18" fill="#25384F" font-weight="400">長い文章です</text>
+<text x="59" y="350" font-size="18" fill="#007F99" font-weight="600">DOMの要素数：1</text>
+<text x="484" y="350" font-size="18" fill="#007F99" font-weight="600">見える行：2</text>
+<text x="36" y="432" font-size="16" fill="#000000" font-weight="400">※ 同じspanの内容が複数の行に分かれることを示した模式図です。</text></svg>

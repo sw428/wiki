@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="394.87" viewBox="0 0 920 478" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">HTMLの基本形を、タブと画面で確かめる</title><desc id="desc">HTMLのhead内のtitleはブラウザタブの名前に、body内のh1は表示されるページの見出しに対応する。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="478" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">HTMLの基本形を、タブと画面で確かめる</text>
+<rect x="48" y="86" width="404" height="329" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<rect x="486" y="86" width="392" height="329" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="72" y="123" font-size="20" fill="#193B64" font-weight="700">HTMLに書く場所</text>
+<text x="510" y="123" font-size="20" fill="#193B64" font-weight="700">ブラウザで見える場所</text>
+<rect x="69" y="159" width="363" height="80" rx="6" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="1"/>
+<text x="88" y="191" font-size="17" fill="#526780" font-weight="700">head</text>
+<text x="92" y="222" font-size="18" fill="#25384F" font-weight="400">&lt;title&gt;料金案内&lt;/title&gt;</text>
+<rect x="69" y="258" width="363" height="80" rx="6" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="1"/>
+<text x="88" y="291" font-size="17" fill="#526780" font-weight="700">body</text>
+<text x="92" y="323" font-size="18" fill="#25384F" font-weight="400">&lt;h1&gt;料金案内&lt;/h1&gt;</text>
+<rect x="516" y="159" width="332" height="59" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="532" y="195" font-size="18" fill="#25384F" font-weight="600">タブ：料金案内</text>
+<rect x="516" y="255" width="332" height="90" rx="6" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<text x="530" y="298" font-size="25" fill="#25384F" font-weight="700">料金案内</text>
+<text x="459" y="193" font-size="24" fill="#8EA2B9" font-weight="600" text-anchor="middle">→</text>
+<text x="459" y="297" font-size="24" fill="#8EA2B9" font-weight="600" text-anchor="middle">→</text>
+<text x="46" y="453" font-size="17" fill="#25384F" font-weight="400">titleとh1は同じ文字でも、表示される場所が違う。</text></svg>

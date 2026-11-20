@@ -28,6 +28,7 @@ ChatGPT / Codex / 検索 / DevToolsを使う前提で、問題の入口、確認
 
 ## 設計資料
 
+- [エージェントワーク（Work用プロジェクト指示）](./AGENTS_Work.md)
 - [三者運用](./01_三者運用.md)
   - ChatGPT、Codex、自分の役割
   - 日本語の対話からCodex自身も設計に参加して運用を育てる方法

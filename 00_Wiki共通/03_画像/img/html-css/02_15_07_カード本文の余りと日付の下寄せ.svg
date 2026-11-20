@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="446.91" viewBox="0 0 920 541" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">長さの異なる本文でも、日付を下に揃える</title><desc id="desc">同じGrid行の二枚のカードは同じ高さを受け取り、内部のbodyが残りを取り、短い本文のdate上のauto marginが空き領域を受け取って日付が下へ揃う。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="541" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">長さの異なる本文でも、日付を下に揃える</text>
+<rect x="42" y="80" width="824" height="404" rx="12" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<text x="63" y="113" font-size="18" fill="#444444" font-weight="700">一覧：同じ行の二枚のカード（同じ高さ）</text>
+<rect x="94" y="139" width="330" height="310" rx="8" fill="#ffffff" stroke="#315fa0" stroke-width="2"/>
+<rect x="484" y="139" width="330" height="310" rx="8" fill="#ffffff" stroke="#315fa0" stroke-width="2"/>
+<rect x="95" y="140" width="328" height="69" rx="0" fill="#cfe4ff" stroke="none" stroke-width="1"/>
+<rect x="485" y="140" width="328" height="69" rx="0" fill="#cfe4ff" stroke="none" stroke-width="1"/>
+<text x="259" y="183" font-size="20" fill="#000000" font-weight="400" text-anchor="middle">画像枠</text>
+<text x="649" y="183" font-size="20" fill="#000000" font-weight="400" text-anchor="middle">画像枠</text>
+<rect x="110" y="219" width="300" height="213" rx="5" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="2"/>
+<rect x="500" y="219" width="300" height="213" rx="5" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="2"/>
+<text x="122" y="248" font-size="18" fill="#25384F" font-weight="700">タイトルA</text>
+<text x="122" y="283" font-size="17" fill="#25384F" font-weight="400">短い本文</text>
+<rect x="111" y="296" width="298" height="89" rx="0" fill="#f9cc9d" stroke="none" stroke-width="1"/>
+<text x="259" y="342" font-size="17" fill="#793A00" font-weight="600" text-anchor="middle">auto marginが受け取る空き</text>
+<text x="122" y="411" font-size="18" fill="#25384F" font-weight="700">2026.11.20</text>
+<text x="512" y="248" font-size="18" fill="#25384F" font-weight="700">タイトルB</text>
+<text x="512" y="283" font-size="17" fill="#25384F" font-weight="400">長い本文を入れたカード</text>
+<text x="512" y="314" font-size="17" fill="#25384F" font-weight="400">文章が増えても、</text>
+<text x="512" y="342" font-size="17" fill="#25384F" font-weight="400">カード下端は共通</text>
+<text x="512" y="411" font-size="18" fill="#25384F" font-weight="700">2026.11.20</text>
+<line x1="95" y1="431" x2="813" y2="431" stroke="#7C3AED" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="325" y="516" font-size="16" fill="#000000" font-weight="400">※ 日付の下端を比較。図中の色付き枠は位置を示す補助表示です。</text></svg>
