@@ -1,22 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="388.26" viewBox="0 0 920 470" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図② 同じ中身でも、配置ルールが違う</title><desc id="desc">inline-blockでは画像とspanが通常の行に参加し、inline-flexでは直接の子がFlexアイテムとなり、centerとgapで配置される。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="470" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
-<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">図② 同じ中身でも、配置ルールが違う</text>
-<rect x="32" y="76" width="420" height="330" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
-<text x="56" y="114" font-size="19" fill="#193B64" font-weight="700">inline-block：通常の行内配置</text>
-<rect x="468" y="76" width="420" height="330" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
-<text x="492" y="114" font-size="19" fill="#193B64" font-weight="700">inline-flex：Flexアイテム</text>
-<rect x="64" y="140" width="356" height="154" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
-<rect x="500" y="140" width="356" height="154" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
-<rect x="88" y="190" width="78" height="72" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="126" y="233" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">img</text>
-<rect x="180" y="213" width="206" height="49" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="283" y="243" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">詳しく見る</text>
-<line x1="81" y1="262" x2="401" y2="262" stroke="#7C3AED" stroke-width="2" stroke-dasharray="7 5"/>
-<text x="72" y="321" font-size="16" fill="#000000" font-weight="400">画像と文字は行の基準線を使う</text>
-<rect x="523" y="190" width="78" height="72" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="562" y="233" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">img</text>
-<rect x="630" y="200" width="194" height="52" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="727" y="232" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">詳しく見る</text>
-<line x1="606" y1="194" x2="606" y2="255" stroke="#7C3AED" stroke-width="2" stroke-dasharray="5 5"/>
-<text x="613" y="185" font-size="16" fill="#7C3AED" font-weight="400">gap</text>
-<text x="510" y="321" font-size="16" fill="#000000" font-weight="400">align-items: center で箱を揃える</text>
-<text x="35" y="444" font-size="16" fill="#000000" font-weight="400">※ 同じHTML・同じ画像と文字を比較。位置は仕組みを示す模式図です。</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="594" viewBox="0 0 440 594" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図② inline-blockとinline-flexの中身の違い</title><desc id="desc">同じHTMLのimgとspan。inline-blockでは二つが通常の行内配置に参加し、inline-flexでは直接の子がFlexアイテムになる。gapとalign-itemsを追加すると間隔と縦位置を管理できる。</desc><style>
+text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;fill:#000000}
+.head{font-size:20px;font-weight:700}
+.sub{font-size:18px;font-weight:700}
+.copy{font-size:16.5px}
+.small{font-size:14px}
+.mono{font-family:Consolas,monospace;font-size:16px}
+.parent{fill:#f5f5f5;stroke:#666666;stroke-width:2}
+.blue{fill:#cfe4ff;stroke:#315fa0;stroke-width:2}
+.red{fill:#f8cfd6;stroke:#c93030;stroke-width:2}
+.green{fill:#cae6d1;stroke:none}
+.purple{fill:#ece5ff;stroke:none}
+.blue-label{fill:#315fa0;font-weight:700}
+.red-label{fill:#c93030;font-weight:700}
+.green-label{fill:#26724a;font-weight:700}
+.purple-label{fill:#7c3aed;font-weight:700}
+.code-red{fill:#c93030;font-weight:700}
+.note{font-size:13px;fill:#444444}
+</style><rect width="440" height="594" fill="#ffffff"/>
+<text x="20" y="34" class="head">図② 同じHTML、異なる内側の配置</text>
+<text x="21" y="72" class="sub">A：inline-block</text>
+<text x="22" y="100" class="mono"><tspan class="code-red">display: inline-block;</tspan></text>
+<rect x="20" y="118" width="400" height="160" rx="8" class="parent"/>
+<text x="36" y="142" class="small">通常の文字の行で並ぶ</text>
+<rect x="43" y="163" width="82" height="78" rx="4" class="blue"/>
+<text x="84" y="209" class="copy" text-anchor="middle">img</text>
+<rect x="150" y="197" width="232" height="44" rx="4" class="red"/>
+<text x="266" y="225" class="copy" text-anchor="middle">span：詳しく見る</text>
+<path d="M36 241 H398" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="41" y="262" class="small purple-label">行のベースライン（模式）</text>
+<text x="23" y="299" class="small">画像と文字が同じ行の規則で配置される</text>
+<path d="M220 310 V341" stroke="#8ea2b9" stroke-width="2"/>
+<path d="M214 334 L220 342 L226 334" fill="none" stroke="#8ea2b9" stroke-width="2"/>
+<text x="21" y="374" class="sub">B：inline-flex</text>
+<text x="22" y="402" class="mono"><tspan class="code-red">display: inline-flex;</tspan></text>
+<text x="22" y="425" class="mono"><tspan class="code-red">align-items: center; gap: 10px;</tspan></text>
+<rect x="20" y="443" width="400" height="121" rx="8" class="parent"/>
+<rect x="42" y="471" width="82" height="67" rx="4" class="blue"/>
+<text x="83" y="511" class="copy" text-anchor="middle">img</text>
+<rect x="124" y="471" width="27" height="67" class="purple"/>
+<text x="137.5" y="463" class="small purple-label" text-anchor="middle">gap</text>
+<rect x="151" y="482" width="230" height="45" rx="4" class="red"/>
+<text x="266" y="510" class="copy" text-anchor="middle">span：詳しく見る</text>
+<path d="M34 505 H42 M124 505 H151 M381 505 H402" stroke="#26724a" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="31" y="555" class="small green-label">各アイテムの縦中心を揃える</text>
+<text x="20" y="587" class="note">※ 仕組みを説明する模式図。実寸・文字位置はフォントで変わります。</text>
+</svg>
