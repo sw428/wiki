@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="472" viewBox="0 0 340 472" role="img" aria-labelledby="title desc">
+<title id="title">子の一行の高さ、18pxと30pxを比較</title>
+<desc id="desc">親のline-heightが1.5なら、文字サイズ12pxの子の一行の高さは18px相当。親のline-heightが150%なら、親の文字サイズ20pxから計算される30pxを子が継承するため、子の高さは30px相当。子の字形と文字サイズは同じ。青い領域は子の行が占める高さを模式的に示す。</desc>
+<style>
+text { font-family: "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic", sans-serif; }
+.title { font-size:17px; font-weight:700; fill:#000000; }
+.sub { font-size:12px; fill:#000000; }
+.heading { font-size:15px; font-weight:700; fill:#000000; }
+.caption { font-size:13px; fill:#000000; }
+.text { font-size:15px; font-weight:500; fill:#193B64; }
+.value { font-size:14px; font-weight:700; fill:#000000; }
+.panel { fill:#F8FAFC; stroke:#DCE4EE; stroke-width:1.2; }
+.child { fill:#cfe4ff; stroke:#315fa0; stroke-width:1.6; }
+.guide { stroke:#8EA2B9; stroke-width:1; stroke-dasharray:3 3; }
+.measure { stroke:#000000; stroke-width:1.3; }
+</style>
+<defs><marker id="end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10Z" fill="#000000"/></marker></defs>
+<text x="15" y="29" class="title" >子の文字は同じ12px</text>
+<text x="15" y="52" class="sub" >一行・margin: 0・padding/borderなし</text>
+<!-- top -->
+<rect x="10" y="68" width="320" height="162" rx="12" class="panel"/>
+<text x="23" y="95" class="heading" >A  親 line-height: 1.5</text>
+<text x="23" y="114" class="caption" >子の一行 = 18px</text>
+<rect x="43" y="135" width="212" height="63" class="child"/>
+<text x="149" y="174" class="text" text-anchor="middle">子要素のテキスト</text>
+<path d="M269 135H288M269 198H288" class="guide"/>
+<path d="M281 135V198" class="measure" marker-start="url(#end)" marker-end="url(#end)"/>
+<text x="293" y="170" class="value" >18px</text>
+<!-- bottom -->
+<rect x="10" y="240" width="320" height="192" rx="12" class="panel"/>
+<text x="23" y="267" class="heading" >B  親 line-height: 150%</text>
+<text x="23" y="286" class="caption" >子の一行 = 30px</text>
+<rect x="43" y="303" width="212" height="105" class="child"/>
+<text x="149" y="361" class="text" text-anchor="middle">子要素のテキスト</text>
+<path d="M269 303H288M269 408H288" class="guide"/>
+<path d="M281 303V408" class="measure" marker-start="url(#end)" marker-end="url(#end)"/>
+<text x="293" y="358" class="value" >30px</text>
+<text x="15" y="455" class="sub" >文字サイズは不変。行の高さだけ12px増える。</text>
+</svg>
