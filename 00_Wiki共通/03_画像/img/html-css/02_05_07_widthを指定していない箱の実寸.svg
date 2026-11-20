@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="395.7" viewBox="0 0 920 479" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">widthを指定しなくても、使う幅は変わる</title><desc id="desc">子のwidthを指定せずpadding左右20pxを保つ。親の内容幅400pxから300pxへ変えると、子のcontent幅は360pxから260pxへ変わる。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="479" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">widthを指定しなくても、使う幅は変わる</text>
+<rect x="33" y="79" width="421" height="334" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="57" y="117" font-size="19" fill="#193B64" font-weight="700">① 親の内容幅400px</text>
+<rect x="470" y="79" width="420" height="334" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="494" y="117" font-size="19" fill="#193B64" font-weight="700">② 親の内容幅300px</text>
+<rect x="76" y="147" width="329" height="183" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="514" y="147" width="286" height="183" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="95" y="192" width="287" height="77" rx="5" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<rect x="109" y="192" width="259" height="77" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="239" y="239" font-size="19" fill="#25384F" font-weight="600" text-anchor="middle">content 360px</text>
+<rect x="530" y="192" width="221" height="77" rx="5" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<rect x="544" y="192" width="193" height="77" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="640" y="239" font-size="19" fill="#25384F" font-weight="600" text-anchor="middle">content 260px</text>
+<text x="74" y="361" font-size="17" fill="#25384F" font-weight="400">Styles：width指定なし</text>
+<text x="510" y="361" font-size="17" fill="#25384F" font-weight="400">Styles：width指定なし</text>
+<text x="36" y="455" font-size="16" fill="#000000" font-weight="400">※ 緑は左右padding各20px、青はcontent。幅の図形は模式的な縮尺です。</text></svg>

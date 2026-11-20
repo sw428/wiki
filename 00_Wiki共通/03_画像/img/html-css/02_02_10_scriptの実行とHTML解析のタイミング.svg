@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="382.48" viewBox="0 0 920 463" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">scriptの書き方で、HTML解析と実行が変わる</title><desc id="desc">外部classic scriptの比較。通常scriptはパーサーを止め実行、deferはHTML解析後に実行、asyncは用意でき次第実行する。取得開始は先読みの可能性がある。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="463" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">scriptの書き方で、HTML解析と実行が変わる</text>
+<rect x="36" y="93" width="276" height="302" rx="10" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="54" y="128" font-size="19" fill="#193B64" font-weight="700">① 通常のscript</text>
+<text x="54" y="162" font-size="18" fill="#25384F" font-weight="400">HTML解析</text>
+<rect x="54" y="181" width="238" height="25" rx="4" fill="#cfe4ff" stroke="none" stroke-width="0"/>
+<text x="54" y="235" font-size="15" fill="#25384F" font-weight="400">解析中に実行し、そこで停止</text>
+<rect x="340" y="93" width="276" height="302" rx="10" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="358" y="128" font-size="19" fill="#193B64" font-weight="700">② defer</text>
+<text x="358" y="162" font-size="18" fill="#25384F" font-weight="400">HTML解析</text>
+<rect x="358" y="181" width="238" height="25" rx="4" fill="#cfe4ff" stroke="none" stroke-width="0"/>
+<text x="358" y="235" font-size="15" fill="#25384F" font-weight="400">解析完了後に実行</text>
+<rect x="644" y="93" width="276" height="302" rx="10" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="662" y="128" font-size="19" fill="#193B64" font-weight="700">③ async</text>
+<text x="662" y="162" font-size="18" fill="#25384F" font-weight="400">HTML解析</text>
+<rect x="662" y="181" width="238" height="25" rx="4" fill="#cfe4ff" stroke="none" stroke-width="0"/>
+<text x="662" y="235" font-size="15" fill="#25384F" font-weight="400">実行できる状態で実行</text>
+<rect x="54" y="181" width="108" height="25" rx="0" fill="#315fa0" stroke="none" stroke-width="1"/>
+<rect x="163" y="181" width="56" height="25" rx="0" fill="#f9cc9d" stroke="none" stroke-width="1"/>
+<text x="71" y="200" font-size="14" fill="white" font-weight="400">解析</text>
+<text x="172" y="199" font-size="13" fill="#793A00" font-weight="400">停止</text>
+<rect x="221" y="181" width="68" height="25" rx="0" fill="#cfe4ff" stroke="none" stroke-width="1"/>
+<text x="56" y="284" font-size="16" fill="#c93030" font-weight="400">buttonより前で実行</text>
+<rect x="358" y="181" width="238" height="25" rx="0" fill="#cfe4ff" stroke="none" stroke-width="1"/>
+<rect x="358" y="279" width="238" height="46" rx="5" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<text x="475" y="309" font-size="16" fill="#26724a" font-weight="600" text-anchor="middle">解析完了後</text>
+<rect x="662" y="181" width="238" height="25" rx="0" fill="#cfe4ff" stroke="none" stroke-width="1"/>
+<rect x="757" y="181" width="80" height="25" rx="0" fill="#f9cc9d" stroke="none" stroke-width="1"/>
+<text x="658" y="284" font-size="15" fill="#25384F" font-weight="400">取得完了次第：前後は一定でない</text>
+<text x="39" y="433" font-size="16" fill="#000000" font-weight="400">※ ファイルの取得は先読みで始まる場合があります。図が示すのは主に実行の時点です。</text></svg>
