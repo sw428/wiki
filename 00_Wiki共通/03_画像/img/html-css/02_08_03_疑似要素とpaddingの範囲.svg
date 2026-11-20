@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="295.56" viewBox="0 0 900 350" role="img" aria-labelledby="title desc" style="max-width:100%">
+<title id="title">文字と疑似要素はpaddingの内側にある</title>
+<desc id="desc">inline-flexのリンクを囲む灰色の枠の中で、左padding、文字、gap、::after、右paddingが順に配置される。paddingは左右20px、gapは10px。</desc>
+<rect width="100%" height="100%" rx="14" fill="#FCFDFE"/>
+<style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Hiragino Kaku Gothic ProN',sans-serif;fill:#000000}.head{font-size:25px;font-weight:700}.label{font-size:22px;font-weight:700}.body{font-size:20px}.note{font-size:17px}.parent-label{fill:#444444;font-size:21px;font-weight:700}.blue{fill:#315fa0}.red{fill:#c93030}.green{fill:#26724a}.purple{fill:#7C3AED}</style>
+<text x="45" y="48" class="head">疑似要素はリンクのpaddingの内側に入る</text>
+<text x="65" y="95" class="body">.link { display: inline-flex; gap: 10px; padding-inline: 20px; }</text>
+<rect x="181" y="131" width="538" height="150" rx="10" fill="#f5f5f5" stroke="#666666" stroke-width="2"/>
+<text x="198" y="157" class="parent-label">リンク全体</text>
+<rect x="227" y="180" width="54" height="60" rx="4" fill="#cae6d1"/>
+<rect x="281" y="180" width="239" height="60" rx="4" fill="#cfe4ff" stroke="#315fa0" stroke-width="1.5"/>
+<rect x="520" y="180" width="27" height="60" fill="#ECE5FF"/>
+<rect x="547" y="180" width="80" height="60" rx="4" fill="#f8cfd6" stroke="#c93030" stroke-width="1.5"/>
+<rect x="627" y="180" width="54" height="60" rx="4" fill="#cae6d1"/>
+<text x="400" y="217" class="body" text-anchor="middle">詳しく見る</text>
+<text x="587" y="217" class="body" text-anchor="middle">&gt;</text>
+<text x="254" y="261" class="note green" text-anchor="middle">左padding</text>
+<text x="533" y="261" class="note purple" text-anchor="middle">gap</text>
+<text x="590" y="270" class="note red" text-anchor="middle">::after</text>
+<text x="654" y="261" class="note green" text-anchor="middle">右padding</text>
+<text x="45" y="326" class="note">※ 灰色の線はborderではなく、リンクの範囲を示す補助線です。</text>
+</svg>
