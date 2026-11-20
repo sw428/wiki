@@ -50,7 +50,7 @@ console.log(document.querySelector("#target"));
 
 ファイルをHTMLの解析と並行して取得し、**文書の解析が完了してから**実行します。上の例では、ボタンがDOMに作られた後に`querySelector`が動くため、Consoleへボタン要素が表示されます。
 
-![通常scriptはHTML解析を待たせて実行、deferは解析完了後に実行、asyncは実行可能になり次第動く違いを示す図](../../../00_Wiki共通/03_画像/img/html-css/02_02_10_scriptの実行とHTML解析のタイミング.svg)
+![通常scriptはHTML解析を待たせて実行、deferは解析完了後に実行、asyncは実行可能になり次第動く違いを示す図](../../../07_画像/img/html-css/02_02_10_scriptの実行とHTML解析のタイミング.svg)
 
 `defer`を複数指定した外部classic scriptは、HTML上の記述順で実行されます。
 
