@@ -1,21 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="375.04" viewBox="0 0 920 454" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図④ 中央揃えとベースライン揃え</title><desc id="desc">Flexのalign-items centerではアイテムの箱の中央、baselineでは子のベースラインを基準に揃える。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="454" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
-<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">図④ 中央揃えとベースライン揃え</text>
-<rect x="32" y="77" width="420" height="310" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
-<text x="56" y="115" font-size="19" fill="#193B64" font-weight="700">align-items: center</text>
-<rect x="468" y="77" width="420" height="310" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
-<text x="492" y="115" font-size="19" fill="#193B64" font-weight="700">align-items: baseline</text>
-<rect x="74" y="142" width="335" height="154" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
-<rect x="510" y="142" width="335" height="154" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
-<line x1="92" y1="219" x2="391" y2="219" stroke="#007F99" stroke-width="2" stroke-dasharray="7 6"/>
-<rect x="108" y="179" width="80" height="80" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="148" y="224" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">icon</text>
-<rect x="216" y="201" width="168" height="36" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="300" y="225" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">文字</text>
-<text x="83" y="330" font-size="16" fill="#000000" font-weight="400">箱の縦方向の中心を揃える</text>
-<line x1="524" y1="259" x2="829" y2="259" stroke="#7C3AED" stroke-width="2" stroke-dasharray="7 6"/>
-<rect x="546" y="180" width="78" height="79" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="585" y="227" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">icon</text>
-<rect x="655" y="208" width="167" height="68" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="738" y="259" font-size="17" fill="#000000" font-weight="400" text-anchor="middle">文字</text>
-<text x="519" y="330" font-size="16" fill="#000000" font-weight="400">文字などのベースラインを基準にする</text>
-<text x="35" y="429" font-size="16" fill="#000000" font-weight="400">※ ベースラインの位置は、フォント・画像・要素の条件によって変わります。</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="536" viewBox="0 0 440 536" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図④ Flexの中心とベースラインは異なる基準</title><desc id="desc">align-items centerは画像と文字のアイテムの縦の中心を揃える。baselineは子のベースラインを共通線に揃える。画像側のベースラインの扱いは条件により異なる。</desc><style>
+text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;fill:#000000}
+.head{font-size:20px;font-weight:700}
+.sub{font-size:18px;font-weight:700}
+.copy{font-size:16.5px}
+.small{font-size:14px}
+.mono{font-family:Consolas,monospace;font-size:16px}
+.parent{fill:#f5f5f5;stroke:#666666;stroke-width:2}
+.blue{fill:#cfe4ff;stroke:#315fa0;stroke-width:2}
+.red{fill:#f8cfd6;stroke:#c93030;stroke-width:2}
+.green{fill:#cae6d1;stroke:none}
+.purple{fill:#ece5ff;stroke:none}
+.blue-label{fill:#315fa0;font-weight:700}
+.red-label{fill:#c93030;font-weight:700}
+.green-label{fill:#26724a;font-weight:700}
+.purple-label{fill:#7c3aed;font-weight:700}
+.code-red{fill:#c93030;font-weight:700}
+.note{font-size:13px;fill:#444444}
+</style><rect width="440" height="536" fill="#ffffff"/>
+<text x="20" y="34" class="head">図④ 揃える基準が違う</text>
+<text x="21" y="73" class="sub">align-items: center</text>
+<rect x="20" y="89" width="400" height="168" rx="8" class="parent"/>
+<rect x="49" y="118" width="96" height="103" rx="4" class="blue"/>
+<text x="97" y="173" class="copy" text-anchor="middle">img</text>
+<rect x="185" y="145" width="195" height="49" rx="4" class="red"/>
+<text x="282" y="174" class="copy" text-anchor="middle">文字</text>
+<path d="M36 169.5 H49 M145 169.5 H185 M380 169.5 H404" stroke="#26724a" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="30" y="246" class="small green-label">両方の箱の縦中心を通る線</text>
+<text x="21" y="292" class="sub">align-items: baseline</text>
+<rect x="20" y="309" width="400" height="174" rx="8" class="parent"/>
+<rect x="49" y="329" width="96" height="107" rx="4" class="blue"/>
+<text x="97" y="386" class="copy" text-anchor="middle">img</text>
+<rect x="185" y="395" width="195" height="57" rx="4" class="red"/>
+<text x="282" y="436" class="copy" text-anchor="middle">文字</text>
+<path d="M36 436 H49 M145 436 H185 M380 436 H403" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="30" y="473" class="small purple-label">ベースラインを揃える</text>
+<text x="21" y="511" class="note">※ 箱・字形・ベースラインの位置は仕組みを表す模式図です。</text>
+<text x="21" y="530" class="note">画像の基準線の扱いも条件によって変わります。</text>
+</svg>
