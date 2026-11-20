@@ -39,7 +39,7 @@
 
 今度は**contentと左右paddingを合わせた外側の幅**が240pxになります。paddingは変わらず左右16pxずつあるため、content領域は`240 - 16 - 16 = 208px`です。
 
-![content-boxでは外幅272px・content240px、border-boxでは外幅240px・content208pxになる比較](../../../00_Wiki共通/03_画像/img/html-css/02_05_04_box-sizingで240pxの対象を変える.svg)
+![content-boxでは外幅272px・content240px、border-boxでは外幅240px・content208pxになる比較](../../../07_画像/img/html-css/02_05_04_box-sizingで240pxの対象を変える.svg)
 
 二つの例で変更したのは`box-sizing`だけです。paddingが削除されたのではなく、**同じ240pxの中にpaddingを含めるか**が変わりました。
 
