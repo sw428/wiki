@@ -12,7 +12,7 @@
 
 [HTML Standard：img要素](https://html.spec.whatwg.org/multipage/embedded-content.html#the-img-element)／[CSS 2.2：置換要素の定義](https://www.w3.org/TR/CSS22/conform.html#replaced-element)
 
-[![HTMLのimgタグをブラウザエンジンが画像要素として認識し、画像の固有寸法・CSS・親要素の制約を使って通常は置換要素としてレイアウトする関係](../../../00_Wiki共通/画像/img/html-css/02_07_10_imgタグ_ブラウザエンジン_置換要素_関係図.svg)](../../../00_Wiki共通/画像/img/html-css/02_07_10_imgタグ_ブラウザエンジン_置換要素_関係図.svg)
+[![HTMLのimgタグをブラウザエンジンが画像要素として認識し、画像の固有寸法・CSS・親要素の制約を使って通常は置換要素としてレイアウトする関係](../../../00_Wiki共通/03_画像/img/html-css/02_07_10_imgタグ_ブラウザエンジン_置換要素_関係図.svg)](../../../00_Wiki共通/03_画像/img/html-css/02_07_10_imgタグ_ブラウザエンジン_置換要素_関係図.svg)
 
 **HTMLタグ：**`<img>`
 

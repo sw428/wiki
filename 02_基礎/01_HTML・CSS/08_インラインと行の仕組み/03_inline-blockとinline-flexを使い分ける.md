@@ -1,206 +1,32 @@
 # 03_inline-blockとinline-flexを使い分ける
 
-`inline-block`と `inline-flex`は、どちらも文章の流れに置ける箱を作れる。違いは、箱の中身をFlexで並べる必要があるかで判断する。
+文章の途中に「詳しく見る」というリンクを置き、文字の横に矢印アイコンを添えたいとします。リンク全体は文章の流れに置きたい一方で、リンクの中では文字とアイコンをきれいに揃えたい。このとき候補になるのが `inline-block` と `inline-flex` です。
 
-**`inline-flex`は外側でベースラインに従い、内側をFlexで揃えられるのはなぜ？**
+どちらも、周囲の文字と同じ行に置ける箱を作れます。違いは、**箱の中を通常の文字の流れで配置するか、Flexで直接の子を並べるか**にあります。同じ部品を使って、その境目を確かめます。
 
-> **この記事の疑問**：`inline-flex`はインライン要素のように文章の途中に並ぶのに、内側の画像と文字はベースラインに縛られず、`align-items: center`で揃えられる。なぜ外側と内側で配置ルールが違うのか。`inline-block`では何が異なるのか。
+## 同じリンクで、内側の並び方を比べる
 
-## 結論：外側と内側の配置ルールを分けて考える
-
-`display: inline-flex`は、**外側ではインラインレベルのボックス**となり、親が形成するインライン整形コンテキスト（IFC）に参加する。一方、**内側ではFlex整形コンテキスト（FFC）を形成**する。
-
-直接の子要素は**Flexアイテム**としてFFCの規則で配置され、`align-items: center`などで箱単位の整列ができる。通常のインライン要素のように、すべての子を共通のテキストのベースラインに載せる必要はない。
-
-ただし、これは**ベースラインがなくなるという意味ではない**。`inline-flex`自身は外側の行でベースラインに基づいて配置され得るし、内部でも`align-items: baseline`を使えばベースライン整列を行える。文字にも引き続きベースラインがある。
-
-**Wikiに使う一文**
-
-> `inline-flex`は、外側ではインラインレベルのボックスとして親のIFCに参加し、内側ではFFCを形成する。直接の子はFlexアイテムとして配置されるため、内側の配置基準を通常のインラインのベースラインに限定せず、`align-items`などで整列できる。ただし、外側・内側ともベースラインそのものが消えるわけではない。
-
-![親のIFCへ参加するinline-flexの箱と、内側のFFCで並ぶ画像・文字のFlexアイテム](../../../00_Wiki共通/画像/img/html-css/02_08_03_外側のIFCと内側のFFC.svg)
-
-外側の位置合わせは残る。内側の直接の子はFFCで配置する。
-
-図は模式図。ベースラインの位置は実際のフォントや子要素によって変わる。
-
-## 「外側がIFC」という表現を正確にする
-
-`inline-flex`自身が「IFCに変身する」のではない。**親のIFCに参加する、インラインレベルの箱**になるという意味である。
-
-- **外側の表示型（outer display type）**：`inline`。周囲の文字・インライン要素と同じ行で配置される。
-- **内側の表示型（inner display type）**：`flex`。直接の子をFlexアイテムとして配置する。
-
-新しい2キーワード構文なら、次のように表せる。
-
-```css
-.badge {
-  display: inline-flex; /* 従来の書き方 */
-  /* display: inline flex; と同じ考え方 */
-}
-```
-
-比較すると次のようになる。
-
-| `display` | 外側での扱い | 内側の配置 |
-|---|---|---|
-| `inline` | インラインレベル | 通常のインラインの流れ |
-| `inline-block` | インラインレベル | 通常フロー。独立したBFCを形成 |
-| `flex` | ブロックレベル | FFC |
-| `inline-flex` | インラインレベル | FFC |
-
-`inline-block`は概念上、`inline flow-root`に相当する。`inline-flex`は`inline flex`に相当する。**外側が同じでも、内側の配置モデルは違う。**
-
-> **前提の例外**：親がIFCを形成しているときに、`inline-flex`はその行へ参加する。親がFlexコンテナの場合、その子はFlexアイテムとなり、`display`の外側の型がブロック化される場合がある。「どこでも必ず親のIFCに参加する」わけではない。
-
-## `inline-block`の内側は「ただのインライン」ではない
-
-`inline-block`も外側と内側は分かれている。内側には独立した**BFC（Block Formatting Context）**が形成され、その中で通常フロー（ブロック配置・インライン配置）が行われる。
-
-ここを単純に「`inline-block`の内側はIFC」とだけ書くと不正確になる。
-
-- 内側の子がテキストやインライン画像なら、それらが**行ボックス（line box）**を形成して並ぶ。
-- 内側の子がブロック要素なら、ブロックの通常フローに従って積み重なる。
-- `inline-block`は、複数の直接の子をFlexアイテムとして扱うわけではない。
-
-`inline-flex`では、直接の子要素はFlexアイテムになる。**Flexアイテムのさらに内側**には、必要に応じて独立した通常のテキスト配置（行ボックス）などが存在する。FFCがすべての子孫の文字組みを消すわけではない。
-
-![inline-block内の通常フローと、inline-flex内のFlexアイテムを同じ画像・文字で比較](../../../00_Wiki共通/画像/img/html-css/02_08_03_inline-blockとinline-flexの内側.svg)
-
-`inline-block`では、インラインのimgは行ボックスに参加。`inline-flex`では、直接の子はFlexアイテム。
-
-※図は画像と文字の内部配置を模式的に比較。外側の行の隙間は別問題。
-
-### 例：箱の境界は同じ、箱の中が違う
+まず、文字と画像を一つの `a` 要素に入れます。画像は装飾用の矢印なので、`alt` は空にします。
 
 ```html
-<span class="sample block">
-  <img src="icon.svg" alt="">
-  <span>詳しく見る</span>
-</span>
-
-<span class="sample flex">
-  <img src="icon.svg" alt="">
-  <span>詳しく見る</span>
-</span>
+<p>
+  続きはこちらから
+  <a class="link" href="/detail/">
+    <img src="arrow.svg" alt="">
+    <span>詳しく見る</span>
+  </a>
+  ご確認ください。
+</p>
 ```
 
-```css
-.block {
-  display: inline-block;
-}
-
-.flex {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-```
-
-前者の直接の子は通常フローに従う。後者の直接の子はFlexアイテムとして配置される。
-
-## displayは指定、boxは結果
-
-`display`は、要素が外側と内側でどのようなレイアウトに参加するかを指定するプロパティである。boxは、その指定などをもとに表示用に作られる箱である。
-
-```text
-要素へdisplayを指定する
-→ 表示と配置に使う箱が作られる
-→ Layoutで箱の寸法と位置が決まる
-```
-
-`display`とboxを同じ言葉として扱わず、指定と結果として分ける。詳しい関係は[要素とCSSの箱の関係](../05_ボックスとdisplay/06_要素とCSSの箱の関係.md)で確認できる。
-
-画像下に見える空間の仕組みと対処は、[ベースライン・ディセンダー・画像下の隙間](./04_ベースラインと見た目のずれ.md#image-gap)で、内側の行と外側の行を分けて確認する。
-
-## `inline-flex`はベースラインを無視しているのか？
-
-**違う。「内側の配置基準として、ベースライン以外も選べる」が正確。**
-
-```css
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-}
-```
-
-横書きで`flex-direction: row`（既定）の場合、主軸は横方向、交差軸は縦方向になる。そのため、`align-items: center`は**Flexアイテムの箱を交差軸方向（縦方向）で中央に揃える**。
-
-インラインのベースラインを利用して子同士を揃えるのとは異なる。
-
-一方、
-
-```css
-.badge {
-  display: inline-flex;
-  align-items: baseline;
-}
-```
-
-とすれば、FFCの中でも子アイテムのベースラインを使った整列ができる。ベースラインのないアイテムは必要に応じて基準線が合成される。
-
-![Flexのcenterでは箱の中心、baselineでは子のベースラインを揃える](../../../00_Wiki共通/画像/img/html-css/02_08_03_centerとbaselineの違い.svg)
-
-※配置の考え方を示す模式図。実際の文字の基準線や画像の位置は内容・フォント等に依存。
-
-### `vertical-align`とは何が違う？
-
-- `vertical-align`：**親の行ボックスの中**で、インラインレベル要素の縦位置を調整する。
-- `align-items`：**Flexコンテナの中**で、Flexアイテムの交差軸方向の位置を調整する。
-
-両者は対象が違う。`inline-flex`自身を外側の行で少し上下させたい場合は、`vertical-align`も関係する。内側の画像と文字を中央に揃えたいなら、`align-items: center`を使う。
-
-> `vertical-align: middle`は、単純に2つの箱の幾何学的な中心を合わせる指定ではない。行のベースラインや親のx-heightを基準にした配置なので、Flexの中央揃えと結果が一致するとは限らない。
-
-## それでも`inline-block`で対応できるのでは？
-
-**対応できる場合は多い。ただし`inline-block`自身には、Flexのような子要素の一括配置機能がない。**
-
-| やりたいこと | `inline-block` | `inline-flex` |
-|---|---|---|
-| 文字だけの小さなラベル | 十分 | 可能だが必須ではない |
-| 外側を文章の途中に並べる | 可能 | 可能 |
-| 内側の文字と画像を横並びにする | インラインの通常フローで可能 | Flexアイテムとして可能 |
-| 内側の異なる高さの子を中央揃え | 子ごとに調整することがある | `align-items: center` |
-| 子要素同士に一定の`gap`を指定 | `inline-block`だけでは不可 | 可能 |
-| `justify-content: space-between` | `inline-block`だけでは不可 | 可能 |
-| 子を`flex-grow`・`flex-shrink`で伸縮 | 不可 | 可能 |
-| 子の並びを`order`で制御 | 不可 | 可能 |
-
-別のCSSを組み合わせれば見た目を再現できる場合もある。「`inline-block`では絶対に不可能」という意味ではない。
-
-### 教科ラベルなら`inline-block`で足りる
-
-```html
-<p class="subject">国語</p>
-```
-
-```css
-.subject {
-  display: inline-block;
-  padding: 10px 20px;
-  background: #c93030;
-  color: #fff;
-}
-```
-
-中が1つの文字列だけなので、複数の子をFlexで整列する必要はない。
-
-### 文字＋アイコンなら`inline-flex`が便利
-
-```html
-<a class="link" href="#">
-  <span>詳しく見る</span>
-  <img src="arrow.svg" alt="">
-</a>
-```
+はじめはリンクを `inline-block` にします。
 
 ```css
 .link {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  border: 10px solid #555;
+  text-decoration: none;
 }
 
 .link img {
@@ -209,45 +35,14 @@
 }
 ```
 
-2つの子アイテムをまとめて中央揃えでき、間隔も`gap`で指定できる。
+リンク自体は、前後の文章と同じ行に置けます。その内側では、画像と `span` が通常のインラインの配置に参加します。画像の位置にはベースラインが関わり、HTML上の空白が画像と文字の間隔として現れることもあります。
 
-### 文字だけの小さな箱ならinline-block
-
-`inline-block`は、外側では行内の流れに参加し、内側では幅・高さ・paddingを持つ箱として扱える。
-
-通常フローの非置換`inline-block`で`width: auto`のときは、通常ブロックのように利用可能幅へ一律に広がらず、内容に必要な幅と利用可能幅から収まる幅が決まる。そのため内容に沿った幅に見えやすいが、`auto`自体を「内容幅」という固定の意味では扱わない。
-
-```html
-<a class="button" href="#">詳細を見る</a>
-```
+次はHTMLを変えず、リンク側の `display` だけを `inline-flex` に変更します。変更した状態で `align-items` と `gap` も指定します。
 
 ```css
-.button {
-  display: inline-block;
-  padding: 10px 20px;
-  border: 10px solid #555;
-  text-decoration: none;
-}
-```
-
-文字一つとpaddingでボタン面積を作るなら、`inline-block`で足りる。中に並べる複数の子要素がない場合、Flexを使う理由はまだない。
-
-### 文字とアイコンを並べるならinline-flex
-
-`inline-flex`は、外側では行内の流れに参加し、内側では子要素をFlexの規則で並べる。
-
-```html
-<a class="button" href="#">
-  <span>詳細を見る</span>
-  <span aria-hidden="true">→</span>
-</a>
-```
-
-```css
-.button {
+.link {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   padding: 10px 20px;
   border: 10px solid #555;
@@ -255,102 +50,138 @@
 }
 ```
 
-`gap`で子要素間の距離を作り、`align-items`で文字とアイコンの縦位置をそろえられる。
+今度は `img` と `span` がそれぞれ **Flexアイテム**になります。横書きで既定の `flex-direction: row` なら、子を横方向に並べ、`align-items: center` で縦方向の箱の中心を揃え、`gap: 10px` で間隔を作れます。
 
-| 中身 | 選択の目安 |
-| --- | --- |
-| 文字だけ | `inline-block`で足りることが多い |
-| 文字と矢印・アイコン | `inline-flex`で内部を並べやすい |
-| 独立したCTA | 中身と整列方法に合わせて選ぶ |
+変更したのはリンクの**中身の配置方法**です。リンク全体が文章の途中に置かれる点は変わりません。
 
-ボタン面積はまずpaddingで作り、最低寸法が必要な場合に `min-width`や `min-height`を加える。固定した `width`や `height`は、文字変更や折り返しに弱くなるため要件を確認して使う。
+![inline-block内の通常フローと、inline-flex内のFlexアイテムを同じ画像・文字で比較](../../../00_Wiki共通/03_画像/img/html-css/02_08_03_inline-blockとinline-flexの内側.svg)
 
-### 疑似要素もpaddingの内側に入る
+図②では、左側の `inline-block` は内部に通常の文字の行があり、右側の `inline-flex` では画像と文字を包む要素がFlexアイテムになっています。これは内側の仕組みを示す模式図で、実際の隙間の大きさはフォントや指定値によって変わります。
 
-`::before`と `::after`は、元の要素の内容の前後に生成され、その要素の行内レイアウトやFlexなどの規則に従って配置される。この例では `.button`がFlexコンテナなので、文字と `::after`の間隔を `gap`で作れる。
+## 外側では、どちらも文章の一部として置かれる
+
+リンクの中身をFlexで揃えられるとしても、リンク全体が文章の行から独立するわけではありません。
+
+![親のIFCへ参加するinline-flexの箱と、内側のFFCで並ぶ画像・文字のFlexアイテム](../../../00_Wiki共通/03_画像/img/html-css/02_08_03_外側のIFCと内側のFFC.svg)
+
+図①の「前の文字」「後の文字」は、リンクの外側にある文章です。その間に `inline-flex` の箱が一つ置かれています。親が通常のインラインの行を作っている場合、**リンク全体の縦位置は外側の行のルールに従い**、その箱の内部ではFlexのルールが使われます。
+
+ここで、配置を二つに分けて考えます。
+
+- **外側**：リンクの箱そのものを、周囲の文字とどう並べるか。
+- **内側**：リンクの中にある画像と文字の箱を、どう並べるか。
+
+そのため、リンクの中の画像と文字が中央に揃っていても、文章の中でリンク全体が上下へずれて見えることはあります。内側の整列を変える `align-items` と、行内でリンク全体の縦位置に関わる `vertical-align` は、同じ場所を操作していません。
 
 ```css
-.button {
+.link {
+  vertical-align: middle;
+}
+```
+
+この `vertical-align: middle` は、周囲の行に対するリンク全体の配置を変えます。ただし、Flexの `align-items: center` と同じ幾何学的な中央揃えではありません。行のベースラインやフォントに由来する基準も関わります。
+
+## なぜ外側と内側でルールが違うのか
+
+`display` は、要素が外側でどう扱われるかと、内側にどんな配置方法を作るかを合わせて決めます。
+
+| 指定 | 外側の扱い | 内側の扱い |
+| --- | --- | --- |
+| `inline-block` | インラインレベルの箱 | 通常フロー。独立したBFCを形成 |
+| `inline-flex` | インラインレベルの箱 | Flex整形コンテキスト（FFC）を形成 |
+| `flex` | ブロックレベルの箱 | Flex整形コンテキスト（FFC）を形成 |
+
+`inline-flex` は `inline flex`、`inline-block` は `inline flow-root` という外側・内側の組み合わせで理解できます。前者は直接の子をFlexアイテムとして配置し、後者は通常フローに従って配置します。
+
+`inline-block` の中に文字やインライン画像があれば、それらのために行ボックスが作られます。一方、ブロックの子があれば通常フローで縦に並びます。つまり「`inline-block` の内側は必ずIFCだけ」という意味ではありません。
+
+同様に、`inline-flex` の中のすべての文字がFlexアイテムになるわけでもありません。この例の `span` はFlexアイテムですが、**その `span` の中の文字は、引き続き文字として行に配置されます**。
+
+なお、ここで「外側はインライン」と説明できるのは、親が通常の文章の行を作っている例だからです。親自身がFlexコンテナなら、その直接の子はFlexアイテムになり、外側の扱いは変わり得ます。表示の指定と、作られる箱の関係は[要素とCSSの箱の関係](../05_ボックスとdisplay/06_要素とCSSの箱の関係.md)で確認できます。
+
+## `align-items: center` と `baseline` は何を揃えるか
+
+内側をFlexにしても、ベースラインそのものが消えるわけではありません。
+
+```css
+.link {
+  display: inline-flex;
+  align-items: center;
+}
+```
+
+`center` なら、横並びのFlexアイテムを縦方向の箱の中心で揃えます。これを `align-items: baseline` に変えると、各アイテムのベースラインを基準にした整列になります。必要なベースラインを持たないアイテムには、規則に従って基準線が合成される場合があります。
+
+![Flexのcenterでは箱の中心、baselineでは子のベースラインを揃える](../../../00_Wiki共通/03_画像/img/html-css/02_08_03_centerとbaselineの違い.svg)
+
+図④は**リンクの内側の整列**の比較です。画像の下に残る空間を考える際には、別記事[ベースラインと見た目のずれ](./04_ベースラインと見た目のずれ.md#image-gap)の図③で、部品の内側と外側のどちらに空間があるかを確認できます。番号は、この記事の図①・②・④と次の記事の図③を合わせた系列です。
+
+## 文字だけなら、Flexにする必要はあるか
+
+必ずしもありません。たとえば「国語」という短いラベルを、文字とpaddingを持つ一つの箱にしたいだけなら `inline-block` で十分です。
+
+```html
+<span class="subject">国語</span>
+```
+
+```css
+.subject {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #c93030;
+  color: #fff;
+}
+```
+
+通常の非置換 `inline-block` で `width: auto` の場合、利用可能な幅と内容から箱の幅が決まります。通常のブロックと同じように、常に行いっぱいへ広がるわけではありません。ただし `auto` を単純に「文字幅と同じ」と読み替えるのも正確ではありません。
+
+反対に、画像・文字・矢印など**複数の子の間隔や縦位置をまとめて管理したい場合**には `inline-flex` が便利です。`gap` や `align-items` を使う目的が生まれるからです。
+
+`inline-block` でも別の指定を組み合わせれば同じ見た目にできることがあります。両者を「できる／できない」だけで分けるより、**どの箱の配置を調整したいか**で選びます。実際に押せる範囲は、`display` だけでは決まらず、リンク自身のpaddingなども関係します。詳しくは[CTAとナビリンクの操作範囲](../15_UI部品の実装判断/09_CTAとナビリンクの操作範囲を作る.md)で扱います。
+
+## 疑似要素もpaddingの内側に入る
+
+矢印を画像ではなく `::after` で付ける場合も、同じ考え方が使えます。
+
+```html
+<a class="link" href="/detail/">詳しく見る</a>
+```
+
+```css
+.link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding-inline: 20px;
 }
 
-.button::after {
+.link::after {
   content: ">";
 }
 ```
 
-`::after`は元の要素の中に生成されるため、この例ではpaddingの内側へ配置される。「直前の文字のベースライン終端から描画される」とは考えない。
+生成した `::after` は、リンクの内容の後ろに置かれます。この例ではFlexコンテナ内で扱われるので、文字と疑似要素の間隔を `gap` で作れます。疑似要素はリンクの外側へ追加される別の兄弟要素ではないため、指定したpaddingの内側に収まります。
 
-疑問：[疑似要素のdisplayと配置基準はどう違うのか？](../../../06_疑問/01_HTML・CSS/08_インラインと行の仕組み/疑似要素のdisplayと配置基準はどう違うのか.md)
+![文字の後ろに生成された疑似要素が、リンクのpadding内に配置される関係](../../../00_Wiki共通/03_画像/img/html-css/02_08_03_疑似要素とpaddingの範囲.svg)
 
-```text
-[左padding][文字][gap][::after][右padding]
-```
+この図では、リンクの左右にpaddingがあり、その内側で文字と `::after` の間へ `gap` が入ります。
 
-単純な文字記号なら疑似要素で表せる。SVG画像を使う場合や、独立した意味・細かな寸法調整が必要な場合は実要素も検討する。具体的な判断は[CTAとナビリンクの操作範囲](../15_UI部品の実装判断/09_CTAとナビリンクの操作範囲を作る.md)と[装飾アイコンを疑似要素か実要素で作る](../15_UI部品の実装判断/13_装飾アイコンを疑似要素か実要素で作る.md)へ進む。
+ただし、疑似要素にしかない重要な意味を持たせるのは避けます。単なる装飾か、独立した画像・情報として管理したいかは[装飾アイコンを疑似要素か実要素で作る](../15_UI部品の実装判断/13_装飾アイコンを疑似要素か実要素で作る.md)で判断します。
 
-## 「箱を1段上に載せる」イメージは使える？
+空の疑似要素を `inline-block` で行に置く場合と、`position: absolute` で配置する場合の基準の違いは、[疑似要素のdisplayと配置基準はどう違うのか？](../../../06_疑問/01_HTML・CSS/08_インラインと行の仕組み/疑似要素のdisplayと配置基準はどう違うのか.md)で確認できます。
 
-**比喩としては使える。** 外側の行に`inline-flex`という1つの箱があり、その中に別の配置ルールがある、と捉えると理解しやすい。
+## DevToolsで外側と内側を確かめる
 
-ただし、実際のCSSが2次元から3次元へ移動しているわけではない。独立した**整形コンテキストの境界**があるという意味である。
+最初の「詳しく見る」のHTMLをブラウザで開き、まずリンクを選んで `display` を `inline-block` と `inline-flex` で切り替えます。画像と文字の並びが変わる一方で、リンク全体は文章の間に残ることを確認します。
 
-そして、完全に無関係な世界でもない。`inline-flex`自身の大きさやベースラインは、その中のFlexアイテムの寸法やベースラインから影響を受けることがある。
+次に `inline-flex` のまま `align-items` を `center` と `baseline` で切り替え、内側の二つの箱の動きを見ます。その後、`vertical-align` を変えてリンク全体の位置を観察します。**中の箱を動かしたのか、外側の行の中でリンク全体を動かしたのか**を、一度に一つの変更で確かめます。
 
-- **内側の子の並べ方**はFFCが決める。
-- **その箱自身を外側でどこに置くか**は、親の配置ルールが決める。
-- **箱のサイズ・基準線**には、内側の結果が反映されることがある。
-
-「レイアウトのルールが分かれている」と「一切影響し合わない」は同じではない。
-
-## DevToolsで実際に確認する
-
-この記事のコード例と、[画像下の隙間のコード例](./04_ベースラインと見た目のずれ.md#image-gap)をHTMLファイルに記述してブラウザで開く。次の順番で確認する。
-
-1. **インライン画像の隙間**：画像を囲む枠の下側を確認し、`img { display: block; }`を付け外しする。
-2. **inline-blockとinline-flex**：画像と文字を同じHTMLに入れ、親だけ`display`を切り替える。
-3. **中央揃えとベースライン揃え**：`align-items: center`と`baseline`を切り替える。
-4. **外側の基準線**：文章中に置いた`inline-flex`の`vertical-align`を変更して、箱全体がどう動くかを見る。
-5. **`line-height: 0`の副作用**：画像の隣に文字を入れ、行高や文字の重なりを確認する。
-
-注意：DevToolsの`Computed`で表示される寸法は最終的な使用値であり、CSSにその寸法を明示的に書いたことを意味しない。
-
-## よくある混同と正しい言い換え
-
-| 言い方 | 正確な理解 |
-|---|---|
-| `inline-flex`の外側はIFC | 親がIFCを形成していれば、**そのIFCに参加する** |
-| `inline-flex`はベースラインを無視する | **内側ではベースライン以外の整列方法も選べる** |
-| `inline-flex`にするとベースラインが消える | **外側のベースラインは残る。内側でも利用できる** |
-| `inline-block`の内側はIFCだけ | **独立したBFCがあり、インライン内容には行ボックスができる** |
-| `inline-flex`の子の文字はベースラインを持たない | **Flexアイテムの内部では通常の文字組みが続く** |
-| `inline-flex`なら下の余白が全部消える | **内側の画像由来の隙間と、外側の行の空間は別** |
-| 文字ラベルには常に`inline-flex`がよい | **単独の文字なら`inline-block`で足りる** |
-
-## このページのまとめ
-
-**実装時に必要なこと**
-
-1. `inline-flex`は**外側がinline、内側がflex**。
-2. 直接の子はFlexアイテムになり、FFCの規則で並ぶ。
-3. `align-items: center`は**箱の中央揃え**であり、ベースラインを消す指定ではない。
-4. 画像下の隙間が**内側の行ボックス**で発生しているのか、**外側の行**で発生しているのかを区別する。
-5. `inline-block`でも可能なことは多い。複数の子の整列・間隔・伸縮が必要なら`inline-flex`を選ぶ。
-
-**必要になったときに調べること**
-
-- [`inline-block`自身のベースラインの細かい決定規則](../../../03_詳細/01_HTML・CSS/08_inline-blockのベースラインが決まる条件を比べる.md)（通常は内部の最後の行ボックス、例外もある）。
-- Flexコンテナのベースラインの選択・合成規則。
-- フォントの詳細なメトリクスや行ボックスの算出。
+画像の下の空間が気になった場合は、次の[ベースラインと見た目のずれ](./04_ベースラインと見た目のずれ.md#image-gap)で、行ボックスが作る空間を調べます。`inline-block` 自身のベースラインがどの位置になるかの細かな条件は、[inline-blockのベースラインが決まる条件を比べる](../../../03_詳細/01_HTML・CSS/08_inline-blockのベースラインが決まる条件を比べる.md)へ分けます。
 
 ## 参考仕様
 
-- [MDN：Flex container](https://developer.mozilla.org/en-US/docs/Glossary/Flex_Container)
+- [MDN：display](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/display)
 - [MDN：Using the multi-keyword syntax with CSS display](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Multi-keyword_syntax)
 - [MDN：Introduction to formatting contexts](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Display/Formatting_contexts)
 - [MDN：vertical-align](https://developer.mozilla.org/ja/docs/Web/CSS/Reference/Properties/vertical-align)
 - [CSS Flexible Box Layout：Flex Container Baselines](https://www.w3.org/TR/css-flexbox-1/#flex-baselines)
-- [CSS 2：inline-blockのベースライン](https://drafts.csswg.org/css2/#propdef-vertical-align)
