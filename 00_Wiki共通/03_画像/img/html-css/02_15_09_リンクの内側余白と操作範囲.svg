@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="384.96" viewBox="0 0 920 466" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">操作できるのは、リンク自身の範囲</title><desc id="desc">同じ文字を囲むリンク。外の余白だけでは操作領域は広がらず、a自身のpaddingで操作できる範囲が広がる。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="466" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">操作できるのは、リンク自身の範囲</text>
+<rect x="35" y="79" width="415" height="313" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="59" y="117" font-size="19" fill="#193B64" font-weight="700">① 余白がリンクの外側</text>
+<rect x="467" y="79" width="415" height="313" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="491" y="117" font-size="19" fill="#193B64" font-weight="700">② リンク自身にpadding</text>
+<rect x="63" y="140" width="358" height="191" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="497" y="140" width="357" height="191" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="135" y="205" width="211" height="54" rx="7" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="239" y="238" font-size="20" fill="#000000" font-weight="400" text-anchor="middle">詳しく見る</text>
+<rect x="521" y="174" width="312" height="121" rx="7" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="676" y="238" font-size="20" fill="#000000" font-weight="400" text-anchor="middle">詳しく見る</text>
+<text x="61" y="357" font-size="17" fill="#25384F" font-weight="400">青い部分だけがリンクの面積</text>
+<text x="491" y="357" font-size="17" fill="#25384F" font-weight="400">文字の周りもリンクとして押せる</text>
+<text x="34" y="440" font-size="16" fill="#000000" font-weight="400">※ 青い面は操作範囲を示す説明色。実際の色や寸法はUIの設計によります。</text></svg>

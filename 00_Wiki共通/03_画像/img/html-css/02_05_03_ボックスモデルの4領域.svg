@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="409.74" viewBox="0 0 920 496" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">一つの箱を囲む4つの領域</title><desc id="desc">contentをpaddingが囲み、その外側にborder、さらにmarginがある。これらを一つの要素の箱の領域として分ける。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="496" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">一つの箱を囲む4つの領域</text>
+<rect x="100" y="85" width="720" height="338" rx="10" fill="#f9cc9d" stroke="none" stroke-width="0"/>
+<text x="128" y="121" font-size="19" fill="#000000" font-weight="600">margin（ほかの箱との外側の間隔）</text>
+<rect x="153" y="139" width="614" height="248" rx="8" fill="#f2ed20" stroke="none" stroke-width="0"/>
+<text x="177" y="170" font-size="19" fill="#000000" font-weight="600">border（枠線）</text>
+<rect x="202" y="188" width="515" height="161" rx="8" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<text x="227" y="219" font-size="19" fill="#26724a" font-weight="600">padding（内容と枠の間）</text>
+<rect x="259" y="237" width="398" height="75" rx="7" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="457" y="284" font-size="23" fill="#25384F" font-weight="700" text-anchor="middle">content：お知らせ</text>
+<text x="115" y="466" font-size="17" fill="#000000" font-weight="400">※ 色は領域を区別するための説明用です。</text></svg>

@@ -1,195 +1,106 @@
 # 10_scriptの読み込みと実行タイミングを知る
 
-## このページの役割
+JavaScriptのファイルのパスは合っているのに、**画面にあるはずのボタンをJavaScriptが見つけられない**ことがあります。原因の一つは、その処理が動いた時点で、HTMLのボタンがまだ解析されていなかったことです。
 
-`script`要素の書き方によって、HTMLの解析とJavaScriptの取得・実行タイミングがどう変わるかを扱う。
+ここでは`src`を使う**外部のclassic script**を例に、通常の`script`、`defer`、`async`を比べます。ファイルを**取得すること**と、その中のコードを**実行すること**は別です。
 
-主に次の3つを区別する。
+## 同じHTML・同じJavaScriptで結果を比べる
 
-```text
-通常のscript
-defer
-async
-```
-
-このページでは、`src`を持つ外部のclassic scriptを比較する。インラインのclassic scriptでは`defer`に効果がない。`type="module"`のmodule scriptは、`async`がなければ既定でHTML解析後に実行され、`defer`を付けても追加の効果はないため、この比較をそのまま当てはめない。
-
-## HTMLは上から解析される
-
-ブラウザは、基本的にHTMLを上から順番に解析して文書を組み立てる。
+例えば次のHTMLを`index.html`として用意します。
 
 ```html
-<head>
-  <script src="js/main.js"></script>
-</head>
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>scriptの確認</title>
+    <script src="js/main.js"></script>
+  </head>
+  <body>
+    <button id="target" type="button">開く</button>
+  </body>
+</html>
 ```
 
-通常の外部classic scriptに到達すると、HTMLの解析を一度止めてJavaScriptファイルを取得し、実行する。
+`js/main.js`には、確認するため次の一行を書きます。
 
-```text
-HTMLを解析
-↓
-scriptに到達
-↓
-HTMLの解析を停止
-↓
-JavaScriptを取得
-↓
-JavaScriptを実行
-↓
-HTMLの解析を再開
+```js
+console.log(document.querySelector("#target"));
 ```
 
-そのため、`head`内で通常の`script`を読み込むと、後ろにあるHTMLがまだ解析されていない状態でJavaScriptが実行されることがある。
+このJavaScriptは、`id="target"`の要素を探してConsoleへ表示します。通常の`script`を`head`に置くと、ブラウザはHTMLの解析中にそのスクリプトを実行するため、後ろにある`body`のボタンをまだ解析しておらず、結果が`null`になることがあります。この例では、ほかのスクリプトがDOMを作り足さない限り、ボタンはまだありません。
 
-## `defer`でHTMLの解析を止めずに読み込む
+## 通常の`script`は、解析の途中で実行する
 
 ```html
-<head>
-  <script src="js/main.js" defer></script>
-</head>
+<script src="js/main.js"></script>
 ```
 
-`defer`を付けると、HTMLを解析しながらJavaScriptファイルを取得できる。
+このような通常の外部classic scriptをHTMLパーサーが処理すると、**そのスクリプトの実行が終わるまで、後ろのHTMLの解析を待ちます**。
 
-JavaScriptの実行は、HTMLの解析が完了したあとに行われる。
+ファイルの取得は、ブラウザの先読みによってパーサーがその位置へ到達するより前から始まることがあります。したがって「解析を止める」のは実行を待つ場所の話で、**取得が必ずその時点から始まる**という意味ではありません。
 
-```text
-HTMLを解析 ─────────────→ 解析完了
-      ↓
-      JavaScriptを並行して取得
-                         ↓
-                    JavaScriptを実行
-```
+## `defer`なら、HTML解析後に実行する
 
-HTMLの要素をJavaScriptから操作する場合でも、HTMLの解析完了後に実行されるため扱いやすい。DOMから要素を取得してイベントを登録する処理は[DOMとイベント](../../02_JS/02_DOMとイベント.md)で扱う。
-
-通常のWeb制作では、外部JavaScriptを`head`内から読み込む場合の基本形として使いやすい。
+今度は同じ`script`に`defer`だけを追加します。
 
 ```html
-<head>
-  <script src="js/main.js" defer></script>
-</head>
+<script src="js/main.js" defer></script>
 ```
 
-## 複数の`defer`は記述順に実行される
+ファイルをHTMLの解析と並行して取得し、**文書の解析が完了してから**実行します。上の例では、ボタンがDOMに作られた後に`querySelector`が動くため、Consoleへボタン要素が表示されます。
+
+![通常scriptはHTML解析を待たせて実行、deferは解析完了後に実行、asyncは実行可能になり次第動く違いを示す図](../../../00_Wiki共通/03_画像/img/html-css/02_02_10_scriptの実行とHTML解析のタイミング.svg)
+
+`defer`を複数指定した外部classic scriptは、HTML上の記述順で実行されます。
 
 ```html
 <script src="js/a.js" defer></script>
 <script src="js/b.js" defer></script>
 ```
 
-`defer`を付けたスクリプトは、
+この場合は`a.js`の後に`b.js`を実行します。`DOMContentLoaded`はこれらのdeferred scriptの実行後に発火します。
 
-```text
-a.js
-↓
-b.js
-```
+このWikiで、`head`から外部JavaScriptを読み込むときの基本候補として`defer`を使いやすいのは、**DOMの準備が終わった状態で処理を始められる**ためです。
 
-のようにHTML上の記述順を保って実行される。
-
-複数のJavaScriptに依存関係がある場合にも扱いやすい。
-
-`defer`付きのscriptは、すべて実行されたあとに`DOMContentLoaded`が発火する。
-
-## `async`は取得でき次第実行する
+## `async`は、ファイルが実行できる状態になったときに動く
 
 ```html
 <script src="js/main.js" async></script>
 ```
 
-`async`も、HTMLの解析と並行してJavaScriptファイルを取得する。
+`async`も解析と並行して取得できますが、**HTMLの解析完了を待つわけではありません**。スクリプトを実行できる状態になり次第実行するため、解析の途中ならそこでHTMLの解析が一時止まり、すでに解析が終わっていればその後に実行されます。
 
-ただし、取得が完了するとHTMLの解析を一時停止して、その場でJavaScriptを実行する。
+したがって、先ほどのボタンが見つかるかどうかは、取得や実行のタイミング次第です。**必ず存在する要素を探す処理に`async`を選ぶのは、この最小例では適していません。**
 
-```text
-HTMLを解析 ───────→
-      ↓
-      JavaScriptを並行して取得
-             ↓ 取得完了
-      HTMLの解析を一時停止
-             ↓
-      JavaScriptを実行
-             ↓
-      HTMLの解析を再開
-```
+`async`を複数指定しても、`a.js`・`b.js`の記述順で実行される保証はありません。取得や実行の準備ができた順序に左右されるので、スクリプト同士が互いの結果に依存しない場合に向きます。
 
-実行されるタイミングは、ファイルの取得が完了したタイミングによって変わる。
-
-## 複数の`async`は実行順が保証されない
-
-```html
-<script src="js/a.js" async></script>
-<script src="js/b.js" async></script>
-```
-
-この場合、
-
-```text
-a.js → b.js
-```
-
-の順に実行されるとは限らない。
-
-先に取得が完了したファイルから実行されるため、他のJavaScriptに依存しない処理で使う。
-
-## `body`の末尾に置く方法もある
-
-以前から使われてきた書き方として、`script`要素を`body`の末尾に置く方法がある。
+## `body`の末尾に通常の`script`を置く場合
 
 ```html
 <body>
-  <main>
-    <!-- ページ内容 -->
-  </main>
-
+  <button id="target" type="button">開く</button>
   <script src="js/main.js"></script>
 </body>
 ```
 
-`script`に到達する頃には、その前にあるHTMLの解析がほぼ終わっているため、JavaScriptからHTML要素を扱いやすくなる。
+この場合、ボタンはスクリプトより先にHTMLパーサーによって処理されるため、見つけられます。ファイルの取得自体は先読みで始まる場合がありますが、**実行する位置はそのscript要素の位置**です。
 
-HTMLパーサーが`script`を処理する位置は末尾になる。ブラウザの先読みでファイル取得が早く始まる場合はあるため、取得開始時点が必ず末尾まで遅れるとは限らない。
+`head`の`defer`と`body`末尾の通常scriptは、どちらも今回のボタンを扱えます。ただし、既存のコードを位置だけで機械的に移し替えず、スクリプト間の依存関係も確認してください。
 
-`head`内で`defer`を使えば、HTMLを解析しながらJavaScriptを取得できる。
+## 三つの違い
 
-```html
-<head>
-  <script src="js/main.js" defer></script>
-</head>
-```
-
-そのため、このWikiでは`head`内で`defer`を使う方法を基本形とする。
-
-ただし、既存コードを配置だけで機械的に移動しない。ほかのscriptとの依存関係や実行順を確認してから変更する。
-
-## 3つの違い
-
-| 書き方 | HTML解析中の取得 | 実行タイミング | 実行順 |
+| 書き方 | 解析の扱い | 実行する時点 | 複数の実行順 |
 | --- | --- | --- | --- |
-| 通常の`script` | `script`到達時に取得し、解析を止める | 取得後すぐ | 記述順 |
-| `defer` | HTML解析と並行 | HTML解析完了後 | 記述順 |
-| `async` | HTML解析と並行 | 取得完了後すぐ | 保証されない |
+| 通常の外部classic script | パーサーが実行まで待つ | 通常、その位置で実行 | HTMLの記述順 |
+| `defer` | 解析と取得を並行できる | HTML解析後 | 記述順 |
+| `async` | 取得中は解析を続けるが、実行時に止める場合がある | 実行可能になり次第 | 保証なし |
 
-通常のWeb制作で、
+なお、ここでの`defer`は`src`を持つ**外部classic script**が対象です。インラインのclassic scriptには`defer`の効果がありません。`type="module"`では既定の実行方式が異なるため、この比較をそのまま当てはめません。
 
-```html
-<script src="js/main.js" defer></script>
-```
-
-と書く場合は、
-
-```text
-HTMLを解析しながらJavaScriptを取得する
-↓
-HTMLの解析が終わる
-↓
-JavaScriptを実行する
-```
-
-という流れを押さえておけばよい。
+JavaScriptから要素を選ぶ処理やクリックの登録自体は[DOMとイベント](../../02_JS/02_DOMとイベント.md)で扱います。
 
 ## 仕様確認先
 
-- [HTML Standard - The `script` element](https://html.spec.whatwg.org/multipage/scripting.html#the-script-element)
+- [HTML Standard：The script element](https://html.spec.whatwg.org/multipage/scripting.html#the-script-element)
+- [HTML Standard：Speculative HTML parsing](https://html.spec.whatwg.org/multipage/parsing.html#speculative-html-parsing)

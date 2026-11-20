@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="389.91" viewBox="0 0 920 472" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">同じwidth 240pxでも、箱の外幅が変わる</title><desc id="desc">左右padding16pxを保ち、content-boxならcontent240pxで外幅272px、border-boxなら外幅240pxでcontent208pxになる。borderのない例。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="472" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">同じwidth 240pxでも、箱の外幅が変わる</text>
+<rect x="30" y="81" width="423" height="332" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="54" y="119" font-size="19" fill="#193B64" font-weight="700">① content-box</text>
+<rect x="468" y="81" width="425" height="332" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="492" y="119" font-size="19" fill="#193B64" font-weight="700">② border-box</text>
+<rect x="66" y="161" width="330" height="126" rx="5" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<rect x="86" y="161" width="290" height="126" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="231" y="228" font-size="19" fill="#25384F" font-weight="700" text-anchor="middle">content 240px</text>
+<text x="231" y="328" font-size="21" fill="#007F99" font-weight="700" text-anchor="middle">外幅272px</text>
+<rect x="504" y="161" width="290" height="126" rx="5" fill="#cae6d1" stroke="none" stroke-width="0"/>
+<rect x="524" y="161" width="250" height="126" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="649" y="228" font-size="19" fill="#25384F" font-weight="700" text-anchor="middle">content 208px</text>
+<text x="649" y="328" font-size="21" fill="#007F99" font-weight="700" text-anchor="middle">外幅240px</text>
+<text x="76" y="372" font-size="16" fill="#26724a" font-weight="400">padding 16px + 240px + 16px</text>
+<text x="504" y="372" font-size="16" fill="#26724a" font-weight="400">240pxの中にpaddingも含む</text>
+<text x="37" y="447" font-size="16" fill="#000000" font-weight="400">※ 枠線のない例。緑はpadding、青はcontentを示します。</text></svg>

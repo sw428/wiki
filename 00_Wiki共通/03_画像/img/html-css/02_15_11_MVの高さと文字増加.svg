@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="409.74" viewBox="0 0 920 496" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">文字が増えたとき、高さを保つか伸ばすか</title><desc id="desc">同じ内容が二行から四行へ増えた場合、固定heightの領域は高さを保ち、min-heightの領域は必要なら伸びられる。両者とも写真と文字の関係を別途検討する。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="496" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">文字が増えたとき、高さを保つか伸ばすか</text>
+<rect x="34" y="76" width="424" height="362" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="58" y="114" font-size="19" fill="#193B64" font-weight="700">① height: 500px</text>
+<rect x="470" y="76" width="418" height="362" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="494" y="114" font-size="19" fill="#193B64" font-weight="700">② min-height: 500px</text>
+<rect x="78" y="138" width="328" height="193" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="513" y="138" width="327" height="235" rx="8" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
+<rect x="98" y="160" width="290" height="83" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="115" y="191" font-size="18" fill="#25384F" font-weight="700">見出しが長くなる</text>
+<text x="115" y="223" font-size="16" fill="#25384F" font-weight="400">説明・CTAが続く</text>
+<rect x="533" y="160" width="287" height="83" rx="6" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
+<text x="552" y="191" font-size="18" fill="#25384F" font-weight="700">見出しが長くなる</text>
+<text x="552" y="223" font-size="16" fill="#25384F" font-weight="400">説明・CTAが続く</text>
+<text x="106" y="272" font-size="17" fill="#c93030" font-weight="400">さらに本文が増える</text>
+<text x="106" y="303" font-size="17" fill="#c93030" font-weight="400">→ 領域は同じ高さ</text>
+<rect x="533" y="252" width="287" height="103" rx="0" fill="#f9cc9d" stroke="none" stroke-width="1"/>
+<text x="550" y="282" font-size="17" fill="#793A00" font-weight="400">さらに本文が増える</text>
+<text x="550" y="316" font-size="17" fill="#793A00" font-weight="400">→ 必要に応じて伸びる</text>
+<text x="48" y="398" font-size="17" fill="#25384F" font-weight="400">固定高：内容が収まるか確認</text>
+<text x="484" y="398" font-size="17" fill="#25384F" font-weight="400">最低高：内容増加を受けられる</text>
+<text x="38" y="474" font-size="16" fill="#000000" font-weight="400">※ 高さは仕組みを比較する模式図。写真の切り抜き方は別に選びます。</text></svg>

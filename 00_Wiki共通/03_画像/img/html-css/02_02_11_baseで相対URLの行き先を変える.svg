@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="391.57" viewBox="0 0 920 474" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">同じ href でも、基準URLで行き先が変わる</title><desc id="desc">文書https://example.com/docs/index.htmlでhref guide.htmlを使用。baseなしならdocs/guide.html、baseをhelp/に指定するとhelp/guide.htmlになる。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="474" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
+<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">同じ href でも、基準URLで行き先が変わる</text>
+<text x="46" y="99" font-size="18" fill="#25384F" font-weight="400">開いている文書： https://example.com/docs/index.html</text>
+<rect x="35" y="126" width="420" height="266" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="59" y="164" font-size="19" fill="#193B64" font-weight="700">① baseなし</text>
+<rect x="469" y="126" width="420" height="266" rx="12" fill="#ffffff" stroke="#DCE4EE" stroke-width="2"/>
+<text x="493" y="164" font-size="19" fill="#193B64" font-weight="700">② base href=&quot;.../help/&quot;</text>
+<rect x="64" y="185" width="365" height="44" rx="6" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="1"/>
+<text x="246" y="213" font-size="19" fill="#25384F" font-weight="600" text-anchor="middle">href=&quot;guide.html&quot;</text>
+<rect x="499" y="185" width="363" height="44" rx="6" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="1"/>
+<text x="680" y="213" font-size="19" fill="#25384F" font-weight="600" text-anchor="middle">href=&quot;guide.html&quot;</text>
+<line x1="246" y1="234" x2="246" y2="283" stroke="#8EA2B9" stroke-width="3"/>
+<text x="246" y="304" font-size="23" fill="#8EA2B9" font-weight="600" text-anchor="middle">↓</text>
+<line x1="681" y1="234" x2="681" y2="283" stroke="#8EA2B9" stroke-width="3"/>
+<text x="681" y="304" font-size="23" fill="#8EA2B9" font-weight="600" text-anchor="middle">↓</text>
+<rect x="57" y="322" width="376" height="48" rx="7" fill="#cfe4ff" stroke="#315fa0" stroke-width="1"/>
+<text x="245" y="353" font-size="18" fill="#25384F" font-weight="600" text-anchor="middle">.../docs/guide.html</text>
+<rect x="489" y="322" width="382" height="48" rx="7" fill="#f8cfd6" stroke="#c93030" stroke-width="1"/>
+<text x="680" y="353" font-size="18" fill="#25384F" font-weight="600" text-anchor="middle">.../help/guide.html</text>
+<text x="55" y="443" font-size="18" fill="#25384F" font-weight="400">同じHTMLのリンクを書き換えずに、行き先だけが変わる。</text></svg>
