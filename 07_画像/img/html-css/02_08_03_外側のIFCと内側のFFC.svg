@@ -1,14 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="760" height="355.22" viewBox="0 0 920 430" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図① 文章の行の中に、inline-flexの箱がある</title><desc id="desc">文章の行に置かれたリンクの箱は外側の行の配置を受け、内側では画像と文字がFlexアイテムとして並ぶ。</desc><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;dominant-baseline:auto}.mono{font-family:Consolas,'Noto Sans Mono',monospace}</style><rect x="0" y="0" width="920" height="430" rx="0" fill="#ffffff" stroke="none" stroke-width="1"/>
-<text x="34" y="48" font-size="24" fill="#000000" font-weight="700">図① 文章の行の中に、inline-flexの箱がある</text>
-<rect x="45" y="84" width="830" height="286" rx="14" fill="#F5F5F5" stroke="#666666" stroke-width="2"/>
-<text x="68" y="118" font-size="18" fill="#444444" font-weight="700">外側：文章の行の中で、リンク全体を置く</text>
-<text x="80" y="215" font-size="20" fill="#000000" font-weight="400">前の文字</text>
-<rect x="220" y="157" width="480" height="125" rx="9" fill="#ffffff" stroke="#315fa0" stroke-width="2"/>
-<text x="242" y="187" font-size="18" fill="#315fa0" font-weight="700">inline-flex（リンク全体）</text>
-<rect x="248" y="205" width="130" height="51" rx="5" fill="#cfe4ff" stroke="#315fa0" stroke-width="2"/>
-<text x="313" y="238" font-size="18" fill="#000000" font-weight="400" text-anchor="middle">画像</text>
-<rect x="401" y="205" width="251" height="51" rx="5" fill="#f8cfd6" stroke="#c93030" stroke-width="2"/>
-<text x="526" y="238" font-size="18" fill="#000000" font-weight="400" text-anchor="middle">詳しく見る</text>
-<text x="719" y="215" font-size="20" fill="#000000" font-weight="400">後の文字</text>
-<text x="60" y="340" font-size="16" fill="#000000" font-weight="400">リンク全体は、前後の文字と同じ行に参加する</text>
-<text x="45" y="405" font-size="15" fill="#444444" font-weight="400">※ 灰色の枠は説明用で、CSSのborderではありません。</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="438" viewBox="0 0 440 438" role="img" aria-labelledby="title desc" style="max-width:100%"><title id="title">図① 外側は文章の行、内側はリンクの子要素</title><desc id="desc">文章の行の途中にリンクの箱が一つ入る。その箱の中では画像と文字が二つの直接の子として配置される。外側と内側は別の配置ルールである。</desc><style>
+text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic','Meiryo',sans-serif;fill:#000000}
+.head{font-size:20px;font-weight:700}
+.sub{font-size:18px;font-weight:700}
+.copy{font-size:16.5px}
+.small{font-size:14px}
+.mono{font-family:Consolas,monospace;font-size:16px}
+.parent{fill:#f5f5f5;stroke:#666666;stroke-width:2}
+.blue{fill:#cfe4ff;stroke:#315fa0;stroke-width:2}
+.red{fill:#f8cfd6;stroke:#c93030;stroke-width:2}
+.green{fill:#cae6d1;stroke:none}
+.purple{fill:#ece5ff;stroke:none}
+.blue-label{fill:#315fa0;font-weight:700}
+.red-label{fill:#c93030;font-weight:700}
+.green-label{fill:#26724a;font-weight:700}
+.purple-label{fill:#7c3aed;font-weight:700}
+.code-red{fill:#c93030;font-weight:700}
+.note{font-size:13px;fill:#444444}
+</style><rect width="440" height="438" fill="#ffffff"/>
+<text x="20" y="34" class="head">図① 外側と内側は別の配置</text>
+<text x="22" y="71" class="sub">外側：文章の中での置かれ方</text>
+<rect x="19" y="88" width="402" height="176" rx="8" class="parent"/>
+<text x="34" y="112" class="small" fill="#444444">文章の行（親の中）</text>
+<text x="34" y="173" class="copy">前の文字</text>
+<rect x="126" y="133" width="206" height="75" rx="6" fill="#ffffff" stroke="#315fa0" stroke-width="2.5"/>
+<text x="229" y="154" class="small blue-label" text-anchor="middle">リンク全体</text>
+<rect x="140" y="164" width="45" height="31" rx="4" class="blue"/>
+<text x="162.5" y="184" class="small" text-anchor="middle">画像</text>
+<rect x="197" y="164" width="120" height="31" rx="4" class="red"/>
+<text x="257" y="184" class="small" text-anchor="middle">詳しく見る</text>
+<text x="338" y="173" class="copy">後の文字</text>
+<text x="34" y="239" class="small">リンクの箱が文章の一部として並ぶ</text>
+<path d="M229 209 V219 H401 V328" stroke="#315fa0" stroke-width="2" fill="none"/>
+<path d="M395 321 L401 329 L407 321" stroke="#315fa0" stroke-width="2" fill="none"/>
+<text x="22" y="311" class="sub">内側：リンクの中での並び方</text>
+<rect x="20" y="329" width="400" height="70" rx="8" fill="#f8fbff" stroke="#315fa0" stroke-width="2"/>
+<rect x="54" y="347" width="92" height="36" rx="4" class="blue"/>
+<text x="100" y="370" class="copy" text-anchor="middle">img</text>
+<path d="M165 365 H204" stroke="#8ea2b9" stroke-width="2" stroke-dasharray="5 4"/>
+<rect x="220" y="347" width="170" height="36" rx="4" class="red"/>
+<text x="305" y="370" class="copy" text-anchor="middle">span（文字）</text>
+<text x="20" y="427" class="note">※ 灰色枠は親の範囲を示す補助線。CSSのborderではありません。</text>
+</svg>
