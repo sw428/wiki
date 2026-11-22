@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="2290" viewBox="0 0 1440 2290" role="img" aria-labelledby="title desc">
+<title id="title">CSSのwidthが決まる仕組み</title>
+<desc id="desc">HTMLとCSSOM、画像固有情報、ブラウザエンジンのレイアウト計算、およびblock・inline・inline-block・Flex・Grid・imgのwidth autoの比較表。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#97A8BC"/></marker></defs>
+<rect x="0" y="0" width="1440" height="2290" rx="0" fill="#F5F7FB" stroke="none" stroke-width="0"/>
+<rect x="0" y="0" width="1440" height="236" rx="0" fill="#142944" stroke="none" stroke-width="0"/>
+<rect x="0" y="225" width="1440" height="11" rx="0" fill="#2878CA" stroke="none" stroke-width="0"/>
+<rect x="101" y="35" width="218" height="36" rx="18" fill="#26476A" stroke="none" stroke-width="0"/>
+<text x="210.0" y="60" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#D9ECFF" text-anchor="middle">HTML / CSS / SVG</text>
+<text x="100" y="128" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="51" font-weight="800" fill="#FFFFFF" text-anchor="start">width が決まる仕組み</text>
+<text x="101" y="183" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="25" font-weight="400" fill="#C7DAEE" text-anchor="start">要素情報 × CSSレイアウト × ブラウザエンジン</text>
+<rect x="70" y="270" width="1300" height="668" rx="24" fill="#FFFFFF" stroke="#DFE6F0" stroke-width="2"/>
+<rect x="104" y="303" width="44" height="44" rx="13" fill="#226CBA" stroke="none" stroke-width="0"/>
+<text x="126" y="334" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">1</text>
+<text x="164" y="334" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="32" font-weight="700" fill="#172A46" text-anchor="start">ブラウザが幅を計算するまで</text>
+<text x="108" y="382" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="23" font-weight="400" fill="#53677F" text-anchor="start">それぞれの情報は別経路で用意され、レイアウト時に組み合わされる。</text>
+<rect x="110" y="414" width="330" height="130" rx="16" fill="#EDF4FC" stroke="#C9DAEF" stroke-width="2"/>
+<text x="130" y="453" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="26" font-weight="700" fill="#194C80" text-anchor="start">HTML / DOM</text>
+<text x="130" y="488.0" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">要素の種類、属性、親子関係</text>
+<text x="130" y="519.35" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">例：HTMLImageElement</text>
+<rect x="556" y="414" width="330" height="130" rx="16" fill="#EDF4FC" stroke="#C9DAEF" stroke-width="2"/>
+<text x="576" y="453" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="26" font-weight="700" fill="#194C80" text-anchor="start">CSS / CSSOM</text>
+<text x="576" y="488.0" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">display、width、max-width</text>
+<text x="576" y="519.35" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">CSSのルールを保持</text>
+<rect x="1002" y="414" width="330" height="130" rx="16" fill="#EDF4FC" stroke="#C9DAEF" stroke-width="2"/>
+<text x="1022" y="453" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="26" font-weight="700" fill="#194C80" text-anchor="start">画像リソース</text>
+<text x="1022" y="488.0" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">画像ファイルを読み込む</text>
+<text x="1022" y="519.35" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#415B76" text-anchor="start">固有幅・高さ・縦横比</text>
+<line x1="275" y1="547" x2="275" y2="590" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="721" y1="547" x2="721" y2="590" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<line x1="1167" y1="547" x2="1167" y2="590" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="110" y="606" width="640" height="116" rx="15" fill="#F7FAFD" stroke="#DCE5EF" stroke-width="2"/>
+<text x="134" y="645" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="23" font-weight="700" fill="#1C304D" text-anchor="start">要素情報 + 計算済みスタイル</text>
+<text x="134" y="682.0" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="20" font-weight="400" fill="#526780" text-anchor="start">DOMとCSSのルールを関連づける</text>
+<rect x="784" y="606" width="548" height="116" rx="15" fill="#F7FAFD" stroke="#DCE5EF" stroke-width="2"/>
+<text x="808" y="645" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="23" font-weight="700" fill="#1C304D" text-anchor="start">画像の固有情報</text>
+<text x="808" y="682.0" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="20" font-weight="400" fill="#526780" text-anchor="start">imgなどの置換要素で利用</text>
+<line x1="430" y1="726" x2="430" y2="767" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" />
+<line x1="1060" y1="726" x2="1060" y2="767" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" />
+<line x1="430" y1="767" x2="745" y2="767" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" />
+<line x1="1060" y1="767" x2="745" y2="767" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" />
+<line x1="745" y1="767" x2="745" y2="787" stroke="#A6B3C7" stroke-width="3" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="270" y="795" width="900" height="89" rx="18" fill="#1C5F9F" stroke="none" stroke-width="0"/>
+<text x="720" y="829" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF" text-anchor="middle">レイアウト計算（Block / Inline / Flex / Grid / 置換要素）</text>
+<text x="720" y="862" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="500" fill="#DBEEFF" text-anchor="middle">→ 使用幅（used width）が決まる</text>
+<text x="108" y="909" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="19" font-weight="400" fill="#607088" text-anchor="start">※ CSSOM自体が img タグを読み取るわけではない。DOM・画像処理・スタイル計算が連携する。</text>
+<rect x="70" y="970" width="1300" height="780" rx="24" fill="#FFFFFF" stroke="#DFE6F0" stroke-width="2"/>
+<rect x="104" y="1004" width="44" height="44" rx="13" fill="#226CBA" stroke="none" stroke-width="0"/>
+<text x="126" y="1035" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">2</text>
+<text x="164" y="1035" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="32" font-weight="700" fill="#172A46" text-anchor="start">width: auto の基本的な動作</text>
+<text x="108" y="1082" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="400" fill="#53677F" text-anchor="start">前提：横書き・通常フロー。子要素は配置されたレイアウトの規則に従う。</text>
+<rect x="109" y="1106" width="1222" height="63" rx="12" fill="#244C79" stroke="none" stroke-width="0"/>
+<text x="127" y="1147" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start">対象</text>
+<text x="400" y="1147" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start">幅の決まり方</text>
+<text x="885" y="1147" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="start">主な判断材料</text>
+<rect x="109" y="1169" width="1222" height="66" rx="0" fill="#F7F9FC" stroke="none" stroke-width="0"/>
+<text x="127" y="1213" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">block（divなど）</text>
+<text x="400" y="1213" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">親の利用可能幅に広がる</text>
+<text x="885" y="1213" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">親幅・通常フロー</text>
+<line x1="109" y1="1235" x2="1331" y2="1235" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1235" width="1222" height="66" rx="0" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<text x="127" y="1279" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">inline（spanなど）</text>
+<text x="400" y="1279" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">CSSのwidthが通常効かない</text>
+<text x="885" y="1279" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">文字・行内レイアウト</text>
+<line x1="109" y1="1301" x2="1331" y2="1301" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1301" width="1222" height="66" rx="0" fill="#F7F9FC" stroke="none" stroke-width="0"/>
+<text x="127" y="1345" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">inline-block</text>
+<text x="400" y="1345" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">内容に応じて幅を決定</text>
+<text x="885" y="1345" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">内在サイズ・利用可能幅</text>
+<line x1="109" y1="1367" x2="1331" y2="1367" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1367" width="1222" height="66" rx="0" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<text x="127" y="1411" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">flex 親</text>
+<text x="400" y="1411" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">ブロックレベルなら親幅に広がる</text>
+<text x="885" y="1411" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">親幅・通常フロー</text>
+<line x1="109" y1="1433" x2="1331" y2="1433" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1433" width="1222" height="66" rx="0" fill="#F7F9FC" stroke="none" stroke-width="0"/>
+<text x="127" y="1477" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">flex 子</text>
+<text x="400" y="1477" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">基準サイズから伸縮する</text>
+<text x="885" y="1477" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">flex-basis / grow / shrink</text>
+<line x1="109" y1="1499" x2="1331" y2="1499" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1499" width="1222" height="66" rx="0" fill="#FFFFFF" stroke="none" stroke-width="0"/>
+<text x="127" y="1543" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">grid 親</text>
+<text x="400" y="1543" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">ブロックレベルなら親幅に広がる</text>
+<text x="885" y="1543" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">親幅・通常フロー</text>
+<line x1="109" y1="1565" x2="1331" y2="1565" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1565" width="1222" height="66" rx="0" fill="#F7F9FC" stroke="none" stroke-width="0"/>
+<text x="127" y="1609" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="500" fill="#253B56" text-anchor="start">grid 子</text>
+<text x="400" y="1609" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">基本は割当領域へ伸びる</text>
+<text x="885" y="1609" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">Gridの領域・justify-self</text>
+<line x1="109" y1="1631" x2="1331" y2="1631" stroke="#E3EAF2" stroke-width="1" stroke-linecap="round" />
+<rect x="109" y="1631" width="1222" height="66" rx="0" fill="#F0F6FD" stroke="none" stroke-width="0"/>
+<text x="127" y="1675" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#1A548C" text-anchor="start">img（置換要素）</text>
+<text x="400" y="1675" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">固有幅が基準になる場合が多い</text>
+<text x="885" y="1675" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#243954" text-anchor="start">画像固有寸法・CSS・配置方式</text>
+<line x1="383" y1="1109" x2="383" y2="1697" stroke="#E0E8F1" stroke-width="1.5" stroke-linecap="round" />
+<line x1="868" y1="1109" x2="868" y2="1697" stroke="#E0E8F1" stroke-width="1.5" stroke-linecap="round" />
+<text x="111" y="1720" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="20" font-weight="400" fill="#596F88" text-anchor="start">注：imgでもFlex・Gridの子になれば、そのレイアウト規則の影響を受ける。</text>
+<rect x="70" y="1783" width="1300" height="435" rx="24" fill="#FFFFFF" stroke="#DFE6F0" stroke-width="2"/>
+<rect x="104" y="1815" width="44" height="44" rx="13" fill="#226CBA" stroke="none" stroke-width="0"/>
+<text x="126" y="1846" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="700" fill="#FFFFFF" text-anchor="middle">3</text>
+<text x="164" y="1846" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="32" font-weight="700" fill="#172A46" text-anchor="start">同じ display: block でも幅は異なる</text>
+<text x="108" y="1889" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="21" font-weight="400" fill="#53677F" text-anchor="start">例：親の内容幅 500px、画像の固有幅 300px、両方とも width: auto</text>
+<rect x="110" y="1917" width="190" height="36" rx="18" fill="#E5F0FF" stroke="none" stroke-width="0"/>
+<text x="205.0" y="1942" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#205EA0" text-anchor="middle">通常の div</text>
+<rect x="110" y="2035" width="190" height="36" rx="18" fill="#E0F5EC" stroke="none" stroke-width="0"/>
+<text x="205.0" y="2060" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="18" font-weight="700" fill="#237956" text-anchor="middle">img（置換要素）</text>
+<rect x="348" y="1925" width="910" height="79" rx="10" fill="#F3F6FA" stroke="#BDC9D8" stroke-width="2"/>
+<rect x="358" y="1935" width="890" height="59" rx="9" fill="#C6DFF8" stroke="none" stroke-width="0"/>
+<text x="803.0" y="1973" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#174A80" text-anchor="middle">div：親の利用可能幅（約500px）</text>
+<rect x="348" y="2042" width="910" height="79" rx="10" fill="#F3F6FA" stroke="#BDC9D8" stroke-width="2"/>
+<rect x="358" y="2052" width="534.0" height="59" rx="9" fill="#B5E8D0" stroke="none" stroke-width="0"/>
+<text x="633" y="2090" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="22" font-weight="700" fill="#156845" text-anchor="middle">img：固有幅 300px</text>
+<rect x="108" y="2141" width="1224" height="49" rx="10" fill="#E9F3FD" stroke="none" stroke-width="0"/>
+<text x="720" y="2173" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="23" font-weight="700" fill="#1F558B" text-anchor="middle">displayだけでなく「要素の性質 × 内容・固有寸法 × レイアウト規則」で決まる</text>
+<line x1="70" y1="2254" x2="1370" y2="2254" stroke="#DCE5EF" stroke-width="2" stroke-linecap="round" />
+<text x="75" y="2280" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="18" font-weight="400" fill="#74849B" text-anchor="start">CSS width / img / intrinsic sizing / Block・Inline・Flex・Grid</text>
+<text x="1362" y="2280" font-family="Noto Sans CJK JP, Yu Gothic, sans-serif" font-size="18" font-weight="400" fill="#74849B" text-anchor="end">学習用構造図</text>
+</svg>
