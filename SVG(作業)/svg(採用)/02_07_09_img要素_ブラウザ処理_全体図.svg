@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="1130" viewBox="0 0 1100 1130" role="img" aria-label="img要素の情報から画面表示までの流れ">
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 Z" fill="#8EA2B9"/></marker></defs>
+<rect width="1100" height="1130" fill="#fff"/>
+<text x="65" y="80" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="40" fill="#142943" font-weight="700" text-anchor="start">img要素の情報から画面表示まで</text>
+<text x="65" y="124" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="22" fill="#66798F" font-weight="400" text-anchor="start">DOM・画像固有情報・CSS・レイアウトの関係</text>
+<rect x="65" y="168" width="970" height="177" rx="18" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="2"/>
+<text x="95" y="220" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="30" fill="#193B64" font-weight="700" text-anchor="start">① HTML：要素の情報</text>
+<text x="95" y="266" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="26" fill="#25384F" font-weight="400" text-anchor="start">img・src・width・height</text>
+<text x="95" y="308" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="24" fill="#25384F" font-weight="400" text-anchor="start">DOM上では HTMLImageElement として扱われる</text>
+<line x1="550" y1="347" x2="550" y2="393" stroke="#8EA2B9" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="65" y="412" width="474" height="165" rx="18" fill="#FFFFFF" stroke="#DCE4EE" stroke-width="2"/>
+<rect x="561" y="412" width="474" height="165" rx="18" fill="#FFFFFF" stroke="#DCE4EE" stroke-width="2"/>
+<text x="91" y="460" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="27" fill="#193B64" font-weight="700" text-anchor="start">② 画像固有情報</text>
+<text x="91" y="505" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="22" fill="#25384F" font-weight="400" text-anchor="start">画像リソースを取得し、</text>
+<text x="91" y="543" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="22" fill="#25384F" font-weight="400" text-anchor="start">固有幅・高さ・縦横比などを得る</text>
+<text x="586" y="460" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="27" fill="#193B64" font-weight="700" text-anchor="start">③ CSSの情報</text>
+<text x="586" y="505" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="21" fill="#25384F" font-weight="400" text-anchor="start">display・width・max-width</text>
+<text x="586" y="543" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="22" fill="#25384F" font-weight="400" text-anchor="start">などの適用値を計算する</text>
+<path d="M302 579 V617 H550" fill="none" stroke="#8EA2B9" stroke-width="3"/>
+<path d="M798 579 V617 H550" fill="none" stroke="#8EA2B9" stroke-width="3"/>
+<line x1="550" y1="617" x2="550" y2="660" stroke="#8EA2B9" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="65" y="675" width="970" height="177" rx="18" fill="#EEF4FC" stroke="#DCE4EE" stroke-width="2"/>
+<text x="95" y="728" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="30" fill="#193B64" font-weight="700" text-anchor="start">④ LayoutImage / LayoutReplaced</text>
+<text x="95" y="777" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="25" fill="#25384F" font-weight="400" text-anchor="start">画像固有情報とCSSの指定を組み合わせて、</text>
+<text x="95" y="815" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="25" fill="#25384F" font-weight="400" text-anchor="start">幅・高さ・配置を計算する</text>
+<line x1="550" y1="854" x2="550" y2="903" stroke="#8EA2B9" stroke-width="3" marker-end="url(#ar)"/>
+<rect x="65" y="922" width="970" height="116" rx="18" fill="#F1F5FA" stroke="#DCE4EE" stroke-width="2"/>
+<text x="550" y="992" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="31" fill="#193B64" font-weight="700" text-anchor="middle">⑤ 描画して画面へ表示</text>
+<text x="65" y="1090" font-family="'Noto Sans CJK JP','Yu Gothic','Meiryo',sans-serif" font-size="20" fill="#677A8F" font-weight="400" text-anchor="start">※ CSSOMがimgタグを直接読むのではなく、DOM・画像リソース・CSSの情報が連携する。</text>
+</svg>
