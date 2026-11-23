@@ -16,6 +16,6 @@
 
 `minmax()`はGridトラック用。`width: minmax(…);`とは直接書けない。`min()`と名前が似ていても、担当が違う。
 
-要素に書いた幅と実際の寸法を分ける説明は[CSSに書いた値と実際の寸法を分ける](../02_基礎/01_HTML・CSS/05_ボックスとdisplay/07_CSSに書いた値と実際の寸法を分ける.md)、`min()`を使う実装は[コンテンツの最大幅と左右余白を作る](../02_基礎/01_HTML・CSS/09_レイアウト/02_配置の基本/05_コンテンツの最大幅と左右余白を作る.md)で確認する。
+要素に書いた幅と実際の寸法を分ける説明は[CSSに書いた値と実際の寸法を分ける](../02_基礎/01_HTML・CSS/05_ボックスとdisplay/07_CSSに書いた値と実際の寸法を分ける.md)、`min()`を使う実装は[コンテンツの最大幅と左右余白を作る](../02_基礎/01_HTML・CSS/09_レイアウト/05_コンテンツの最大幅と左右余白を作る.md)で確認する。
 
 仕様確認先：[CSS Sizing — Sizing Properties](https://www.w3.org/TR/css-sizing-3/#sizing-properties)、[CSS Values — Comparison Functions](https://www.w3.org/TR/css-values-4/#comp-func)、[CSS Grid — Track Sizes](https://www.w3.org/TR/css-grid-2/#track-sizes)。
