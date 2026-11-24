@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="690" viewBox="0 0 760 690" role="img" aria-labelledby="title desc">
+<title id="title">inline-flex の外側と内側</title><desc id="desc">外側は親のIFCに参加し、内側はFFCを作る。</desc>
+<defs><style>text{font-family:'Noto Sans CJK JP','Noto Sans JP','Yu Gothic',Meiryo,sans-serif;fill:#172b40} .h{font-size:31px;font-weight:700} .sub{font-size:19px} .section{font-size:22px;font-weight:700} .small{font-size:16px} .code{font-family:monospace;font-size:19px} .blue{fill:#1858a7} .green{fill:#087553} .muted{fill:#52657a}</style><marker id="arr" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#687a8c"/></marker></defs>
+<rect width="760" height="690" rx="16" fill="#fff"/>
+<text x="32" y="47" class="h">display: inline-flex</text>
+<text x="32" y="80" class="code">display: inline flex;</text>
+<rect x="28" y="103" width="704" height="214" rx="14" fill="#f2f7ff" stroke="#8eb5e7" stroke-width="1.5"/>
+<text x="48" y="136" class="section blue">① 外側：インラインレベル</text>
+<text x="48" y="165" class="sub">親のIFCの中で、前後の文字と同じ行に並ぶ</text>
+<rect x="48" y="183" width="664" height="108" rx="8" fill="#fff" stroke="#7895b6" stroke-dasharray="6 4"/>
+<text x="62" y="207" class="small muted">親要素の行ボックス</text>
+<text x="70" y="263" class="sub">前の文字</text>
+<rect x="177" y="218" width="239" height="53" rx="6" fill="#e4efff" stroke="#2563ad" stroke-width="2.5"/>
+<rect x="193" y="231" width="27" height="27" rx="4" fill="#fff0d8" stroke="#aa6b22"/><path d="M200 244H213M208 239L213 244L208 249" fill="none" stroke="#925914" stroke-width="2"/>
+<text x="232" y="253" class="sub">詳しく見る</text><text x="435" y="263" class="sub">後の文字</text>
+<path d="M62 271H693" stroke="#7895b6" stroke-dasharray="5 5"/>
+<path d="M297 274V338" stroke="#687a8c" stroke-width="2" marker-end="url(#arr)"/>
+<rect x="28" y="347" width="704" height="283" rx="14" fill="#effaf5" stroke="#8bc9af" stroke-width="1.5"/>
+<text x="48" y="381" class="section green">② 内側：FFC（フレックス整形コンテキスト）</text>
+<text x="48" y="411" class="sub">img と span を Flex アイテムとして配置する</text>
+<rect x="48" y="431" width="664" height="131" rx="9" fill="#e4efff" stroke="#2563ad" stroke-width="2.5"/>
+<text x="63" y="455" class="small blue">リンク自身の箱（拡大）</text><rect x="70" y="470" width="95" height="73" rx="6" fill="#fff0d8" stroke="#aa6b22" stroke-width="2"/><path d="M95 506H140M130 496L140 506L130 516" stroke="#925914" stroke-width="3" fill="none"/><rect x="185" y="470" width="253" height="73" rx="6" fill="#d8f4e7" stroke="#087553" stroke-width="2"/><text x="312" y="513" text-anchor="middle" class="section">詳しく見る</text><path d="M61 506H456" stroke="#087553" stroke-dasharray="5 4"/><text x="462" y="497" class="small green">中心を揃える</text><text x="462" y="522" class="small green">align-items: center</text><text x="70" y="591" class="small green">img・span は別々のFlexアイテム。間隔は gap で指定できる。</text><text x="48" y="613" class="small muted">※ この図は align-items: center と gap を指定した例。</text><text x="32" y="661" class="sub blue">外側：inline</text><text x="235" y="661" class="sub green">内側：flex</text><text x="528" y="661" class="small muted">模式図・横書きの場合</text></svg>
