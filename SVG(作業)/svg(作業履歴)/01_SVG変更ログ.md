@@ -215,3 +215,34 @@
 - 管理：採用保存はr003、掲載用はr004、更新記録はu043。概成の保護を保持。今後のCodexによるSVG編集時も同時に履歴保存する。
 
 - 追加配置：ユーザーの微調整用として、履歴と同内容・同名の[直下の作業用SVG](../02_09_10_Grid%E3%81%AE%E5%88%97%E5%B9%85%E3%81%AF%E3%81%A9%E3%81%AE%E3%82%88%E3%81%86%E3%81%AB%E6%B1%BA%E3%81%BE%E3%82%8B%EF%BC%9F%20%E2%80%95%201fr%E3%81%A8max-content%E3%81%AE%E8%A8%88%E7%AE%97%E3%81%AE%E9%81%95%E3%81%84%281%29.svg)を保存。手動調整用の案内冒頭に直下・作業履歴・採用の役割を明記した。
+
+## 2026-11-25｜displayの外側・内側と整形コンテキスト：提供SVG15点
+
+ユーザーが指定したDownloadsのSVG15点を、暫定の手動調整用として直下と作業履歴へ保存した。今回の提供図は説明・配色・座標・文字・寸法を変更せず、括弧の版番号だけを付けた。採用保存・既存記事への反映・概成指定は行わない。図を使ったMarkdownをWiki直下へ置く案を準備中。
+
+| 提供ファイル | 作業用SVG | 同内容の履歴 |
+| --- | --- | --- |
+| `01-block-inner-ifc.svg` | [01-block-inner-ifc(1).svg](../01-block-inner-ifc%281%29.svg) | [履歴](./01-block-inner-ifc%281%29.svg) |
+| `02-block-inner-bfc.svg` | [02-block-inner-bfc(1).svg](../02-block-inner-bfc%281%29.svg) | [履歴](./02-block-inner-bfc%281%29.svg) |
+| `03-inline-block-inner-ifc-bfc.svg` | [03-inline-block-inner-ifc-bfc(1).svg](../03-inline-block-inner-ifc-bfc%281%29.svg) | [履歴](./03-inline-block-inner-ifc-bfc%281%29.svg) |
+| `block-inline-block-inner-comparison.svg` | [block-inline-block-inner-comparison(1).svg](../block-inline-block-inner-comparison%281%29.svg) | [履歴](./block-inline-block-inner-comparison%281%29.svg) |
+| `02-normal-flow.svg` | [02-normal-flow(1).svg](../02-normal-flow%281%29.svg) | [履歴](./02-normal-flow%281%29.svg) |
+| `03-formatting-contexts.svg` | [03-formatting-contexts(1).svg](../03-formatting-contexts%281%29.svg) | [履歴](./03-formatting-contexts%281%29.svg) |
+| `04-inline-block-outer-inner.svg` | [04-inline-block-outer-inner(1).svg](../04-inline-block-outer-inner%281%29.svg) | [履歴](./04-inline-block-outer-inner%281%29.svg) |
+| `05-inline-flex-outer-inner.svg` | [05-inline-flex-outer-inner(1).svg](../05-inline-flex-outer-inner%281%29.svg) | [履歴](./05-inline-flex-outer-inner%281%29.svg) |
+| `06-link-inner-comparison.svg` | [06-link-inner-comparison(1).svg](../06-link-inner-comparison%281%29.svg) | [履歴](./06-link-inner-comparison%281%29.svg) |
+| `07-flow-vs-flow-root.svg` | [07-flow-vs-flow-root(1).svg](../07-flow-vs-flow-root%281%29.svg) | [履歴](./07-flow-vs-flow-root%281%29.svg) |
+| `08-float-containment.svg` | [08-float-containment(1).svg](../08-float-containment%281%29.svg) | [履歴](./08-float-containment%281%29.svg) |
+| `09-margin-collapse.svg` | [09-margin-collapse(1).svg](../09-margin-collapse%281%29.svg) | [履歴](./09-margin-collapse%281%29.svg) |
+| `10-atomic-inline.svg` | [10-atomic-inline(1).svg](../10-atomic-inline%281%29.svg) | [履歴](./10-atomic-inline%281%29.svg) |
+| `11-independent-contexts.svg` | [11-independent-contexts(1).svg](../11-independent-contexts%281%29.svg) | [履歴](./11-independent-contexts%281%29.svg) |
+| `12-display-table.svg` | [12-display-table(1).svg](../12-display-table%281%29.svg) | [履歴](./12-display-table%281%29.svg) |
+
+保存元・作業用・履歴の内容を照合する。実際に行った表示・構文確認は追加記録で区別し、確認前に確認済みとは扱わない。
+
+### 追加確認・Markdown作成（2026-11-25）
+
+- ユーザーの「わけてもいいよ」「まかせる」に基づき、[displayの外側と内側・整形コンテキスト.md](../../display%E3%81%AE%E5%A4%96%E5%81%B4%E3%81%A8%E5%86%85%E5%81%B4%E3%83%BB%E6%95%B4%E5%BD%A2%E3%82%B3%E3%83%B3%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88.md)・[inline-blockとinline-flexを使い分ける.md](../../inline-block%E3%81%A8inline-flex%E3%82%92%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B.md)・[flowとflow-root・独立したBFCを理解する.md](../../flow%E3%81%A8flow-root%E3%83%BB%E7%8B%AC%E7%AB%8B%E3%81%97%E3%81%9FBFC%E3%82%92%E7%90%86%E8%A7%A3%E3%81%99%E3%82%8B.md)の3本をWiki直下に作成。相互リンクと全15図への参照を整備した。
+- 提供元・作業用・履歴の全15点のバイト一致、XML解析、相対リンクとMarkdownの表・空白を確認。図の内容・名前の語句は保持し、作業用の括弧番号だけを追加した。
+- ChromeでPC720px・SP343pxの全15図を描画し、文字の切れ・重なりがないことを確認。横長の図はSPで文字が小さいため、MDから図をクリックして拡大できるようにした。作業用15図をまとめたローカル一覧もChromeへ起動した。
+- W3C仕様と図・説明を照合。図は模式図として扱い、記事内コードのブラウザ実行・本人の理解確認とは区別した。既存Wiki記事・採用SVG・概成・レビュー番号の所属は変更していない。

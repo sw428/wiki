@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="340" height="548" viewBox="0 0 340 548" role="img" aria-labelledby="title desc">
+<title id="title">line-heightの指定値と継承、倍率か長さか</title>
+<desc id="desc">親は文字サイズ20px、子は12px。親の1.5は子へ1.5という数値で継承され、子の行高は18px。親の150%は親の20pxから30pxに計算され、子へ30pxという長さで継承される。</desc>
+<style>
+text { font-family: "Noto Sans CJK JP", "Noto Sans JP", "Yu Gothic", sans-serif; }
+.title { font-size:17px; font-weight:700; fill:#193B64; }
+.sub { font-size:12px; fill:#526780; }
+.heading { font-size:15px; font-weight:700; fill:#193B64; }
+.body { font-size:13px; fill:#25384F; }
+.small { font-size:12px; fill:#526780; }
+.calc { font-size:14px; font-weight:700; fill:#193B64; }
+.value { font-size:15px; font-weight:700; fill:#23558F; }
+.panel { fill:#ffffff; stroke:#DCE4EE; stroke-width:1.5; }
+.parent { fill:#F1F5FA; stroke:#DCE4EE; stroke-width:1.2; }
+.child { fill:#E1EDFF; stroke:#315FA0; stroke-width:1.2; }
+.arrow { stroke:#8EA2B9; stroke-width:2.1; fill:none; }
+</style>
+<defs><marker id="arrowEnd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10Z" fill="#8EA2B9"/></marker></defs>
+<text x="15" y="31" class="title" >親では同じ、子では違う</text>
+<text x="15" y="54" class="sub" >親 font-size: 20px ／ 子 font-size: 12px</text>
+<!-- A -->
+<rect x="10" y="68" width="320" height="218" rx="13" class="panel"/>
+<text x="22" y="94" class="heading" >A  単位なしの 1.5</text>
+<rect x="22" y="108" width="296" height="59" rx="7" class="parent"/>
+<text x="34" y="129" class="body" font-weight="700">.parent { line-height: 1.5; }</text>
+<text x="34" y="151" class="calc" >親：20px × 1.5 = 30px</text>
+<path d="M283 169V202" class="arrow" marker-end="url(#arrowEnd)"/>
+<text x="34" y="193" class="body" >子へ「1.5」を渡す</text>
+<rect x="22" y="208" width="296" height="60" rx="7" class="child"/>
+<text x="34" y="229" class="body" >.child { font-size: 12px; }</text>
+<text x="34" y="252" class="value" >子：12px × 1.5 = 18px</text>
+<!-- B -->
+<rect x="10" y="296" width="320" height="218" rx="13" class="panel"/>
+<text x="22" y="322" class="heading" >B  パーセントの 150%</text>
+<rect x="22" y="336" width="296" height="59" rx="7" class="parent"/>
+<text x="34" y="357" class="body" font-weight="700">.parent { line-height: 150%; }</text>
+<text x="34" y="379" class="calc" >親：20px × 150% = 30px</text>
+<path d="M283 397V430" class="arrow" marker-end="url(#arrowEnd)"/>
+<text x="34" y="421" class="body" >子へ「30px」を渡す</text>
+<rect x="22" y="436" width="296" height="60" rx="7" class="child"/>
+<text x="34" y="457" class="body" >.child { font-size: 12px; }</text>
+<text x="34" y="480" class="value" >子：30px のまま</text>
+<text x="15" y="535" class="small" >違いは、親で何が「継承する値」になるか。</text>
+</svg>
