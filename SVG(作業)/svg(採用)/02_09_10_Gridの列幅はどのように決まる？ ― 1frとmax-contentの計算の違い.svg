@@ -34,8 +34,8 @@
 <g class="body">
  <text x="27" y="114">テキスト</text>
  <text x="27" y="164">テキスト</text>
- <text x="137" y="105">サンプル文字</text><text x="137" y="120">の確認</text>
- <text x="137" y="164">テキスト</text>
+ <text x="137" y="114">テキスト</text>
+ <text x="137" y="155">サンプル文字</text><text x="137" y="170">の確認</text>
  <text x="247" y="114">テキストの例</text>
  <text x="247" y="164">テキストの例</text>
 </g>
@@ -78,8 +78,8 @@
 <g class="body">
  <text x="26" y="388">テキスト</text>
  <text x="26" y="438">テキスト</text>
- <text x="99" y="388">サンプル文字の確認</text>
- <text x="99" y="438">テキスト</text>
+ <text x="99" y="388">テキスト</text>
+ <text x="99" y="438">サンプル文字の確認</text>
  <text x="232" y="388">テキストの例</text>
  <text x="232" y="438">テキストの例</text>
 </g>
